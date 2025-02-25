@@ -1,0 +1,88 @@
+/* This file forces Tailwind classes to be included in the bundle */
+
+/* Button Component */
+.btn {
+  @apply rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+/* Button variants */
+.btn-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+}
+
+.btn-secondary {
+  @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+}
+
+.btn-white {
+  @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500;
+}
+
+/* Button sizes */
+.btn-sm {
+  @apply px-2 py-1 text-sm;
+}
+
+.btn-md {
+  @apply px-4 py-2 text-base;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+/* Collapsed Card Component */
+.collapsed-card {
+  @apply bg-white;
+}
+
+.collapsed-card-header {
+  @apply bg-gray-50 hover:bg-gray-100 transition-colors;
+}
+
+.collapsed-card-content {
+  @apply bg-white;
+}
+
+/* Utility classes */
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.transform {
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
