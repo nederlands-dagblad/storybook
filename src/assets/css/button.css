@@ -1,15 +1,15 @@
 @layer components {
 
   .btn {
-    @apply rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
   }
 
   .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply bg-blue-500 text-white hover:bg-blue-400 focus:ring-blue-400;
   }
 
   .btn-secondary {
-    @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+    @apply bg-pink-900 text-white hover:bg-pink-500 focus:ring-pink-500;
   }
 
   .btn-white {

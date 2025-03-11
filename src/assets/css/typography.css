@@ -1,0 +1,23 @@
+:root {
+    --font-size-heading-xs: 14px;
+    --font-size-heading-s: 16px;
+    --font-size-heading-m: 18px;
+    --font-size-heading-l: 26px;
+    --font-size-heading-xl: 28px;
+}
+
+@screen md {
+    :root {
+        --font-size-heading-s: 18px;
+        --font-size-heading-m: 20px;
+        --font-size-heading-l: 36px;
+        --font-size-heading-xl: 40px;
+    }
+}
+
+@screen lg {
+    :root {
+        --font-size-heading-l: 40px;
+        --font-size-heading-xl: 48px;
+    }
+}

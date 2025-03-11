@@ -1,0 +1,26 @@
+import { Meta, Typeset } from '@storybook/blocks';
+import tailwindConfig from '../tailwind.config.js';
+import '../storybook/style.css';
+
+<Meta title="General/Typography" />
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+
+**Font:** Nunito Sans
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+Be aware that the font size changes on different screen sizes (desktop, tablet and mobile).
+
+<Typeset
+    fontSizes={[
+        tailwindConfig.theme.extend.fontSize['heading-xl'],
+        tailwindConfig.theme.extend.fontSize['heading-l'],
+        tailwindConfig.theme.extend.fontSize['heading-m'],
+        tailwindConfig.theme.extend.fontSize['heading-s'],
+        tailwindConfig.theme.extend.fontSize['heading-xs'],
+    ]}
+    sampleText={SampleText}
+/>

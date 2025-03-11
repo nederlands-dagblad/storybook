@@ -1,0 +1,3 @@
+.docblock-typeset > div {
+    flex-direction: column;
+}

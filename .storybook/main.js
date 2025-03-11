@@ -1,5 +1,9 @@
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../src/**/*.stories.mdx',
+    '../storybook/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|ts|tsx)'
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-docs',
@@ -13,17 +17,16 @@ module.exports = {
         },
       },
     },
+    '@storybook/addon-webpack5-compiler-babel'
   ],
   features: {
-    storyStoreV7: false,
+    // storyStoreV7: false,
   },
   framework: {
     name: '@storybook/vue3-webpack5',
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
   webpackFinal: async (config) => {
     // Make sure Tailwind is properly processed
     config.module.rules.push({
@@ -45,7 +48,7 @@ module.exports = {
                     'btn-sm',
                     'btn-md',
                     'btn-lg',
-                    
+
                     // Collapsed Card classes
                     'collapsed-card',
                     'collapsed-card-header',
@@ -58,7 +61,7 @@ module.exports = {
                     'transform',
                     'transition-transform',
                     'rotate-180',
-                    
+
                     // Utility classes
                     'opacity-50',
                     'cursor-not-allowed'

@@ -1,0 +1,37 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import tailwindConfig from '../tailwind.config.js';
+
+<Meta title="General/Colors" />
+
+# Colors
+
+{(() => {
+    const groupedColors = Object.entries(tailwindConfig.theme.extend.colors).reduce((groups, [colorName, colorShades]) => {
+        const category = colorName.replace(/\d+/g, ''); // Extract base color name
+
+        if (!groups[category]) groups[category] = [];
+
+        if (typeof colorShades === 'object') {
+          Object.entries(colorShades)
+            .sort(([a], [b]) => Number(b) - Number(a)) // Reverse numerical sorting
+            .forEach(([shade, value]) => {
+              groups[category].push({ name: `${colorName}-${shade}`, value });
+            });
+        } else {
+          groups[category].push({ name: colorName, value: colorShades });
+        }
+
+        return groups;
+    }, {});
+
+    return Object.entries(groupedColors).map(([category, colors]) => (
+        <div key={category}>
+            <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+            <ColorPalette>
+                {colors.map(({ name, value }) => (
+                    <ColorItem key={name} title={name} subtitle={value} colors={[value]} />
+                ))}
+            </ColorPalette>
+        </div>
+    ));
+})()}

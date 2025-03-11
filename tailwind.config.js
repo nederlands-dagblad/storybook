@@ -7,62 +7,42 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+        'blue': {
+          900: '#09254A',
+          500: '#02A1D9',
+          400: '#02B4F2'
         },
-        'secondary': {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+        'pink': {
+            900: '#E9425B',
+            500: '#F2E1DF',
+            400: '#FDECEF'
         },
+        'brown': {
+            900: '#3A1A1C',
+            800: '#6A4847',
+            500: '#A27675'
+        },
+        'neutral': {
+            900: '#121212',
+            800: '#222222',
+            700: '#484544',
+            600: '#727272',
+            500: '#999999',
+            400: '#BDBDBD',
+            300: '#D4D4D4',
+            200: '#F2F2F2',
+            black: '#000000',
+            white: '#FFFFFF'
+        }
       },
-      spacing: {
-        '1': '0.25rem',
-        '2': '0.5rem',
-        '3': '0.75rem',
-        '4': '1rem',
-        '5': '1.25rem',
-        '6': '1.5rem',
-        '8': '2rem',
-        '10': '2.5rem',
-        '12': '3rem',
-        '16': '4rem',
-        '20': '5rem',
-        '24': '6rem',
-        '32': '8rem',
-        '40': '10rem',
-        '48': '12rem',
-        '56': '14rem',
-        '64': '16rem',
-      },
-      borderRadius: {
-        'none': '0',
-        'sm': '0.125rem',
-        'DEFAULT': '0.25rem',
-        'md': '0.375rem',
-        'lg': '0.5rem',
-        'xl': '0.75rem',
-        '2xl': '1rem',
-        'full': '9999px',
-      },
+
+        fontSize: {
+            'heading-xs': 'var(--font-size-heading-xs)',
+            'heading-s': 'var(--font-size-heading-s)',
+            'heading-m': 'var(--font-size-heading-m)',
+            'heading-l': 'var(--font-size-heading-l)',
+            'heading-xl': 'var(--font-size-heading-xl)',
+        },
     },
   },
   plugins: [],
