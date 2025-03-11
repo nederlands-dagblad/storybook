@@ -1,7 +1,7 @@
 import '../src/assets/css/tailwind.css';
 
 // Force Tailwind styles to be loaded
-import './tailwind-force.css';
+import '../src/assets/css/tailwind.css';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
