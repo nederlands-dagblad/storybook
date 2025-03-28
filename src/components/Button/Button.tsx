@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'white';
+  variant?: 'primary' | 'secondary' | 'white' | 'dark';
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,7 +15,8 @@ const Button: React.FC<ButtonProps> = ({
   const variantClass = {
     'btn-primary': variant === 'primary',
     'btn-secondary': variant === 'secondary',
-    'btn-white': variant === 'white'
+    'btn-white': variant === 'white',
+    'btn-dark': variant === 'dark',
   };
 
   // Convert class objects to strings

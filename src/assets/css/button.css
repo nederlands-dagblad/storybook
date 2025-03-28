@@ -16,4 +16,8 @@
     @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500;
   }
 
+  .btn-dark {
+    @apply bg-button-background-button-dark-bg text-button-text-button-dark-text hover:bg-button-background-button-dark-bg-hover
+  }
+
 }
