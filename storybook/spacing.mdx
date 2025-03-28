@@ -1,0 +1,54 @@
+import {Canvas, Meta} from '@storybook/blocks';
+import tailwindConfig from '../tailwind.config.js';
+
+<Meta title="General/Spacing" />
+
+# Spacing
+
+In our design system, we used t-shirt sizes to define spacing. Here are the sizes we use:
+- `xs`: Extra small
+- `s`: Small
+- `m`: Medium
+- `l`: Large
+- `xl`: Extra large
+
+<Canvas>
+{(() => {
+    const spacing = tailwindConfig.theme.extend.spacing;
+
+    function className(name) {
+        switch (name) {
+            case 'xs': return 'pr-xs';
+            case 's': return 'pr-s';
+            case 'm': return 'pr-m';
+            case 'l': return 'pr-l';
+            case 'xl': return 'pr-xl';
+        }
+    }
+
+    const entries = Object.entries(spacing).map(([name, value]) => (
+        <div key={name} className="flex flex-col space-y-2">
+            <h4 className="font-bold">{name}</h4>
+            <code>{className(name)}</code>
+            <div>
+                <div className={`${className(name)} w-0 h-8 bg-blue-400`}></div>
+            </div>
+        </div>
+    ));
+
+    return (
+        <div className="flex flex-col space-y-8 items-start">
+            {entries}
+        </div>
+    );
+})()}
+</Canvas>
+
+## More about spacing
+
+Spacing can be used for padding, margin, or space between elements. For more, read the Tailwind documentation:
+- [Padding](https://tailwindcss.com/docs/padding)
+- [Margin](https://tailwindcss.com/docs/margin)
+- [Space between elements](https://tailwindcss.com/docs/space)
+```
+

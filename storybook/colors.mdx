@@ -1,4 +1,4 @@
-import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import tailwindConfig from '../tailwind.config.js';
 
 <Meta title="General/Colors" />
@@ -6,32 +6,42 @@ import tailwindConfig from '../tailwind.config.js';
 # Colors
 
 {(() => {
-    const groupedColors = Object.entries(tailwindConfig.theme.extend.colors).reduce((groups, [colorName, colorShades]) => {
-        const category = colorName.replace(/\d+/g, ''); // Extract base color name
+  const rawColors = tailwindConfig.theme.extend?.colors ?? {};
 
-        if (!groups[category]) groups[category] = [];
+  const grouped = Object.entries(rawColors).reduce((acc, [token, cssVar]) => {
+    const match = token.match(/^([a-zA-Z]+)-/);
+    const group = match ? match[1] : 'other';
+    if (!acc[group]) acc[group] = [];
+    acc[group].push({ token, cssVar });
+    return acc;
+  }, {});
 
-        if (typeof colorShades === 'object') {
-          Object.entries(colorShades)
-            .sort(([a], [b]) => Number(b) - Number(a)) // Reverse numerical sorting
-            .forEach(([shade, value]) => {
-              groups[category].push({ name: `${colorName}-${shade}`, value });
-            });
-        } else {
-          groups[category].push({ name: colorName, value: colorShades });
-        }
-
-        return groups;
-    }, {});
-
-    return Object.entries(groupedColors).map(([category, colors]) => (
-        <div key={category}>
-            <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-            <ColorPalette>
-                {colors.map(({ name, value }) => (
-                    <ColorItem key={name} title={name} subtitle={value} colors={[value]} />
-                ))}
-            </ColorPalette>
-        </div>
-    ));
+  return Object.entries(grouped).map(([family, items]) => (
+    <div key={family} style={{ marginBottom: '2rem' }}>
+      <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
+        {family.charAt(0).toUpperCase() + family.slice(1)}
+      </h2>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+          gap: '1rem',
+        }}
+      >
+        {items.map(({ token, cssVar }) => (
+          <div key={token} style={{ textAlign: 'center' }}>
+            <div
+              style={{
+                backgroundColor: cssVar,
+                height: '50px',
+                borderRadius: '6px',
+                border: '1px solid #ddd',
+              }}
+            />
+            <div style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>{token}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ));
 })()}
