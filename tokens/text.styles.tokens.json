@@ -1,0 +1,893 @@
+{
+  "Body": {
+    "body-standard": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-m}",
+        "fontWeight": "{typography.font weight.light}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-standard-regular": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-m}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-standard-bold": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-m}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-article": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-m}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-article-intro": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-l}",
+        "fontWeight": "{typography.font weight.light}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-article-type": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-xl}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-1}",
+        "lineHeight": "160%",
+        "textTransform": "small-caps",
+        "textDecoration": "none"
+      }
+    },
+    "body-article-city": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-xl}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-2}",
+        "lineHeight": "160%",
+        "textTransform": "small-caps",
+        "textDecoration": "none"
+      }
+    },
+    "body-article-quote": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.gulliver}",
+        "fontSize": "{font size.body.font-size-body-xxl}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "body-article-question": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.body.font-size-body-m}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "drop-cap": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.abril-fatface}",
+        "fontSize": "{font size.body.font-size-drop-cap}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "drop-cap-2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.montserrat}",
+        "fontSize": "{font size.body.font-size-drop-cap}",
+        "fontWeight": "{typography.font weight.light}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "160%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    }
+  },
+  "Headings": {
+    "heading-article": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.gulliver}",
+        "fontSize": "{font size.heading.font-size-heading-xl}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "headings-page": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.gulliver}",
+        "fontSize": "{font size.heading.font-size-heading-l}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "subheading": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.gulliver semibold}",
+        "fontSize": "{font size.heading.font-size-heading-l}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "heading-2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.gulliver}",
+        "fontSize": "{font size.heading.font-size-heading-m}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "heading-3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.heading.font-size-heading-s}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "130%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "heading-article-feed": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.heading.font-size-heading-xs}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-4}",
+        "lineHeight": "130%",
+        "textTransform": "small-caps",
+        "textDecoration": "none"
+      }
+    }
+  },
+  "Meta": {
+    "meta-standard": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-credits": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "0px",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-author": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.bold}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-date": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-timestamp": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    },
+    "meta-ad": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{typography.font family.fira-sans}",
+        "fontSize": "{font size.meta.font-size-meta}",
+        "fontWeight": "{typography.font weight.regular}",
+        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "lineHeight": "140%",
+        "textTransform": "none",
+        "textDecoration": "none"
+      }
+    }
+  },
+  "Old": {
+    "Menu Items": {
+      "Primary menu items": {
+        "$type": "typography",
+        "$description": "Navigatiebalk: 'Nieuws', 'geloof', etc",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "uppercase",
+          "textDecoration": "none"
+        }
+      },
+      "Secondary menu items": {
+        "$type": "typography",
+        "$description": "Blauwe items; 'Krant', 'podcasts', etc.",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Submenu Items": {
+        "$type": "typography",
+        "$description": "'Nederland', 'Politiek', etc",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "16px",
+          "fontWeight": 300,
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Submenu items": {
+        "$type": "typography",
+        "$description": "'Nederland', 'politiek', etc",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 300,
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Bottom menu items": {
+        "$type": "typography",
+        "$description": "'home', 'krant', 'podcasts', 'puzzels', 'mijn nieuws'",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "12px",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Bottom menu items - active": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "12px",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Headings": {
+      "Heading 1 - Article": {
+        "$type": "typography",
+        "$description": "Basisartikel, column, commentaar, opinie",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "28px",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Heading 1 - Partnercontent": {
+        "$type": "typography",
+        "$description": "Partnercontent",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "28px",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Heading 1": {
+        "$type": "typography",
+        "$description": "Overige pagina's; Artikeloverzicht, service, mijn nieuws, mijn ND, etc. + Titel Spotlight",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "25px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Heading 2": {
+        "$type": "typography",
+        "$description": "Alle pagina's, incl. artikelen",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "18px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Heading 2 - Partnercontent": {
+        "$type": "typography",
+        "$description": "Partnercontent",
+        "$value": {
+          "fontFamily": "Gulliver Semibold",
+          "fontSize": "18px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article row heading": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "12px",
+          "fontWeight": 700,
+          "letterSpacing": "4px",
+          "lineHeight": "normal",
+          "textTransform": "uppercase",
+          "textDecoration": "none"
+        }
+      },
+      "Heading Footer + Page nav": {
+        "$type": "typography",
+        "$description": "bijv. menu mijn nieuws / mijn ND",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "20px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "30px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Page nav regular + subheading": {
+        "$type": "typography",
+        "$description": "Navigatie op pagina (mijnND/Mijn Nieuws) + ondertitel (bijv. ' waarmee kunnen we u helpen?' Mijn ND)",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "18px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "30px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Heading footer + page nav": {
+        "$type": "typography",
+        "$description": "bijv. menu mijn nieuws / mijn ND",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "18px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "30px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Titles": {
+      "Spotlight": {
+        "$type": "typography",
+        "$description": "Homepage",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "36px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "40px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Spotlight hover": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "34px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "40px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article gallery": {
+        "$type": "typography",
+        "$description": "foto homepage",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "20px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "24px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article gallery hover": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "30px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "36px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article card": {
+        "$type": "typography",
+        "$description": "Titels artikeloverzicht / meer lezen / laatste nieuws",
+        "$value": {
+          "fontFamily": "Gulliver Semibold",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article card hover": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "17px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "22.4px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article card - partnercontent": {
+        "$type": "typography",
+        "$description": "Titels artikeloverzicht partnercontent",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "17px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "22.4px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article card - partnercontent hover": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "17px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "22.4px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article gallery - active": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "20px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "24px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article card - Partnercontent": {
+        "$type": "typography",
+        "$description": "Titels artikeloverzicht partnercontent",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article card - active": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "16px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      },
+      "Article card - partnercontent - active": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "underline"
+        }
+      }
+    },
+    "Category": {
+      "Category - gallery spotlight": {
+        "$type": "typography",
+        "$description": "('interview', 'column', etc.) artikel intro, article gallery (foto), spotlight",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "24px",
+          "fontWeight": 700,
+          "letterSpacing": "1px",
+          "lineHeight": "26px",
+          "textTransform": "small-caps",
+          "textDecoration": "none"
+        }
+      },
+      "Category - article card": {
+        "$type": "typography",
+        "$description": "'Interview', 'column', etc. + 'Lees ook'",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 700,
+          "letterSpacing": "1px",
+          "lineHeight": "25px",
+          "textTransform": "small-caps",
+          "textDecoration": "none"
+        }
+      },
+      "Category - Article intro": {
+        "$type": "typography",
+        "$description": "'interview', 'column', etc",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "18px",
+          "fontWeight": 700,
+          "letterSpacing": "1px",
+          "lineHeight": "25px",
+          "textTransform": "small-caps",
+          "textDecoration": "none"
+        }
+      },
+      "Category - article intro": {
+        "$type": "typography",
+        "$description": "'interview', 'column', etc.",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "24px",
+          "fontWeight": 700,
+          "letterSpacing": "1px",
+          "lineHeight": "26px",
+          "textTransform": "small-caps",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body": {
+      "Footer": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "20px",
+          "textTransform": "lowercase",
+          "textDecoration": "none"
+        }
+      },
+      "Body": {
+        "$type": "typography",
+        "$description": "Broodtekst",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "26px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Body light": {
+        "$type": "typography",
+        "$description": "o.a. Tekst in kaders (‘In het kort’, ‘over de auteur’, melding bezorgvertraging etc.)",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "16px",
+          "fontWeight": 300,
+          "letterSpacing": "0px",
+          "lineHeight": "26px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Body bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "16px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "26px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article intro": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "18px",
+          "fontWeight": 300,
+          "letterSpacing": "0px",
+          "lineHeight": "28px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Quote": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver",
+          "fontSize": "24px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Quote - Partnercontent": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver Semibold",
+          "fontSize": "24px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article city": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "2px",
+          "lineHeight": "30px",
+          "textTransform": "uppercase",
+          "textDecoration": "none"
+        }
+      },
+      "Article intro - Partnercontent": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "20px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "30px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Article intro - partnercontent": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Gulliver Book",
+          "fontSize": "18px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "28px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Sierkapitaal": {
+        "$type": "typography",
+        "$description": "Columns, commentaar, opinie",
+        "$value": {
+          "fontFamily": "Abril Fatface",
+          "fontSize": "90px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Buttons": {
+      "Button - blue": {
+        "$type": "typography",
+        "$description": "Blauwe button, “meer laden” etc.",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "15px",
+          "fontWeight": 700,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Button - round": {
+        "$type": "typography",
+        "$description": "Afgeronde button (in artikelen + acties, bijv. ‘bewerken’) + dropdown van afgeronde buttons (bijv. ‘delen’ knop)",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "15px",
+          "fontWeight": 400,
+          "letterSpacing": "0px",
+          "lineHeight": "normal",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Meta": {
+      "Meta Bold": {
+        "$type": "typography",
+        "$description": "Auteur, foto onderschrift",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Meta Regular": {
+        "$type": "typography",
+        "$description": "Datum, foto bron, advertentie",
+        "$value": {
+          "fontFamily": "Fira Sans",
+          "fontSize": "14px",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "20px",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    }
+  }
+}

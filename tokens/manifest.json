@@ -1,0 +1,79 @@
+{
+  "name": "Design Tokens",
+  "collections": {
+    "Primitives": {
+      "modes": {
+        "Mode 1": [
+          "primitives.mode-1.tokens.json"
+        ]
+      }
+    },
+    "Semantic colors": {
+      "modes": {
+        "Light": [
+          "Semantic colors.Light.tokens.json"
+        ],
+        "Dark": [
+          "Semantic colors.Dark.tokens.json"
+        ]
+      }
+    },
+    "Layout & typography": {
+      "modes": {
+        "Mobile": [
+          "layout-and-typography.mobile.tokens.json"
+        ],
+        "Tablet (md, 768px)": [
+          "layout-and-typography.tablet-md-768px.tokens.json"
+        ],
+        "Desktop (lg, 1024px)": [
+          "layout-and-typography.desktop-lg-1024px.tokens.json"
+        ]
+      }
+    },
+    "Semantic spacing": {
+      "modes": {
+        "Mode 1": [
+          "semantic-spacing.mode-1.tokens.json"
+        ]
+      }
+    },
+    "Component colors": {
+      "modes": {
+        "Default": [
+          "component-colors.default.tokens.json"
+        ],
+        "Hover": [
+          "component-colors.hover.tokens.json"
+        ],
+        "Active": [
+          "component-colors.active.tokens.json"
+        ],
+        "Disabled": [
+          "component-colors.disabled.tokens.json"
+        ]
+      }
+    },
+    "Semantic border": {
+      "modes": {
+        "Mode 1": [
+          "semantic-border.mode-1.tokens.json"
+        ]
+      }
+    }
+  },
+  "styles": {
+    "text": [
+      "text.styles.tokens.json"
+    ],
+    "effect": [
+      "effect.styles.tokens.json"
+    ],
+    "color": [
+      "color.styles.tokens.json"
+    ],
+    "grid": [
+      "grid.styles.tokens.json"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "shadow-m": {
+    "$type": "shadow",
+    "$value": [
+      {
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "8px",
+        "spread": "0px",
+        "color": "{color.transparent.black-10}"
+      }
+    ]
+  },
+  "shadow-l": {
+    "$type": "shadow",
+    "$value": [
+      {
+        "offsetX": "0px",
+        "offsetY": "10px",
+        "blur": "20px",
+        "spread": "0px",
+        "color": "{color.transparent.black-10}"
+      },
+      {
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "2px",
+        "spread": "0px",
+        "color": "{color.transparent.black-10}"
+      }
+    ]
+  },
+  "shadow-xl": {
+    "$type": "shadow",
+    "$value": [
+      {
+        "offsetX": "0px",
+        "offsetY": "-10px",
+        "blur": "20px",
+        "spread": "0px",
+        "color": "{color.transparent.black-10}"
+      },
+      {
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "2px",
+        "spread": "0px",
+        "color": "{color.transparent.black-10}"
+      }
+    ]
+  }
+}

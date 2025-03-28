@@ -1,0 +1,16 @@
+{
+  "Layout grid": {
+    "$type": "grid",
+    "$value": [
+      {
+        "pattern": "columns",
+        "visible": true,
+        "alignment": "stretch",
+        "color": "#ff00001a",
+        "gutterSize": "{Layout.gutter}",
+        "count": "{Layout.columns}",
+        "offset": "{Layout.padding}"
+      }
+    ]
+  }
+}

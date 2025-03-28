@@ -1,0 +1,84 @@
+{
+  "font_size": {
+    "heading": {
+      "font-size-heading-xs": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-14}"
+      },
+      "font-size-heading-s": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-18}"
+      },
+      "font-size-heading-m": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-20}"
+      },
+      "font-size-heading-l": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-36}"
+      },
+      "font-size-heading-xl": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-40}"
+      }
+    },
+    "body": {
+      "font-size-body-xs": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-12}"
+      },
+      "font-size-body-s": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-16}"
+      },
+      "font-size-body-m": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-18}"
+      },
+      "font-size-body-l": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-20}"
+      },
+      "font-size-body-xl": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-22}"
+      },
+      "font-size-body-xxl": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-28}"
+      },
+      "font-size-drop-cap": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-96}"
+      }
+    },
+    "meta": {
+      "font-size-meta": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-14}"
+      },
+      "font-size-button": {
+        "$type": "dimension",
+        "$value": "{typography.font_size.font-size-14}"
+      }
+    }
+  },
+  "Layout": {
+    "columns": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "column_width_(type:_center)": {
+      "$type": "dimension",
+      "$value": "24px"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "border_width": {
+    "border-width-default": {
+      "$type": "dimension",
+      "$value": "{border.border_width.border-width-s}"
+    }
+  },
+  "border_radius": {
+    "border-radius-pill": {
+      "$type": "dimension",
+      "$value": "{border.border_radius.border-radius-xl}"
+    }
+  }
+}
