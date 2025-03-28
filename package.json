@@ -25,6 +25,7 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.5",
     "@storybook/preview-api": "^8.6.4",
+    "@storybook/theming": "^8.6.11",
     "@storybook/vue3": "^8.6.4",
     "@storybook/vue3-webpack5": "^8.6.4",
     "@vue/cli-plugin-babel": "~5.0.8",
@@ -42,6 +43,7 @@
     "storybook": "^8.6.4",
     "tailwindcss": "^3.3.2",
     "token-transformer": "^0.0.33",
+    "typescript": "^5.8.2",
     "vue-loader": "^17.1.0"
   }
 }

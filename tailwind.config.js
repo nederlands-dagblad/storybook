@@ -12,6 +12,7 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx,stories.js}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
         colors: {

@@ -1,3 +1,5 @@
+import { ModeDecorator } from "./modeDecorator";
+
 import '../src/assets/css/tailwind.css';
 
 // Force Tailwind styles to be loaded
@@ -20,4 +22,7 @@ export const parameters = {
     },
   },
 }
+
 export const tags = ['autodocs'];
+
+export const decorators = [ModeDecorator];
