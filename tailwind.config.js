@@ -1,7 +1,8 @@
 import {
     primitiveColors,
     semanticColors,
-    componentColors
+    componentColors,
+    spacing
 } from './tailwind.tokens.js';
 
 import tokenUtilities from './tokens.utilities.js';
@@ -19,6 +20,15 @@ export default {
             ...primitiveColors,
             ...semanticColors,
             ...componentColors
+        },
+
+        spacing: {
+            ...spacing,
+            'xs': 'var(--spacing-inset-spacing-inset-xs)',
+            's': 'var(--spacing-inset-spacing-inset-s)',
+            'm': 'var(--spacing-inset-spacing-inset-m)',
+            'l': 'var(--spacing-inset-spacing-inset-l)',
+            'xl': 'var(--spacing-inset-spacing-inset-xl)',
         },
 
         fontSize: {

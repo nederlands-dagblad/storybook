@@ -6,6 +6,7 @@ import fs from 'fs';
 const files = {
     primitives: './tokens/primitives.mode-1.tokens.json',
     semantics: './tokens/semantic-colors.light.tokens.json',
+    spacing: './tokens/semantic-spacing.mode-1.tokens.json',
     componentStates: {
         default: './tokens/component-colors.default.tokens.json',
         hover: './tokens/component-colors.hover.tokens.json',
@@ -37,15 +38,12 @@ function resolveReference(ref, flatTokens, visited = new Set()) {
     const path = ref.replace(/[{}]/g, '');
     if (visited.has(path)) return undefined;
     visited.add(path);
-
     const token = flatTokens[path];
     if (!token) return undefined;
-
     const value = token.$value;
     if (typeof value === 'string' && value.startsWith('{')) {
         return resolveReference(value, flatTokens, visited);
     }
-
     return value;
 }
 
@@ -77,16 +75,13 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         const resolved = raw.startsWith('{')
             ? resolveReference(raw, flattenedBase) ?? raw
             : raw;
-
         const kebabKey = kebab(tokenPath);
-
         if (tokenPath.startsWith('color.')) {
             const tailwindKey = kebabKey.replace(/^color-/, '');
             primitiveColors[tailwindKey] = toVar(kebabKey);
         } else {
             semanticColors[kebabKey] = toVar(kebabKey);
         }
-
         cssVarMap[kebabKey] = resolved;
     }
 }
@@ -99,39 +94,24 @@ const utilityClasses = {};
 
 for (const [state, file] of Object.entries(files.componentStates)) {
     const component = load(file);
-
     (function process(obj, prefix = '') {
         for (const [key, val] of Object.entries(obj)) {
             const path = prefix ? `${prefix}-${key}` : key;
-
             if (val?.$value) {
                 const raw = val.$value;
                 const resolved = raw.startsWith('{')
                     ? resolveReference(raw, flattenedBase) ?? raw
                     : raw;
-
                 const fullVarName = `${path}-${state}`;
                 const tailwindKey = state === 'default' ? path : `${path}-${state}`;
-
-                // Add to component color map
                 componentColors[tailwindKey] = toVar(fullVarName);
-
-                // Add to CSS variable map
                 cssVarMap[fullVarName] = resolved;
-
-                // Define background & text utilities
                 if (path.includes('bg')) {
-                    utilityClasses[`.bg-${tailwindKey}`] = {
-                        backgroundColor: `var(--${fullVarName})`
-                    };
+                    utilityClasses[`.bg-${tailwindKey}`] = { backgroundColor: `var(--${fullVarName})` };
                 } else if (path.includes('text')) {
-                    utilityClasses[`.text-${tailwindKey}`] = {
-                        color: `var(--${fullVarName})`
-                    };
+                    utilityClasses[`.text-${tailwindKey}`] = { color: `var(--${fullVarName})` };
                 } else if (path.includes('border')) {
-                    utilityClasses[`.border-${tailwindKey}`] = {
-                        borderColor: `var(--${fullVarName})`
-                    };
+                    utilityClasses[`.border-${tailwindKey}`] = { borderColor: `var(--${fullVarName})` };
                 }
             } else if (typeof val === 'object') {
                 process(val, path);
@@ -141,12 +121,40 @@ for (const [state, file] of Object.entries(files.componentStates)) {
 }
 
 // ----------------------
+// 📏 Process Spacing Tokens
+// ----------------------
+const rawSpacing = load(files.spacing);
+const flattenedSpacing = flatten({ spacing: rawSpacing }, []);
+const spacing = {};
+const spacingUtilities = {};
+
+for (const [tokenPath, token] of Object.entries(flattenedSpacing)) {
+    if (token?.$type === 'dimension') {
+        const resolved = token.$value.startsWith('{')
+            ? resolveReference(token.$value, { ...flattenedBase, ...flattenedSpacing }) ?? token.$value
+            : token.$value;
+        const kebabKey = kebab(tokenPath);
+        const varName = `--${kebabKey}`;
+        spacing[kebabKey] = `var(${varName})`;
+        cssVarMap[kebabKey] = resolved;
+        spacingUtilities[`.p-${kebabKey}`] = { padding: `var(${varName})` };
+        spacingUtilities[`.px-${kebabKey}`] = { paddingLeft: `var(${varName})`, paddingRight: `var(${varName})` };
+        spacingUtilities[`.py-${kebabKey}`] = { paddingTop: `var(${varName})`, paddingBottom: `var(${varName})` };
+        spacingUtilities[`.m-${kebabKey}`] = { margin: `var(${varName})` };
+        spacingUtilities[`.mx-${kebabKey}`] = { marginLeft: `var(${varName})`, marginRight: `var(${varName})` };
+        spacingUtilities[`.my-${kebabKey}`] = { marginTop: `var(${varName})`, marginBottom: `var(${varName})` };
+        spacingUtilities[`.gap-${kebabKey}`] = { gap: `var(${varName})` };
+    }
+}
+
+// ----------------------
 // ✏️ Write tailwind.tokens.js
 // ----------------------
 const jsOutput = `
 export const primitiveColors = ${JSON.stringify(primitiveColors, null, 2)};
 export const semanticColors = ${JSON.stringify(semanticColors, null, 2)};
 export const componentColors = ${JSON.stringify(componentColors, null, 2)};
+export const spacing = ${JSON.stringify(spacing, null, 2)};
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);
@@ -160,8 +168,7 @@ const cssOutput = `
 ${Object.entries(cssVarMap)
     .map(([key, val]) => `  --${key}: ${val};`)
     .join('\n')}
-}
-`.trim();
+}`.trim();
 
 fs.writeFileSync('./src/assets/css/tokens.css', cssOutput);
 console.log('✅ tokens.css written.');
@@ -171,7 +178,10 @@ console.log('✅ tokens.css written.');
 // ----------------------
 const utilOutput = `
 export default function ({ addUtilities }) {
-  addUtilities(${JSON.stringify(utilityClasses, null, 2)});
+  addUtilities({
+    ...${JSON.stringify(utilityClasses, null, 2)},
+    ...${JSON.stringify(spacingUtilities, null, 2)}
+  });
 }
 `.trim();
 

@@ -9,13 +9,9 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    variant: { 
-      control: 'select', 
-      options: ['primary', 'secondary', 'white'] 
-    },
-    size: { 
-      control: 'select', 
-      options: ['sm', 'md', 'lg'] 
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'white']
     },
     disabled: { control: 'boolean' },
     onClick: { action: 'clicked' }
@@ -43,27 +39,6 @@ export const White: Story = {
   args: {
     variant: 'white',
     children: 'White Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    children: 'Small Button',
-  },
-};
-
-export const Medium: Story = {
-  args: {
-    size: 'md',
-    children: 'Medium Button',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    children: 'Large Button',
   },
 };
 

@@ -99,4 +99,19 @@
   --button-text-button-dark-text-disabled: #727272;
   --button-text-button-ghost-text-disabled: #727272;
   --link-link-text-disabled: #727272;
+  --spacing-inset-spacing-inset-xs: 4px;
+  --spacing-inset-spacing-inset-s: 8px;
+  --spacing-inset-spacing-inset-m: 16px;
+  --spacing-inset-spacing-inset-l: 32px;
+  --spacing-inset-spacing-inset-xl: 64px;
+  --spacing-stack-spacing-stack-xs: {inset.spacing-inset-xs};
+  --spacing-stack-spacing-stack-s: {inset.spacing-inset-s};
+  --spacing-stack-spacing-stack-m: {inset.spacing-inset-m};
+  --spacing-stack-spacing-stack-l: {inset.spacing-inset-l};
+  --spacing-stack-spacing-stack-xl: {inset.spacing-inset-xl};
+  --spacing-inline-stack-inline-xs: {stack.spacing-stack-xs};
+  --spacing-inline-stack-inline-s: {stack.spacing-stack-s};
+  --spacing-inline-stack-inline-m: {stack.spacing-stack-m};
+  --spacing-inline-stack-inline-l: {stack.spacing-stack-l};
+  --spacing-inline-stack-inline-xl: {stack.spacing-stack-xl};
 }

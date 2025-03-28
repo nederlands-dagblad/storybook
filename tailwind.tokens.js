@@ -104,3 +104,20 @@ export const componentColors = {
   "button-text-button-ghost-text-disabled": "var(--button-text-button-ghost-text-disabled)",
   "link-link-text-disabled": "var(--link-link-text-disabled)"
 };
+export const spacing = {
+  "spacing-inset-spacing-inset-xs": "var(--spacing-inset-spacing-inset-xs)",
+  "spacing-inset-spacing-inset-s": "var(--spacing-inset-spacing-inset-s)",
+  "spacing-inset-spacing-inset-m": "var(--spacing-inset-spacing-inset-m)",
+  "spacing-inset-spacing-inset-l": "var(--spacing-inset-spacing-inset-l)",
+  "spacing-inset-spacing-inset-xl": "var(--spacing-inset-spacing-inset-xl)",
+  "spacing-stack-spacing-stack-xs": "var(--spacing-stack-spacing-stack-xs)",
+  "spacing-stack-spacing-stack-s": "var(--spacing-stack-spacing-stack-s)",
+  "spacing-stack-spacing-stack-m": "var(--spacing-stack-spacing-stack-m)",
+  "spacing-stack-spacing-stack-l": "var(--spacing-stack-spacing-stack-l)",
+  "spacing-stack-spacing-stack-xl": "var(--spacing-stack-spacing-stack-xl)",
+  "spacing-inline-stack-inline-xs": "var(--spacing-inline-stack-inline-xs)",
+  "spacing-inline-stack-inline-s": "var(--spacing-inline-stack-inline-s)",
+  "spacing-inline-stack-inline-m": "var(--spacing-inline-stack-inline-m)",
+  "spacing-inline-stack-inline-l": "var(--spacing-inline-stack-inline-l)",
+  "spacing-inline-stack-inline-xl": "var(--spacing-inline-stack-inline-xl)"
+};
