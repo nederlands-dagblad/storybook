@@ -1,14 +1,9 @@
-import Button from './Button/Button.vue';
-import Card from './Card/Card.vue';
+import Button from './Button/Button';
+import Card from './Card/Card';
+import CollapsedCard from './CollapsedCard/CollapsedCard';
 
 export {
   Button,
-  Card
-};
-
-export default {
-  install(app) {
-    app.component('Button', Button);
-    app.component('Card', Card);
-  }
+  Card,
+  CollapsedCard
 };

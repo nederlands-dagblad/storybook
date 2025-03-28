@@ -1,28 +1,25 @@
-import { ModeDecorator } from "./modeDecorator";
-
 import '../src/assets/css/tailwind.css';
+import '../src/assets/css/tokens.css';
 
-// Force Tailwind styles to be loaded
-import '../src/assets/css/tailwind.css';
-
-export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    backgrounds: {
+      default: 'light',
+    },
+    docs: {
+      source: {
+        state: 'open',
+      },
     },
   },
-  backgrounds: {
-    default: 'light',
-  },
-  docs: {
-    source: {
-      state: 'open',
-    },
-  },
-}
+};
 
-export const tags = ['autodocs'];
-
-export const decorators = [ModeDecorator];
+export default preview;
