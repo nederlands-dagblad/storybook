@@ -3,10 +3,10 @@
     "body-standard": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-m}",
-        "fontWeight": "{typography.font weight.light}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-16}",
+        "fontWeight": "{typography.font-weight.light}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -15,10 +15,10 @@
     "body-standard-regular": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-m}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-16}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -27,10 +27,10 @@
     "body-standard-bold": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-m}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-16}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -39,10 +39,10 @@
     "body-article": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-m}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-16}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -51,10 +51,10 @@
     "body-article-intro": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-l}",
-        "fontWeight": "{typography.font weight.light}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-18}",
+        "fontWeight": "{typography.font-weight.light}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -63,10 +63,10 @@
     "body-article-type": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-xl}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-1}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-20}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-1}",
         "lineHeight": "160%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -75,10 +75,10 @@
     "body-article-city": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-xl}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-2}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-20}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-2}",
         "lineHeight": "160%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -87,10 +87,10 @@
     "body-article-quote": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.gulliver}",
-        "fontSize": "{font size.body.font-size-body-xxl}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.gulliver}",
+        "fontSize": "{typography.font-size.font-size-24}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -99,10 +99,10 @@
     "body-article-question": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.body.font-size-body-m}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.body.font-size-body-m}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -111,10 +111,10 @@
     "drop-cap": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.abril-fatface}",
-        "fontSize": "{font size.body.font-size-drop-cap}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.abril-fatface}",
+        "fontSize": "{typography.font-size.font-size-88}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -123,10 +123,10 @@
     "drop-cap-2": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.montserrat}",
-        "fontSize": "{font size.body.font-size-drop-cap}",
-        "fontWeight": "{typography.font weight.light}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.montserrat}",
+        "fontSize": "{typography.font-size.font-size-88}",
+        "fontWeight": "{typography.font-weight.light}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -137,10 +137,10 @@
     "heading-article": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.gulliver}",
-        "fontSize": "{font size.heading.font-size-heading-xl}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.gulliver}",
+        "fontSize": "{typography.font-size.font-size-28}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -149,10 +149,10 @@
     "headings-page": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.gulliver}",
-        "fontSize": "{font size.heading.font-size-heading-l}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.gulliver}",
+        "fontSize": "{typography.font-size.font-size-26}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -161,10 +161,10 @@
     "subheading": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.gulliver semibold}",
-        "fontSize": "{font size.heading.font-size-heading-l}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.gulliver_semibold}",
+        "fontSize": "{typography.font-size.font-size-26}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -173,10 +173,10 @@
     "heading-2": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.gulliver}",
-        "fontSize": "{font size.heading.font-size-heading-m}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.gulliver}",
+        "fontSize": "{typography.font-size.font-size-18}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -185,10 +185,10 @@
     "heading-3": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.heading.font-size-heading-s}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-16}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -197,10 +197,10 @@
     "heading-article-feed": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.heading.font-size-heading-xs}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-4}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-14}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-4}",
         "lineHeight": "130%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -211,10 +211,10 @@
     "meta-standard": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{typography.font-size.font-size-14}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -223,10 +223,10 @@
     "meta-caption": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -235,9 +235,9 @@
     "meta-credits": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.regular}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.regular}",
         "letterSpacing": "0px",
         "lineHeight": "140%",
         "textTransform": "none",
@@ -247,10 +247,10 @@
     "meta-author": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.bold}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.bold}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -259,10 +259,10 @@
     "meta-date": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -271,10 +271,10 @@
     "meta-timestamp": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -283,10 +283,10 @@
     "meta-ad": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font family.fira-sans}",
-        "fontSize": "{font size.meta.font-size-meta}",
-        "fontWeight": "{typography.font weight.regular}",
-        "letterSpacing": "{typography.letter spacing.letter-spacing-0}",
+        "fontFamily": "{typography.font-family.fira-sans}",
+        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontWeight": "{typography.font-weight.regular}",
+        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"

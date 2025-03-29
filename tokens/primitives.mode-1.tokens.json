@@ -1,6 +1,6 @@
 {
   "border": {
-    "border_width": {
+    "border-width": {
       "border-width-0": {
         "$type": "dimension",
         "$value": "0px"
@@ -10,7 +10,7 @@
         "$value": "1px"
       }
     },
-    "border_radius": {
+    "border-radius": {
       "border-radius-0": {
         "$type": "dimension",
         "$value": "0px"
@@ -124,7 +124,7 @@
     }
   },
   "typography": {
-    "font_family": {
+    "font-family": {
       "gulliver": {
         "$type": "string",
         "$value": "Gulliver"
@@ -146,7 +146,7 @@
         "$value": "Gulliver Semibold"
       }
     },
-    "font_weight": {
+    "font-weight": {
       "bold": {
         "$type": "string",
         "$value": "Bold"
@@ -164,7 +164,7 @@
         "$value": "Light"
       }
     },
-    "font_size": {
+    "font-size": {
       "font-size-12": {
         "$type": "dimension",
         "$value": "12px"
@@ -238,7 +238,7 @@
         "$value": "96px"
       }
     },
-    "letter_spacing": {
+    "letter-spacing": {
       "letter-spacing-0": {
         "$type": "dimension",
         "$value": "0px"

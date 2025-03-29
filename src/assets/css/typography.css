@@ -1,23 +1,85 @@
-:root {
-    --font-size-heading-xs: 14px;
-    --font-size-heading-s: 16px;
-    --font-size-heading-m: 18px;
-    --font-size-heading-l: 26px;
-    --font-size-heading-xl: 28px;
+/* 
+ * Responsive Typography
+ * This file provides responsive typography classes that use the responsive
+ * variables defined in tokens.css
+ */
+
+/* Responsive typography utility classes */
+.text-responsive {
+    /* Use mobile values by default */
+    font-size: var(--font-size-mobile, inherit);
+    line-height: var(--line-height-mobile, inherit);
+    letter-spacing: var(--letter-spacing-mobile, inherit);
 }
 
-@screen md {
-    :root {
-        --font-size-heading-s: 18px;
-        --font-size-heading-m: 20px;
-        --font-size-heading-l: 36px;
-        --font-size-heading-xl: 40px;
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+    .text-responsive {
+        font-size: var(--font-size-tablet, var(--font-size-mobile, inherit));
+        line-height: var(--line-height-tablet, var(--line-height-mobile, inherit));
+        letter-spacing: var(--letter-spacing-tablet, var(--letter-spacing-mobile, inherit));
     }
 }
 
-@screen lg {
-    :root {
-        --font-size-heading-l: 40px;
-        --font-size-heading-xl: 48px;
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+    .text-responsive {
+        font-size: var(--font-size-desktop, var(--font-size-tablet, var(--font-size-mobile, inherit)));
+        line-height: var(--line-height-desktop, var(--line-height-tablet, var(--line-height-mobile, inherit)));
+        letter-spacing: var(--letter-spacing-desktop, var(--letter-spacing-tablet, var(--letter-spacing-mobile, inherit)));
+    }
+}
+
+/* Responsive heading classes */
+.heading-responsive {
+    font-family: var(--headings-heading-article-fontFamily);
+    font-weight: var(--headings-heading-article-fontWeight);
+    
+    /* Mobile (default) */
+    font-size: var(--headings-heading-article-fontSize-mobile, var(--headings-heading-article-fontSize));
+    line-height: var(--headings-heading-article-lineHeight-mobile, var(--headings-heading-article-lineHeight));
+    letter-spacing: var(--headings-heading-article-letterSpacing-mobile, var(--headings-heading-article-letterSpacing));
+}
+
+@media (min-width: 768px) {
+    .heading-responsive {
+        font-size: var(--headings-heading-article-fontSize-tablet, var(--headings-heading-article-fontSize-mobile, var(--headings-heading-article-fontSize)));
+        line-height: var(--headings-heading-article-lineHeight-tablet, var(--headings-heading-article-lineHeight-mobile, var(--headings-heading-article-lineHeight)));
+        letter-spacing: var(--headings-heading-article-letterSpacing-tablet, var(--headings-heading-article-letterSpacing-mobile, var(--headings-heading-article-letterSpacing)));
+    }
+}
+
+@media (min-width: 1024px) {
+    .heading-responsive {
+        font-size: var(--headings-heading-article-fontSize-desktop, var(--headings-heading-article-fontSize-tablet, var(--headings-heading-article-fontSize-mobile, var(--headings-heading-article-fontSize))));
+        line-height: var(--headings-heading-article-lineHeight-desktop, var(--headings-heading-article-lineHeight-tablet, var(--headings-heading-article-lineHeight-mobile, var(--headings-heading-article-lineHeight))));
+        letter-spacing: var(--headings-heading-article-letterSpacing-desktop, var(--headings-heading-article-letterSpacing-tablet, var(--headings-heading-article-letterSpacing-mobile, var(--headings-heading-article-letterSpacing))));
+    }
+}
+
+/* Body text responsive */
+.body-responsive {
+    font-family: var(--body-body-article-fontFamily);
+    font-weight: var(--body-body-article-fontWeight);
+    
+    /* Mobile (default) */
+    font-size: var(--body-body-article-fontSize-mobile, var(--body-body-article-fontSize));
+    line-height: var(--body-body-article-lineHeight-mobile, var(--body-body-article-lineHeight));
+    letter-spacing: var(--body-body-article-letterSpacing-mobile, var(--body-body-article-letterSpacing));
+}
+
+@media (min-width: 768px) {
+    .body-responsive {
+        font-size: var(--body-body-article-fontSize-tablet, var(--body-body-article-fontSize-mobile, var(--body-body-article-fontSize)));
+        line-height: var(--body-body-article-lineHeight-tablet, var(--body-body-article-lineHeight-mobile, var(--body-body-article-lineHeight)));
+        letter-spacing: var(--body-body-article-letterSpacing-tablet, var(--body-body-article-letterSpacing-mobile, var(--body-body-article-letterSpacing)));
+    }
+}
+
+@media (min-width: 1024px) {
+    .body-responsive {
+        font-size: var(--body-body-article-fontSize-desktop, var(--body-body-article-fontSize-tablet, var(--body-body-article-fontSize-mobile, var(--body-body-article-fontSize))));
+        line-height: var(--body-body-article-lineHeight-desktop, var(--body-body-article-lineHeight-tablet, var(--body-body-article-lineHeight-mobile, var(--body-body-article-lineHeight))));
+        letter-spacing: var(--body-body-article-letterSpacing-desktop, var(--body-body-article-letterSpacing-tablet, var(--body-body-article-letterSpacing-mobile, var(--body-body-article-letterSpacing))));
     }
 }

@@ -8,6 +8,11 @@ const files = {
     semantics: './tokens/semantic-colors.light.tokens.json',
     spacing: './tokens/semantic-spacing.mode-1.tokens.json',
     typography: './tokens/text.styles.tokens.json',
+    responsiveTypography: {
+        mobile: './tokens/layout-and-typography.mobile.tokens.json',
+        tablet: './tokens/layout-and-typography.tablet-md-768px.tokens.json',
+        desktop: './tokens/layout-and-typography.desktop-lg-1024px.tokens.json'
+    },
     componentStates: {
         default: './tokens/component-colors.default.tokens.json',
         hover: './tokens/component-colors.hover.tokens.json',
@@ -35,48 +40,7 @@ function flatten(obj, path = [], result = {}) {
     return result;
 }
 
-// Define primitive typography tokens that are referenced in text.styles.tokens.json
-const primitiveTypography = {
-    "typography": {
-        "font family": {
-            "fira-sans": { "$value": "Fira Sans, sans-serif", "$type": "fontFamily" },
-            "gulliver": { "$value": "Gulliver, serif", "$type": "fontFamily" },
-            "gulliver semibold": { "$value": "Gulliver Semibold, serif", "$type": "fontFamily" },
-            "abril-fatface": { "$value": "Abril Fatface, cursive", "$type": "fontFamily" },
-            "montserrat": { "$value": "Montserrat, sans-serif", "$type": "fontFamily" }
-        },
-        "font weight": {
-            "light": { "$value": 300, "$type": "fontWeight" },
-            "regular": { "$value": 400, "$type": "fontWeight" },
-            "bold": { "$value": 700, "$type": "fontWeight" }
-        },
-        "letter spacing": {
-            "letter-spacing-0": { "$value": "0px", "$type": "letterSpacing" },
-            "letter-spacing-1": { "$value": "1px", "$type": "letterSpacing" },
-            "letter-spacing-2": { "$value": "2px", "$type": "letterSpacing" },
-            "letter-spacing-4": { "$value": "4px", "$type": "letterSpacing" }
-        }
-    },
-    "font size": {
-        "body": {
-            "font-size-body-m": { "$value": "16px", "$type": "dimension" },
-            "font-size-body-l": { "$value": "18px", "$type": "dimension" },
-            "font-size-body-xl": { "$value": "20px", "$type": "dimension" },
-            "font-size-body-xxl": { "$value": "24px", "$type": "dimension" },
-            "font-size-drop-cap": { "$value": "90px", "$type": "dimension" }
-        },
-        "heading": {
-            "font-size-heading-xs": { "$value": "14px", "$type": "dimension" },
-            "font-size-heading-s": { "$value": "16px", "$type": "dimension" },
-            "font-size-heading-m": { "$value": "18px", "$type": "dimension" },
-            "font-size-heading-l": { "$value": "26px", "$type": "dimension" },
-            "font-size-heading-xl": { "$value": "28px", "$type": "dimension" }
-        },
-        "meta": {
-            "font-size-meta": { "$value": "14px", "$type": "dimension" }
-        }
-    }
-};
+// Typography primitives are already defined in primitives.mode-1.tokens.json
 
 function resolveReference(ref, flatTokens, visited = new Set()) {
     const path = ref.replace(/[{}]/g, '');
@@ -114,8 +78,7 @@ function kebab(str) {
 // ----------------------
 const baseTokens = {
     ...load(files.primitives),
-    ...load(files.semantics),
-    ...primitiveTypography
+    ...load(files.semantics)
 };
 
 const flattenedBase = flatten(baseTokens);
@@ -125,30 +88,26 @@ const semanticColors = {};
 const cssVarMap = {};
 const primitiveFontFamilies = {};
 
-// Extract primitive font families
-for (const [fontName, fontValue] of Object.entries(primitiveTypography.typography["font family"])) {
-    const fontKey = `font-family-${kebab(fontName)}`;
-    primitiveFontFamilies[kebab(fontName)] = toVar(fontKey);
-    cssVarMap[fontKey] = fontValue.$value;
-}
-
-// Extract primitive font weights
-for (const [weightName, weightValue] of Object.entries(primitiveTypography.typography["font weight"])) {
-    const weightKey = `font-weight-${kebab(weightName)}`;
-    cssVarMap[weightKey] = weightValue.$value;
-}
-
-// Extract primitive letter spacings
-for (const [spacingName, spacingValue] of Object.entries(primitiveTypography.typography["letter spacing"])) {
-    const spacingKey = `letter-spacing-${kebab(spacingName)}`;
-    cssVarMap[spacingKey] = spacingValue.$value;
-}
-
-// Extract primitive font sizes
-for (const category in primitiveTypography["font size"]) {
-    for (const [sizeName, sizeValue] of Object.entries(primitiveTypography["font size"][category])) {
+// Extract primitive typography values from the flattened base tokens
+for (const [tokenPath, token] of Object.entries(flattenedBase)) {
+    if (tokenPath.startsWith('typography.font_family.')) {
+        const fontName = tokenPath.split('.').pop();
+        const fontKey = `font-family-${kebab(fontName)}`;
+        primitiveFontFamilies[kebab(fontName)] = toVar(fontKey);
+        cssVarMap[fontKey] = token.$value;
+    } else if (tokenPath.startsWith('typography.font_weight.')) {
+        const weightName = tokenPath.split('.').pop();
+        const weightKey = `font-weight-${kebab(weightName)}`;
+        cssVarMap[weightKey] = token.$value;
+    } else if (tokenPath.startsWith('typography.letter_spacing.')) {
+        const spacingName = tokenPath.split('.').pop();
+        const spacingKey = `letter-spacing-${kebab(spacingName)}`;
+        cssVarMap[spacingKey] = token.$value;
+    } else if (tokenPath.startsWith('typography.font_size.')) {
+        const sizeParts = tokenPath.split('.');
+        const sizeName = sizeParts[sizeParts.length - 1];
         const sizeKey = kebab(sizeName);
-        cssVarMap[sizeKey] = sizeValue.$value;
+        cssVarMap[sizeKey] = token.$value;
     }
 }
 
@@ -317,6 +276,72 @@ function processTypographyTokens(obj, prefix = '') {
 processTypographyTokens(rawTypography);
 
 // ----------------------
+// 📱 Process Responsive Typography Tokens
+// ----------------------
+const responsiveTokens = {
+    mobile: {},
+    tablet: {},
+    desktop: {}
+};
+
+function processResponsiveTypography() {
+    // Process each breakpoint
+    for (const [breakpoint, file] of Object.entries(files.responsiveTypography)) {
+        try {
+            const rawTokens = load(file);
+            
+            // Add these tokens to the base tokens for reference resolution
+            const combinedTokens = {
+                ...flattenedBase,
+                ...flatten(rawTokens)
+            };
+            
+            // Extract typography tokens
+            for (const [key, value] of Object.entries(rawTokens)) {
+                if (typeof value === 'object') {
+                    processResponsiveTypographySection(value, key, breakpoint, combinedTokens);
+                }
+            }
+        } catch (error) {
+            console.error(`Error processing ${breakpoint} typography: ${error.message}`);
+        }
+    }
+}
+
+function processResponsiveTypographySection(obj, prefix, breakpoint, combinedTokens) {
+    for (const [key, value] of Object.entries(obj)) {
+        const path = prefix ? `${prefix}.${key}` : key;
+        
+        if (value?.$type === 'typography' && value?.$value) {
+            const typographyValue = value.$value;
+            const kebabKey = kebab(path);
+            
+            // Create CSS variables for each typography property
+            for (const [propKey, propValue] of Object.entries(typographyValue)) {
+                const propName = `${kebabKey}-${propKey}`;
+                let resolvedValue = propValue;
+                
+                // Resolve references if needed
+                if (typeof propValue === 'string' && propValue.startsWith('{')) {
+                    resolvedValue = resolveReference(propValue, combinedTokens);
+                    if (!resolvedValue) {
+                        console.warn(`Could not resolve reference: ${propValue} for ${propName} in ${breakpoint}`);
+                        continue;
+                    }
+                }
+                
+                // Store the responsive value
+                responsiveTokens[breakpoint][propName] = resolvedValue;
+            }
+        } else if (typeof value === 'object' && !value.$type) {
+            processResponsiveTypographySection(value, path, breakpoint, combinedTokens);
+        }
+    }
+}
+
+processResponsiveTypography();
+
+// ----------------------
 // ✏️ Write tailwind.tokens.js
 // ----------------------
 const jsOutput = `
@@ -344,6 +369,31 @@ const cssOutput = `
 ${Object.entries(cssVarMap)
     .map(([key, val]) => `  --${key}: ${val};`)
     .join('\n')}
+}
+
+/* Mobile Typography (Default) */
+:root {
+${Object.entries(responsiveTokens.mobile)
+    .map(([key, val]) => `  --${key}-mobile: ${val};`)
+    .join('\n')}
+}
+
+/* Tablet Typography (768px+) */
+@media (min-width: 768px) {
+  :root {
+${Object.entries(responsiveTokens.tablet)
+    .map(([key, val]) => `    --${key}-tablet: ${val};`)
+    .join('\n')}
+  }
+}
+
+/* Desktop Typography (1024px+) */
+@media (min-width: 1024px) {
+  :root {
+${Object.entries(responsiveTokens.desktop)
+    .map(([key, val]) => `    --${key}-desktop: ${val};`)
+    .join('\n')}
+  }
 }`.trim();
 
 fs.writeFileSync('./src/assets/css/tokens.css', cssOutput);

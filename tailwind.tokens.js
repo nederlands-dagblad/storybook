@@ -341,7 +341,6 @@ export const fontSizes = {
   "body-body-article-type": "var(--body-body-article-type-fontSize)",
   "body-body-article-city": "var(--body-body-article-city-fontSize)",
   "body-body-article-quote": "var(--body-body-article-quote-fontSize)",
-  "body-body-article-question": "var(--body-body-article-question-fontSize)",
   "body-drop-cap": "var(--body-drop-cap-fontSize)",
   "body-drop-cap-2": "var(--body-drop-cap-2-fontSize)",
   "headings-heading-article": "var(--headings-heading-article-fontSize)",
@@ -351,12 +350,6 @@ export const fontSizes = {
   "headings-heading-3": "var(--headings-heading-3-fontSize)",
   "headings-heading-article-feed": "var(--headings-heading-article-feed-fontSize)",
   "meta-meta-standard": "var(--meta-meta-standard-fontSize)",
-  "meta-meta-caption": "var(--meta-meta-caption-fontSize)",
-  "meta-meta-credits": "var(--meta-meta-credits-fontSize)",
-  "meta-meta-author": "var(--meta-meta-author-fontSize)",
-  "meta-meta-date": "var(--meta-meta-date-fontSize)",
-  "meta-meta-timestamp": "var(--meta-meta-timestamp-fontSize)",
-  "meta-meta-ad": "var(--meta-meta-ad-fontSize)",
   "old-menu-items-primary-menu-items": "var(--old-menu-items-primary-menu-items-fontSize)",
   "old-menu-items-secondary-menu-items": "var(--old-menu-items-secondary-menu-items-fontSize)",
   "old-menu-items-submenu-items": "var(--old-menu-items-submenu-items-fontSize)",
@@ -533,10 +526,4 @@ export const letterSpacings = {
   "old-meta-meta-bold": "var(--old-meta-meta-bold-letterSpacing)",
   "old-meta-meta-regular": "var(--old-meta-meta-regular-letterSpacing)"
 };
-export const primitiveFontFamilies = {
-  "fira-sans": "var(--font-family-fira-sans)",
-  "gulliver": "var(--font-family-gulliver)",
-  "gulliver-semibold": "var(--font-family-gulliver-semibold)",
-  "abril-fatface": "var(--font-family-abril-fatface)",
-  "montserrat": "var(--font-family-montserrat)"
-};
+export const primitiveFontFamilies = {};
