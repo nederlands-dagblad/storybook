@@ -1,26 +1,88 @@
-import { Meta, Typeset } from '@storybook/blocks';
-import tailwindConfig from '../tailwind.config.js';
+import { Meta, Canvas, Story } from '@storybook/blocks';
+import {
+  HeadingArticle, HeadingPage, Heading2, Heading3,
+  BodyStandard, BodyStandardBold, BodyArticle, BodyArticleIntro,
+  MetaStandard, MetaCaption, MetaAuthor, MetaDate
+} from '../src/components/Typography/Typography';
+import '../src/assets/css/tokens.css';
 import '../storybook/style.css';
 
 <Meta title="General/Typography" />
 
-export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-
 # Typography
 
-**Font:** Nunito Sans
+Our design system includes a comprehensive set of typography styles based on our design tokens.
 
-**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+## Font Families
 
-Be aware that the font size changes on different screen sizes (desktop, tablet and mobile).
+Our design system uses several font families:
+- **Gulliver**: For headings and quotes
+- **Fira Sans**: For body text and meta information
+- **Abril Fatface**: For drop caps in articles
+- **Montserrat**: For alternative drop caps
 
-<Typeset
-    fontSizes={[
-        tailwindConfig.theme.extend.fontSize['heading-xl'],
-        tailwindConfig.theme.extend.fontSize['heading-l'],
-        tailwindConfig.theme.extend.fontSize['heading-m'],
-        tailwindConfig.theme.extend.fontSize['heading-s'],
-        tailwindConfig.theme.extend.fontSize['heading-xs'],
-    ]}
-    sampleText={SampleText}
-/>
+## Text Styles
+
+Our typography system is organized into several categories:
+
+### Headings
+
+<Canvas>
+  <Story id="components-typography--headings" />
+</Canvas>
+
+### Body Text
+
+<Canvas>
+  <Story id="components-typography--body-text" />
+</Canvas>
+
+### Meta Text
+
+<Canvas>
+  <Story id="components-typography--meta-text" />
+</Canvas>
+
+### Special Elements
+
+<Canvas>
+  <Story id="components-typography--special-elements" />
+</Canvas>
+
+## Article Example
+
+Here's how these typography elements work together in an article:
+
+<Canvas>
+  <Story id="components-typography--article-example" />
+</Canvas>
+
+## Usage
+
+You can use our typography components directly:
+
+```jsx
+import {
+  HeadingArticle,
+  BodyArticle,
+  MetaAuthor
+} from '../components/Typography/Typography';
+
+function Article() {
+  return (
+    <div>
+      <HeadingArticle>Article Title</HeadingArticle>
+      <MetaAuthor>By John Doe</MetaAuthor>
+      <BodyArticle>Article content goes here...</BodyArticle>
+    </div>
+  );
+}
+```
+
+Or use the utility classes directly in your HTML:
+
+```html
+<h1 class="text-headings-heading-article">Article Title</h1>
+<span class="text-meta-meta-author">By John Doe</span>
+<p class="text-body-body-article">Article content goes here...</p>
+```

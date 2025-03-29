@@ -2,7 +2,13 @@ import {
     primitiveColors,
     semanticColors,
     componentColors,
-    spacing
+    spacing,
+    fontFamilies,
+    fontWeights,
+    fontSizes,
+    lineHeights,
+    letterSpacings,
+    primitiveFontFamilies
 } from './tailwind.tokens.js';
 
 import tokenUtilities from './tokens.utilities.js';
@@ -33,12 +39,21 @@ export default {
         },
 
         fontSize: {
+            ...fontSizes,
             'heading-xs': 'var(--font-size-heading-xs)',
             'heading-s': 'var(--font-size-heading-s)',
             'heading-m': 'var(--font-size-heading-m)',
             'heading-l': 'var(--font-size-heading-l)',
             'heading-xl': 'var(--font-size-heading-xl)',
         },
+        
+        fontFamily: {
+            ...fontFamilies,
+            ...primitiveFontFamilies
+        },
+        fontWeight: fontWeights,
+        lineHeight: lineHeights,
+        letterSpacing: letterSpacings,
     },
   },
   plugins: [
