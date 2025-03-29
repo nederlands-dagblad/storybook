@@ -289,15 +289,23 @@ function processTypographyTokens(obj, prefix = '') {
             }
             
             // Create a utility class for the complete typography style
-            typographyUtilities[`.text-${kebabKey}`] = {
+            const utilityStyle = {
                 fontFamily: `var(--${kebabKey}-fontFamily)`,
                 fontSize: `var(--${kebabKey}-fontSize)`,
                 fontWeight: `var(--${kebabKey}-fontWeight)`,
                 lineHeight: `var(--${kebabKey}-lineHeight)`,
                 letterSpacing: `var(--${kebabKey}-letterSpacing)`,
-                textTransform: typographyValue.textTransform || 'none',
                 textDecoration: typographyValue.textDecoration || 'none'
             };
+            
+            // Use font-variant for small-caps instead of text-transform
+            if (typographyValue.textTransform === 'small-caps') {
+                utilityStyle.fontVariant = 'small-caps';
+            } else if (typographyValue.textTransform && typographyValue.textTransform !== 'none') {
+                utilityStyle.textTransform = typographyValue.textTransform;
+            }
+            
+            typographyUtilities[`.text-${kebabKey}`] = utilityStyle;
             
             typographyStyles[kebabKey] = `var(--${kebabKey})`;
         } else if (typeof value === 'object' && !value.$type) {
