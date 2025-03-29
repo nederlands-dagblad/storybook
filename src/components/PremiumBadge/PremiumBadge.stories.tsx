@@ -1,8 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import PremiumBadge from './PremiumBadge';
 
+/**
+ * This isn’t just any badge. This is the badge. The digital equivalent of velvet ropes, gold stars, and secret handshakes. Slap this on something, and suddenly it's too cool for free trials.
+ *
+ * Use responsibly—too much premium and your app might start charging you.
+ *
+ * ### React
+ *
+ * In React, we have a `<PremiumBadge>` component available. See the examples below for usage.
+ *
+ * ### HTML
+ *
+ * Using plain HTML? We got you covered. Here’s how you can use the PremiumBadge component:
+ *
+ * ```html
+ * <div class="badge-premium">
+ *   <Icon name="star-fill" size="18" />
+ *   <span>Premium</span>
+ * </div>
+ */
+
 const meta = {
-  title: 'Components/PremiumBadge',
+  title: 'Components/Premium Badge',
   component: PremiumBadge,
   parameters: {
     layout: 'centered',
@@ -20,9 +40,12 @@ export const Default: Story = {
   args: {},
 };
 
-export const WithCustomClass: Story = {
+/**
+ * Use the `premium-badge-small` class to render a smaller version of the badge.
+ */
+export const Small: Story = {
   args: {
-    className: 'shadow-md',
+    size: 'small',
   },
 };
 

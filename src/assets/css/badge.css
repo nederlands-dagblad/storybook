@@ -7,12 +7,14 @@
       gap-x-xs
       p-s
       bg-background-bg-accent-pink-subtlest
-      font-body-body-standard
+      text-meta-meta-standard
   }
 
-  .badge-standard-sm {
+  .badge-premium-small {
     @apply
-      font-body-bodt
+      p-xs
+      gap-x-xs
+      text-old-menu-items-bottom-menu-items
   }
 
 }

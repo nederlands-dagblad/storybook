@@ -526,4 +526,42 @@ export const letterSpacings = {
   "old-meta-meta-bold": "var(--old-meta-meta-bold-letterSpacing)",
   "old-meta-meta-regular": "var(--old-meta-meta-regular-letterSpacing)"
 };
-export const primitiveFontFamilies = {};
+export const primitiveFontFamilies = {
+  "gulliver": "var(--font-family-gulliver)",
+  "fira-sans": "var(--font-family-fira-sans)",
+  "montserrat": "var(--font-family-montserrat)",
+  "abril-fatface": "var(--font-family-abril-fatface)",
+  "gulliver-semibold": "var(--font-family-gulliver-semibold)"
+};
+export const primitiveFontSizes = {
+  "font-size-12": "var(--font-size-12)",
+  "font-size-14": "var(--font-size-14)",
+  "font-size-15": "var(--font-size-15)",
+  "font-size-16": "var(--font-size-16)",
+  "font-size-17": "var(--font-size-17)",
+  "font-size-18": "var(--font-size-18)",
+  "font-size-20": "var(--font-size-20)",
+  "font-size-22": "var(--font-size-22)",
+  "font-size-24": "var(--font-size-24)",
+  "font-size-26": "var(--font-size-26)",
+  "font-size-28": "var(--font-size-28)",
+  "font-size-30": "var(--font-size-30)",
+  "font-size-32": "var(--font-size-32)",
+  "font-size-36": "var(--font-size-36)",
+  "font-size-40": "var(--font-size-40)",
+  "font-size-48": "var(--font-size-48)",
+  "font-size-88": "var(--font-size-88)",
+  "font-size-96": "var(--font-size-96)"
+};
+export const primitiveFontWeights = {
+  "bold": "var(--font-weight-bold)",
+  "semibold": "var(--font-weight-semibold)",
+  "regular": "var(--font-weight-regular)",
+  "light": "var(--font-weight-light)"
+};
+export const primitiveLetterSpacings = {
+  "letter-spacing-0": "var(--letter-spacing-letter-spacing-0)",
+  "letter-spacing-1": "var(--letter-spacing-letter-spacing-1)",
+  "letter-spacing-2": "var(--letter-spacing-letter-spacing-2)",
+  "letter-spacing-4": "var(--letter-spacing-letter-spacing-4)"
+};

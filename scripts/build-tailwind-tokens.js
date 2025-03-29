@@ -89,25 +89,43 @@ const cssVarMap = {};
 const primitiveFontFamilies = {};
 
 // Extract primitive typography values from the flattened base tokens
+const primitiveFontSizes = {};
+const primitiveFontWeights = {};
+const primitiveLetterSpacings = {};
+
 for (const [tokenPath, token] of Object.entries(flattenedBase)) {
-    if (tokenPath.startsWith('typography.font_family.')) {
+    // Process font families
+    if (tokenPath.startsWith('typography.font-family.')) {
         const fontName = tokenPath.split('.').pop();
         const fontKey = `font-family-${kebab(fontName)}`;
         primitiveFontFamilies[kebab(fontName)] = toVar(fontKey);
         cssVarMap[fontKey] = token.$value;
-    } else if (tokenPath.startsWith('typography.font_weight.')) {
+    } 
+    // Process font weights
+    else if (tokenPath.startsWith('typography.font-weight.')) {
         const weightName = tokenPath.split('.').pop();
         const weightKey = `font-weight-${kebab(weightName)}`;
+        primitiveFontWeights[kebab(weightName)] = toVar(weightKey);
         cssVarMap[weightKey] = token.$value;
-    } else if (tokenPath.startsWith('typography.letter_spacing.')) {
+    } 
+    // Process letter spacings
+    else if (tokenPath.startsWith('typography.letter-spacing.')) {
         const spacingName = tokenPath.split('.').pop();
         const spacingKey = `letter-spacing-${kebab(spacingName)}`;
+        primitiveLetterSpacings[kebab(spacingName)] = toVar(spacingKey);
         cssVarMap[spacingKey] = token.$value;
-    } else if (tokenPath.startsWith('typography.font_size.')) {
-        const sizeParts = tokenPath.split('.');
-        const sizeName = sizeParts[sizeParts.length - 1];
+    } 
+    // Process font sizes
+    else if (tokenPath.startsWith('typography.font-size.')) {
+        const sizeName = tokenPath.split('.').pop();
         const sizeKey = kebab(sizeName);
+        primitiveFontSizes[kebab(sizeName)] = toVar(sizeKey);
         cssVarMap[sizeKey] = token.$value;
+    }
+    
+    // Also create meta font size tokens for backward compatibility
+    if (tokenPath.startsWith('typography.font-size.font-size-14')) {
+        cssVarMap['font-size-meta-font-size-meta'] = token.$value;
     }
 }
 
@@ -356,6 +374,9 @@ export const fontSizes = ${JSON.stringify(fontSizes, null, 2)};
 export const lineHeights = ${JSON.stringify(lineHeights, null, 2)};
 export const letterSpacings = ${JSON.stringify(letterSpacings, null, 2)};
 export const primitiveFontFamilies = ${JSON.stringify(primitiveFontFamilies, null, 2)};
+export const primitiveFontSizes = ${JSON.stringify(primitiveFontSizes, null, 2)};
+export const primitiveFontWeights = ${JSON.stringify(primitiveFontWeights, null, 2)};
+export const primitiveLetterSpacings = ${JSON.stringify(primitiveLetterSpacings, null, 2)};
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);
