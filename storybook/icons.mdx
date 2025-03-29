@@ -1,29 +1,23 @@
 import { Meta, IconGallery, IconItem } from '@storybook/blocks';
 import Icon from "../src/components/Icon/Icon.tsx";
+import { keys } from "../src/components/Icon/list.ts";
 
 <Meta title="General/Icons" />
 
 # Icons
 
-On this page, you can see all the icons available in our design system.
+On this page, you can find all icons available in our design system.
 
 ### Fill
 
 All icons which are solid/filled.
 
 <IconGallery>
-    <IconItem name="hands praying">
-        <Icon name="hands-praying-fill" />
+  {keys('fill').map(iconName => (
+    <IconItem key={iconName} name={iconName.replace('-fill', '')}>
+      <Icon name={iconName} />
     </IconItem>
-    <IconItem name="headphones">
-        <Icon name="headphones-fill" />
-    </IconItem>
-    <IconItem name="square">
-        <Icon name="square-fill" />
-    </IconItem>
-    <IconItem name="square-small">
-        <Icon name="square-small-fill" />
-    </IconItem>
+  ))}
 </IconGallery>
 
 ### Outline
@@ -31,10 +25,18 @@ All icons which are solid/filled.
 All icons which are outlined.
 
 <IconGallery>
-    <IconItem name="hands praying">
-        <Icon name="hands-praying-outline" />
-    </IconItem>
-    <IconItem name="headphones">
-        <Icon name="headphones-outline" />
-    </IconItem>
+    {keys('outline').map(iconName => (
+        <IconItem key={iconName} name={iconName.replace('-outline', '')}>
+            <Icon name={iconName} />
+        </IconItem>
+    ))}
 </IconGallery>
+
+### Note on adding new icons
+
+To add a new icon, you need to add the SVG file to the `src/assets/icons` folder. Icons are separated by variation: `outline` or `fill`.
+
+After adding the SVG file, add the both variations to `src/components/Icon/list.ts`. This file contains a list of all available icons in the design system.
+
+Finally, you can use the icon in your components by importing the `Icon` component and passing the name of the icon as a prop.
+

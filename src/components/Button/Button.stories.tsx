@@ -29,6 +29,10 @@ import Icon from "../Icon/Icon.tsx";
  *   Ghost Button
  * </button>
  *
+ * <button class="nd-btn nd-btn-pill">
+ *   Pill Button
+ * </button>
+ *
  * <button class="nd-btn nd-btn-dark">
  *   Dark Button
  *  </button>
@@ -71,6 +75,9 @@ export const Primary: Story = {
   },
 };
 
+/**
+ * Use the `nd-btn-secondary` class to render a secondary button.
+ */
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
@@ -79,6 +86,9 @@ export const Secondary: Story = {
   },
 };
 
+/**
+ * Use the `nd-btn-ghost` class to render a ghost button.
+ */
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
@@ -86,6 +96,9 @@ export const Ghost: Story = {
   },
 };
 
+/**
+ * Use the `nd-btn-dark` class to render a dark button.
+ */
 export const Dark: Story = {
   args: {
     variant: 'dark',
@@ -94,6 +107,9 @@ export const Dark: Story = {
   },
 };
 
+/**
+ * Use the `nd-btn-pill` class to render a pill button.
+ */
 export const Pill: Story = {
   args: {
     variant: 'pill',
@@ -107,6 +123,9 @@ export const Pill: Story = {
   },
 };
 
+/**
+ * Use the `iconOnly` prop to render a button with only an icon. This will remove the button's padding and display the icon at the center.
+ */
 export const IconOnly: Story = {
   args: {
     variant: 'pill',
@@ -114,11 +133,3 @@ export const IconOnly: Story = {
     iconOnly: true,
   },
 }
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    icon: 'square-fill',
-    children: 'Disabled Button',
-  },
-};

@@ -16,17 +16,7 @@ import CaretRightOutline from "../../assets/icons/outline/caret-right.svg";
 import PencilSimpleOutline from "../../assets/icons/outline/pencil-simple.svg";
 import StarOutline from "../../assets/icons/outline/star.svg";
 
-// Create a mapping of icon names to SVG components
-export const icons = {
-  'hands-praying-fill': HandsPrayingFill,
-  'headphones-fill': HeadphonesFill,
-  'square-fill': SquareFill,
-  'square-small-fill': SquareSmallFill,
-  'user-fill': UserFill,
-  'caret-right-fill': CaretRightFill,
-  'pencil-simple-fill': PencilSimpleFill,
-  'star-fill': StarFill,
-
+export const outlineIcons = {
   'hands-praying-outline': HandsPrayingOutline,
   'headphones-outline': HeadphonesOutline,
   'user-outline': UserOutline,
@@ -35,7 +25,28 @@ export const icons = {
   'star-outline': StarOutline,
 }
 
-export function keys() {
+export const fillIcons = {
+  'hands-praying-fill': HandsPrayingFill,
+  'headphones-fill': HeadphonesFill,
+  'square-fill': SquareFill,
+  'square-small-fill': SquareSmallFill,
+  'user-fill': UserFill,
+  'caret-right-fill': CaretRightFill,
+  'pencil-simple-fill': PencilSimpleFill,
+  'star-fill': StarFill
+}
+
+export const icons = Object.assign({}, outlineIcons, fillIcons);
+
+export function keys(variant?: 'outline' | 'fill') {
+  if (variant === 'outline') {
+    return Object.keys(outlineIcons);
+  }
+
+  if (variant === 'fill') {
+    return Object.keys(fillIcons);
+  }
+
   return Object.keys(icons);
 }
 
