@@ -1,5 +1,4 @@
 import '../src/assets/css/tailwind.css';
-import {DocsContainer} from "@storybook/blocks";
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {

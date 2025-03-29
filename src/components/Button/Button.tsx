@@ -1,11 +1,14 @@
 import React, { ButtonHTMLAttributes } from 'react';
+import Icon from "../Icon/Icon.tsx";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'white' | 'dark';
+  icon?: string | null;
 }
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
+  icon = null,
   disabled = false,
   children,
   onClick,
@@ -33,6 +36,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       {...props}
     >
+      { icon && <Icon name={icon} size={18} /> }
       {children}
     </button>
   );

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
+import icons from '../Icon/list.ts'
 
 /**
  * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
@@ -45,6 +46,10 @@ const meta = {
       control: 'select',
       options: ['primary', 'secondary', 'white', 'dark']
     },
+    icon: {
+      control: 'select',
+      options: icons.keys(),
+    },
     disabled: { control: 'boolean' },
     onClick: { action: 'clicked' }
   },
@@ -60,6 +65,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
+    icon: 'square-fill',
     children: 'Primary Button',
   },
 };
