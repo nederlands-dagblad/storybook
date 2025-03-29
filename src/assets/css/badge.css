@@ -1,0 +1,18 @@
+@layer components {
+
+  .badge-premium {
+    @apply
+      inline-flex
+      items-center
+      gap-x-xs
+      p-s
+      bg-background-bg-accent-pink-subtlest
+      font-body-body-standard
+  }
+
+  .badge-standard-sm {
+    @apply
+      font-body-bodt
+  }
+
+}

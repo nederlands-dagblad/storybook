@@ -1,6 +1,7 @@
 @import "tokens.css";
 @import "typography.css";
 @import "button.css";
+@import "badge.css";
 
 @tailwind base;
 @tailwind components;
