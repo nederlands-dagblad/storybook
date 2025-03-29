@@ -9,15 +9,48 @@
   }
 
   .btn-secondary {
-    @apply bg-button-background-button-secondary-bg text-button-text-button-secondary-text hover:bg-button-background-button-secondary-bg-hover
+    @apply
+      bg-button-background-button-secondary-bg
+      text-button-text-button-secondary-text
+      font-normal
+      border
+      border-button-border-button-secondary-border
+      hover:border-button-border-button-secondary-border-hover
+      disabled:border-button-border-button-secondary-border-disabled
+      hover:bg-button-background-button-secondary-bg-hover
   }
 
-  .btn-white {
-    @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500;
+  .btn-ghost {
+    @apply
+      text-button-text-button-ghost-text
   }
 
   .btn-dark {
-    @apply bg-button-background-button-dark-bg text-button-text-button-dark-text hover:bg-button-background-button-dark-bg-hover
+    @apply
+      bg-button-background-button-dark-bg
+      text-button-text-button-dark-text
+      hover:bg-button-background-button-dark-bg-hover
+  }
+
+  .btn-pill {
+    @apply
+      bg-button-background-button-pill-bg
+      hover:bg-button-background-button-pill-bg-hover
+      text-button-text-button-pill-text
+      border-button-border-button-pill-border
+      hover:border-button-border-button-pill-border-hover
+      active:border-button-border-button-pill-border-active
+      disabled:border-button-border-button-pill-border-disabled
+      rounded-full
+      gap-x-s
+      px-m
+      py-s
+      font-normal
+      border
+  }
+
+  .btn-icon-only {
+    @apply p-s
   }
 
 }

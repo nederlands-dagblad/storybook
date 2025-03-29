@@ -5,19 +5,27 @@
         "$type": "color",
         "$value": "{background.bg-brand-subtle}"
       },
+      "button-dark-bg": {
+        "$type": "color",
+        "$value": "{background.bg-dark-subtle}"
+      },
       "button-secondary-bg": {
         "$type": "color",
         "$value": "{background.bg-brand-subtlest}"
       },
-      "button-dark-bg": {
+      "button-pill-bg": {
         "$type": "color",
-        "$value": "{background.bg-dark-subtle}"
+        "$value": "{background.bg-accent-gray-subtle}"
       }
     },
     "border": {
       "button-secondary-border": {
         "$type": "color",
         "$value": "{border.border-brand}"
+      },
+      "button-pill-border": {
+        "$type": "color",
+        "$value": "{border.border-accent-gray}"
       }
     },
     "icon": {
@@ -28,6 +36,10 @@
       "button-secondary-icon": {
         "$type": "color",
         "$value": "{icons.icon-brand}"
+      },
+      "button-pill-icon": {
+        "$type": "color",
+        "$value": "{icons.icon-gray}"
       }
     },
     "text": {
@@ -35,17 +47,21 @@
         "$type": "color",
         "$value": "{text.text-inverse}"
       },
-      "button-secondary-text": {
-        "$type": "color",
-        "$value": "{text.text-brand}"
-      },
       "button-dark-text": {
         "$type": "color",
         "$value": "{text.text-inverse}"
       },
+      "button-secondary-text": {
+        "$type": "color",
+        "$value": "{text.text-brand}"
+      },
       "button-ghost-text": {
         "$type": "color",
         "$value": "{text.text-brand-subtle}"
+      },
+      "button-pill-text": {
+        "$type": "color",
+        "$value": "{text.text-subtle}"
       }
     }
   },
@@ -53,6 +69,10 @@
     "link-text": {
       "$type": "color",
       "$value": "{text.text-brand-subtle}"
+    },
+    "link-brown-text": {
+      "$type": "color",
+      "$value": "{text.text-accent-brown-subtle}"
     }
   }
 }

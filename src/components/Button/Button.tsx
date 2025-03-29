@@ -2,13 +2,15 @@ import React, { ButtonHTMLAttributes } from 'react';
 import Icon from "../Icon/Icon.tsx";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'white' | 'dark';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'dark' | 'pill';
   icon?: string | null;
+  iconOnly?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   icon = null,
+  iconOnly = false,
   disabled = false,
   children,
   onClick,
@@ -18,8 +20,9 @@ const Button: React.FC<ButtonProps> = ({
   const variantClass = {
     'btn-primary': variant === 'primary',
     'btn-secondary': variant === 'secondary',
-    'btn-white': variant === 'white',
+    'btn-ghost': variant === 'ghost',
     'btn-dark': variant === 'dark',
+    'btn-pill': variant === 'pill',
   };
 
   // Convert class objects to strings
@@ -31,13 +34,13 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`btn ${variantClassString} ${disabledClass}`}
+      className={`btn ${variantClassString} ${iconOnly ? 'btn-icon-only' : ''} ${disabledClass}`}
       disabled={disabled}
       onClick={onClick}
       {...props}
     >
       { icon && <Icon name={icon} size={18} /> }
-      {children}
+      { children }
     </button>
   );
 };

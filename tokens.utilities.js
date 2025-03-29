@@ -4,110 +4,158 @@ export default function ({ addUtilities }) {
   ".bg-button-background-button-primary-bg": {
     "backgroundColor": "var(--button-background-button-primary-bg-default)"
   },
+  ".bg-button-background-button-dark-bg": {
+    "backgroundColor": "var(--button-background-button-dark-bg-default)"
+  },
   ".bg-button-background-button-secondary-bg": {
     "backgroundColor": "var(--button-background-button-secondary-bg-default)"
   },
-  ".bg-button-background-button-dark-bg": {
-    "backgroundColor": "var(--button-background-button-dark-bg-default)"
+  ".bg-button-background-button-pill-bg": {
+    "backgroundColor": "var(--button-background-button-pill-bg-default)"
   },
   ".border-button-border-button-secondary-border": {
     "borderColor": "var(--button-border-button-secondary-border-default)"
   },
+  ".border-button-border-button-pill-border": {
+    "borderColor": "var(--button-border-button-pill-border-default)"
+  },
   ".text-button-text-button-primary-text": {
     "color": "var(--button-text-button-primary-text-default)"
-  },
-  ".text-button-text-button-secondary-text": {
-    "color": "var(--button-text-button-secondary-text-default)"
   },
   ".text-button-text-button-dark-text": {
     "color": "var(--button-text-button-dark-text-default)"
   },
+  ".text-button-text-button-secondary-text": {
+    "color": "var(--button-text-button-secondary-text-default)"
+  },
   ".text-button-text-button-ghost-text": {
     "color": "var(--button-text-button-ghost-text-default)"
+  },
+  ".text-button-text-button-pill-text": {
+    "color": "var(--button-text-button-pill-text-default)"
   },
   ".text-link-link-text": {
     "color": "var(--link-link-text-default)"
   },
+  ".text-link-link-brown-text": {
+    "color": "var(--link-link-brown-text-default)"
+  },
   ".bg-button-background-button-primary-bg-hover": {
     "backgroundColor": "var(--button-background-button-primary-bg-hover)"
-  },
-  ".bg-button-background-button-secondary-bg-hover": {
-    "backgroundColor": "var(--button-background-button-secondary-bg-hover)"
   },
   ".bg-button-background-button-dark-bg-hover": {
     "backgroundColor": "var(--button-background-button-dark-bg-hover)"
   },
+  ".bg-button-background-button-secondary-bg-hover": {
+    "backgroundColor": "var(--button-background-button-secondary-bg-hover)"
+  },
+  ".bg-button-background-button-pill-bg-hover": {
+    "backgroundColor": "var(--button-background-button-pill-bg-hover)"
+  },
   ".border-button-border-button-secondary-border-hover": {
     "borderColor": "var(--button-border-button-secondary-border-hover)"
+  },
+  ".border-button-border-button-pill-border-hover": {
+    "borderColor": "var(--button-border-button-pill-border-hover)"
   },
   ".text-button-text-button-primary-text-hover": {
     "color": "var(--button-text-button-primary-text-hover)"
   },
-  ".text-button-text-button-secondary-text-hover": {
-    "color": "var(--button-text-button-secondary-text-hover)"
-  },
   ".text-button-text-button-dark-text-hover": {
     "color": "var(--button-text-button-dark-text-hover)"
+  },
+  ".text-button-text-button-secondary-text-hover": {
+    "color": "var(--button-text-button-secondary-text-hover)"
   },
   ".text-button-text-button-ghost-text-hover": {
     "color": "var(--button-text-button-ghost-text-hover)"
   },
+  ".text-button-text-button-pill-text-hover": {
+    "color": "var(--button-text-button-pill-text-hover)"
+  },
   ".text-link-link-text-hover": {
     "color": "var(--link-link-text-hover)"
+  },
+  ".text-link-link-brown-text-hover": {
+    "color": "var(--link-link-brown-text-hover)"
   },
   ".bg-button-background-button-primary-bg-active": {
     "backgroundColor": "var(--button-background-button-primary-bg-active)"
   },
+  ".bg-button-background-button-dark-bg-active": {
+    "backgroundColor": "var(--button-background-button-dark-bg-active)"
+  },
   ".bg-button-background-button-secondary-bg-active": {
     "backgroundColor": "var(--button-background-button-secondary-bg-active)"
   },
-  ".bg-button-background-button-dark-bg-active": {
-    "backgroundColor": "var(--button-background-button-dark-bg-active)"
+  ".bg-button-background-button-pill-bg-active": {
+    "backgroundColor": "var(--button-background-button-pill-bg-active)"
   },
   ".border-button-border-button-secondary-border-active": {
     "borderColor": "var(--button-border-button-secondary-border-active)"
   },
+  ".border-button-border-button-pill-border-active": {
+    "borderColor": "var(--button-border-button-pill-border-active)"
+  },
   ".text-button-text-button-primary-text-active": {
     "color": "var(--button-text-button-primary-text-active)"
-  },
-  ".text-button-text-button-secondary-text-active": {
-    "color": "var(--button-text-button-secondary-text-active)"
   },
   ".text-button-text-button-dark-text-active": {
     "color": "var(--button-text-button-dark-text-active)"
   },
+  ".text-button-text-button-secondary-text-active": {
+    "color": "var(--button-text-button-secondary-text-active)"
+  },
   ".text-button-text-button-ghost-text-active": {
     "color": "var(--button-text-button-ghost-text-active)"
+  },
+  ".text-button-text-button-pill-text-active": {
+    "color": "var(--button-text-button-pill-text-active)"
   },
   ".text-link-link-text-active": {
     "color": "var(--link-link-text-active)"
   },
+  ".text-link-link-brown-text-active": {
+    "color": "var(--link-link-brown-text-active)"
+  },
   ".bg-button-background-button-primary-bg-disabled": {
     "backgroundColor": "var(--button-background-button-primary-bg-disabled)"
-  },
-  ".bg-button-background-button-secondary-bg-disabled": {
-    "backgroundColor": "var(--button-background-button-secondary-bg-disabled)"
   },
   ".bg-button-background-button-dark-bg-disabled": {
     "backgroundColor": "var(--button-background-button-dark-bg-disabled)"
   },
+  ".bg-button-background-button-secondary-bg-disabled": {
+    "backgroundColor": "var(--button-background-button-secondary-bg-disabled)"
+  },
+  ".bg-button-background-button-pill-bg-disabled": {
+    "backgroundColor": "var(--button-background-button-pill-bg-disabled)"
+  },
   ".border-button-border-button-secondary-border-disabled": {
     "borderColor": "var(--button-border-button-secondary-border-disabled)"
+  },
+  ".border-button-border-button-pill-border-disabled": {
+    "borderColor": "var(--button-border-button-pill-border-disabled)"
   },
   ".text-button-text-button-primary-text-disabled": {
     "color": "var(--button-text-button-primary-text-disabled)"
   },
-  ".text-button-text-button-secondary-text-disabled": {
-    "color": "var(--button-text-button-secondary-text-disabled)"
-  },
   ".text-button-text-button-dark-text-disabled": {
     "color": "var(--button-text-button-dark-text-disabled)"
+  },
+  ".text-button-text-button-secondary-text-disabled": {
+    "color": "var(--button-text-button-secondary-text-disabled)"
   },
   ".text-button-text-button-ghost-text-disabled": {
     "color": "var(--button-text-button-ghost-text-disabled)"
   },
+  ".text-button-text-button-pill-text-disabled": {
+    "color": "var(--button-text-button-pill-text-disabled)"
+  },
   ".text-link-link-text-disabled": {
     "color": "var(--link-link-text-disabled)"
+  },
+  ".text-link-link-brown-text-disabled": {
+    "color": "var(--link-link-brown-text-disabled)"
   }
 },
     ...{

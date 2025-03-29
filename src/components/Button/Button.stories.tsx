@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from './Button';
 import icons from '../Icon/list.ts'
+import Icon from "../Icon/Icon.tsx";
 
 /**
  * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
@@ -24,8 +25,8 @@ import icons from '../Icon/list.ts'
  *   Secondary Button
  * </button>
  *
- * <button class="nd-btn nd-btn-white">
- *   White Button
+ * <button class="nd-btn nd-btn-ghost">
+ *   Ghost Button
  * </button>
  *
  * <button class="nd-btn nd-btn-dark">
@@ -44,7 +45,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'white', 'dark']
+      options: ['primary', 'secondary', 'ghost', 'dark', 'pill']
     },
     icon: {
       control: 'select',
@@ -73,27 +74,51 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
+    icon: 'user-outline',
     children: 'Secondary Button',
   },
 };
 
-export const White: Story = {
+export const Ghost: Story = {
   args: {
-    variant: 'white',
-    children: 'White Button',
+    variant: 'ghost',
+    children: 'Ghost Button',
   },
 };
 
 export const Dark: Story = {
   args: {
     variant: 'dark',
+    icon: 'square-fill',
     children: 'Dark Button',
   },
 };
 
+export const Pill: Story = {
+  args: {
+    variant: 'pill',
+    icon: 'pencil-simple-outline',
+    children: (
+      <>
+        Label
+        <Icon name="caret-right-outline" size={18} />
+      </>
+    ),
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    variant: 'pill',
+    icon: 'user-outline',
+    iconOnly: true,
+  },
+}
+
 export const Disabled: Story = {
   args: {
     disabled: true,
+    icon: 'square-fill',
     children: 'Disabled Button',
   },
 };
