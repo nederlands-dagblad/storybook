@@ -1,140 +1,148 @@
 {
   "text": {
-    "text-default": {
+    "default": {
       "$type": "color",
       "$value": "{color.neutral.black}"
     },
-    "text-subtle": {
+    "subtle": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     },
-    "text-brand": {
+    "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "text-brand-subtle": {
+    "brand-subtle": {
       "$type": "color",
       "$value": "{color.blue.400}"
     },
-    "text-accent-brown": {
+    "accent-brown": {
       "$type": "color",
       "$value": "{color.brown.800}"
     },
-    "text-accent-pink": {
+    "accent-brown-subtle": {
+      "$type": "color",
+      "$value": "{color.brown.500}"
+    },
+    "accent-pink": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "text-disabled": {
+    "disabled": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     },
-    "text-inverse": {
+    "inverse": {
       "$type": "color",
       "$value": "{color.neutral.white}"
     },
-    "text-warning": {
+    "warning": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "text-warning-inverse": {
+    "warning-inverse": {
       "$type": "color",
       "$value": "{color.neutral.black}"
     }
   },
   "background": {
-    "bg-default": {
+    "default": {
       "$type": "color",
       "$value": "{color.neutral.white}"
     },
-    "bg-dark": {
+    "dark": {
       "$type": "color",
       "$value": "{color.neutral.black}"
     },
-    "bg-dark-subtle": {
+    "dark-subtle": {
       "$type": "color",
       "$value": "{color.neutral.800}"
     },
-    "bg-brand": {
+    "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "bg-brand-subtle": {
+    "brand-subtle": {
       "$type": "color",
       "$value": "{color.blue.400}"
     },
-    "bg-brand-subtlest": {
+    "brand-subtlest": {
       "$type": "color",
       "$value": "{color.blue.500-10}"
     },
-    "bg-accent-gray": {
+    "accent-gray": {
       "$type": "color",
       "$value": "{color.neutral.200}"
     },
-    "bg-accent-brown": {
+    "accent-gray-subtle": {
+      "$type": "color",
+      "$value": "{color.neutral.100}"
+    },
+    "accent-brown": {
       "$type": "color",
       "$value": "{color.brown.800}"
     },
-    "bg-accent-pink": {
+    "accent-pink": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "bg-accent-pink-subtle": {
+    "accent-pink-subtle": {
       "$type": "color",
       "$value": "{color.pink.600}"
     },
-    "bg-accent-pink-subtlest": {
+    "accent-pink-subtlest": {
       "$type": "color",
       "$value": "{color.pink.400}"
     },
-    "bg-warning": {
+    "warning": {
       "$type": "color",
       "$value": "{color.pink.200}"
     },
-    "bg-disabled": {
+    "disabled": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     }
   },
   "border": {
-    "border-default": {
+    "default": {
       "$type": "color",
       "$value": "{color.neutral.black}"
     },
-    "border-brand": {
+    "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "border-accent-gray": {
+    "accent-gray": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     },
-    "border-accent-gray-subtle": {
+    "accent-gray-subtle": {
       "$type": "color",
-      "$value": "{color.neutral.200}"
+      "$value": "{color.neutral.300}"
     },
-    "border-disabled": {
+    "disabled": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     }
   },
   "icons": {
-    "icon-default": {
+    "default": {
       "$type": "color",
       "$value": "{color.neutral.black}"
     },
-    "icon-gray": {
+    "gray": {
       "$type": "color",
       "$value": "{color.neutral.600}"
     },
-    "icon-brand": {
+    "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "icon-danger": {
+    "danger": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "icon-inverse": {
+    "inverse": {
       "$type": "color",
       "$value": "{color.neutral.white}"
     }

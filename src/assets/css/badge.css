@@ -6,7 +6,7 @@
       items-center
       gap-x-xs
       p-s
-      bg-background-bg-accent-pink-subtlest
+      bg-background-accent-pink-subtlest
       text-meta-meta-standard
   }
 
@@ -14,7 +14,7 @@
     @apply
       p-xs
       gap-x-xs
-      text-old-menu-items-bottom-menu-items
+      text-meta-meta-standard
   }
 
 }

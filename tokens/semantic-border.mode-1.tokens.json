@@ -1,14 +1,14 @@
 {
-  "border_width": {
-    "border-width-default": {
+  "border-width": {
+    "default": {
       "$type": "dimension",
-      "$value": "{border.border_width.border-width-s}"
+      "$value": "{border.border-width.s}"
     }
   },
-  "border_radius": {
-    "border-radius-pill": {
+  "border-radius": {
+    "pill": {
       "$type": "dimension",
-      "$value": "{border.border_radius.border-radius-xl}"
+      "$value": "{border.border-radius.xl}"
     }
   }
 }

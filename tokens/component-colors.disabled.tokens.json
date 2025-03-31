@@ -1,78 +1,80 @@
 {
   "button": {
     "background": {
-      "button-primary-bg": {
+      "primary": {
         "$type": "color",
-        "$value": "{background.bg-disabled}"
+        "$value": "{background.disabled}"
       },
-      "button-dark-bg": {
+      "dark": {
         "$type": "color",
-        "$value": "{background.bg-dark}"
+        "$value": "{background.dark}"
       },
-      "button-secondary-bg": {
+      "secondary": {
         "$type": "color",
-        "$value": "{background.bg-default}"
+        "$value": "{background.default}"
       },
-      "button-pill-bg": {
+      "pill": {
         "$type": "color",
-        "$value": "{background.bg-default}"
+        "$value": "{background.default}"
       }
     },
     "border": {
-      "button-secondary-border": {
+      "secondary": {
         "$type": "color",
-        "$value": "{border.border-disabled}"
+        "$value": "{border.disabled}"
       },
-      "button-pill-border": {
+      "pill": {
         "$type": "color",
-        "$value": "{border.border-accent-gray-subtle}"
+        "$value": "{border.accent-gray-subtle}"
       }
     },
     "icon": {
-      "button-primary-icon": {
+      "primary": {
         "$type": "color",
-        "$value": "{icons.icon-inverse}"
+        "$value": "{icons.inverse}"
       },
-      "button-secondary-icon": {
+      "secondary": {
         "$type": "color",
-        "$value": "{icons.icon-brand}"
+        "$value": "{icons.brand}"
       },
-      "button-pill-icon": {
+      "pill": {
         "$type": "color",
-        "$value": "{icons.icon-gray}"
+        "$value": "{icons.gray}"
       }
     },
     "text": {
-      "button-primary-text": {
+      "primary": {
         "$type": "color",
-        "$value": "{text.text-inverse}"
+        "$value": "{text.inverse}"
       },
-      "button-dark-text": {
+      "dark": {
         "$type": "color",
-        "$value": "{text.text-disabled}"
+        "$value": "{text.disabled}"
       },
-      "button-secondary-text": {
+      "secondary": {
         "$type": "color",
-        "$value": "{text.text-disabled}"
+        "$value": "{text.disabled}"
       },
-      "button-ghost-text": {
+      "ghost": {
         "$type": "color",
-        "$value": "{text.text-disabled}"
+        "$value": "{text.disabled}"
       },
-      "button-pill-text": {
+      "pill": {
         "$type": "color",
-        "$value": "{text.text-disabled}"
+        "$value": "{text.disabled}"
       }
     }
   },
   "link": {
-    "link-text": {
-      "$type": "color",
-      "$value": "{text.text-disabled}"
-    },
-    "link-brown-text": {
-      "$type": "color",
-      "$value": "{text.text-disabled}"
+    "text": {
+      "default": {
+        "$type": "color",
+        "$value": "{text.disabled}"
+      },
+      "brown": {
+        "$type": "color",
+        "$value": "{text.disabled}"
+      }
     }
   }
 }

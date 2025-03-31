@@ -1,21 +1,21 @@
 {
   "border": {
     "border-width": {
-      "border-width-0": {
+      "0": {
         "$type": "dimension",
         "$value": "0px"
       },
-      "border-width-s": {
+      "s": {
         "$type": "dimension",
         "$value": "1px"
       }
     },
     "border-radius": {
-      "border-radius-0": {
+      "0": {
         "$type": "dimension",
         "$value": "0px"
       },
-      "border-radius-xl": {
+      "xl": {
         "$type": "dimension",
         "$value": "80px"
       }
@@ -165,124 +165,124 @@
       }
     },
     "font-size": {
-      "font-size-12": {
+      "12": {
         "$type": "dimension",
         "$value": "12px"
       },
-      "font-size-14": {
+      "14": {
         "$type": "dimension",
         "$value": "14px"
       },
-      "font-size-15": {
+      "15": {
         "$type": "dimension",
         "$value": "15px"
       },
-      "font-size-16": {
+      "16": {
         "$type": "dimension",
         "$value": "16px"
       },
-      "font-size-17": {
+      "17": {
         "$type": "dimension",
         "$value": "17px"
       },
-      "font-size-18": {
+      "18": {
         "$type": "dimension",
         "$value": "18px"
       },
-      "font-size-20": {
+      "20": {
         "$type": "dimension",
         "$value": "20px"
       },
-      "font-size-22": {
+      "22": {
         "$type": "dimension",
         "$value": "22px"
       },
-      "font-size-24": {
+      "24": {
         "$type": "dimension",
         "$value": "24px"
       },
-      "font-size-26": {
+      "26": {
         "$type": "dimension",
         "$value": "26px"
       },
-      "font-size-28": {
+      "28": {
         "$type": "dimension",
         "$value": "28px"
       },
-      "font-size-30": {
+      "30": {
         "$type": "dimension",
         "$value": "30px"
       },
-      "font-size-32": {
+      "32": {
         "$type": "dimension",
         "$value": "32px"
       },
-      "font-size-36": {
+      "36": {
         "$type": "dimension",
         "$value": "36px"
       },
-      "font-size-40": {
+      "40": {
         "$type": "dimension",
         "$value": "40px"
       },
-      "font-size-48": {
+      "48": {
         "$type": "dimension",
         "$value": "48px"
       },
-      "font-size-88": {
+      "88": {
         "$type": "dimension",
         "$value": "88px"
       },
-      "font-size-96": {
+      "96": {
         "$type": "dimension",
         "$value": "96px"
       }
     },
     "letter-spacing": {
-      "letter-spacing-0": {
+      "0": {
         "$type": "dimension",
         "$value": "0px"
       },
-      "letter-spacing-1": {
+      "1": {
         "$type": "dimension",
         "$value": "1.6px"
       },
-      "letter-spacing-2": {
+      "2": {
         "$type": "dimension",
         "$value": "2.4px"
       },
-      "letter-spacing-4": {
+      "4": {
         "$type": "dimension",
         "$value": "4px"
       }
     }
   },
   "spacing": {
-    "spacing-0": {
+    "0": {
       "$type": "dimension",
       "$value": "0px"
     },
-    "spacing-xs": {
+    "xs": {
       "$type": "dimension",
       "$value": "4px"
     },
-    "spacing-s": {
+    "s": {
       "$type": "dimension",
       "$value": "8px"
     },
-    "spacing-m": {
+    "m": {
       "$type": "dimension",
       "$value": "16px"
     },
-    "spacing-l": {
+    "l": {
       "$type": "dimension",
       "$value": "32px"
     },
-    "spacing-xl": {
+    "xl": {
       "$type": "dimension",
       "$value": "64px"
     },
-    "spacing-xxl": {
+    "xxl": {
       "$type": "dimension",
       "$value": "128px"
     }

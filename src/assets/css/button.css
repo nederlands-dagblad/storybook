@@ -5,42 +5,57 @@
   }
 
   .btn-primary {
-    @apply bg-button-background-button-primary-bg text-button-text-button-primary-text stroke-white hover:bg-button-background-button-primary-bg-hover disabled:bg-button-background-button-primary-bg-disabled;
+    @apply
+      bg-button-background-primary
+      text-button-text-primary
+      stroke-white
+      hover:bg-button-background-primary-hover
+      hover:text-button-text-primary-hover
+      disabled:bg-button-background-primary-disabled
+      disabled:text-button-text-primary-disabled;
   }
 
   .btn-secondary {
     @apply
-      bg-button-background-button-secondary-bg
-      text-button-text-button-secondary-text
-      font-normal
+      bg-button-background-secondary
+      text-button-text-secondary
       border
-      border-button-border-button-secondary-border
-      hover:border-button-border-button-secondary-border-hover
-      disabled:border-button-border-button-secondary-border-disabled
-      hover:bg-button-background-button-secondary-bg-hover
+      border-button-border-secondary
+      font-normal
+      hover:bg-button-background-secondary-hover
+      hover:text-button-text-secondary-hover
+      hover:border-button-border-secondary-hover
+      disabled:bg-button-background-secondary-disabled
+      disabled:text-button-text-secondary-disabled
+      disabled:border-button-border-secondary-disabled
   }
 
   .btn-ghost {
     @apply
-      text-button-text-button-ghost-text
+      text-button-text-ghost
+      hover:text-button-text-ghost-hover
+      disabled:text-button-text-ghost-disabled
   }
 
   .btn-dark {
     @apply
-      bg-button-background-button-dark-bg
-      text-button-text-button-dark-text
-      hover:bg-button-background-button-dark-bg-hover
+      bg-button-background-dark
+      text-button-text-dark
+      hover:bg-button-background-dark-hover
+      hover:text-button-text-dark-hover
+      disabled:bg-button-background-dark-disabled
+      disabled:text-button-text-dark-disabled
   }
 
   .btn-pill {
     @apply
-      bg-button-background-button-pill-bg
-      hover:bg-button-background-button-pill-bg-hover
-      text-button-text-button-pill-text
-      border-button-border-button-pill-border
-      hover:border-button-border-button-pill-border-hover
-      active:border-button-border-button-pill-border-active
-      disabled:border-button-border-button-pill-border-disabled
+      bg-button-background-pill
+      hover:bg-button-background-pill-hover
+      text-button-text-pill
+      border-button-border-pill
+      hover:border-button-border-pill-hover
+      active:border-button-border-pill-active
+      disabled:border-button-border-pill-disabled
       rounded-full
       gap-x-s
       px-m

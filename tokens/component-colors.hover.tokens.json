@@ -1,78 +1,80 @@
 {
   "button": {
     "background": {
-      "button-primary-bg": {
+      "primary": {
         "$type": "color",
-        "$value": "{background.bg-brand-subtle}"
+        "$value": "{background.brand-subtle}"
       },
-      "button-dark-bg": {
+      "dark": {
         "$type": "color",
-        "$value": "{background.bg-dark-subtle}"
+        "$value": "{background.dark-subtle}"
       },
-      "button-secondary-bg": {
+      "secondary": {
         "$type": "color",
-        "$value": "{background.bg-brand-subtlest}"
+        "$value": "{background.brand-subtlest}"
       },
-      "button-pill-bg": {
+      "pill": {
         "$type": "color",
-        "$value": "{background.bg-accent-gray-subtle}"
+        "$value": "{background.accent-gray-subtle}"
       }
     },
     "border": {
-      "button-secondary-border": {
+      "secondary": {
         "$type": "color",
-        "$value": "{border.border-brand}"
+        "$value": "{border.brand}"
       },
-      "button-pill-border": {
+      "pill": {
         "$type": "color",
-        "$value": "{border.border-accent-gray}"
+        "$value": "{border.accent-gray}"
       }
     },
     "icon": {
-      "button-primary-icon": {
+      "primary": {
         "$type": "color",
-        "$value": "{icons.icon-inverse}"
+        "$value": "{icons.inverse}"
       },
-      "button-secondary-icon": {
+      "secondary": {
         "$type": "color",
-        "$value": "{icons.icon-brand}"
+        "$value": "{icons.brand}"
       },
-      "button-pill-icon": {
+      "pill": {
         "$type": "color",
-        "$value": "{icons.icon-gray}"
+        "$value": "{icons.gray}"
       }
     },
     "text": {
-      "button-primary-text": {
+      "primary": {
         "$type": "color",
-        "$value": "{text.text-inverse}"
+        "$value": "{text.inverse}"
       },
-      "button-dark-text": {
+      "dark": {
         "$type": "color",
-        "$value": "{text.text-inverse}"
+        "$value": "{text.inverse}"
       },
-      "button-secondary-text": {
+      "secondary": {
         "$type": "color",
-        "$value": "{text.text-brand}"
+        "$value": "{text.brand}"
       },
-      "button-ghost-text": {
+      "ghost": {
         "$type": "color",
-        "$value": "{text.text-brand-subtle}"
+        "$value": "{text.brand-subtle}"
       },
-      "button-pill-text": {
+      "pill": {
         "$type": "color",
-        "$value": "{text.text-subtle}"
+        "$value": "{text.subtle}"
       }
     }
   },
   "link": {
-    "link-text": {
-      "$type": "color",
-      "$value": "{text.text-brand-subtle}"
-    },
-    "link-brown-text": {
-      "$type": "color",
-      "$value": "{text.text-accent-brown-subtle}"
+    "text": {
+      "default": {
+        "$type": "color",
+        "$value": "{text.brand-subtle}"
+      },
+      "brown": {
+        "$type": "color",
+        "$value": "{text.accent-brown-subtle}"
+      }
     }
   }
 }

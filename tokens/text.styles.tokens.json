@@ -4,9 +4,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-16}",
+        "fontSize": "{font-size.body.m}",
         "fontWeight": "{typography.font-weight.light}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -16,9 +16,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-16}",
+        "fontSize": "{font-size.body.m}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -28,9 +28,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-16}",
+        "fontSize": "{font-size.body.m}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -40,9 +40,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-16}",
+        "fontSize": "{font-size.body.m}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -52,9 +52,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-18}",
+        "fontSize": "{font-size.body.l}",
         "fontWeight": "{typography.font-weight.light}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -64,9 +64,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-20}",
+        "fontSize": "{font-size.body.xl}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-1}",
+        "letterSpacing": "{typography.letter-spacing.1}",
         "lineHeight": "160%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -76,9 +76,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-20}",
+        "fontSize": "{font-size.body.xl}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-2}",
+        "letterSpacing": "{typography.letter-spacing.2}",
         "lineHeight": "160%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -88,9 +88,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{typography.font-size.font-size-24}",
+        "fontSize": "{font-size.body.xxl}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -100,9 +100,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.body.font-size-body-m}",
+        "fontSize": "{font-size.body.m}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -112,9 +112,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.abril-fatface}",
-        "fontSize": "{typography.font-size.font-size-88}",
+        "fontSize": "{font-size.body.drop-cap}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -124,9 +124,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.montserrat}",
-        "fontSize": "{typography.font-size.font-size-88}",
+        "fontSize": "{font-size.body.drop-cap}",
         "fontWeight": "{typography.font-weight.light}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -138,9 +138,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{typography.font-size.font-size-28}",
+        "fontSize": "{font-size.heading.xl}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -150,9 +150,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{typography.font-size.font-size-26}",
+        "fontSize": "{font-size.heading.l}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -161,10 +161,10 @@
     "subheading": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font-family.gulliver_semibold}",
-        "fontSize": "{typography.font-size.font-size-26}",
+        "fontFamily": "{typography.font-family.gulliver semibold}",
+        "fontSize": "{font-size.heading.l}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -174,9 +174,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{typography.font-size.font-size-18}",
+        "fontSize": "{font-size.heading.m}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -186,9 +186,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-16}",
+        "fontSize": "{font-size.heading.s}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -198,9 +198,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-14}",
+        "fontSize": "{font-size.heading.xs}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-4}",
+        "letterSpacing": "{typography.letter-spacing.4}",
         "lineHeight": "130%",
         "textTransform": "small-caps",
         "textDecoration": "none"
@@ -212,9 +212,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{typography.font-size.font-size-14}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -224,9 +224,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -236,7 +236,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.regular}",
         "letterSpacing": "0px",
         "lineHeight": "140%",
@@ -248,9 +248,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -260,9 +260,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -272,9 +272,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"
@@ -284,9 +284,9 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "{font-size.meta.font-size-meta}",
+        "fontSize": "{font-size.meta}",
         "fontWeight": "{typography.font-weight.regular}",
-        "letterSpacing": "{typography.letter-spacing.letter-spacing-0}",
+        "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "140%",
         "textTransform": "none",
         "textDecoration": "none"

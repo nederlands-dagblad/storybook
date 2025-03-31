@@ -1,66 +1,64 @@
 {
   "font-size": {
     "heading": {
-      "font-size-heading-xs": {
+      "xs": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-14}"
+        "$value": "{typography.font-size.14}"
       },
-      "font-size-heading-s": {
+      "s": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-18}"
+        "$value": "{typography.font-size.18}"
       },
-      "font-size-heading-m": {
+      "m": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-20}"
+        "$value": "{typography.font-size.20}"
       },
-      "font-size-heading-l": {
+      "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-40}"
+        "$value": "{typography.font-size.40}"
       },
-      "font-size-heading-xl": {
+      "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-48}"
+        "$value": "{typography.font-size.48}"
       }
     },
     "body": {
-      "font-size-body-xs": {
+      "xs": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-12}"
+        "$value": "{typography.font-size.12}"
       },
-      "font-size-body-s": {
+      "s": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-16}"
+        "$value": "{typography.font-size.16}"
       },
-      "font-size-body-m": {
+      "m": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-18}"
+        "$value": "{typography.font-size.18}"
       },
-      "font-size-body-l": {
+      "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-20}"
+        "$value": "{typography.font-size.20}"
       },
-      "font-size-body-xl": {
+      "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-22}"
+        "$value": "{typography.font-size.22}"
       },
-      "font-size-body-xxl": {
+      "xxl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-28}"
+        "$value": "{typography.font-size.28}"
       },
-      "font-size-drop-cap": {
+      "drop-cap": {
         "$type": "dimension",
-        "$value": "{typography.font-size.font-size-96}"
+        "$value": "{typography.font-size.96}"
       }
     },
     "meta": {
-      "font-size-meta": {
-        "$type": "dimension",
-        "$value": "{typography.font-size.font-size-14}"
-      },
-      "font-size-button": {
-        "$type": "dimension",
-        "$value": "{typography.font-size.font-size-14}"
-      }
+      "$type": "dimension",
+      "$value": "{typography.font-size.14}"
+    },
+    "button": {
+      "$type": "dimension",
+      "$value": "{typography.font-size.14}"
     }
   },
   "Layout": {

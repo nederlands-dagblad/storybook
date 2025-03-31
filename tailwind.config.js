@@ -34,11 +34,11 @@ export default {
 
         spacing: {
             ...spacing,
-            'xs': 'var(--spacing-inset-spacing-inset-xs)',
-            's': 'var(--spacing-inset-spacing-inset-s)',
-            'm': 'var(--spacing-inset-spacing-inset-m)',
-            'l': 'var(--spacing-inset-spacing-inset-l)',
-            'xl': 'var(--spacing-inset-spacing-inset-xl)',
+            // 'xs': 'var(--spacing-inset-spacing-inset-xs)',
+            // 's': 'var(--spacing-inset-spacing-inset-s)',
+            // 'm': 'var(--spacing-inset-spacing-inset-m)',
+            // 'l': 'var(--spacing-inset-spacing-inset-l)',
+            // 'xl': 'var(--spacing-inset-spacing-inset-xl)',
         },
 
         fontFamily: {
