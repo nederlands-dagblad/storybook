@@ -1,0 +1,94 @@
+import {Markdown, Meta} from '@storybook/addon-docs';
+
+<Meta title="Hooks/useFormFactory" />
+
+---
+
+# 🔧 `useFormFactory<T>(config: Config)`
+
+`useFormFactory` is a hook for **fetching and managing form data** (a "form factory") from an API endpoint. It handles loading state, initialization, and optional custom request logic.
+
+## 🧩 API
+
+### `Config`
+
+```ts
+interface Config {
+  url: string | (() => string);
+  request?: () => Promise<any>;
+  [key: string]: any;
+}
+```
+
+### `FetchConfig`
+
+```ts
+interface FetchConfig {
+  url?: string;
+  params?: object;
+  silent?: boolean;
+  [key: string]: any;
+}
+```
+
+## 🧪 Usage Example
+
+```tsx
+const {
+  isLoading,
+  isInitialized,
+  factory,
+  setFactory,
+  initialize,
+  fetchFactory,
+  clear
+} = useFormFactory<FormFactoryType>({
+  url: '/api/form/defaults'
+});
+
+useEffect(() => {
+  initialize();
+}, []);
+```
+
+## 💻 Backend Example
+
+The backend is responsible for providing the initial form data, and all other information needed in the form. The API should return a JSON object that matches the expected structure of the form data.
+
+For example:
+
+```json
+{
+  "formData": {
+    "firstName": "",
+    "lastName": "",
+    "email": ""
+  },
+  "options": {
+    "countries": ["NL", "BE", "DE"]
+  }
+}
+```
+
+> Tip: When you need to validate or provide extra data on any change, you can re-call the API with the current form data. This is useful for dynamic forms where the options depend on previous selections.
+
+## ⚙️ Features
+
+<Markdown>
+{`
+| Feature            | Description                                              |
+|--------------------|----------------------------------------------------------|
+| \`isLoading\`        | Indicates if data is currently being fetched             |
+| \`isInitialized\`    | Indicates whether data has already been fetched          |
+| \`factory\`          | Holds the fetched form data (\`T\`)                        |
+| \`setFactory()\`     | Immer-powered setter to update \`factory\`                 |
+| \`initialize()\`     | Fetches data once; does nothing if already initialized   |
+| \`fetchFactory()\`   | Manually fetches data with optional override config      |
+| \`clear()\`          | Resets all internal state                                |
+`}
+</Markdown>
+
+## 💬 Notes
+
+- Use `initialize()` in `useEffect` to prevent duplicate fetches.
+- Use `silent: true` to suppress setting internal state when manually fetching.

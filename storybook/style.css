@@ -1,3 +1,81 @@
+.sbdocs-content h1 {
+    margin-bottom: 3.5rem !important;
+}
+
+.sbdocs-content h2 {
+    margin-top: 4.5rem !important;
+    font-weight: bold;
+}
+
+.sbdocs-content h3 {
+    margin-top: 3rem !important;
+}
+
+
 .docblock-typeset > div {
     flex-direction: column;
+}
+
+/* Callout */
+
+.callout {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    display: flex;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid;
+}
+
+.callout-neutral,
+.callout-positive,
+.callout-info {
+    background-color: #dbeafe;
+    border-color: #bfdbfe;
+}
+
+.callout-warning {
+    background-color: #ffedd5;
+    border-color: #fed7aa;
+}
+
+/* Dark mode versions */
+@media (prefers-color-scheme: dark) {
+    .callout-neutral,
+    .callout-positive,
+    .callout-info {
+        background-color: #0f172a;
+        border-color: #334155;
+    }
+
+    .callout-warning {
+        background-color: #431407;
+        border-color: #c2410c;
+    }
+}
+
+.callout-icon {
+    display: none;
+    font-size: 1.5rem;
+    flex: none;
+}
+
+@media (min-width: 768px) {
+    .callout-icon {
+        display: flex;
+    }
+}
+
+.callout-body {
+    min-width: 0;
+}
+
+.callout-content {
+    margin-bottom: 0;
+}
+
+.callout-content > p {
+    margin-top: 0;
+    margin-bottom: 0;
 }

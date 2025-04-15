@@ -1,0 +1,91 @@
+import {Markdown, Meta} from '@storybook/addon-docs';
+
+<Meta title="Hooks/useFormHandler" />
+
+# 🧾 `useFormHandler(config: Config)`
+
+`useFormHandler` manages **form submission logic**, including:
+
+- Loading state
+- Validation error handling (422)
+- Success and error callbacks
+
+## 🧩 API
+
+```ts
+interface Config {
+  url: string | (() => string);
+  request?: (data: any) => Promise<any>;
+  onSuccess?: (response: any) => void;
+  onValidationError?: (errors: any) => void;
+  onError?: (error: any) => void;
+}
+```
+
+## 🧪 Usage Example
+
+```tsx
+const {
+  isLoading,
+  submit,
+  errors,
+  hasErrors,
+  clear
+} = useFormHandler({
+  url: '/api/user/update',
+  onSuccess: () => toast.success('Saved!'),
+  onValidationError: (errors) => console.warn(errors),
+  onError: () => toast.error('Something went wrong'),
+});
+
+const handleSubmit = (data) => {
+  submit(data).catch(() => {});
+};
+```
+
+## ⚙️ Features
+
+<Markdown>
+{`
+| Feature             | Description                                                       |
+|---------------------|-------------------------------------------------------------------|
+| \`isLoading\`         | Indicates if form is being submitted                              |
+| \`submit(data)\`      | Submits form data (using POST or custom request function)         |
+| \`errors\`            | Contains validation errors (usually from a 422 response)          |
+| \`hasErrors\`         | Boolean, true if any errors are present                           |
+| \`clear()\`           | Resets all internal state and errors                              |
+`}
+</Markdown>
+
+## 💬 Error Flow
+
+- Calls `config.request` or default `POST`
+- If `422`, sets validation `errors` and calls `onValidationError`
+- Calls `onSuccess` or `onError` accordingly
+
+## ⚠️ Displaying errors
+
+To display errors, use the `errors` object:
+
+```tsx
+<Input
+    // ...
+    errors={errors.emailAddress}
+/>
+```
+
+## 🔄 Advanced Features
+
+### Custom request logic
+
+```tsx
+useFormHandler({
+  request: (data) => axios.put('/api/user/update', data),
+});
+```
+
+### Manual URL override at submit time
+
+```tsx
+submit(data, { url: '/api/custom-endpoint' });
+```

@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs';
+import {Callout} from "../../.storybook/components/callout.js";
+
+<Meta title="Guides/Forms" />
+
+# 🧩 Building forms using `useFormFactory` & `useFormHandler`
+
+This guide explains how to use `useFormFactory` and `useFormHandler` together in a real-world component. These two hooks are designed to handle different aspects of form functionality:
+
+- **`useFormFactory`** handles **fetching default form data**
+- **`useFormHandler`** handles **submitting the form and managing errors**
+
+Together, they give you a clean and maintainable way to work with forms in modals, wizards, or full-page forms.
+
+## 🎯 Use Case: Creating a New Employee
+
+Below is a high-level walkthrough of how the hooks are integrated in the `CreateEmployeeModal` component.
+
+## 🛠️ Step-by-Step Integration
+
+### 1. **Initialize Factory and Form Handler**
+
+```tsx
+const formFactory = useFormFactory<FormFactory>({
+  url: '/api/bedrijfsportaal/employee/create',
+});
+
+const formHandler = useFormHandler({
+  url: '/api/bedrijfsportaal/employee/create',
+});
+```
+
+- `formFactory` will **fetch initial form values** like `firstName`, `emailAddress`, etc.
+- `formHandler` manages **submission state and validation errors**
+
+### 2. **Open Modal After Initialization**
+
+```tsx
+useEffect(() => {
+  initialize().then(() => setIsModalOpen(true));
+}, [initialize]);
+```
+
+- Only open the modal **after the initial data has been loaded**
+- `initialize()` ensures `fetchFactory()` only runs once
+
+<Callout variant="info">
+
+    Not using modals? If you want to show the form when it's loaded, use `isInitialized` to check if the form is ready.
+
+</Callout>
+
+### 3. **Bind Fields to Factory Data**
+
+Use the `setFactory()` method to update nested properties:
+
+```tsx
+<Input
+  label="Voornaam"
+  value={factory.formData.firstName}
+  setValue={(x) => setFactory(setData(factory, 'formData.firstName', x))}
+  errors={errors.firstName}
+/>
+```
+
+This keeps form data **centralized and reactive** using Immer under the hood.
+
+### 4. **Submit the Form**
+
+```tsx
+function onSubmit() {
+  submit(factory?.formData)
+    .then(() => {
+      eventbus.emit('create-employee-modal:created');
+      window.pubbleUtility.createNotification("De medewerker is aangemaakt.");
+      onClose();
+    });
+}
+```
+
+- The `submit()` method sends the form data
+- Handles success and validation errors automatically
+
+## 🧠 Tips
+
+- Use `setFactory(setData(...))` for immutable updates to nested form fields
+- Use `initialize()` to avoid multiple fetches when remounting
+- Use `hasErrors` and `errors` to show validation feedback
+
+## 📎 Related
+
+- [Hook Reference: `useFormFactory`](/?path=/docs/hooks-useformfactory--docs)
+- [Hook Reference: `useFormHandler`](/?path=/docs/hooks-useformhandler--docs)
+

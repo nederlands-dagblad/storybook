@@ -1,4 +1,5 @@
 import '../src/assets/css/tailwind.css';
+import '../storybook/style.css';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
