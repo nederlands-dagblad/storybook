@@ -29,5 +29,5 @@ jobs:
         with:
           install_command: yarn install # default: npm ci
           build_command: yarn build-storybook # default: npm run build-storybook
-          path: storybook-static # default: dist/storybook
+          path: dist # default: dist/storybook
           checkout: false # default: true
