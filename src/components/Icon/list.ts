@@ -9,6 +9,9 @@ import CaretLeftFill from "../../assets/icons/fill/caret-left.svg";
 import PencilSimpleFill from "../../assets/icons/fill/pencil-simple.svg";
 import StarFill from "../../assets/icons/fill/star.svg";
 import TrashFill from "../../assets/icons/fill/trash.svg";
+import PlusFill from "../../assets/icons/fill/plus.svg";
+import MinusFill from "../../assets/icons/fill/minus.svg";
+import CloseFill from "../../assets/icons/fill/close.svg";
 
 // Import all outline icons
 import HandsPrayingOutline from "../../assets/icons/outline/hands-praying.svg";
@@ -19,6 +22,9 @@ import CaretLeftOutline from "../../assets/icons/outline/caret-left.svg";
 import PencilSimpleOutline from "../../assets/icons/outline/pencil-simple.svg";
 import StarOutline from "../../assets/icons/outline/star.svg";
 import TrashOutline from "../../assets/icons/outline/trash.svg";
+import PlusOutline from "../../assets/icons/outline/plus.svg";
+import MinusOutline from "../../assets/icons/outline/minus.svg";
+import CloseOutline from "../../assets/icons/outline/close.svg";
 
 export const outlineIcons = {
   'hands-praying-outline': HandsPrayingOutline,
@@ -28,7 +34,10 @@ export const outlineIcons = {
   'caret-left-outline': CaretLeftOutline,
   'pencil-simple-outline': PencilSimpleOutline,
   'star-outline': StarOutline,
-  'trash-outline': TrashOutline
+  'trash-outline': TrashOutline,
+  'plus-outline': PlusOutline,
+  'minus-outline': MinusOutline,
+  'close-outline': CloseOutline,
 }
 
 export const fillIcons = {
@@ -41,7 +50,10 @@ export const fillIcons = {
   'caret-left-fill': CaretLeftFill,
   'pencil-simple-fill': PencilSimpleFill,
   'star-fill': StarFill,
-  'trash-fill': TrashFill
+  'trash-fill': TrashFill,
+  'plus-fill': PlusFill,
+  'minus-fill': MinusFill,
+  'close-fill': CloseFill,
 }
 
 export const icons = Object.assign({}, outlineIcons, fillIcons);
@@ -62,3 +74,37 @@ export default {
   icons,
   keys
 };
+
+54,67
+38,71
+47,67
+47,18
+44,69
+12,10
+63,10
+13,92
+60,79
+96,20
+51,91
+113,67
+43,97
+27,35
+20,84
+64,26
+63,42
+27,45
+19,75
+12,10
+14,62
+71,80
+35,60
+36,61
+12,10
+53,31
+50,35
+26,33
+51,51
+25,69
+54,01
+38,67
+92,63
