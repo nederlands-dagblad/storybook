@@ -16,10 +16,41 @@ Our design system includes a comprehensive set of typography styles based on our
 ## Font Families
 
 Our design system uses several font families:
-- **Gulliver**: For headings and quotes
-- **Fira Sans**: For body text and meta information
-- **Abril Fatface**: For drop caps in articles
-- **Montserrat**: For alternative drop caps
+
+<div>
+  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+    <h3 style={{ fontFamily: "'Gulliver', serif", fontSize: '24px', marginBottom: '0.5rem' }}>Gulliver</h3>
+    <p style={{ fontFamily: "'Gulliver', serif", fontSize: '18px', marginBottom: '0.5rem' }}>Used for headings and quotes</p>
+    <p style={{ fontFamily: "'Gulliver Semibold', serif", fontSize: '18px' }}>Gulliver Semibold variant</p>
+  </div>
+  
+  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+    <h3 style={{ fontFamily: "'Fira Sans', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Fira Sans</h3>
+    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 300, fontSize: '16px', marginBottom: '0.5rem' }}>Light weight for body text</p>
+    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 400, fontSize: '16px', marginBottom: '0.5rem' }}>Regular weight for standard content</p>
+    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 700, fontSize: '16px' }}>Bold weight for emphasis</p>
+  </div>
+  
+  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+    <h3 style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '24px', marginBottom: '0.5rem' }}>Abril Fatface</h3>
+    <p style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '16px', marginBottom: '0.5rem' }}>Used for drop caps in articles</p>
+    <div>
+      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>A</span>
+      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>B</span>
+      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px" }}>C</span>
+    </div>
+  </div>
+  
+  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+    <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Montserrat</h3>
+    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', marginBottom: '0.5rem' }}>Used for alternative drop caps and headings</p>
+    <div>
+      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>A</span>
+      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>B</span>
+      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300 }}>C</span>
+    </div>
+  </div>
+</div>
 
 ## Responsive Typography
 
@@ -109,6 +140,6 @@ Or use the utility classes directly in your HTML:
 
 ```html
 <h1 class="text-headings-heading-article">Article Title</h1>
-<span class="text-meta-meta-author">By John Doe</span>
+<span class="text-meta-author">By John Doe</span>
 <p class="text-body-body-article">Article content goes here...</p>
 ```

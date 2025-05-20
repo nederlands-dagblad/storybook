@@ -7,14 +7,14 @@
       gap-x-xs
       p-s
       bg-background-accent-pink-subtlest
-      text-meta-meta-standard
+      text-meta-regular
   }
 
   .badge-premium-small {
     @apply
       p-xs
       gap-x-xs
-      text-meta-meta-standard
+      text-meta-regular
   }
 
 }

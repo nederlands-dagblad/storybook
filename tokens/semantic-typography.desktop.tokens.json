@@ -15,11 +15,11 @@
       },
       "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.36}"
+        "$value": "{typography.font-size.40}"
       },
       "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.40}"
+        "$value": "{typography.font-size.48}"
       }
     },
     "body": {
@@ -56,27 +56,9 @@
       "$type": "dimension",
       "$value": "{typography.font-size.14}"
     },
-    "button": {
+    "Number": {
       "$type": "dimension",
-      "$value": "{typography.font-size.14}"
-    }
-  },
-  "Layout": {
-    "columns": {
-      "$type": "dimension",
-      "$value": "8px"
-    },
-    "padding": {
-      "$type": "dimension",
-      "$value": "24px"
-    },
-    "gutter": {
-      "$type": "dimension",
-      "$value": "24px"
-    },
-    "column_width_(type:_center)": {
-      "$type": "dimension",
-      "$value": "24px"
+      "$value": "0px"
     }
   }
 }

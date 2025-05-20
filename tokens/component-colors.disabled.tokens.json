@@ -1,4 +1,26 @@
 {
+  "form": {
+    "background": {
+      "input-field": {
+        "$type": "color",
+        "$value": "{background.accent-gray}"
+      },
+      "checkbox": {
+        "$type": "color",
+        "$value": "{background.accent-gray}"
+      }
+    },
+    "border": {
+      "input-field": {
+        "$type": "color",
+        "$value": "{border.accent-gray}"
+      },
+      "checkbox": {
+        "$type": "color",
+        "$value": "{border.accent-gray}"
+      }
+    }
+  },
   "button": {
     "background": {
       "primary": {

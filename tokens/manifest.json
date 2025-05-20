@@ -1,63 +1,69 @@
 {
   "name": "Design Tokens",
   "collections": {
-    "Primitives": {
+    "primitives": {
       "modes": {
-        "Mode 1": [
-          "primitives.mode-1.tokens.json"
+        "value": [
+          "primitives.value.tokens.json"
         ]
       }
     },
-    "Semantic colors": {
+    "semantic-colors": {
       "modes": {
-        "Light": [
-          "Semantic colors.Light.tokens.json"
+        "light": [
+          "semantic-colors.light.tokens.json"
         ],
-        "Dark": [
-          "Semantic colors.Dark.tokens.json"
+        "dark": [
+          "semantic-colors.dark.tokens.json"
         ]
       }
     },
-    "Layout & typography": {
+    "semantic-typography": {
       "modes": {
-        "Mobile": [
-          "layout-and-typography.mobile.tokens.json"
+        "mobile": [
+          "semantic-typography.mobile.tokens.json"
         ],
-        "Tablet (md, 768px)": [
-          "layout-and-typography.tablet-md-768px.tokens.json"
+        "tablet": [
+          "semantic-typography.tablet.tokens.json"
         ],
-        "Desktop (lg, 1024px)": [
-          "layout-and-typography.desktop-lg-1024px.tokens.json"
+        "desktop": [
+          "semantic-typography.desktop.tokens.json"
         ]
       }
     },
-    "Semantic spacing": {
+    "component-colors": {
       "modes": {
-        "Mode 1": [
-          "semantic-spacing.mode-1.tokens.json"
-        ]
-      }
-    },
-    "Component colors": {
-      "modes": {
-        "Default": [
+        "default": [
           "component-colors.default.tokens.json"
         ],
-        "Hover": [
+        "hover": [
           "component-colors.hover.tokens.json"
         ],
-        "Active": [
+        "active": [
           "component-colors.active.tokens.json"
         ],
-        "Disabled": [
+        "disabled": [
           "component-colors.disabled.tokens.json"
         ]
       }
     },
-    "Semantic border": {
+    "semantic-border": {
       "modes": {
-        "Mode 1": [
-          "semantic-border.mode-1.tokens.json"
+        "value": [
+          "semantic-border.value.tokens.json"
+        ]
+      }
+    },
+    "semantic-layout": {
+      "modes": {
+        "mobile": [
+          "semantic-layout.mobile.tokens.json"
+        ],
+        "tablet": [
+          "semantic-layout.tablet.tokens.json"
+        ],
+        "desktop": [
+          "semantic-layout.desktop.tokens.json"
         ]
       }
     }

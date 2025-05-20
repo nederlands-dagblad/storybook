@@ -1,0 +1,20 @@
+{
+  "layout": {
+    "breakpoints": {
+      "$type": "dimension",
+      "$value": "1280px"
+    },
+    "columns": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{spacing.l}"
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "{spacing.m}"
+    }
+  }
+}

@@ -72,11 +72,11 @@
     },
     "accent-gray": {
       "$type": "color",
-      "$value": "{color.neutral.800}"
+      "$value": "{color.neutral.700}"
     },
     "accent-gray-subtle": {
       "$type": "color",
-      "$value": "{color.neutral.900}"
+      "$value": "{color.neutral.800}"
     },
     "accent-brown": {
       "$type": "color",
@@ -93,10 +93,6 @@
     "accent-pink-subtlest": {
       "$type": "color",
       "$value": "{color.pink.400}"
-    },
-    "warning": {
-      "$type": "color",
-      "$value": "{color.brown.900}"
     },
     "disabled": {
       "$type": "color",
@@ -118,11 +114,15 @@
     },
     "accent-gray-subtle": {
       "$type": "color",
-      "$value": "{color.neutral.800}"
+      "$value": "{color.neutral.700}"
     },
     "disabled": {
       "$type": "color",
       "$value": "{color.neutral.500}"
+    },
+    "warning": {
+      "$type": "color",
+      "$value": "{color.pink.700}"
     }
   },
   "icons": {
@@ -138,13 +138,19 @@
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "danger": {
+    "warning": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
     "inverse": {
       "$type": "color",
       "$value": "{color.neutral.white}"
+    }
+  },
+  "shadow": {
+    "default": {
+      "$type": "color",
+      "$value": "{color.neutral.white-30}"
     }
   }
 }

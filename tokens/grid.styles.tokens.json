@@ -1,5 +1,5 @@
 {
-  "Layout grid": {
+  "Layout grid (<xl)": {
     "$type": "grid",
     "$value": [
       {
@@ -7,9 +7,9 @@
         "visible": true,
         "alignment": "stretch",
         "color": "#ff00001a",
-        "gutterSize": "{Layout.gutter}",
-        "count": "{Layout.columns}",
-        "offset": "{Layout.padding}"
+        "gutterSize": "{layout.gutter}",
+        "count": "{layout.columns}",
+        "offset": "{layout.padding}"
       }
     ]
   }

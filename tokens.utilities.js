@@ -1,12 +1,18 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-03-31T18:32:21.124Z
+ * Last generated: 2025-05-20T11:07:17.711Z
  */
 
 export default function ({ addUtilities }) {
   addUtilities({
     ...{
+  ".border-form-border-input-field": {
+    "borderColor": "var(--color-form-border-input-field-default)"
+  },
+  ".border-form-border-checkbox": {
+    "borderColor": "var(--color-form-border-checkbox-default)"
+  },
   ".border-button-border-secondary": {
     "borderColor": "var(--color-button-border-secondary-default)"
   },
@@ -33,6 +39,12 @@ export default function ({ addUtilities }) {
   },
   ".text-link-text-brown": {
     "color": "var(--color-link-text-brown-default)"
+  },
+  ".border-form-border-input-field-hover": {
+    "borderColor": "var(--color-form-border-input-field-hover)"
+  },
+  ".border-form-border-checkbox-hover": {
+    "borderColor": "var(--color-form-border-checkbox-hover)"
   },
   ".border-button-border-secondary-hover": {
     "borderColor": "var(--color-button-border-secondary-hover)"
@@ -61,6 +73,12 @@ export default function ({ addUtilities }) {
   ".text-link-text-brown-hover": {
     "color": "var(--color-link-text-brown-hover)"
   },
+  ".border-form-border-input-field-active": {
+    "borderColor": "var(--color-form-border-input-field-active)"
+  },
+  ".border-form-border-checkbox-active": {
+    "borderColor": "var(--color-form-border-checkbox-active)"
+  },
   ".border-button-border-secondary-active": {
     "borderColor": "var(--color-button-border-secondary-active)"
   },
@@ -87,6 +105,12 @@ export default function ({ addUtilities }) {
   },
   ".text-link-text-brown-active": {
     "color": "var(--color-link-text-brown-active)"
+  },
+  ".border-form-border-input-field-disabled": {
+    "borderColor": "var(--color-form-border-input-field-disabled)"
+  },
+  ".border-form-border-checkbox-disabled": {
+    "borderColor": "var(--color-form-border-checkbox-disabled)"
   },
   ".border-button-border-secondary-disabled": {
     "borderColor": "var(--color-button-border-secondary-disabled)"
@@ -117,6 +141,202 @@ export default function ({ addUtilities }) {
   }
 },
     ...{
+  ".p-spacing-layout-breakpoints": {
+    "padding": "var(--spacing-layout-breakpoints)"
+  },
+  ".px-spacing-layout-breakpoints": {
+    "paddingLeft": "var(--spacing-layout-breakpoints)",
+    "paddingRight": "var(--spacing-layout-breakpoints)"
+  },
+  ".py-spacing-layout-breakpoints": {
+    "paddingTop": "var(--spacing-layout-breakpoints)",
+    "paddingBottom": "var(--spacing-layout-breakpoints)"
+  },
+  ".pt-spacing-layout-breakpoints": {
+    "paddingTop": "var(--spacing-layout-breakpoints)"
+  },
+  ".pr-spacing-layout-breakpoints": {
+    "paddingRight": "var(--spacing-layout-breakpoints)"
+  },
+  ".pb-spacing-layout-breakpoints": {
+    "paddingBottom": "var(--spacing-layout-breakpoints)"
+  },
+  ".pl-spacing-layout-breakpoints": {
+    "paddingLeft": "var(--spacing-layout-breakpoints)"
+  },
+  ".m-spacing-layout-breakpoints": {
+    "margin": "var(--spacing-layout-breakpoints)"
+  },
+  ".mx-spacing-layout-breakpoints": {
+    "marginLeft": "var(--spacing-layout-breakpoints)",
+    "marginRight": "var(--spacing-layout-breakpoints)"
+  },
+  ".my-spacing-layout-breakpoints": {
+    "marginTop": "var(--spacing-layout-breakpoints)",
+    "marginBottom": "var(--spacing-layout-breakpoints)"
+  },
+  ".mt-spacing-layout-breakpoints": {
+    "marginTop": "var(--spacing-layout-breakpoints)"
+  },
+  ".mr-spacing-layout-breakpoints": {
+    "marginRight": "var(--spacing-layout-breakpoints)"
+  },
+  ".mb-spacing-layout-breakpoints": {
+    "marginBottom": "var(--spacing-layout-breakpoints)"
+  },
+  ".ml-spacing-layout-breakpoints": {
+    "marginLeft": "var(--spacing-layout-breakpoints)"
+  },
+  ".gap-spacing-layout-breakpoints": {
+    "gap": "var(--spacing-layout-breakpoints)"
+  },
+  ".p-spacing-layout-columns": {
+    "padding": "var(--spacing-layout-columns)"
+  },
+  ".px-spacing-layout-columns": {
+    "paddingLeft": "var(--spacing-layout-columns)",
+    "paddingRight": "var(--spacing-layout-columns)"
+  },
+  ".py-spacing-layout-columns": {
+    "paddingTop": "var(--spacing-layout-columns)",
+    "paddingBottom": "var(--spacing-layout-columns)"
+  },
+  ".pt-spacing-layout-columns": {
+    "paddingTop": "var(--spacing-layout-columns)"
+  },
+  ".pr-spacing-layout-columns": {
+    "paddingRight": "var(--spacing-layout-columns)"
+  },
+  ".pb-spacing-layout-columns": {
+    "paddingBottom": "var(--spacing-layout-columns)"
+  },
+  ".pl-spacing-layout-columns": {
+    "paddingLeft": "var(--spacing-layout-columns)"
+  },
+  ".m-spacing-layout-columns": {
+    "margin": "var(--spacing-layout-columns)"
+  },
+  ".mx-spacing-layout-columns": {
+    "marginLeft": "var(--spacing-layout-columns)",
+    "marginRight": "var(--spacing-layout-columns)"
+  },
+  ".my-spacing-layout-columns": {
+    "marginTop": "var(--spacing-layout-columns)",
+    "marginBottom": "var(--spacing-layout-columns)"
+  },
+  ".mt-spacing-layout-columns": {
+    "marginTop": "var(--spacing-layout-columns)"
+  },
+  ".mr-spacing-layout-columns": {
+    "marginRight": "var(--spacing-layout-columns)"
+  },
+  ".mb-spacing-layout-columns": {
+    "marginBottom": "var(--spacing-layout-columns)"
+  },
+  ".ml-spacing-layout-columns": {
+    "marginLeft": "var(--spacing-layout-columns)"
+  },
+  ".gap-spacing-layout-columns": {
+    "gap": "var(--spacing-layout-columns)"
+  },
+  ".p-spacing-layout-padding": {
+    "padding": "var(--spacing-layout-padding)"
+  },
+  ".px-spacing-layout-padding": {
+    "paddingLeft": "var(--spacing-layout-padding)",
+    "paddingRight": "var(--spacing-layout-padding)"
+  },
+  ".py-spacing-layout-padding": {
+    "paddingTop": "var(--spacing-layout-padding)",
+    "paddingBottom": "var(--spacing-layout-padding)"
+  },
+  ".pt-spacing-layout-padding": {
+    "paddingTop": "var(--spacing-layout-padding)"
+  },
+  ".pr-spacing-layout-padding": {
+    "paddingRight": "var(--spacing-layout-padding)"
+  },
+  ".pb-spacing-layout-padding": {
+    "paddingBottom": "var(--spacing-layout-padding)"
+  },
+  ".pl-spacing-layout-padding": {
+    "paddingLeft": "var(--spacing-layout-padding)"
+  },
+  ".m-spacing-layout-padding": {
+    "margin": "var(--spacing-layout-padding)"
+  },
+  ".mx-spacing-layout-padding": {
+    "marginLeft": "var(--spacing-layout-padding)",
+    "marginRight": "var(--spacing-layout-padding)"
+  },
+  ".my-spacing-layout-padding": {
+    "marginTop": "var(--spacing-layout-padding)",
+    "marginBottom": "var(--spacing-layout-padding)"
+  },
+  ".mt-spacing-layout-padding": {
+    "marginTop": "var(--spacing-layout-padding)"
+  },
+  ".mr-spacing-layout-padding": {
+    "marginRight": "var(--spacing-layout-padding)"
+  },
+  ".mb-spacing-layout-padding": {
+    "marginBottom": "var(--spacing-layout-padding)"
+  },
+  ".ml-spacing-layout-padding": {
+    "marginLeft": "var(--spacing-layout-padding)"
+  },
+  ".gap-spacing-layout-padding": {
+    "gap": "var(--spacing-layout-padding)"
+  },
+  ".p-spacing-layout-gutter": {
+    "padding": "var(--spacing-layout-gutter)"
+  },
+  ".px-spacing-layout-gutter": {
+    "paddingLeft": "var(--spacing-layout-gutter)",
+    "paddingRight": "var(--spacing-layout-gutter)"
+  },
+  ".py-spacing-layout-gutter": {
+    "paddingTop": "var(--spacing-layout-gutter)",
+    "paddingBottom": "var(--spacing-layout-gutter)"
+  },
+  ".pt-spacing-layout-gutter": {
+    "paddingTop": "var(--spacing-layout-gutter)"
+  },
+  ".pr-spacing-layout-gutter": {
+    "paddingRight": "var(--spacing-layout-gutter)"
+  },
+  ".pb-spacing-layout-gutter": {
+    "paddingBottom": "var(--spacing-layout-gutter)"
+  },
+  ".pl-spacing-layout-gutter": {
+    "paddingLeft": "var(--spacing-layout-gutter)"
+  },
+  ".m-spacing-layout-gutter": {
+    "margin": "var(--spacing-layout-gutter)"
+  },
+  ".mx-spacing-layout-gutter": {
+    "marginLeft": "var(--spacing-layout-gutter)",
+    "marginRight": "var(--spacing-layout-gutter)"
+  },
+  ".my-spacing-layout-gutter": {
+    "marginTop": "var(--spacing-layout-gutter)",
+    "marginBottom": "var(--spacing-layout-gutter)"
+  },
+  ".mt-spacing-layout-gutter": {
+    "marginTop": "var(--spacing-layout-gutter)"
+  },
+  ".mr-spacing-layout-gutter": {
+    "marginRight": "var(--spacing-layout-gutter)"
+  },
+  ".mb-spacing-layout-gutter": {
+    "marginBottom": "var(--spacing-layout-gutter)"
+  },
+  ".ml-spacing-layout-gutter": {
+    "marginLeft": "var(--spacing-layout-gutter)"
+  },
+  ".gap-spacing-layout-gutter": {
+    "gap": "var(--spacing-layout-gutter)"
+  },
   ".p-0": {
     "padding": "var(--spacing-0)"
   },
@@ -165,6 +385,55 @@ export default function ({ addUtilities }) {
   },
   ".gap-0": {
     "gap": "var(--spacing-0)"
+  },
+  ".p-xxs": {
+    "padding": "var(--spacing-xxs)"
+  },
+  ".px-xxs": {
+    "paddingLeft": "var(--spacing-xxs)",
+    "paddingRight": "var(--spacing-xxs)"
+  },
+  ".py-xxs": {
+    "paddingTop": "var(--spacing-xxs)",
+    "paddingBottom": "var(--spacing-xxs)"
+  },
+  ".pt-xxs": {
+    "paddingTop": "var(--spacing-xxs)"
+  },
+  ".pr-xxs": {
+    "paddingRight": "var(--spacing-xxs)"
+  },
+  ".pb-xxs": {
+    "paddingBottom": "var(--spacing-xxs)"
+  },
+  ".pl-xxs": {
+    "paddingLeft": "var(--spacing-xxs)"
+  },
+  ".m-xxs": {
+    "margin": "var(--spacing-xxs)"
+  },
+  ".mx-xxs": {
+    "marginLeft": "var(--spacing-xxs)",
+    "marginRight": "var(--spacing-xxs)"
+  },
+  ".my-xxs": {
+    "marginTop": "var(--spacing-xxs)",
+    "marginBottom": "var(--spacing-xxs)"
+  },
+  ".mt-xxs": {
+    "marginTop": "var(--spacing-xxs)"
+  },
+  ".mr-xxs": {
+    "marginRight": "var(--spacing-xxs)"
+  },
+  ".mb-xxs": {
+    "marginBottom": "var(--spacing-xxs)"
+  },
+  ".ml-xxs": {
+    "marginLeft": "var(--spacing-xxs)"
+  },
+  ".gap-xxs": {
+    "gap": "var(--spacing-xxs)"
   },
   ".p-xs": {
     "padding": "var(--spacing-xs)"
@@ -462,199 +731,225 @@ export default function ({ addUtilities }) {
   }
 },
     ...{
-  ".text-body-body-standard": {
-    "fontFamily": "var(--body-body-standard-fontFamily)",
-    "fontSize": "var(--body-body-standard-fontSize)",
-    "fontWeight": "var(--body-body-standard-fontWeight)",
-    "lineHeight": "var(--body-body-standard-lineHeight)",
-    "letterSpacing": "var(--body-body-standard-letterSpacing)",
+  ".text-article-heading": {
+    "fontFamily": "var(--article-heading-fontFamily)",
+    "fontSize": "var(--article-heading-fontSize)",
+    "fontWeight": "var(--article-heading-fontWeight)",
+    "lineHeight": "var(--article-heading-lineHeight)",
+    "letterSpacing": "var(--article-heading-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-standard-regular": {
-    "fontFamily": "var(--body-body-standard-regular-fontFamily)",
-    "fontSize": "var(--body-body-standard-regular-fontSize)",
-    "fontWeight": "var(--body-body-standard-regular-fontWeight)",
-    "lineHeight": "var(--body-body-standard-regular-lineHeight)",
-    "letterSpacing": "var(--body-body-standard-regular-letterSpacing)",
+  ".text-article-heading-light": {
+    "fontFamily": "var(--article-heading-light-fontFamily)",
+    "fontSize": "var(--article-heading-light-fontSize)",
+    "fontWeight": "var(--article-heading-light-fontWeight)",
+    "lineHeight": "var(--article-heading-light-lineHeight)",
+    "letterSpacing": "var(--article-heading-light-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-standard-bold": {
-    "fontFamily": "var(--body-body-standard-bold-fontFamily)",
-    "fontSize": "var(--body-body-standard-bold-fontSize)",
-    "fontWeight": "var(--body-body-standard-bold-fontWeight)",
-    "lineHeight": "var(--body-body-standard-bold-lineHeight)",
-    "letterSpacing": "var(--body-body-standard-bold-letterSpacing)",
+  ".text-article-heading-alternate": {
+    "fontFamily": "var(--article-heading-alternate-fontFamily)",
+    "fontSize": "var(--article-heading-alternate-fontSize)",
+    "fontWeight": "var(--article-heading-alternate-fontWeight)",
+    "lineHeight": "var(--article-heading-alternate-lineHeight)",
+    "letterSpacing": "var(--article-heading-alternate-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-article": {
-    "fontFamily": "var(--body-body-article-fontFamily)",
-    "fontSize": "var(--body-body-article-fontSize)",
-    "fontWeight": "var(--body-body-article-fontWeight)",
-    "lineHeight": "var(--body-body-article-lineHeight)",
-    "letterSpacing": "var(--body-body-article-letterSpacing)",
+  ".text-article-heading-2": {
+    "fontFamily": "var(--article-heading-2-fontFamily)",
+    "fontSize": "var(--article-heading-2-fontSize)",
+    "fontWeight": "var(--article-heading-2-fontWeight)",
+    "lineHeight": "var(--article-heading-2-lineHeight)",
+    "letterSpacing": "var(--article-heading-2-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-article-intro": {
-    "fontFamily": "var(--body-body-article-intro-fontFamily)",
-    "fontSize": "var(--body-body-article-intro-fontSize)",
-    "fontWeight": "var(--body-body-article-intro-fontWeight)",
-    "lineHeight": "var(--body-body-article-intro-lineHeight)",
-    "letterSpacing": "var(--body-body-article-intro-letterSpacing)",
+  ".text-article-heading-2-light": {
+    "fontFamily": "var(--article-heading-2-light-fontFamily)",
+    "fontSize": "var(--article-heading-2-light-fontSize)",
+    "fontWeight": "var(--article-heading-2-light-fontWeight)",
+    "lineHeight": "var(--article-heading-2-light-lineHeight)",
+    "letterSpacing": "var(--article-heading-2-light-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-article-type": {
-    "fontFamily": "var(--body-body-article-type-fontFamily)",
-    "fontSize": "var(--body-body-article-type-fontSize)",
-    "fontWeight": "var(--body-body-article-type-fontWeight)",
-    "lineHeight": "var(--body-body-article-type-lineHeight)",
-    "letterSpacing": "var(--body-body-article-type-letterSpacing)",
+  ".text-article-heading-2-alternate": {
+    "fontFamily": "var(--article-heading-2-alternate-fontFamily)",
+    "fontSize": "var(--article-heading-2-alternate-fontSize)",
+    "fontWeight": "var(--article-heading-2-alternate-fontWeight)",
+    "lineHeight": "var(--article-heading-2-alternate-lineHeight)",
+    "letterSpacing": "var(--article-heading-2-alternate-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-article-body": {
+    "fontFamily": "var(--article-body-fontFamily)",
+    "fontSize": "var(--article-body-fontSize)",
+    "fontWeight": "var(--article-body-fontWeight)",
+    "lineHeight": "var(--article-body-lineHeight)",
+    "letterSpacing": "var(--article-body-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-article-type": {
+    "fontFamily": "var(--article-type-fontFamily)",
+    "fontSize": "var(--article-type-fontSize)",
+    "fontWeight": "var(--article-type-fontWeight)",
+    "lineHeight": "var(--article-type-lineHeight)",
+    "letterSpacing": "var(--article-type-letterSpacing)",
     "textDecoration": "none",
     "fontVariant": "all-small-caps"
   },
-  ".text-body-body-article-city": {
-    "fontFamily": "var(--body-body-article-city-fontFamily)",
-    "fontSize": "var(--body-body-article-city-fontSize)",
-    "fontWeight": "var(--body-body-article-city-fontWeight)",
-    "lineHeight": "var(--body-body-article-city-lineHeight)",
-    "letterSpacing": "var(--body-body-article-city-letterSpacing)",
+  ".text-article-intro": {
+    "fontFamily": "var(--article-intro-fontFamily)",
+    "fontSize": "var(--article-intro-fontSize)",
+    "fontWeight": "var(--article-intro-fontWeight)",
+    "lineHeight": "var(--article-intro-lineHeight)",
+    "letterSpacing": "var(--article-intro-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-article-city": {
+    "fontFamily": "var(--article-city-fontFamily)",
+    "fontSize": "var(--article-city-fontSize)",
+    "fontWeight": "var(--article-city-fontWeight)",
+    "lineHeight": "var(--article-city-lineHeight)",
+    "letterSpacing": "var(--article-city-letterSpacing)",
     "textDecoration": "none",
     "fontVariant": "all-small-caps"
   },
-  ".text-body-body-article-quote": {
-    "fontFamily": "var(--body-body-article-quote-fontFamily)",
-    "fontSize": "var(--body-body-article-quote-fontSize)",
-    "fontWeight": "var(--body-body-article-quote-fontWeight)",
-    "lineHeight": "var(--body-body-article-quote-lineHeight)",
-    "letterSpacing": "var(--body-body-article-quote-letterSpacing)",
+  ".text-article-quote": {
+    "fontFamily": "var(--article-quote-fontFamily)",
+    "fontSize": "var(--article-quote-fontSize)",
+    "fontWeight": "var(--article-quote-fontWeight)",
+    "lineHeight": "var(--article-quote-lineHeight)",
+    "letterSpacing": "var(--article-quote-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-body-article-question": {
-    "fontFamily": "var(--body-body-article-question-fontFamily)",
-    "fontSize": "var(--body-body-article-question-fontSize)",
-    "fontWeight": "var(--body-body-article-question-fontWeight)",
-    "lineHeight": "var(--body-body-article-question-lineHeight)",
-    "letterSpacing": "var(--body-body-article-question-letterSpacing)",
+  ".text-article-question": {
+    "fontFamily": "var(--article-question-fontFamily)",
+    "fontSize": "var(--article-question-fontSize)",
+    "fontWeight": "var(--article-question-fontWeight)",
+    "lineHeight": "var(--article-question-lineHeight)",
+    "letterSpacing": "var(--article-question-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-drop-cap": {
-    "fontFamily": "var(--body-drop-cap-fontFamily)",
-    "fontSize": "var(--body-drop-cap-fontSize)",
-    "fontWeight": "var(--body-drop-cap-fontWeight)",
-    "lineHeight": "var(--body-drop-cap-lineHeight)",
-    "letterSpacing": "var(--body-drop-cap-letterSpacing)",
+  ".text-article-drop-cap": {
+    "fontFamily": "var(--article-drop-cap-fontFamily)",
+    "fontSize": "var(--article-drop-cap-fontSize)",
+    "fontWeight": "var(--article-drop-cap-fontWeight)",
+    "lineHeight": "var(--article-drop-cap-lineHeight)",
+    "letterSpacing": "var(--article-drop-cap-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-body-drop-cap-2": {
-    "fontFamily": "var(--body-drop-cap-2-fontFamily)",
-    "fontSize": "var(--body-drop-cap-2-fontSize)",
-    "fontWeight": "var(--body-drop-cap-2-fontWeight)",
-    "lineHeight": "var(--body-drop-cap-2-lineHeight)",
-    "letterSpacing": "var(--body-drop-cap-2-letterSpacing)",
+  ".text-article-drop-cap-alternate": {
+    "fontFamily": "var(--article-drop-cap-alternate-fontFamily)",
+    "fontSize": "var(--article-drop-cap-alternate-fontSize)",
+    "fontWeight": "var(--article-drop-cap-alternate-fontWeight)",
+    "lineHeight": "var(--article-drop-cap-alternate-lineHeight)",
+    "letterSpacing": "var(--article-drop-cap-alternate-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-headings-heading-article": {
-    "fontFamily": "var(--headings-heading-article-fontFamily)",
-    "fontSize": "var(--headings-heading-article-fontSize)",
-    "fontWeight": "var(--headings-heading-article-fontWeight)",
-    "lineHeight": "var(--headings-heading-article-lineHeight)",
-    "letterSpacing": "var(--headings-heading-article-letterSpacing)",
+  ".text-body-light": {
+    "fontFamily": "var(--body-light-fontFamily)",
+    "fontSize": "var(--body-light-fontSize)",
+    "fontWeight": "var(--body-light-fontWeight)",
+    "lineHeight": "var(--body-light-lineHeight)",
+    "letterSpacing": "var(--body-light-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-headings-headings-page": {
-    "fontFamily": "var(--headings-headings-page-fontFamily)",
-    "fontSize": "var(--headings-headings-page-fontSize)",
-    "fontWeight": "var(--headings-headings-page-fontWeight)",
-    "lineHeight": "var(--headings-headings-page-lineHeight)",
-    "letterSpacing": "var(--headings-headings-page-letterSpacing)",
+  ".text-body-regular": {
+    "fontFamily": "var(--body-regular-fontFamily)",
+    "fontSize": "var(--body-regular-fontSize)",
+    "fontWeight": "var(--body-regular-fontWeight)",
+    "lineHeight": "var(--body-regular-lineHeight)",
+    "letterSpacing": "var(--body-regular-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-headings-subheading": {
-    "fontFamily": "var(--headings-subheading-fontFamily)",
-    "fontSize": "var(--headings-subheading-fontSize)",
-    "fontWeight": "var(--headings-subheading-fontWeight)",
-    "lineHeight": "var(--headings-subheading-lineHeight)",
-    "letterSpacing": "var(--headings-subheading-letterSpacing)",
+  ".text-body-bold": {
+    "fontFamily": "var(--body-bold-fontFamily)",
+    "fontSize": "var(--body-bold-fontSize)",
+    "fontWeight": "var(--body-bold-fontWeight)",
+    "lineHeight": "var(--body-bold-lineHeight)",
+    "letterSpacing": "var(--body-bold-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-headings-heading-2": {
-    "fontFamily": "var(--headings-heading-2-fontFamily)",
-    "fontSize": "var(--headings-heading-2-fontSize)",
-    "fontWeight": "var(--headings-heading-2-fontWeight)",
-    "lineHeight": "var(--headings-heading-2-lineHeight)",
-    "letterSpacing": "var(--headings-heading-2-letterSpacing)",
-    "textDecoration": "none"
-  },
-  ".text-headings-heading-3": {
-    "fontFamily": "var(--headings-heading-3-fontFamily)",
-    "fontSize": "var(--headings-heading-3-fontSize)",
-    "fontWeight": "var(--headings-heading-3-fontWeight)",
-    "lineHeight": "var(--headings-heading-3-lineHeight)",
-    "letterSpacing": "var(--headings-heading-3-letterSpacing)",
-    "textDecoration": "none"
-  },
-  ".text-headings-heading-article-feed": {
-    "fontFamily": "var(--headings-heading-article-feed-fontFamily)",
-    "fontSize": "var(--headings-heading-article-feed-fontSize)",
-    "fontWeight": "var(--headings-heading-article-feed-fontWeight)",
-    "lineHeight": "var(--headings-heading-article-feed-lineHeight)",
-    "letterSpacing": "var(--headings-heading-article-feed-letterSpacing)",
+  ".text-body-uppercase": {
+    "fontFamily": "var(--body-uppercase-fontFamily)",
+    "fontSize": "var(--body-uppercase-fontSize)",
+    "fontWeight": "var(--body-uppercase-fontWeight)",
+    "lineHeight": "var(--body-uppercase-lineHeight)",
+    "letterSpacing": "var(--body-uppercase-letterSpacing)",
     "textDecoration": "none",
     "fontVariant": "all-small-caps"
   },
-  ".text-meta-meta-standard": {
-    "fontFamily": "var(--meta-meta-standard-fontFamily)",
-    "fontSize": "var(--meta-meta-standard-fontSize)",
-    "fontWeight": "var(--meta-meta-standard-fontWeight)",
-    "lineHeight": "var(--meta-meta-standard-lineHeight)",
-    "letterSpacing": "var(--meta-meta-standard-letterSpacing)",
+  ".text-body-uppercase-bold": {
+    "fontFamily": "var(--body-uppercase-bold-fontFamily)",
+    "fontSize": "var(--body-uppercase-bold-fontSize)",
+    "fontWeight": "var(--body-uppercase-bold-fontWeight)",
+    "lineHeight": "var(--body-uppercase-bold-lineHeight)",
+    "letterSpacing": "var(--body-uppercase-bold-letterSpacing)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-heading-2": {
+    "fontFamily": "var(--heading-2-fontFamily)",
+    "fontSize": "var(--heading-2-fontSize)",
+    "fontWeight": "var(--heading-2-fontWeight)",
+    "lineHeight": "var(--heading-2-lineHeight)",
+    "letterSpacing": "var(--heading-2-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-caption": {
-    "fontFamily": "var(--meta-meta-caption-fontFamily)",
-    "fontSize": "var(--meta-meta-caption-fontSize)",
-    "fontWeight": "var(--meta-meta-caption-fontWeight)",
-    "lineHeight": "var(--meta-meta-caption-lineHeight)",
-    "letterSpacing": "var(--meta-meta-caption-letterSpacing)",
+  ".text-heading-3": {
+    "fontFamily": "var(--heading-3-fontFamily)",
+    "fontSize": "var(--heading-3-fontSize)",
+    "fontWeight": "var(--heading-3-fontWeight)",
+    "lineHeight": "var(--heading-3-lineHeight)",
+    "letterSpacing": "var(--heading-3-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-credits": {
-    "fontFamily": "var(--meta-meta-credits-fontFamily)",
-    "fontSize": "var(--meta-meta-credits-fontSize)",
-    "fontWeight": "var(--meta-meta-credits-fontWeight)",
-    "lineHeight": "var(--meta-meta-credits-lineHeight)",
-    "letterSpacing": "var(--meta-meta-credits-letterSpacing)",
+  ".text-heading-page": {
+    "fontFamily": "var(--heading-page-fontFamily)",
+    "fontSize": "var(--heading-page-fontSize)",
+    "fontWeight": "var(--heading-page-fontWeight)",
+    "lineHeight": "var(--heading-page-lineHeight)",
+    "letterSpacing": "var(--heading-page-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-author": {
-    "fontFamily": "var(--meta-meta-author-fontFamily)",
-    "fontSize": "var(--meta-meta-author-fontSize)",
-    "fontWeight": "var(--meta-meta-author-fontWeight)",
-    "lineHeight": "var(--meta-meta-author-lineHeight)",
-    "letterSpacing": "var(--meta-meta-author-letterSpacing)",
+  ".text-heading-subheading": {
+    "fontFamily": "var(--heading-subheading-fontFamily)",
+    "fontSize": "var(--heading-subheading-fontSize)",
+    "fontWeight": "var(--heading-subheading-fontWeight)",
+    "lineHeight": "var(--heading-subheading-lineHeight)",
+    "letterSpacing": "var(--heading-subheading-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-date": {
-    "fontFamily": "var(--meta-meta-date-fontFamily)",
-    "fontSize": "var(--meta-meta-date-fontSize)",
-    "fontWeight": "var(--meta-meta-date-fontWeight)",
-    "lineHeight": "var(--meta-meta-date-lineHeight)",
-    "letterSpacing": "var(--meta-meta-date-letterSpacing)",
+  ".text-heading-uppercase": {
+    "fontFamily": "var(--heading-uppercase-fontFamily)",
+    "fontSize": "var(--heading-uppercase-fontSize)",
+    "fontWeight": "var(--heading-uppercase-fontWeight)",
+    "lineHeight": "var(--heading-uppercase-lineHeight)",
+    "letterSpacing": "var(--heading-uppercase-letterSpacing)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-meta-light": {
+    "fontFamily": "var(--meta-light-fontFamily)",
+    "fontSize": "var(--meta-light-fontSize)",
+    "fontWeight": "var(--meta-light-fontWeight)",
+    "lineHeight": "var(--meta-light-lineHeight)",
+    "letterSpacing": "var(--meta-light-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-timestamp": {
-    "fontFamily": "var(--meta-meta-timestamp-fontFamily)",
-    "fontSize": "var(--meta-meta-timestamp-fontSize)",
-    "fontWeight": "var(--meta-meta-timestamp-fontWeight)",
-    "lineHeight": "var(--meta-meta-timestamp-lineHeight)",
-    "letterSpacing": "var(--meta-meta-timestamp-letterSpacing)",
+  ".text-meta-regular": {
+    "fontFamily": "var(--meta-regular-fontFamily)",
+    "fontSize": "var(--meta-regular-fontSize)",
+    "fontWeight": "var(--meta-regular-fontWeight)",
+    "lineHeight": "var(--meta-regular-lineHeight)",
+    "letterSpacing": "var(--meta-regular-letterSpacing)",
     "textDecoration": "none"
   },
-  ".text-meta-meta-ad": {
-    "fontFamily": "var(--meta-meta-ad-fontFamily)",
-    "fontSize": "var(--meta-meta-ad-fontSize)",
-    "fontWeight": "var(--meta-meta-ad-fontWeight)",
-    "lineHeight": "var(--meta-meta-ad-lineHeight)",
-    "letterSpacing": "var(--meta-meta-ad-letterSpacing)",
+  ".text-meta-bold": {
+    "fontFamily": "var(--meta-bold-fontFamily)",
+    "fontSize": "var(--meta-bold-fontSize)",
+    "fontWeight": "var(--meta-bold-fontWeight)",
+    "lineHeight": "var(--meta-bold-lineHeight)",
+    "letterSpacing": "var(--meta-bold-letterSpacing)",
     "textDecoration": "none"
   }
 }

@@ -7,19 +7,19 @@
       },
       "s": {
         "$type": "dimension",
-        "$value": "{typography.font-size.16}"
+        "$value": "{typography.font-size.18}"
       },
       "m": {
         "$type": "dimension",
-        "$value": "{typography.font-size.18}"
+        "$value": "{typography.font-size.20}"
       },
       "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.26}"
+        "$value": "{typography.font-size.36}"
       },
       "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.28}"
+        "$value": "{typography.font-size.40}"
       }
     },
     "body": {
@@ -29,54 +29,36 @@
       },
       "s": {
         "$type": "dimension",
-        "$value": "{typography.font-size.14}"
+        "$value": "{typography.font-size.16}"
       },
       "m": {
         "$type": "dimension",
-        "$value": "{typography.font-size.16}"
+        "$value": "{typography.font-size.18}"
       },
       "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.18}"
+        "$value": "{typography.font-size.20}"
       },
       "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.20}"
+        "$value": "{typography.font-size.22}"
       },
       "xxl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.24}"
+        "$value": "{typography.font-size.28}"
       },
       "drop-cap": {
         "$type": "dimension",
-        "$value": "{typography.font-size.88}"
+        "$value": "{typography.font-size.96}"
       }
     },
     "meta": {
       "$type": "dimension",
       "$value": "{typography.font-size.14}"
     },
-    "button": {
+    "Number": {
       "$type": "dimension",
-      "$value": "{typography.font-size.14}"
-    }
-  },
-  "Layout": {
-    "columns": {
-      "$type": "dimension",
-      "$value": "4px"
-    },
-    "padding": {
-      "$type": "dimension",
-      "$value": "16px"
-    },
-    "gutter": {
-      "$type": "dimension",
-      "$value": "16px"
-    },
-    "column_width_(type:_center)": {
-      "$type": "dimension",
-      "$value": "16px"
+      "$value": "0px"
     }
   }
 }

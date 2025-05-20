@@ -4,14 +4,14 @@ import fs from 'fs';
 // 🔧 Config
 // ----------------------
 const files = {
-    primitives: './tokens/primitives.mode-1.tokens.json',
+    primitives: './tokens/primitives.value.tokens.json',
     semantics: './tokens/semantic-colors.light.tokens.json',
-    spacing: './tokens/semantic-spacing.mode-1.tokens.json',
+    spacing: './tokens/semantic-layout.mobile.tokens.json',
     typography: './tokens/text.styles.tokens.json',
     responsiveTypography: {
-        mobile: './tokens/layout-and-typography.mobile.tokens.json',
-        tablet: './tokens/layout-and-typography.tablet-md-768px.tokens.json',
-        desktop: './tokens/layout-and-typography.desktop-lg-1024px.tokens.json'
+        mobile: './tokens/semantic-typography.mobile.tokens.json',
+        tablet: './tokens/semantic-typography.tablet.tokens.json',
+        desktop: './tokens/semantic-typography.desktop.tokens.json'
     },
     componentStates: {
         default: './tokens/component-colors.default.tokens.json',
@@ -33,6 +33,42 @@ function load(file) {
     }
 }
 
+// Legacy reference mapping to handle old token references
+const legacyReferenceMap = {
+    // Font size mappings
+    'font-size.heading.xl': '28px',
+    'font-size.heading.l': '25px',
+    'font-size.heading.m': '18px',
+    'font-size.heading.s': '16px',
+    'font-size.heading.xs': '12px',
+    'font-size.body.xxl': '24px',
+    'font-size.body.xl': '18px',
+    'font-size.body.l': '18px',
+    'font-size.body.m': '16px',
+    'font-size.body.s': '14px',
+    'font-size.body.xs': '12px',
+    'font-size.body.drop-cap': '90px',
+    'font-size.meta': '14px',
+    
+    // Font family mappings
+    'typography.font-family.gulliver semibold': "'Gulliver Semibold', serif",
+    'typography.font-family.gulliver': "'Gulliver', serif",
+    'typography.font-family.fira-sans': "'Fira Sans', sans-serif",
+    'typography.font-family.montserrat': "'Montserrat', sans-serif",
+    'typography.font-family.abril-fatface': "'Abril Fatface', cursive",
+    
+    // Font weight mappings
+    'typography.font-weight.light': '300',
+    'typography.font-weight.regular': '400',
+    'typography.font-weight.bold': '700',
+    
+    // Letter spacing mappings
+    'typography.letter-spacing.0': '0%',
+    'typography.letter-spacing.s': '1px',
+    'typography.letter-spacing.m': '2px',
+    'typography.letter-spacing.l': '4px'
+};
+
 function flatten(obj, path = [], result = {}) {
     for (const [key, val] of Object.entries(obj)) {
         const current = [...path, key];
@@ -53,6 +89,11 @@ function resolveReference(ref, flatTokens, visited = new Set()) {
     
     const path = ref.replace(/[{}]/g, '');
     
+    // Check if this is a legacy reference that needs to be mapped
+    if (legacyReferenceMap[path]) {
+        return legacyReferenceMap[path];
+    }
+    
     // Prevent circular references
     if (visited.has(path)) {
         console.warn(`Circular reference detected: ${path}`);
@@ -60,10 +101,53 @@ function resolveReference(ref, flatTokens, visited = new Set()) {
     }
     
     visited.add(path);
-    const token = flatTokens[path];
+    
+    // Try to find the token using the path
+    let token = flatTokens[path];
+    
+    // If not found, try some common variations
+    if (!token) {
+        // Try with different prefixes/formats
+        const variations = [
+            path.replace(/^font-size\./, 'fontSize.'),
+            path.replace(/^typography\.font-family\./, 'fontFamily.'),
+            path.replace(/\s+/g, '-').toLowerCase(),
+            path.replace(/\./g, '-').toLowerCase()
+        ];
+        
+        for (const variant of variations) {
+            if (flatTokens[variant]) {
+                token = flatTokens[variant];
+                break;
+            }
+        }
+    }
     
     if (!token) {
         console.warn(`Reference not found: ${path}`);
+        
+        // For font sizes, provide fallback values based on the legacy map
+        if (path.includes('font-size') || path.includes('fontSize')) {
+            // Default to medium size if no specific match
+            return legacyReferenceMap['font-size.body.m'] || '16px';
+        }
+        
+        // For font families, provide fallback values
+        if (path.includes('font-family') || path.includes('fontFamily')) {
+            // Default to sans-serif if no specific match
+            return "'Fira Sans', sans-serif";
+        }
+        
+        // For font weights
+        if (path.includes('font-weight') || path.includes('fontWeight')) {
+            return '400';
+        }
+        
+        // For letter spacing
+        if (path.includes('letter-spacing') || path.includes('letterSpacing')) {
+            return '0%';
+        }
+        
         return undefined;
     }
     
@@ -99,7 +183,8 @@ console.log('🔄 Loading and processing token files...');
 // Load all base tokens
 const baseTokens = {
     ...load(files.primitives),
-    ...load(files.semantics)
+    ...load(files.semantics),
+    ...load(files.typography)  // Add typography tokens to base tokens for reference resolution
 };
 
 const flattenedBase = flatten(baseTokens);
@@ -114,36 +199,45 @@ const primitiveLetterSpacings = {};
 
 for (const [tokenPath, token] of Object.entries(flattenedBase)) {
     // Process font families
-    if (tokenPath.startsWith('typography.font-family.')) {
+    if (tokenPath.includes('font-family') || tokenPath.includes('fontFamily')) {
         const fontName = tokenPath.split('.').pop();
         const fontKey = `font-family-${kebab(fontName)}`;
         primitiveFontFamilies[kebab(fontName)] = toVar(fontKey);
         cssVarMap[fontKey] = token.$value;
     }
     // Process font weights
-    else if (tokenPath.startsWith('typography.font-weight.')) {
+    else if (tokenPath.includes('font-weight') || tokenPath.includes('fontWeight')) {
         const weightName = tokenPath.split('.').pop();
         const weightKey = `font-weight-${kebab(weightName)}`;
         primitiveFontWeights[kebab(weightName)] = toVar(weightKey);
         cssVarMap[weightKey] = token.$value;
     }
     // Process letter spacings
-    else if (tokenPath.startsWith('typography.letter-spacing.')) {
+    else if (tokenPath.includes('letter-spacing') || tokenPath.includes('letterSpacing')) {
         const spacingName = tokenPath.split('.').pop();
         const spacingKey = `letter-spacing-${kebab(spacingName)}`;
         primitiveLetterSpacings[kebab(spacingName)] = toVar(spacingKey);
         cssVarMap[spacingKey] = token.$value;
     }
     // Process font sizes
-    else if (tokenPath.startsWith('typography.font-size.')) {
+    else if (tokenPath.includes('font-size') || tokenPath.includes('fontSize')) {
         const sizeName = tokenPath.split('.').pop();
         const sizeKey = `font-size-${kebab(sizeName)}`;
         primitiveFontSizes[kebab(sizeName)] = toVar(sizeKey);
         cssVarMap[sizeKey] = token.$value;
+        
+        // Add additional mappings for common references
+        if (sizeName.includes('heading') || sizeName.includes('body')) {
+            // Create mappings for the old reference format
+            const category = sizeName.includes('heading') ? 'heading' : 'body';
+            const size = sizeName.split('-').pop();
+            cssVarMap[`font-size-${category}-${size}`] = token.$value;
+        }
     }
 
-    // Also create meta font size tokens for backward compatibility
-    if (tokenPath.startsWith('typography.font-size.font-size-14')) {
+    // Create meta font size tokens for backward compatibility
+    if (tokenPath.includes('meta') && (tokenPath.includes('font-size') || tokenPath.includes('fontSize'))) {
+        cssVarMap['font-size-meta'] = token.$value;
         cssVarMap['font-size-meta-font-size-meta'] = token.$value;
     }
 }

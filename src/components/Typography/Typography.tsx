@@ -53,19 +53,19 @@ export const BodyArticleQuote = ({ children, className = '' }: TypographyProps) 
 
 // Meta text
 export const MetaStandard = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-meta-standard ${className}`}>{children}</span>
+  <span className={`text-meta-standard ${className}`}>{children}</span>
 );
 
 export const MetaCaption = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-meta-caption ${className}`}>{children}</span>
+  <span className={`text-meta-caption ${className}`}>{children}</span>
 );
 
 export const MetaAuthor = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-meta-author ${className}`}>{children}</span>
+  <span className={`text-meta-author ${className}`}>{children}</span>
 );
 
 export const MetaDate = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-meta-date ${className}`}>{children}</span>
+  <span className={`text-meta-date ${className}`}>{children}</span>
 );
 
 // Special text elements

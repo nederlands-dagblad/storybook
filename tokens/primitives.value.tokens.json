@@ -120,6 +120,10 @@
       "white": {
         "$type": "color",
         "$value": "#ffffff"
+      },
+      "white-30": {
+        "$type": "color",
+        "$value": "#ffffff4d"
       }
     }
   },
@@ -243,15 +247,15 @@
         "$type": "dimension",
         "$value": "0px"
       },
-      "1": {
+      "s": {
         "$type": "dimension",
         "$value": "1.6px"
       },
-      "2": {
+      "m": {
         "$type": "dimension",
         "$value": "2.4px"
       },
-      "4": {
+      "l": {
         "$type": "dimension",
         "$value": "4px"
       }
@@ -262,21 +266,25 @@
       "$type": "dimension",
       "$value": "0px"
     },
-    "xs": {
+    "xxs": {
       "$type": "dimension",
       "$value": "4px"
     },
-    "s": {
+    "xs": {
       "$type": "dimension",
       "$value": "8px"
     },
-    "m": {
+    "s": {
       "$type": "dimension",
       "$value": "16px"
     },
+    "m": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
     "l": {
       "$type": "dimension",
-      "$value": "32px"
+      "$value": "40px"
     },
     "xl": {
       "$type": "dimension",
