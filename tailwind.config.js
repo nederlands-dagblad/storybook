@@ -16,6 +16,8 @@ import {
 
 import tokenUtilities from './tokens.utilities.js';
 
+// No longer needed as we're using CSS classes directly
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -51,12 +53,29 @@ export default {
         },
         fontSize: {
             ...fontSizes,
-            ...primitiveFontSizes
+            ...primitiveFontSizes,
+            'heading-xs': 'var(--font-size-heading-xs)',
+            'heading-s': 'var(--font-size-heading-s)',
+            'heading-m': 'var(--font-size-heading-m)',
+            'heading-l': 'var(--font-size-heading-l)',
+            'heading-xl': 'var(--font-size-heading-xl)',
+            'body-xs': 'var(--font-size-body-xs)',
+            'body-s': 'var(--font-size-body-s)',
+            'body-m': 'var(--font-size-body-m)',
+            'body-l': 'var(--font-size-body-l)',
+            'body-xl': 'var(--font-size-body-xl)',
+            'body-xxl': 'var(--font-size-body-xxl)',
+            'body-drop-cap': 'var(--font-size-body-drop-cap)',
+            'meta': 'var(--font-size-meta)'
         },
         lineHeight: lineHeights,
         letterSpacing: {
             ...letterSpacings,
-            ...primitiveLetterSpacings
+            ...primitiveLetterSpacings,
+            '0': 'var(--typography-letter-spacing-0)',
+            's': 'var(--typography-letter-spacing-s)',
+            'm': 'var(--typography-letter-spacing-m)',
+            'l': 'var(--typography-letter-spacing-l)'
         },
     },
   },

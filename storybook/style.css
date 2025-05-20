@@ -1,13 +1,13 @@
-.sbdocs-content h1 {
+.sbdocs-content > h1 {
     margin-bottom: 3.5rem !important;
 }
 
-.sbdocs-content h2 {
+.sbdocs-content > h2 {
     margin-top: 4.5rem !important;
     font-weight: bold;
 }
 
-.sbdocs-content h3 {
+.sbdocs-content > h3 {
     margin-top: 3rem !important;
 }
 

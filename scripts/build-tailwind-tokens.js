@@ -523,8 +523,57 @@ function processResponsiveTypography() {
                     processResponsiveTypographySection(value, key, breakpoint, combinedTokens);
                 }
             }
+            
+            // Process font sizes specifically
+            if (rawTokens['font-size']) {
+                processFontSizes(rawTokens['font-size'], breakpoint);
+            }
         } catch (error) {
             console.error(`Error processing ${breakpoint} typography: ${error.message}`);
+        }
+    }
+}
+
+// Process font sizes from semantic typography tokens
+function processFontSizes(fontSizes, breakpoint) {
+    // Process heading sizes
+    if (fontSizes.heading) {
+        Object.entries(fontSizes.heading).forEach(([size, value]) => {
+            if (value.$value) {
+                const varName = `font-size-heading-${size}`;
+                responsiveTokens[breakpoint][varName] = resolveReference(value.$value, flattenedBase) || value.$value;
+                
+                // For desktop, also add to the main CSS var map (without breakpoint suffix)
+                if (breakpoint === 'desktop') {
+                    cssVarMap[varName] = responsiveTokens[breakpoint][varName];
+                }
+            }
+        });
+    }
+    
+    // Process body sizes
+    if (fontSizes.body) {
+        Object.entries(fontSizes.body).forEach(([size, value]) => {
+            if (value.$value) {
+                const varName = `font-size-body-${size}`;
+                responsiveTokens[breakpoint][varName] = resolveReference(value.$value, flattenedBase) || value.$value;
+                
+                // For desktop, also add to the main CSS var map (without breakpoint suffix)
+                if (breakpoint === 'desktop') {
+                    cssVarMap[varName] = responsiveTokens[breakpoint][varName];
+                }
+            }
+        });
+    }
+    
+    // Process meta size
+    if (fontSizes.meta && fontSizes.meta.$value) {
+        const varName = `font-size-meta`;
+        responsiveTokens[breakpoint][varName] = resolveReference(fontSizes.meta.$value, flattenedBase) || value.$value;
+        
+        // For desktop, also add to the main CSS var map (without breakpoint suffix)
+        if (breakpoint === 'desktop') {
+            cssVarMap[varName] = responsiveTokens[breakpoint][varName];
         }
     }
 }
@@ -639,32 +688,27 @@ ${Object.entries(filteredCssVarMap)
 }
 
 /* Mobile Typography (Default) */
-:root {
+@media (max-width: 767px) {
+  :root {
 ${Object.entries(responsiveTokens.mobile)
     .filter(([key]) => !key.startsWith('old-'))
-    .map(([key, val]) => `  --${key}-mobile: ${val};`)
+    .map(([key, val]) => `    --${key}: ${val};`)
     .join('\n')}
+  }
 }
 
-/* Tablet Typography (768px+) */
-@media (min-width: 768px) {
+/* Tablet Typography (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   :root {
 ${Object.entries(responsiveTokens.tablet)
     .filter(([key]) => !key.startsWith('old-'))
-    .map(([key, val]) => `    --${key}-tablet: ${val};`)
+    .map(([key, val]) => `    --${key}: ${val};`)
     .join('\n')}
   }
 }
 
-/* Desktop Typography (1024px+) */
-@media (min-width: 1024px) {
-  :root {
-${Object.entries(responsiveTokens.desktop)
-    .filter(([key]) => !key.startsWith('old-'))
-    .map(([key, val]) => `    --${key}-desktop: ${val};`)
-    .join('\n')}
-  }
-}`.trim();
+/* Desktop Typography (1024px+) is defined in the main :root block */
+`.trim();
 
 fs.writeFileSync('./src/assets/css/tokens.css', cssOutput);
 console.log('✅ tokens.css written.');

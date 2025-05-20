@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-05-20T11:07:17.710Z
+ * Last generated: 2025-05-20T13:00:54.881Z
  */
 
 :root {
@@ -384,23 +384,57 @@
   --meta-bold-lineHeight: 140%;
   --meta-bold-textTransform: none;
   --meta-bold-textDecoration: none;
+  --font-size-heading-xs: 14px;
+  --font-size-heading-s: 18px;
+  --font-size-heading-m: 20px;
+  --font-size-heading-l: 40px;
+  --font-size-heading-xl: 48px;
+  --font-size-body-xs: 12px;
+  --font-size-body-s: 16px;
+  --font-size-body-m: 18px;
+  --font-size-body-l: 20px;
+  --font-size-body-xl: 22px;
+  --font-size-body-xxl: 28px;
+  --font-size-body-drop-cap: 96px;
+  --font-size-meta: 14px;
 }
 
 /* Mobile Typography (Default) */
-:root {
-
-}
-
-/* Tablet Typography (768px+) */
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   :root {
-
+    --font-size-heading-xs: 14px;
+    --font-size-heading-s: 16px;
+    --font-size-heading-m: 18px;
+    --font-size-heading-l: 26px;
+    --font-size-heading-xl: 28px;
+    --font-size-body-xs: 12px;
+    --font-size-body-s: 14px;
+    --font-size-body-m: 16px;
+    --font-size-body-l: 18px;
+    --font-size-body-xl: 20px;
+    --font-size-body-xxl: 24px;
+    --font-size-body-drop-cap: 88px;
+    --font-size-meta: 14px;
   }
 }
 
-/* Desktop Typography (1024px+) */
-@media (min-width: 1024px) {
+/* Tablet Typography (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   :root {
-
+    --font-size-heading-xs: 14px;
+    --font-size-heading-s: 18px;
+    --font-size-heading-m: 20px;
+    --font-size-heading-l: 36px;
+    --font-size-heading-xl: 40px;
+    --font-size-body-xs: 12px;
+    --font-size-body-s: 16px;
+    --font-size-body-m: 18px;
+    --font-size-body-l: 20px;
+    --font-size-body-xl: 22px;
+    --font-size-body-xxl: 28px;
+    --font-size-body-drop-cap: 96px;
+    --font-size-meta: 14px;
   }
 }
+
+/* Desktop Typography (1024px+) is defined in the main :root block */
