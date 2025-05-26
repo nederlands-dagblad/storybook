@@ -9,7 +9,7 @@ import {
 import {MetaBold} from "./ResponsiveTypography.tsx";
 
 const meta: Meta = {
-  title: 'Components/Typography',
+  title: 'Atoms/Typography',
   parameters: {
     layout: 'centered',
   },

@@ -40,7 +40,7 @@ import Icon from "../Icon/Icon.tsx";
  */
 
 const meta = {
-  title: 'Components/Button',
+  title: 'Atoms/Button',
   component: Button,
   parameters: {
     layout: 'centered',

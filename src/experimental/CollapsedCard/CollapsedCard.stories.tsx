@@ -3,7 +3,7 @@ import CollapsedCard from './CollapsedCard';
 import Button from '../Button/Button';
 
 const meta = {
-  title: 'Components/CollapsedCard',
+  title: 'Experimental/CollapsedCard',
   component: CollapsedCard,
   parameters: {
     layout: 'centered',

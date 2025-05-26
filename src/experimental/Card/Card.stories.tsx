@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Card from './Card';
-import Button from '../Button/Button';
+import Button from '../../atoms/Button/Button.tsx';
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Experimental/Card',
   component: Card,
   parameters: {
     layout: 'centered',

@@ -22,7 +22,7 @@ import PremiumBadge from './PremiumBadge';
  */
 
 const meta = {
-  title: 'Components/Premium Badge',
+  title: 'Atoms/Premium Badge',
   component: PremiumBadge,
   parameters: {
     layout: 'centered',

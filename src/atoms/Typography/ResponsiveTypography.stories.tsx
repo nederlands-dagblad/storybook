@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ResponsiveHeading, ResponsiveBody, ResponsiveText } from './ResponsiveTypography';
 
 const meta = {
-  title: 'Components/Typography/Responsive',
+  title: 'Atoms/Typography/Responsive',
   parameters: {
     layout: 'centered',
   },
@@ -19,18 +19,18 @@ export const ResponsiveTypographyDemo: Story = {
         <p className="text-xs text-neutral-500 mb-4">This heading will change size at different breakpoints</p>
         <ResponsiveHeading>This heading adapts to screen size</ResponsiveHeading>
       </div>
-      
+
       <div>
         <h5 className="text-sm text-neutral-600 mb-2">Responsive Body Text</h5>
         <p className="text-xs text-neutral-500 mb-4">This text will change size at different breakpoints</p>
         <ResponsiveBody>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. 
-          Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus 
-          rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna 
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.
+          Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus
+          rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna
           non est bibendum non venenatis nisl tempor.
         </ResponsiveBody>
       </div>
-      
+
       <div className="p-4 border border-neutral-200 rounded-md">
         <h5 className="text-sm text-neutral-600 mb-2">Viewport Size Test</h5>
         <p className="text-xs text-neutral-500 mb-4">Resize your browser to see the changes</p>
