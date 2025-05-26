@@ -2,7 +2,7 @@ import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
 
 /** @type { import('@storybook/react').Preview } */
-const preview = {
+export default {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -19,7 +19,12 @@ const preview = {
         state: 'open',
       },
     },
+    options: {
+      storySort: {
+        order: ['Intro', 'General', 'Atoms', 'Experimental', 'Guides', 'Hooks'],
+        method: 'alphabetical',
+        locales: 'en-US',
+      }
+    },
   },
 };
-
-export default preview;
