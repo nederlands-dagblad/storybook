@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { 
+import {
   HeadingArticle, HeadingPage, Heading2, Heading3, HeadingArticleFeed,
-  BodyStandard, BodyStandardRegular, BodyStandardBold, 
+  BodyStandard, BodyStandardRegular, BodyStandardBold,
   BodyArticle, BodyArticleIntro, BodyArticleQuote,
-  MetaStandard, MetaCaption, MetaAuthor, MetaDate,
-  DropCap, ArticleCity, ArticleType
+  MetaStandard, MetaAuthor,
+  DropCap, ArticleCity, ArticleType, MetaRegular
 } from './Typography';
+import {MetaBold} from "./ResponsiveTypography.tsx";
 
 const meta: Meta = {
   title: 'Components/Typography',
@@ -17,119 +18,209 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Headings: Story = {
-  render: () => (
+const StyleExample: React.FC<{Tag: string, name: string, content: string}> = ({Tag = 'h1', name, content}) => (
     <div className="space-y-6">
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Heading Article</h5>
-        <HeadingArticle>The quick brown fox jumps over the lazy dog</HeadingArticle>
+      <div className="space-y-4">
+        <Tag className={[name, "mb-2"].join(' ')}>
+          {content}
+        </Tag>
+        <code className="mt-4 bg-gray-100 p-1 rounded-md text-sm">{name}</code>
       </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Heading Page</h5>
-        <HeadingPage>The quick brown fox jumps over the lazy dog</HeadingPage>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Heading 2</h5>
-        <Heading2>The quick brown fox jumps over the lazy dog</Heading2>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Heading 3</h5>
-        <Heading3>The quick brown fox jumps over the lazy dog</Heading3>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Heading Article Feed</h5>
-        <HeadingArticleFeed>The quick brown fox jumps over the lazy dog</HeadingArticleFeed>
-      </div>
+    </div>
+);
+
+export const ArticleStyles: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: null, // Hides code block in Docs tab
+      },
+    },
+  },
+  render: () => (
+    <div className="max-w-2xl space-y-8">
+      <StyleExample
+        tag="h1"
+        name="text-article-heading"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h1"
+        name="text-article-heading-light"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h1"
+        name="text-article-heading-alternate"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-heading-2"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-heading-2-light"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-heading-2-alternate"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-body"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-intro"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-type"
+        content="Interview"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-city"
+        content="Rutten"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-quote"
+        content="Oh Chantal"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-question"
+        content="Wat is uw enige troost in leven en sterven?"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-drop-cap"
+        content="P"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-article-drop-cap-alternate"
+        content="H"
+      />
+    </div>
+  ),
+}
+
+export const Headings: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: null, // Hides code block in Docs tab
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <StyleExample
+        tag="h1"
+        name="text-heading-page"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-heading-subheading"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-heading-2"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-heading-3"
+        content="The quick brown fox jumps over the lazy dog"
+      />
+      <StyleExample
+        tag="h2"
+        name="text-heading-uppercase"
+        content="The quick brown fox jumps over the lazy dog"
+      />
     </div>
   ),
 };
 
 export const BodyText: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: null, // Hides code block in Docs tab
+      },
+    },
+  },
   render: () => (
-    <div className="space-y-6">
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Standard</h5>
-        <BodyStandard>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyStandard>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Standard Regular</h5>
-        <BodyStandardRegular>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyStandardRegular>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Standard Bold</h5>
-        <BodyStandardBold>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyStandardBold>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Article</h5>
-        <BodyArticle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyArticle>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Article Intro</h5>
-        <BodyArticleIntro>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyArticleIntro>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Body Article Quote</h5>
-        <BodyArticleQuote>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</BodyArticleQuote>
-      </div>
+    <div className="space-y-8">
+      <StyleExample
+        tag="p"
+        name="text-body-light"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="p"
+        name="text-body-regular"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="p"
+        name="text-body-bold"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="p"
+        name="text-body-uppercase"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="p"
+        name="text-body-uppercase-bold"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
+      <StyleExample
+        tag="p"
+        name="text-body-uppercase-bold-small"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
+      />
     </div>
   ),
 };
 
 export const MetaText: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: null, // Hides code block in Docs tab
+      },
+    },
+  },
   render: () => (
-    <div className="space-y-4">
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Meta Standard</h5>
-        <MetaStandard>Meta Standard - Lorem ipsum dolor sit amet</MetaStandard>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Meta Caption</h5>
-        <MetaCaption>Meta Caption - Lorem ipsum dolor sit amet</MetaCaption>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Meta Author</h5>
-        <MetaAuthor>Meta Author - Lorem ipsum dolor sit amet</MetaAuthor>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Meta Date</h5>
-        <MetaDate>Meta Date - Lorem ipsum dolor sit amet</MetaDate>
-      </div>
-    </div>
-  ),
-};
-
-export const SpecialElements: Story = {
-  render: () => (
-    <div className="space-y-6">
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Drop Cap</h5>
-        <div className="relative">
-          <DropCap>L</DropCap>
-          <BodyArticle className="pl-16">orem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyArticle>
-        </div>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Article City</h5>
-        <ArticleCity>Amsterdam</ArticleCity>
-      </div>
-      
-      <div>
-        <h5 className="text-sm text-neutral-600 mb-2">Article Type</h5>
-        <ArticleType>Interview</ArticleType>
-      </div>
+    <div className="space-y-8">
+      <StyleExample
+        tag="p"
+        name="text-meta"
+        content="This is a meta text"
+      />
+      <StyleExample
+        tag="p"
+        name="text-meta-light"
+        content="This is a meta light text"
+      />
+      <StyleExample
+        tag="p"
+        name="text-meta-bold"
+        content="This is a meta bold text"
+      />
     </div>
   ),
 };

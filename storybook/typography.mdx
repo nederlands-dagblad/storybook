@@ -1,8 +1,8 @@
-import { Meta, Canvas, Story } from '@storybook/blocks';
+import {Meta, Canvas, Story, SourceState} from '@storybook/blocks';
 import {
   HeadingArticle, HeadingPage, Heading2, Heading3,
   BodyStandard, BodyStandardBold, BodyArticle, BodyArticleIntro,
-  MetaStandard, MetaCaption, MetaAuthor, MetaDate
+  MetaStandard
 } from '../src/components/Typography/Typography';
 import '../src/assets/css/tokens.css';
 import '../storybook/style.css';
@@ -12,6 +12,8 @@ import '../storybook/style.css';
 # Typography
 
 Our design system includes a comprehensive set of typography styles based on our design tokens.
+
+This page demonstrates the typography styles used across our design system, including font families, weights, and various text styles. A reference to our React components for (dynamic) typography can be found [here](/story/components-typography-responsive).
 
 ## Font Families
 
@@ -23,14 +25,14 @@ Our design system uses several font families:
     <p style={{ fontFamily: "'Gulliver', serif", fontSize: '18px', marginBottom: '0.5rem' }}>Used for headings and quotes</p>
     <p style={{ fontFamily: "'Gulliver Semibold', serif", fontSize: '18px' }}>Gulliver Semibold variant</p>
   </div>
-  
+
   <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
     <h3 style={{ fontFamily: "'Fira Sans', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Fira Sans</h3>
     <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 300, fontSize: '16px', marginBottom: '0.5rem' }}>Light weight for body text</p>
     <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 400, fontSize: '16px', marginBottom: '0.5rem' }}>Regular weight for standard content</p>
     <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 700, fontSize: '16px' }}>Bold weight for emphasis</p>
   </div>
-  
+
   <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
     <h3 style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '24px', marginBottom: '0.5rem' }}>Abril Fatface</h3>
     <p style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '16px', marginBottom: '0.5rem' }}>Used for drop caps in articles</p>
@@ -40,7 +42,7 @@ Our design system uses several font families:
       <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px" }}>C</span>
     </div>
   </div>
-  
+
   <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
     <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Montserrat</h3>
     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', marginBottom: '0.5rem' }}>Used for alternative drop caps and headings</p>
@@ -52,94 +54,69 @@ Our design system uses several font families:
   </div>
 </div>
 
-## Responsive Typography
+## Font weights
 
-Our typography system supports responsive sizing across different breakpoints:
-- **Mobile**: Default styles
-- **Tablet**: 768px and above
-- **Desktop**: 1024px and above
+Our typography system uses various font weights to create visual hierarchy and emphasis:
 
-You can use our responsive typography components to automatically adjust text size, line height, and letter spacing based on screen size:
+- **Light (300)**: Used for body text and less emphasized content
+- **Regular (400)**: Standard weight for most text
+- **Semibold (600)**: Used for subheadings and slightly emphasized text
+- **Bold (700)**: Used for headings, important information, and emphasis
 
-```jsx
-import { ResponsiveHeading, ResponsiveBody } from '../components/Typography/ResponsiveTypography';
+Font weights can be applied using tailwind classes:
 
-function Article() {
-  return (
-    <div>
-      <ResponsiveHeading>Article Title</ResponsiveHeading>
-      <ResponsiveBody>Article content goes here...</ResponsiveBody>
-    </div>
-  );
-}
+```html
+<span class="font-bold">
+  This is bold text
+</span>
+
+<span class="font-semibold">
+  This is semibold text
+</span>
+
+<span class="font-light">
+  This is light text
+</span>
+
 ```
-
-<Canvas>
-  <Story id="components-typography-responsive--responsive-typography-demo" />
-</Canvas>
 
 ## Text Styles
 
 Our typography system is organized into several categories:
 
-### Headings
+- **Article styles** - Article related stiles like headings, types, quotes, body, drop caps
+- **Body text styles** - Standard body text styles
+- **Headings** - Multiple headings for other pages than articles
+- **Meta text** - Meta information like author, date, etc.
 
-<Canvas>
-  <Story id="components-typography--headings" />
+### Article Text
+
+These are our article-specific text styles:
+
+<Canvas sourceState={'hidden'} withSource={false}>
+  <Story id="components-typography--article-styles" />
 </Canvas>
 
 ### Body Text
+
+These are our body text styles we use all over the site:
 
 <Canvas>
   <Story id="components-typography--body-text" />
 </Canvas>
 
+### Headings
+
+The headings mentioned below are used for non-article-pages.
+
+<Canvas>
+  <Story id="components-typography--headings" />
+</Canvas>
+
 ### Meta Text
+
+Meta texts are for displaying short information like author, date, etc. on articles or pages.
 
 <Canvas>
   <Story id="components-typography--meta-text" />
 </Canvas>
-
-### Special Elements
-
-<Canvas>
-  <Story id="components-typography--special-elements" />
-</Canvas>
-
-## Article Example
-
-Here's how these typography elements work together in an article:
-
-<Canvas>
-  <Story id="components-typography--article-example" />
-</Canvas>
-
-## Usage
-
-You can use our typography components directly:
-
-```jsx
-import {
-  HeadingArticle,
-  BodyArticle,
-  MetaAuthor
-} from '../components/Typography/Typography';
-
-function Article() {
-  return (
-    <div>
-      <HeadingArticle>Article Title</HeadingArticle>
-      <MetaAuthor>By John Doe</MetaAuthor>
-      <BodyArticle>Article content goes here...</BodyArticle>
-    </div>
-  );
-}
-```
-
-Or use the utility classes directly in your HTML:
-
-```html
-<h1 class="text-headings-heading-article">Article Title</h1>
-<span class="text-meta-author">By John Doe</span>
-<p class="text-body-body-article">Article content goes here...</p>
-```

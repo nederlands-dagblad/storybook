@@ -7,23 +7,23 @@ interface TypographyProps {
 
 // Headings
 export const HeadingArticle = ({ children, className = '' }: TypographyProps) => (
-  <h1 className={`text-headings-heading-article ${className}`}>{children}</h1>
+  <h1 className={`text-article-heading ${className}`}>{children}</h1>
 );
 
 export const HeadingPage = ({ children, className = '' }: TypographyProps) => (
-  <h1 className={`text-headings-headings-page ${className}`}>{children}</h1>
+  <h1 className={`text-heading-page ${className}`}>{children}</h1>
 );
 
 export const Heading2 = ({ children, className = '' }: TypographyProps) => (
-  <h2 className={`text-headings-heading-2 ${className}`}>{children}</h2>
+  <h2 className={`text-heading-2 ${className}`}>{children}</h2>
 );
 
 export const Heading3 = ({ children, className = '' }: TypographyProps) => (
-  <h3 className={`text-headings-heading-3 ${className}`}>{children}</h3>
+  <h3 className={`text-heading-3 ${className}`}>{children}</h3>
 );
 
 export const HeadingArticleFeed = ({ children, className = '' }: TypographyProps) => (
-  <h4 className={`text-headings-heading-article-feed ${className}`}>{children}</h4>
+  <span>Yo</span>
 );
 
 // Body text
@@ -52,20 +52,17 @@ export const BodyArticleQuote = ({ children, className = '' }: TypographyProps) 
 );
 
 // Meta text
+
 export const MetaStandard = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-standard ${className}`}>{children}</span>
+  <span className={`text-meta ${className}`}>{children}</span>
 );
 
-export const MetaCaption = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-caption ${className}`}>{children}</span>
+export const MetaRegular = ({ children, className = '' }: TypographyProps) => (
+  <span className={`text-meta-regular ${className}`}>{children}</span>
 );
 
 export const MetaAuthor = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-author ${className}`}>{children}</span>
-);
-
-export const MetaDate = ({ children, className = '' }: TypographyProps) => (
-  <span className={`text-meta-date ${className}`}>{children}</span>
+  <span className={`text-meta-bold ${className}`}>{children}</span>
 );
 
 // Special text elements
