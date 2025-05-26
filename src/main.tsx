@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './assets/css/tailwind.css';
 import './assets/css/tokens.css';
+import './assets/css/components/portal/description-list.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

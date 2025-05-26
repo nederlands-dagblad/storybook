@@ -1,7 +1,43 @@
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
+
+const viewports = {
+  mobile: {
+    name: 'Mobile (default)',
+    styles: {
+      width: '375px', // fits <640px
+      height: '667px',
+    },
+    type: 'mobile',
+  },
+  tablet: {
+    name: 'Tablet (Tailwind md)',
+    styles: {
+      width: '768px', // Tailwind md
+      height: '1024px',
+    },
+    type: 'tablet',
+  },
+  desktop: {
+    name: 'Desktop (Tailwind lg)',
+    styles: {
+      width: '1024px', // Tailwind lg
+      height: '768px',
+    },
+    type: 'desktop',
+  },
+  wideDesktop: {
+    name: 'Wide Desktop (Tailwind xl)',
+    styles: {
+      width: '1280px',
+      height: '800px',
+    },
+    type: 'desktop',
+  },
+  ...MINIMAL_VIEWPORTS,
+}
 
 /** @type { import('@storybook/react').Preview } */
 export default {
@@ -17,7 +53,7 @@ export default {
       default: 'light',
     },
     viewport: {
-      viewports: INITIAL_VIEWPORTS,
+      viewports,
       defaultViewport: 'desktop',
     },
     docs: {

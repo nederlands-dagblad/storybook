@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import PortalNavigation from './PortalNavigation';
 
+// We no longer need a location mock decorator since we're using props
+
 const meta = {
   title: 'Components/Portal/PortalNavigation',
   component: PortalNavigation,
@@ -24,6 +26,17 @@ export const Default: Story = {
     ],
     active: false,
   },
+  args: {
+    items: [
+      { href: '/account', label: 'Account' },
+      { href: '/profile', label: 'Profile' },
+      { href: '/settings', label: 'Settings' },
+      { href: '/billing', label: 'Billing' },
+      { href: '/notifications', label: 'Notifications' },
+    ],
+    active: false,
+    currentLocation: '/dashboard'
+  },
 };
 
 export const WithActiveItem: Story = {
@@ -38,39 +51,6 @@ export const WithActiveItem: Story = {
     active: true,
     backHref: '/dashboard',
   },
-  parameters: {
-    docs: {
-      description: {
-        story: 'When an item is active and on mobile view, only the active item is shown with a back button.',
-      },
-    },
-  },
-};
-
-export const MobileView: Story = {
-  args: {
-    items: [
-      { href: '/account', label: 'Account' },
-      { href: '/profile', label: 'Profile' },
-      { href: '/settings', label: 'Settings' },
-      { href: '/billing', label: 'Billing' },
-      { href: '/notifications', label: 'Notifications' },
-    ],
-    active: false,
-  },
-  parameters: {
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
-    docs: {
-      description: {
-        story: 'Mobile view of the navigation without an active item.',
-      },
-    },
-  },
-};
-
-export const MobileViewWithActiveItem: Story = {
   args: {
     items: [
       { href: '/account', label: 'Account' },
@@ -81,14 +61,12 @@ export const MobileViewWithActiveItem: Story = {
     ],
     active: true,
     backHref: '/dashboard',
+    currentLocation: '/settings'
   },
   parameters: {
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
     docs: {
       description: {
-        story: 'Mobile view with an active item showing the back button.',
+        story: 'When an item is active and on mobile view, only the active item is shown with a back button.',
       },
     },
   },

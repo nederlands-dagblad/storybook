@@ -10,13 +10,14 @@ export interface PortalNavigationProps {
   items: PortalNavigationItem[];
   active?: boolean;
   backHref?: string;
+  currentLocation?: string; // Add this prop for Storybook testing
 }
 
 const PortalNavigation: React.FC<PortalNavigationProps> = (props) => {
 
   const { items, active, backHref } = props;
 
-  const currentLocation = window.location.pathname;
+  const currentLocation = props.currentLocation || window.location.pathname;
 
   const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
 
@@ -52,7 +53,7 @@ const PortalNavigation: React.FC<PortalNavigationProps> = (props) => {
 
     return (
       <div className="portal-nav-mobile">
-        <a className="portal-nav-mobile--header" href={backHref}>
+        <a className="portal-nav-mobile-header" href={backHref}>
           <div className="portal-nav-mobile--back">
             <Icon name="caret-left-outline" />
           </div>
