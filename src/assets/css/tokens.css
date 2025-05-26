@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-05-20T13:32:24.490Z
+ * Last generated: 2025-05-26T18:36:56.777Z
  */
 
 :root {
@@ -10,10 +10,10 @@
   --font-family-montserrat: Montserrat;
   --font-family-abril-fatface: Abril Fatface;
   --font-family-gulliver-semibold: Gulliver Semibold;
-  --font-weight-bold: Bold;
-  --font-weight-semibold: SemiBold;
-  --font-weight-regular: Regular;
-  --font-weight-light: Light;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
   --font-size-12: 12px;
   --font-size-14: 14px;
   --font-size-15: 15px;

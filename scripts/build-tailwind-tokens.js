@@ -33,6 +33,18 @@ function load(file) {
     }
 }
 
+// Function to map font weight strings to numeric values
+function mapFontWeight(value) {
+    const fontWeightMap = {
+        'Bold': 700,
+        'SemiBold': 600,
+        'Regular': 400,
+        'Light': 300
+    };
+    
+    return fontWeightMap[value] || value;
+}
+
 // Legacy reference mapping to handle old token references
 const legacyReferenceMap = {
     // Font size mappings
@@ -140,7 +152,7 @@ function resolveReference(ref, flatTokens, visited = new Set()) {
         
         // For font weights
         if (path.includes('font-weight') || path.includes('fontWeight')) {
-            return '400';
+            return mapFontWeight('Regular');
         }
         
         // For letter spacing
@@ -210,7 +222,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         const weightName = tokenPath.split('.').pop();
         const weightKey = `font-weight-${kebab(weightName)}`;
         primitiveFontWeights[kebab(weightName)] = toVar(weightKey);
-        cssVarMap[weightKey] = token.$value;
+        cssVarMap[weightKey] = mapFontWeight(token.$value);
     }
     // Process letter spacings
     else if (tokenPath.includes('letter-spacing') || tokenPath.includes('letterSpacing')) {
@@ -451,6 +463,11 @@ function processTypographyTokens(obj, prefix = '') {
                     }
                 }
 
+                // Apply font weight mapping if this is a font weight property
+                if (propKey === 'fontWeight') {
+                    resolvedValue = mapFontWeight(resolvedValue);
+                }
+
                 cssVarMap[propName] = resolvedValue;
 
                 // Collect unique values for Tailwind config
@@ -603,6 +620,11 @@ function processResponsiveTypographySection(obj, prefix, breakpoint, combinedTok
                         console.warn(`Could not resolve reference: ${propValue} for ${propName} in ${breakpoint}`);
                         continue;
                     }
+                }
+
+                // Apply font weight mapping if this is a font weight property
+                if (propKey === 'fontWeight') {
+                    resolvedValue = mapFontWeight(resolvedValue);
                 }
 
                 // Store the responsive value

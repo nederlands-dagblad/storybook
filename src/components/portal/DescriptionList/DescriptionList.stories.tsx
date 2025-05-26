@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DescriptionList from './DescriptionList';
 import DescriptionListItems from './DescriptionListItems';
 import DescriptionListItem from './DescriptionListItem';
+import Icon from "../../../atoms/Icon/Icon.tsx";
 
 const meta = {
   title: 'Components/Portal/DescriptionList',
@@ -31,7 +32,7 @@ export const Default: Story = {
 export const WithActions: Story = {
   args: {
     title: 'Description List with Actions',
-    actions: <button>Edit</button>,
+    actions: <button><Icon name="pencil-simple-outline"></Icon></button>,
     children: (
       <DescriptionListItems>
         <DescriptionListItem term="Name">John Doe</DescriptionListItem>
