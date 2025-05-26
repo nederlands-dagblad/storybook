@@ -1,0 +1,45 @@
+@layer components {
+    .portal-nav {
+        @apply flex flex-row gap-10 font-gulliver text-xl;
+    }
+
+    .portal-nav a {
+        @apply no-underline text-black hover:underline dark:text-white;
+    }
+
+    .portal-nav a .icon {
+        @apply hidden;
+    }
+
+    .portal-nav a.is-active {
+        @apply font-bold underline text-blue-400 underline-offset-[0.3rem] decoration-[0.05rem];
+    }
+
+    .portal-nav-mobile {
+        @apply flex-col gap-0;
+    }
+
+    .portal-nav-mobile li {
+        @apply w-full flex border-b border-black dark:border-white;
+    }
+
+    .portal-nav-mobile li a {
+        @apply flex flex-row justify-between items-center w-full pt-5 pb-5;
+    }
+
+    .portal-nav-mobile li:first-child a {
+        @apply pt-0;
+    }
+
+    .portal-nav-mobile li a .icon {
+        @apply flex;
+    }
+
+    .portal-nav-mobile-header {
+        @apply flex flex-row items-center gap-2;
+    }
+
+    .portal-nav-mobile-title {
+        @apply font-sans text-xl font-bold underline text-blue-400 underline-offset-[0.3rem] decoration-[0.05rem];
+    }
+}
