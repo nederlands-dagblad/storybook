@@ -1,3 +1,5 @@
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+
 import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
 
@@ -13,6 +15,10 @@ export default {
     },
     backgrounds: {
       default: 'light',
+    },
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'desktop',
     },
     docs: {
       source: {
