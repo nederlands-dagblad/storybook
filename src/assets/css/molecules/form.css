@@ -1,0 +1,28 @@
+@layer components {
+
+    .nd-form {
+        /* No specific styles */
+    }
+
+    .nd-form-group {
+        @apply space-y-1 font-fira-sans;
+    }
+
+    .nd-form-group .label {
+        @apply text-sm text-[#1f2937] dark:text-[#f0f0f0]; /* fallback text-gray-800 replaced with exact */
+    }
+
+    .nd-form-group .help {
+        @apply text-sm text-[#727272] dark:text-[#b0b0b0];
+    }
+
+    .nd-form-group .error {
+        @apply text-sm text-[#e9425b];
+    }
+
+    .nd-form-input {
+        @apply w-full px-3 py-2 border border-[#d1d5db] text-black dark:bg-[#2a2a2a] dark:text-[#f0f0f0] dark:border-[#444]
+        focus:dark:border-[#666] focus:dark:ring-2 focus:dark:ring-white/10;
+    }
+
+}

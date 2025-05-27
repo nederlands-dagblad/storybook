@@ -4,6 +4,7 @@
 @import "badge.css";
 
 @import "molecules/alert.css";
+@import "molecules/form.css";
 
 @import "components/modal.css";
 @import "components/portal/description-list.css";
