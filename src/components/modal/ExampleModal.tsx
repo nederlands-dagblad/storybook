@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { NModal } from "./NModal";
 import {useModalManager} from "@hooks/useModalManager";
+import Button from "@atoms/Button/Button.tsx";
 
 export const ExampleModal: React.FC = (props: any) => {
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -23,6 +24,13 @@ export const ExampleModal: React.FC = (props: any) => {
         open('example-modal', {})
     }
 
+    const footer = (
+      <>
+          <Button variant={'ghost'} onClick={onClose}>Close</Button>
+          <Button icon="square-fill">Accepteren</Button>
+      </>
+    )
+
     return (
         <NModal
             open={isModalOpen}
@@ -31,7 +39,7 @@ export const ExampleModal: React.FC = (props: any) => {
             size="xl"
             onClose={onClose}
             closeButton
-            footer={<strong>Ja ja</strong>}
+            footer={footer}
         >
             <p>This is a simple modal using the Modal component.</p>
             <button

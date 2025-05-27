@@ -1,0 +1,133 @@
+@layer components {
+    /* Modal Overlay */
+    .modal-overlay {
+        @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-300 ease-in-out;
+    }
+
+    /* Modal Panel */
+    .modal-panel {
+        @apply inline-block align-bottom bg-white p-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all duration-300 ease-in-out w-full max-w-sm;
+    }
+
+    /* Modal Dialog */
+    .modal-dialog {
+        @apply inline-block w-full max-w-md overflow-y-auto text-left align-middle transition-all duration-300 ease-in-out transform bg-white shadow-xl rounded-lg font-sans;
+    }
+
+    .modal-dialog-md {
+        @apply w-full max-w-md;
+    }
+
+    .modal-dialog-xl {
+        @apply w-full max-w-xl;
+    }
+
+    .modal-dialog-scrollable {
+        max-height: calc(100vh - 3rem);
+    }
+
+    /* Modal Header */
+    .modal-header {
+        @apply flex flex-col justify-between flex-wrap px-4 py-6 border-b border-gray-200;
+    }
+
+    @screen sm {
+        .modal-header {
+            @apply flex-nowrap px-6;
+        }
+    }
+
+    .modal-dialog h2 {
+        @apply text-lg font-medium text-gray-900;
+    }
+
+    /* Modal Body */
+    .modal-body {
+        @apply p-4;
+    }
+
+    @screen sm {
+        .modal-body {
+            @apply p-6;
+        }
+    }
+
+    /* Modal Footer */
+    .modal-footer {
+        @apply flex-row px-4 py-5 border-t border-gray-200 flex;
+    }
+
+    @screen sm {
+        .modal-footer {
+            @apply p-6;
+        }
+    }
+
+    /* Simplified Modal */
+    .modal-simplified .modal-header {
+        @apply border-b-0;
+    }
+
+    .modal-simplified .modal-body {
+        @apply pt-2 pb-2;
+    }
+
+    .modal-simplified .modal-footer {
+        @apply border-t-0;
+    }
+
+    /* Slideover Modal */
+    .modal-slideover {
+        @apply pointer-events-auto w-screen max-w-md;
+    }
+
+    .modal-slideover-xl {
+        @apply max-w-2xl;
+    }
+
+    .modal-slideover-container {
+        @apply flex h-full flex-col overflow-y-hidden bg-white shadow-xl;
+    }
+
+    /* Close button */
+    .modal-close-button {
+        @apply absolute top-7 right-7;
+    }
+
+    /* Slideover Body */
+    .modal-slideover-body {
+        @apply relative flex-grow;
+    }
+
+    /* Mobile Modal Styles */
+    @media (max-width: 767px) {
+        .modal-dialog:not(.modal-compact) {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            height: 100vh !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+        }
+
+        .modal-dialog:not(.modal-compact) .modal-container {
+            border-radius: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        .modal-dialog:not(.modal-compact) .modal-body {
+            flex: 1 !important;
+            overflow-y: auto !important;
+        }
+
+        .modal-dialog.modal-compact {
+            width: calc(100% - 2rem) !important;
+            max-width: calc(100% - 2rem) !important;
+            margin: 0 1rem !important;
+        }
+    }
+}

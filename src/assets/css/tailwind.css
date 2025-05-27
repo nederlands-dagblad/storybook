@@ -5,6 +5,7 @@
 
 @import "molecules/alert.css";
 
+@import "components/modal.css";
 @import "components/portal/description-list.css";
 @import "components/portal/portal-navigation.css";
 
