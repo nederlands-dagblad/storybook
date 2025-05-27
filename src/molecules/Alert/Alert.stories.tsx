@@ -27,6 +27,13 @@ export const Default: Story = {
   }
 };
 
+export const Info: Story = {
+  args: {
+    children: 'This is an info message.',
+    variant: 'info',
+  }
+};
+
 export const Dark: Story = {
   args: {
     children: 'This is a dark alert message.',

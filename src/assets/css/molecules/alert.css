@@ -5,7 +5,7 @@
     }
 
     .alert-content {
-        @apply inline-flex font-light;
+        @apply inline-flex gap-2 font-light;
     }
 
     .alert-content a {
