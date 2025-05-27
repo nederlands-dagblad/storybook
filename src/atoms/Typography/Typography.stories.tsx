@@ -13,6 +13,7 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -232,7 +233,7 @@ export const ArticleExample: Story = {
       <ArticleCity>Amsterdam</ArticleCity>
       <HeadingArticle>The quick brown fox jumps over the lazy dog</HeadingArticle>
       <BodyArticleIntro>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</BodyArticleIntro>
-      <MetaAuthor>By John Doe</MetaAuthor> <MetaDate>• May 15, 2023</MetaDate>
+      <MetaAuthor>By John Doe</MetaAuthor>
       <div className="mt-6">
         <div className="relative">
           <DropCap>L</DropCap>
