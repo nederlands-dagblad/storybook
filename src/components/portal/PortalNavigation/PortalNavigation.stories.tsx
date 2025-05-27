@@ -26,17 +26,6 @@ export const Default: Story = {
     ],
     active: false,
   },
-  args: {
-    items: [
-      { href: '/account', label: 'Account' },
-      { href: '/profile', label: 'Profile' },
-      { href: '/settings', label: 'Settings' },
-      { href: '/billing', label: 'Billing' },
-      { href: '/notifications', label: 'Notifications' },
-    ],
-    active: false,
-    currentLocation: '/dashboard'
-  },
 };
 
 export const WithActiveItem: Story = {
@@ -50,18 +39,6 @@ export const WithActiveItem: Story = {
     ],
     active: true,
     backHref: '/dashboard',
-  },
-  args: {
-    items: [
-      { href: '/account', label: 'Account' },
-      { href: '/profile', label: 'Profile' },
-      { href: '/settings', label: 'Settings' },
-      { href: '/billing', label: 'Billing' },
-      { href: '/notifications', label: 'Notifications' },
-    ],
-    active: true,
-    backHref: '/dashboard',
-    currentLocation: '/settings'
   },
   parameters: {
     docs: {
