@@ -19,7 +19,12 @@
     "esModuleInterop": true,
     "baseUrl": "./src",
     "paths": {
-      "@atoms/*": ["src/atoms/*"]
+      "@atoms/*": ["src/atoms/*"],
+      "@molecules/*": ["src/molecules/*"],
+      "@components/*": ["src/components/*"],
+      "@experimental/*": ["src/experimental/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@helpers/*": ["src/helpers/*"]
     }
   },
   "include": [

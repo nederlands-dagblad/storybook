@@ -63,7 +63,7 @@ export default {
     },
     options: {
       storySort: {
-        order: ['Intro', 'General', 'Atoms', 'Experimental', 'Guides', 'Hooks'],
+        order: ['Intro', 'General', 'Atoms', 'Molecules', 'Components', 'Experimental', 'Guides', 'Hooks'],
         method: 'alphabetical',
         locales: 'en-US',
       }
