@@ -6,7 +6,6 @@ export type NModalProps = {
     id?: string;
     open?: boolean;
     size?: "md" | "xl";
-    orientation?: "left" | "right";
     backdrop?: boolean;
     modalTitle?: string;
     modalSubTitle?: string;
@@ -29,13 +28,12 @@ export const NModal: React.FC<NModalProps> = (props) => {
         id,
         open = false,
         size = "md",
-        orientation = "left",
         backdrop = true,
         modalTitle,
         modalSubTitle,
         hideHeader = false,
         simplified = false,
-        closeButton = false,
+        closeButton = true,
         noFooter = false,
         noCloseOnBackdrop = false,
         bodyClass,
