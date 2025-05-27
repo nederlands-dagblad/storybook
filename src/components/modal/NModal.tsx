@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import Icon from "@atoms/icon/Icon";
+import Icon from "@atoms/Icon/Icon";
 
 export type NModalProps = {
     id?: string;
