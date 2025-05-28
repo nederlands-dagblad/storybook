@@ -13,16 +13,17 @@
     "build-tailwind-tokens": "node scripts/build-tailwind-tokens.js"
   },
   "dependencies": {
+    "axios": "^1.9.0",
     "core-js": "^3.30.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "dayjs": "^1.11.13",
     "immer": "^10.1.1",
     "mitt": "^3.0.1",
-    "use-immer": "^0.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-svg": "^16.3.0",
     "tailwindcss": "^3.3.2",
-    "dayjs": "^1.11.13",
-    "axios": "^1.9.0",
-    "react-svg": "^16.3.0"
+    "use-immer": "^0.11.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
