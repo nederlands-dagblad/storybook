@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Button from './Button';
-import icons from '../Icon/list.ts'
-import Icon from "../Icon/Icon.tsx";
+import icons from '../Icon/list'
+import Icon from "../Icon/Icon";
 
 /**
  * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.

@@ -1,5 +1,5 @@
 import Icon from "./Icon.tsx";
-import {Meta, StoryObj} from "@storybook/react";
+import {Meta, StoryObj} from "@storybook/react-vite";
 import icons from "./list.ts";
 
 const meta = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { StoryObj } from "@storybook/react";
+import { StoryObj } from "@storybook/react-vite";
 import Input, { InputProps } from './Input';
 
 /**

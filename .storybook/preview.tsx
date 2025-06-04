@@ -1,4 +1,4 @@
-import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
 
 import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
@@ -39,7 +39,7 @@ const viewports = {
   ...MINIMAL_VIEWPORTS,
 }
 
-/** @type { import('@storybook/react').Preview } */
+/** @type { import('@storybook/react-vite').Preview } */
 export default {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },

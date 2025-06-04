@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import PortalNavigation from './PortalNavigation';
 
 // We no longer need a location mock decorator since we're using props

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NModal } from './NModal';
 import Button from '@atoms/Button/Button';
 import {ModalManager} from "./ModalManager.tsx";

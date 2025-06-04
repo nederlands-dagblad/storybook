@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   HeadingArticle, HeadingPage, Heading2, Heading3, HeadingArticleFeed,
   BodyStandard, BodyStandardRegular, BodyStandardBold,

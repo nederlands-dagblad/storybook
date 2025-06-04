@@ -1,5 +1,5 @@
-import { addons } from '@storybook/preview-api';
-import { create } from '@storybook/theming';
+import { addons } from 'storybook/preview-api';
+import { create } from 'storybook/theming';
 
 // Configure Storybook UI
 addons.setConfig({

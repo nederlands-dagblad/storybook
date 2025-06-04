@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Alert, { AlertProps, AlertVariant } from './Alert';
-import {StoryObj} from "@storybook/react";
+import {StoryObj} from "@storybook/react-vite";
 
 const meta = {
   title: 'Molecules/Alert',

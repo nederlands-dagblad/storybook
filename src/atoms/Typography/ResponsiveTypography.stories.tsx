@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ResponsiveHeading, ResponsiveBody, ResponsiveText } from './ResponsiveTypography';
 
 const meta = {
