@@ -9,7 +9,21 @@ const __dirname = path.dirname(__filename);
 async function buildTypes() {
     const bundle = await rollup({
         input: path.resolve(__dirname, '../src/index.ts'),
-        plugins: [dts()],
+        plugins: [
+            dts({
+                compilerOptions: {
+                    baseUrl: path.resolve(__dirname, '..'),
+                    paths: {
+                        "@atoms/*": ["src/atoms/*"],
+                        "@molecules/*": ["src/molecules/*"],
+                        "@components/*": ["src/components/*"],
+                        "@experimental/*": ["src/experimental/*"],
+                        "@hooks/*": ["src/hooks/*"],
+                        "@helpers/*": ["src/helpers/*"]
+                    }
+                }
+            })
+        ],
     });
 
     await bundle.write({
