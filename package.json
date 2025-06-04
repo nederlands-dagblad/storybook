@@ -16,7 +16,8 @@
     "./dist/tailwind.tokens.js": "./dist/tailwind.tokens.js",
     "./tokens.utilities.js": "./tokens.utilities.js",
     "./dist/tokens.utilities.js": "./dist/tokens.utilities.js",
-    "./css/*": "./dist/css/*"
+    "./css/*": "./dist/css/*",
+    "./css/tailwind.css": "./dist/css/tailwind.css"
   },
   "files": [
     "dist",
@@ -26,7 +27,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/build-types.js && mkdir -p dist/css && cp -r src/assets/css/* dist/css/ && node scripts/copy-tailwind-files.js",
+    "build": "tsc && vite build && node scripts/build-types.js && mkdir -p dist/css && cp -r src/assets/css/* dist/css/ && node scripts/copy-tailwind-files.js && echo '✓ CSS files copied to dist/css/'",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
