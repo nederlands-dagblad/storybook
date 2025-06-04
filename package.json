@@ -9,11 +9,24 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
-    }
+    },
+    "./tailwind.config.js": "./tailwind.config.js",
+    "./dist/tailwind.config.js": "./dist/tailwind.config.js",
+    "./tailwind.tokens.js": "./tailwind.tokens.js",
+    "./dist/tailwind.tokens.js": "./dist/tailwind.tokens.js",
+    "./tokens.utilities.js": "./tokens.utilities.js",
+    "./dist/tokens.utilities.js": "./dist/tokens.utilities.js",
+    "./css/*": "./dist/css/*"
   },
+  "files": [
+    "dist",
+    "tailwind.config.js",
+    "tailwind.tokens.js",
+    "tokens.utilities.js"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/build-types.js",
+    "build": "tsc && vite build && node scripts/build-types.js && mkdir -p dist/css && cp -r src/assets/css/* dist/css/ && node scripts/copy-tailwind-files.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
