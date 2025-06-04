@@ -17,7 +17,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "node ./node_modules/@storybook/cli/bin/index.js dev -p 6006",
-    "build-storybook": "node ./node_modules/@storybook/cli/bin/index.js build -o dist",
+    "build-storybook": "node ./node_modules/@storybook/cli/bin/index.js build -o storybook-static",
     "build-tailwind-tokens": "node scripts/build-tailwind-tokens.js"
   },
   "dependencies": {

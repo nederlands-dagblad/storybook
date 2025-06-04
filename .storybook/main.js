@@ -33,4 +33,7 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
+  output: {
+    dir: 'storybook-static',
+  },
 };
