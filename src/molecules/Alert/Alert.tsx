@@ -9,7 +9,7 @@ export interface AlertProps {
 
 export type AlertVariant = 'dark' | 'danger' | 'info' | 'success' | 'warning';
 
-const Alert: React.FC<AlertProps> = (props) => {
+export const Alert: React.FC<AlertProps> = (props) => {
 
   const {
     className = '',

@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
 import DescriptionListItem from './DescriptionListItem';
 
-interface DescriptionListItemsProps {
+export interface DescriptionListItemsProps {
     children: React.ReactNode,
     isLoading?: boolean
 }
@@ -9,14 +9,14 @@ interface DescriptionListItemsProps {
 /**
  * DescriptionListItems component for grouping DescriptionListItem components
  */
-const DescriptionListItems: React.FC<DescriptionListItemsProps> = ({children, isLoading}) => {
+export const DescriptionListItems: React.FC<DescriptionListItemsProps> = ({children, isLoading}) => {
     const processedChildren = Children.map(children, child => {
         if (React.isValidElement(child) && child.type === DescriptionListItem) {
-            return React.cloneElement(child, { isLoading });
+            return React.cloneElement(child as React.ReactElement<any>, { isLoading });
         }
         return child;
     });
-    
+
     return <>{processedChildren}</>;
 };
 

@@ -3,14 +3,14 @@ import { ReactSVG } from "react-svg";
 
 import { icons } from "./list";
 
-interface IconProps {
+export interface IconProps {
   name: string;
   size?: number;
   color?: string;
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
+export const Icon: React.FC<IconProps> = (props) => {
   const { name, size = 18, color = 'currentColor', className = '' } = props;
 
   const icon = icons[name];

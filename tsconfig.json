@@ -1,23 +1,36 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+
+    // 👇 For type declarations
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+
+    // Required for `rollup-plugin-dts`
+    "composite": true,
+
+    // Module resolution for Vite
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": "./src",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    // Type-checking hygiene
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+
+    // Aliases
+    "baseUrl": ".",
     "paths": {
       "@atoms/*": ["src/atoms/*"],
       "@molecules/*": ["src/molecules/*"],
@@ -25,12 +38,11 @@
       "@experimental/*": ["src/experimental/*"],
       "@hooks/*": ["src/hooks/*"],
       "@helpers/*": ["src/helpers/*"]
-    }
+    },
+
+    // Output location
+    "outDir": "dist"
   },
-  "include": [
-    "./src/**/*",
-    "./.storybook/**/*"
-  ],
-  "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", ".storybook", "**/*.stories.*"]
 }

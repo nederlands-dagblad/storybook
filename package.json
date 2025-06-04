@@ -1,11 +1,20 @@
 {
-  "name": "design-system",
-  "version": "0.1.0",
+  "name": "@nederlands-dagblad/storybook",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/build-types.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "node ./node_modules/@storybook/cli/bin/index.js dev -p 6006",
@@ -19,9 +28,10 @@
     "dayjs": "^1.11.13",
     "immer": "^10.1.1",
     "mitt": "^3.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-svg": "^16.3.0",
+    "react-use": "^17.6.0",
     "tailwindcss": "^3.3.2",
     "use-immer": "^0.11.0",
     "uuid": "^11.1.0"
@@ -54,9 +64,10 @@
     "postcss": "^8.4.23",
     "postcss-import": "^16.1.0",
     "postcss-loader": "^7.3.4",
+    "rollup-plugin-dts": "^6.2.1",
     "snarkdown": "^2.0.0",
     "token-transformer": "^0.0.33",
-    "typescript": "^5.8.2",
-    "vite": "^6.2.3"
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   }
 }

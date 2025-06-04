@@ -13,7 +13,7 @@ export interface PortalNavigationProps {
   currentLocation?: string; // Add this prop for Storybook testing
 }
 
-const PortalNavigation: React.FC<PortalNavigationProps> = (props) => {
+export const PortalNavigation: React.FC<PortalNavigationProps> = (props) => {
 
   const { items, active, backHref } = props;
 

@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
 
-interface Meta {
+export interface Meta {
     current_page?: number;
     from?: number;
     last_page?: number;
@@ -9,7 +9,7 @@ interface Meta {
     usedSlots?: number;
 }
 
-interface Config {
+export interface Config {
     url: string | (() => string);
     params?: object | (() => object);
     onFetched?: (response: any) => void;
@@ -27,6 +27,10 @@ export function useFetchList<T>(config: Config) {
 
     const fetch = useCallback(async (resetPagination = false) => {
         setIsLoading(true);
+
+        if (resetPagination) {
+            meta.current_page = 1;
+        }
 
         const params = {
             ...getValue(config.params) ?? {},

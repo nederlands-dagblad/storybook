@@ -2,12 +2,12 @@ import React from 'react';
 
 export type SkeletonSize = 'sm' | 'md' | 'lg' | Array<'sm' | 'md' | 'lg'>;
 
-interface SkeletonProps {
+export interface SkeletonProps {
   className?: string;
   size?: SkeletonSize;
 }
 
-const Skeleton: React.FC<SkeletonProps> = ({
+export const Skeleton: React.FC<SkeletonProps> = ({
                                              className = '',
                                              size,
                                            }) => {

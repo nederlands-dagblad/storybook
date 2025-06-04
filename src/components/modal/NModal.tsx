@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Icon from "@atoms/Icon/Icon";
+import {Property} from "csstype";
 
 export type NModalProps = {
     id?: string;
@@ -65,7 +66,7 @@ export const NModal: React.FC<NModalProps> = (props) => {
         }
     };
 
-    const dialogStyle = {
+    const dialogStyle: React.CSSProperties = {
         position: 'fixed',
         top: 0,
         bottom: 0,
@@ -76,7 +77,7 @@ export const NModal: React.FC<NModalProps> = (props) => {
         zIndex: 45
     }
 
-    const dialogWrapperStyle = {
+    const dialogWrapperStyle: React.CSSProperties = {
         position: 'fixed',
         width: '100vw',
         overflowY: 'auto',
@@ -84,7 +85,8 @@ export const NModal: React.FC<NModalProps> = (props) => {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
-        paddingHorizontal: 16,
+        paddingLeft: 16,
+        paddingRight: 16,
         textAlign: 'center'
     }
 

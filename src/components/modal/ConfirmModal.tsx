@@ -52,7 +52,7 @@ export const ConfirmModal: React.FC = (props: ConfirmModalProps) => {
         return (
             <div className="flex flex-row flex-wrap ml-auto gap-4">
 
-                { props.onCancel && (<Button variant="light" noDot onClick={onCancel} >{ cancelLabel }</Button>)}
+                { props.onCancel && (<Button variant="ghost" onClick={onCancel} >{ cancelLabel }</Button>)}
 
                 { props.onConfirm && (<Button onClick={onConfirm} >{ confirmLabel }</Button>)}
 

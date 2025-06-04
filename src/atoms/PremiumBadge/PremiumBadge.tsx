@@ -6,7 +6,7 @@ export interface PremiumBadgeProps {
   size?: 'small' | 'large';
 }
 
-const PremiumBadge: React.FC<PremiumBadgeProps> = ({ className = '', size = 'large' }) => {
+export const PremiumBadge: React.FC<PremiumBadgeProps> = ({ className = '', size = 'large' }) => {
   return (
     <div className={`badge-premium ${size === 'small' ? 'badge-premium-small' : ''} ${className}`}>
       <Icon name="star-fill" size={size === 'small' ? 14 : 18} />

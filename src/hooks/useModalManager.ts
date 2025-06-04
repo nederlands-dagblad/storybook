@@ -14,7 +14,7 @@ type ActiveModalData = {
     props: object;
 };
 
-type ConfirmModalData = {
+export type ConfirmModalData = {
     title: string;
     description: string;
     cancelAction: () => void;

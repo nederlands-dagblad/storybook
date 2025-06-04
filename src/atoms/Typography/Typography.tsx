@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface TypographyProps {
+export interface TypographyProps {
   children: ReactNode;
   className?: string;
 }
@@ -23,7 +23,7 @@ export const Heading3 = ({ children, className = '' }: TypographyProps) => (
 );
 
 export const HeadingArticleFeed = ({ children, className = '' }: TypographyProps) => (
-  <span>Yo</span>
+  <h2 className={`text-article-feed-heading ${className}`}>{children}</h2>
 );
 
 // Body text

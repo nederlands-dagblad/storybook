@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {createGlobalState} from "react-use";
 
 const useGlobalValue = createGlobalState<string>('');
@@ -6,6 +5,6 @@ const useGlobalValue = createGlobalState<string>('');
 export function useSharedState() {
 
     const [sharedState, setSharedState] = useGlobalValue();
-    
+
     return { sharedState, setSharedState };
 }

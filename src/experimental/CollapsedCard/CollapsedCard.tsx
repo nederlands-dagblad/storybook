@@ -8,7 +8,7 @@ export interface CollapsedCardProps {
   onToggle?: (isCollapsed: boolean) => void;
 }
 
-const CollapsedCard: React.FC<CollapsedCardProps> = ({
+export const CollapsedCard: React.FC<CollapsedCardProps> = ({
   title = 'Card Title',
   collapsed = true,
   children,
@@ -31,7 +31,7 @@ const CollapsedCard: React.FC<CollapsedCardProps> = ({
 
   return (
     <div className="collapsed-card border rounded-lg shadow-sm overflow-hidden">
-      <div 
+      <div
         className="collapsed-card-header p-4 flex justify-between items-center cursor-pointer"
         onClick={toggleCollapse}
       >

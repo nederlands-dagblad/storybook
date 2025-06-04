@@ -1,7 +1,7 @@
 import React  from 'react';
 import Skeleton, {SkeletonSize} from '@atoms/Skeleton/Skeleton';
 
-interface DescriptionListItemProps {
+export interface DescriptionListItemProps {
   term?: React.ReactNode;
   children?: React.ReactNode;
   skeleton?: SkeletonSize;
@@ -12,7 +12,7 @@ interface DescriptionListItemProps {
 /**
  * DescriptionListItem component for displaying a term-description pair
  */
-const DescriptionListItem: React.FC<DescriptionListItemProps> = ({
+export const DescriptionListItem: React.FC<DescriptionListItemProps> = ({
   term,
   children,
   skeleton,

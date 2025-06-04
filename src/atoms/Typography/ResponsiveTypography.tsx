@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-interface TypographyProps {
+export interface TypographyProps {
   children: ReactNode;
   className?: string;
 }
@@ -61,16 +61,16 @@ export const ResponsiveText = ({ children, className = '' }: TypographyProps) =>
 );
 
 // Generic component that accepts a variant
-interface GenericTypographyProps extends TypographyProps {
+export interface GenericTypographyProps extends TypographyProps {
   variant: 'heading' | 'heading-2' | 'heading-3' | 'body' | 'body-light' | 'body-bold' | 'intro' | 'quote' | 'meta' | 'meta-bold';
   as?: keyof JSX.IntrinsicElements;
 }
 
-export const Typography = ({ 
-  children, 
-  className = '', 
-  variant, 
-  as: Component = 'div' 
+export const Typography = ({
+  children,
+  className = '',
+  variant,
+  as: Component = 'div'
 }: GenericTypographyProps) => (
   <Component className={`text-${variant} ${className}`}>{children}</Component>
 );

@@ -7,7 +7,7 @@ export interface CardProps {
   footer?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ children, image, title, footer }) => {
+export const Card: React.FC<CardProps> = ({ children, image, title, footer }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       {image && <div className="w-full">{image}</div>}

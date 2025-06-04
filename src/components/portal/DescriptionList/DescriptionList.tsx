@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface DescriptionListProps {
+export interface DescriptionListProps {
     className?: string,
     title?: React.ReactNode,
     actions?: React.ReactNode,
@@ -9,7 +9,7 @@ interface DescriptionListProps {
     children?: React.ReactNode
 }
 
-const DescriptionList: React.FC<DescriptionListProps> = (props) => {
+export const DescriptionList: React.FC<DescriptionListProps> = (props) => {
 
     const {
         className,
