@@ -13,6 +13,9 @@ on:
         required: true
         default: 'patch'
 
+permissions:
+  contents: write
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -45,10 +48,19 @@ jobs:
           git push
           git push --tags
 
+      - name: Check if version already exists on npm
+        id: check-npm-version
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if npm view "$PKG_NAME@$PKG_VERSION" > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Publish to npm
+        if: steps.check-npm-version.outputs.exists == 'false'
         run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-permissions:
-  contents: write
