@@ -380,3 +380,14 @@ export const primitiveLetterSpacings = {
   "m": "var(--letter-spacing-m)",
   "l": "var(--letter-spacing-l)"
 };
+export const primitiveBorderWidths = {
+    "0": "0rem",
+    "s": "0.06rem"
+  };
+export const primitiveBorderRadius = {
+    "0": "0rem",
+    "xl": "5rem",
+  };
+export const semanticBorderRadius = {
+  "pill": primitiveBorderRadius["xl"] 
+};
