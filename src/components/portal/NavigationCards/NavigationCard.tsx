@@ -1,4 +1,4 @@
-import { Icon } from "@nederlands-dagblad/storybook";
+import { Icon } from "@atoms/Icon/Icon";
 
 export interface NavigationCardProps {
   icon: string
