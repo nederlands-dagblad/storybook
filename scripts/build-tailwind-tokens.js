@@ -327,6 +327,9 @@ console.log('🔄 Processing spacing tokens...');
 
 const spacing = {};
 const spacingUtilities = {};
+const primitiveBorderWidths = {};
+const primitiveBorderRadius = {};
+const borderUtilities = {};
 
 // Process spacing tokens from semantic-spacing file
 try {
@@ -420,6 +423,121 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         
         spacingUtilities[`.gap-${originalKey}`] = { gap: `var(${varName})` };
     }
+}
+
+// ----------------------
+// 🔲 Process Border Tokens
+// ----------------------
+console.log('🔄 Processing border tokens...');
+
+// Process border tokens from primitives file
+for (const [tokenPath, token] of Object.entries(flattenedBase)) {
+    // Process border width tokens
+    if (tokenPath.startsWith('border.border-width.') && token?.$type === 'dimension') {
+        const raw = token.$value;
+        const resolved = raw.startsWith('{')
+            ? resolveReference(raw, flattenedBase)
+            : raw;
+
+        // Skip if reference couldn't be resolved
+        if (!resolved) {
+            console.warn(`Could not resolve reference: ${raw} for ${tokenPath}`);
+            continue;
+        }
+
+        const widthName = tokenPath.split('.').pop();
+        const originalKey = kebab(widthName);
+        const kebabKey = `border-width-${originalKey}`;
+    
+        // Store as CSS variable reference instead of raw value
+        primitiveBorderWidths[originalKey] = `var(--${kebabKey})`;
+        // Make sure to add to cssVarMap for CSS variable generation
+        cssVarMap[kebabKey] = resolved;
+        
+        // Generate border width utility classes
+        borderUtilities[`.border-${originalKey}`] = { borderWidth: `var(--${kebabKey})` };
+        borderUtilities[`.border-t-${originalKey}`] = { borderTopWidth: `var(--${kebabKey})` };
+        borderUtilities[`.border-r-${originalKey}`] = { borderRightWidth: `var(--${kebabKey})` };
+        borderUtilities[`.border-b-${originalKey}`] = { borderBottomWidth: `var(--${kebabKey})` };
+        borderUtilities[`.border-l-${originalKey}`] = { borderLeftWidth: `var(--${kebabKey})` };
+    }
+    
+    // Process border radius tokens
+    if (tokenPath.startsWith('border.border-radius.') && token?.$type === 'dimension') {
+        const raw = token.$value;
+        const resolved = raw.startsWith('{')
+            ? resolveReference(raw, flattenedBase)
+            : raw;
+
+        // Skip if reference couldn't be resolved
+        if (!resolved) {
+            console.warn(`Could not resolve reference: ${raw} for ${tokenPath}`);
+            continue;
+        }
+
+        const radiusName = tokenPath.split('.').pop();
+        const originalKey = kebab(radiusName);
+        const kebabKey = `border-radius-${originalKey}`;
+    
+        // Store as CSS variable reference instead of raw value
+        primitiveBorderRadius[originalKey] = `var(--${kebabKey})`;
+        // Make sure to add to cssVarMap for CSS variable generation
+        cssVarMap[kebabKey] = resolved;
+        
+        // Generate border radius utility classes
+        borderUtilities[`.rounded-${originalKey}`] = { borderRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-t-${originalKey}`] = { 
+            borderTopLeftRadius: `var(--${kebabKey})`, 
+            borderTopRightRadius: `var(--${kebabKey})` 
+        };
+        borderUtilities[`.rounded-r-${originalKey}`] = { 
+            borderTopRightRadius: `var(--${kebabKey})`, 
+            borderBottomRightRadius: `var(--${kebabKey})` 
+        };
+        borderUtilities[`.rounded-b-${originalKey}`] = { 
+            borderBottomLeftRadius: `var(--${kebabKey})`, 
+            borderBottomRightRadius: `var(--${kebabKey})` 
+        };
+        borderUtilities[`.rounded-l-${originalKey}`] = { 
+            borderTopLeftRadius: `var(--${kebabKey})`, 
+            borderBottomLeftRadius: `var(--${kebabKey})` 
+        };
+        borderUtilities[`.rounded-tl-${originalKey}`] = { borderTopLeftRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-tr-${originalKey}`] = { borderTopRightRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-bl-${originalKey}`] = { borderBottomLeftRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-br-${originalKey}`] = { borderBottomRightRadius: `var(--${kebabKey})` };
+    }
+}
+
+// Add semantic border radius if needed
+const semanticBorderRadius = {
+    "pill": primitiveBorderRadius["xl"] || "80px"
+};
+
+// If no border radius tokens were found in the tokens, ensure we have the basic ones
+if (Object.keys(primitiveBorderRadius).length === 0) {
+    // Only add the known tokens that exist in the design system
+    cssVarMap["border-radius-0"] = "0px";
+    cssVarMap["border-radius-xl"] = "80px";
+    
+    // Store as CSS variable references
+    primitiveBorderRadius["0"] = "var(--border-radius-0)";
+    primitiveBorderRadius["xl"] = "var(--border-radius-xl)";
+}
+
+// Add the pill semantic border radius
+cssVarMap["border-radius-pill"] = cssVarMap["border-radius-xl"] || "80px";
+semanticBorderRadius["pill"] = "var(--border-radius-pill)";
+
+// If no border width tokens were found in the tokens, ensure we have the basic ones
+if (Object.keys(primitiveBorderWidths).length === 0) {
+    // Only add the known tokens that exist in the design system
+    cssVarMap["border-width-0"] = "0px";
+    cssVarMap["border-width-s"] = "1px";
+    
+    // Store as CSS variable references
+    primitiveBorderWidths["0"] = "var(--border-width-0)";
+    primitiveBorderWidths["s"] = "var(--border-width-s)";
 }
 
 // ----------------------
@@ -681,6 +799,9 @@ export const primitiveFontFamilies = ${JSON.stringify(primitiveFontFamilies, nul
 export const primitiveFontSizes = ${JSON.stringify(primitiveFontSizes, null, 2)};
 export const primitiveFontWeights = ${JSON.stringify(primitiveFontWeights, null, 2)};
 export const primitiveLetterSpacings = ${JSON.stringify(primitiveLetterSpacings, null, 2)};
+export const primitiveBorderWidths = ${JSON.stringify(primitiveBorderWidths, null, 2)};
+export const primitiveBorderRadius = ${JSON.stringify(primitiveBorderRadius, null, 2)};
+export const semanticBorderRadius = ${JSON.stringify(semanticBorderRadius, null, 2)};
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);
@@ -756,6 +877,7 @@ export default function ({ addUtilities }) {
   addUtilities({
     ...${JSON.stringify(utilityClasses, null, 2)},
     ...${JSON.stringify(spacingUtilities, null, 2)},
+    ...${JSON.stringify(borderUtilities, null, 2)},
     ...${JSON.stringify(filteredTypographyUtilities, null, 2)}
   });
 }

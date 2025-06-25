@@ -56,7 +56,7 @@
       hover:border-button-border-pill-hover
       active:border-button-border-pill-active
       disabled:border-button-border-pill-disabled
-      rounded-full
+      rounded-pill
       gap-x-s
       px-m
       py-s

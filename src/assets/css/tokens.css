@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-05-26T18:36:56.777Z
+ * Last generated: 2025-06-25T12:24:07.582Z
  */
 
 :root {
@@ -188,6 +188,11 @@
   --spacing-l: 40px;
   --spacing-xl: 64px;
   --spacing-xxl: 128px;
+  --border-radius-0: 0px;
+  --border-radius-xl: 80px;
+  --border-radius-pill: 80px;
+  --border-width-0: 0px;
+  --border-width-s: 1px;
   --article-heading-fontFamily: 'Gulliver', serif;
   --article-heading-fontSize: 28px;
   --article-heading-fontWeight: 700;

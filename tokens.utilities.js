@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-05-26T18:36:56.777Z
+ * Last generated: 2025-06-25T12:24:07.582Z
  */
 
 export default function ({ addUtilities }) {
@@ -730,6 +730,7 @@ export default function ({ addUtilities }) {
     "gap": "var(--spacing-xxl)"
   }
 },
+    ...{},
     ...{
   ".text-article-heading": {
     "fontFamily": "var(--article-heading-fontFamily)",

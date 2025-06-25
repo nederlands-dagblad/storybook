@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-05-26T18:36:56.775Z
+// Last generated: 2025-06-25T12:24:07.580Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -381,13 +381,13 @@ export const primitiveLetterSpacings = {
   "l": "var(--letter-spacing-l)"
 };
 export const primitiveBorderWidths = {
-    "0": "0rem",
-    "s": "0.06rem"
-  };
+  "0": "var(--border-width-0)",
+  "s": "var(--border-width-s)"
+};
 export const primitiveBorderRadius = {
-    "0": "0rem",
-    "xl": "5rem",
-  };
+  "0": "var(--border-radius-0)",
+  "xl": "var(--border-radius-xl)"
+};
 export const semanticBorderRadius = {
-  "pill": primitiveBorderRadius["xl"] 
+  "pill": "var(--border-radius-pill)"
 };

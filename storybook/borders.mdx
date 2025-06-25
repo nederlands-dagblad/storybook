@@ -1,11 +1,12 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import {Meta} from '@storybook/addon-docs/blocks';
 import * as tokens from '../tailwind.tokens.js';
+import tailwindConfig from '../tailwind.config.js';
 
 <Meta title="General/Borders" />
 
 # Borders
-## Primitives
-### Border-width
+
+## Border-width
 
 <table>
     <thead>
@@ -16,7 +17,7 @@ import * as tokens from '../tailwind.tokens.js';
     </tr>
     </thead>
     <tbody>
-    {Object.entries(tokens.primitiveBorderWidths).map(([key, value]) => (
+    {Object.entries(tailwindConfig.theme.extend.borderWidth).map(([key, value]) => (
         <tr key={key}>
             <td>border-width-{key}</td>
             <td>{value}</td>
@@ -37,7 +38,7 @@ import * as tokens from '../tailwind.tokens.js';
     </tbody>
 </table>
 
-### Border-radius
+## Border-radius
 
 <table>
     <thead>
@@ -48,7 +49,7 @@ import * as tokens from '../tailwind.tokens.js';
     </tr>
     </thead>
     <tbody>
-    {Object.entries(tokens.primitiveBorderRadius).map(([key, value]) => (
+    {Object.entries(tailwindConfig.theme.extend.borderRadius).map(([key, value]) => (
         <tr key={key}>
             <td>border-radius-{key}</td>
             <td>{value}</td>
@@ -69,35 +70,3 @@ import * as tokens from '../tailwind.tokens.js';
     </tbody>
 </table>
 
-## Semantic tokens
-### Border Radius
-
-<table>
-    <thead>
-    <tr>
-        <th>Variable</th>
-        <th>Value</th>
-        <th>Example</th>
-    </tr>
-    </thead>
-    <tbody>
-    {Object.entries(tokens.semanticBorderRadius).map(([key, value]) => (
-        <tr key={key}>
-            <td>border-radius-{key}</td>
-            <td>{value}</td>
-            <td>
-                <div
-                    style={{
-                        background: 'var(--background-accent-gray, #F2F2F2)',
-                        width: '145px',
-                        height: '60px',
-                        border: '1px solid var(--border-default, #000000)',
-                        borderRadius: value,
-                        margin: '0 auto'
-                    }}
-                />
-            </td>
-        </tr>
-    ))}
-    </tbody>
-</table>
