@@ -9,6 +9,7 @@
 @import "components/modal.css";
 @import "components/portal/description-list.css";
 @import "components/portal/portal-navigation.css";
+@import "components/portal/navigation-cards.css";
 
 @import "experimental/collapsed-card.css";
 
