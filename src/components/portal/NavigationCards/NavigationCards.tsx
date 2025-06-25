@@ -10,7 +10,7 @@ export default function NavigationCards(props: NavigationCardsProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {items.map((item, index) => (
+      {items.map((item) => (
         NavigationCard(item)
       ))}
     </div>
