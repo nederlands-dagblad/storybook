@@ -7,7 +7,7 @@ export interface NavigationCardProps {
   href: string
 }
 
-export default function NavigationCard(props: NavigationCardProps) {
+export function NavigationCard(props: NavigationCardProps) {
 
   return (
     <a className="navigation-card" href={props.href}>
@@ -21,3 +21,5 @@ export default function NavigationCard(props: NavigationCardProps) {
     </a>
   )
 }
+
+export default NavigationCard;

@@ -1,10 +1,10 @@
 import NavigationCard, {NavigationCardProps} from "./NavigationCard";
 
-interface NavigationCardsProps {
+export interface NavigationCardsProps {
   items: NavigationCardProps[]
 }
 
-export default function NavigationCards(props: NavigationCardsProps) {
+export function NavigationCards(props: NavigationCardsProps) {
 
   const { items } = props
 
@@ -16,3 +16,5 @@ export default function NavigationCards(props: NavigationCardsProps) {
     </div>
   )
 }
+
+export default NavigationCards;

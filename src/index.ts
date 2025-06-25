@@ -39,6 +39,9 @@ export type { DescriptionListItemsProps } from './components/portal/DescriptionL
 export { PortalNavigation } from './components/portal/PortalNavigation/PortalNavigation';
 export type { PortalNavigationProps, PortalNavigationItem } from './components/portal/PortalNavigation/PortalNavigation';
 
+export { NavigationCards } from './components/portal/NavigationCards/NavigationCards';
+export type { NavigationCardsProps } from './components/portal/NavigationCards/NavigationCards';
+
 // Experimental
 export { Card } from './experimental/Card/Card';
 export type { CardProps } from './experimental/Card/Card';
