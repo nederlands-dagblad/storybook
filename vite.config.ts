@@ -26,6 +26,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@atoms': path.resolve(__dirname, './src/atoms'),
+      '@textStyles': path.resolve(__dirname, 'src/textStyles'),
       '@molecules': path.resolve(__dirname, './src/molecules'),
       '@components': path.resolve(__dirname, './src/components'),
       '@experimental': path.resolve(__dirname, './src/experimental'),

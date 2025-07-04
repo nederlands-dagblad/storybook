@@ -33,6 +33,7 @@
     "baseUrl": ".",
     "paths": {
       "@atoms/*": ["src/atoms/*"],
+      "@textStyles/*": ["src/textStyles/*"],
       "@molecules/*": ["src/molecules/*"],
       "@components/*": ["src/components/*"],
       "@experimental/*": ["src/experimental/*"],

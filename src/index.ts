@@ -1,46 +1,46 @@
 // Atoms
-export * from './atoms/Button/Button';
-export type { ButtonProps } from './atoms/Button/Button';
+export * from '@atoms/actionAtoms/Button/Button';
+export type { ButtonProps } from './atoms/actionAtoms/Button/Button';
 
-export * from './atoms/Icon/Icon';
-export type { IconProps } from './atoms/Icon/Icon';
-export { keys as iconKeys } from './atoms/Icon/list';
+export * from '@atoms/basicAtoms/Icon/Icon';
+export type { IconProps } from './atoms/basicAtoms/Icon/Icon';
+export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
 
-export * from './atoms/PremiumBadge/PremiumBadge';
-export type { PremiumBadgeProps } from './atoms/PremiumBadge/PremiumBadge';
+export * from '@atoms/displayAtoms/PremiumBadge/PremiumBadge';
+export type { PremiumBadgeProps } from './atoms/displayAtoms/PremiumBadge/PremiumBadge';
 
-export * from './atoms/Skeleton/Skeleton';
-export type { SkeletonProps, SkeletonSize } from './atoms/Skeleton/Skeleton';
+export * from './atoms/displayAtoms/Skeleton/Skeleton';
+export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/Skeleton';
 
-export * from './atoms/Typography/Typography';
-export type { TypographyProps } from './atoms/Typography/Typography';
+export * from './textStyles/Typography/Typography';
+export type { TypographyProps } from './textStyles/Typography/Typography';
 
 // Components - Modal
-export { ConfirmModal } from './components/modal/ConfirmModal';
-export type { ConfirmModalProps } from './components/modal/ConfirmModal';
+export { ConfirmModal } from './molecules/feedbackMolecules/modal/ConfirmModal';
+export type { ConfirmModalProps } from './molecules/feedbackMolecules/modal/ConfirmModal';
 
-export { ExampleModal } from './components/modal/ExampleModal';
+export { ExampleModal } from './molecules/feedbackMolecules/modal/ExampleModal';
 
-export { ModalManager } from './components/modal/ModalManager';
+export { ModalManager } from './molecules/feedbackMolecules/modal/ModalManager';
 
-export { NModal } from './components/modal/NModal';
-export type { NModalProps } from './components/modal/NModal';
+export { NModal } from './molecules/feedbackMolecules/modal/NModal';
+export type { NModalProps } from './molecules/feedbackMolecules/modal/NModal';
 
 // Components - Portal
-export { DescriptionList } from './components/portal/DescriptionList/DescriptionList';
-export type { DescriptionListProps } from './components/portal/DescriptionList/DescriptionList';
+export { DescriptionList } from './molecules/portalMolecules/DescriptionList/DescriptionList';
+export type { DescriptionListProps } from './molecules/portalMolecules/DescriptionList/DescriptionList';
 
-export { DescriptionListItem } from './components/portal/DescriptionList/DescriptionListItem';
-export type { DescriptionListItemProps } from './components/portal/DescriptionList/DescriptionListItem';
+export { DescriptionListItem } from './molecules/portalMolecules/DescriptionList/DescriptionListItem';
+export type { DescriptionListItemProps } from './molecules/portalMolecules/DescriptionList/DescriptionListItem';
 
-export { DescriptionListItems } from './components/portal/DescriptionList/DescriptionListItems';
-export type { DescriptionListItemsProps } from './components/portal/DescriptionList/DescriptionListItems';
+export { DescriptionListItems } from './molecules/portalMolecules/DescriptionList/DescriptionListItems';
+export type { DescriptionListItemsProps } from './molecules/portalMolecules/DescriptionList/DescriptionListItems';
 
-export { PortalNavigation } from './components/portal/PortalNavigation/PortalNavigation';
-export type { PortalNavigationProps, PortalNavigationItem } from './components/portal/PortalNavigation/PortalNavigation';
+export { PortalNavigation } from './molecules/navigationMolecules/PortalNavigation/PortalNavigation';
+export type { PortalNavigationProps, PortalNavigationItem } from './molecules/navigationMolecules/PortalNavigation/PortalNavigation';
 
-export { NavigationCards } from './components/portal/NavigationCards/NavigationCards';
-export type { NavigationCardsProps } from './components/portal/NavigationCards/NavigationCards';
+export { NavigationCards } from './molecules/portalMolecules/NavigationCards/NavigationCards';
+export type { NavigationCardsProps } from './molecules/portalMolecules/NavigationCards/NavigationCards';
 
 // Experimental
 export { Card } from './experimental/Card/Card';
@@ -50,11 +50,11 @@ export { CollapsedCard } from './experimental/CollapsedCard/CollapsedCard';
 export type { CollapsedCardProps } from './experimental/CollapsedCard/CollapsedCard';
 
 // Molecules
-export { Alert } from './molecules/Alert/Alert';
-export type { AlertProps, AlertVariant } from './molecules/Alert/Alert';
+export { Alert } from './molecules/feedbackMolecules/Alert/Alert';
+export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Alert/Alert';
 
-export { Input } from './molecules/form/Input/Input';
-export type { InputProps } from './molecules/form/Input/Input';
+export { Input } from './molecules/formMolecules/Input/Input';
+export type { InputProps } from './molecules/formMolecules/Input/Input';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
