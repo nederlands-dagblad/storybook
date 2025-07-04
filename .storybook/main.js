@@ -1,9 +1,9 @@
 /** @type { import('@storybook/react-vite').StorybookConfig } */
-module.exports = {
+export default {
   stories: [
-      '../src/**/*.mdx',
-      '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-      '../storybook/**/*.mdx',
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../storybook/**/*.mdx',
   ],
 
   features: {
@@ -12,13 +12,12 @@ module.exports = {
 
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-viewport',
     '@storybook/addon-docs',
     {
       name: '@storybook/addon-postcss',
       options: {
         postcssLoaderOptions: {
-          implementation: require('postcss'),
+          implementation: 'postcss',
         },
       },
     }

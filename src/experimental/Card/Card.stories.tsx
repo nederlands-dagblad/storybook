@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Card from './Card';
-import Button from '../../atoms/Button/Button.tsx';
+import Button from '../../atoms/actionAtoms/Button/Button.tsx';
 
 const meta = {
   title: 'Experimental/Card',
