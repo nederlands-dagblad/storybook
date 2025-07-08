@@ -11,7 +11,8 @@ import {
     primitiveFontFamilies,
     primitiveFontSizes,
     primitiveFontWeights,
-    primitiveLetterSpacings, primitiveBorderRadius, primitiveBorderWidths, semanticBorderRadius
+    primitiveLetterSpacings, primitiveBorderRadius, primitiveBorderWidths, semanticBorderRadius,
+    primitiveBoxShadows
 } from './tailwind.tokens.js';
 
 import tokenUtilities from './tokens.utilities.js';
@@ -83,6 +84,9 @@ export default {
         borderRadius: {
             ...primitiveBorderRadius,
             ...semanticBorderRadius,
+        },
+        boxShadow: {
+            ...primitiveBoxShadows
         }
     },
   },

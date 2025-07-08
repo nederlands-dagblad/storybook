@@ -1,0 +1,39 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import * as tokens from '../tailwind.tokens.js';
+import tailwindConfig from '../tailwind.config.js';
+
+<Meta title="Tokens/Shadows" />
+
+# Shadows
+
+## Box-shadow
+
+<table>
+    <thead>
+    <tr>
+        <th>Variable</th>
+        <th>Value</th>
+        <th>Example</th>
+    </tr>
+    </thead>
+    <tbody>
+    {Object.entries(tailwindConfig.theme.extend.boxShadow).map(([key, value]) => (
+        <tr key={key}>
+            <td>box-shadow-{key}</td>
+            <td>{value}</td>
+            <td>
+                <div
+                    style={{
+                        background: 'var(--color-background-default, #FFFFFF)',
+                        width: '200px',
+                        height: '100px',
+                        boxShadow: value,
+                        borderRadius: 'var(--border-radius-s, 8px)',
+                        margin: '20px auto'
+                    }}
+                />
+            </td>
+        </tr>
+    ))}
+    </tbody>
+</table>
