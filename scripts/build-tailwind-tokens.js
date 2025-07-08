@@ -321,9 +321,9 @@ for (const [state, file] of Object.entries(files.componentStates)) {
         }
     })(component);
 }
-
+// -------------------------
 // 🌑 Process Shadow Tokens
-// ----------------------
+// -------------------------
 console.log('🔄 Processing shadow tokens...');
 
 const primitiveBoxShadows = {};
