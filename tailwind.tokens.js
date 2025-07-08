@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-06-25T12:24:07.580Z
+// Last generated: 2025-07-08T14:28:57.651Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -390,4 +390,9 @@ export const primitiveBorderRadius = {
 };
 export const semanticBorderRadius = {
   "pill": "var(--border-radius-pill)"
+};
+export const primitiveBoxShadows = {
+  "s": "var(--box-shadow-s)",
+  "m": "var(--box-shadow-m)",
+  "l": "var(--box-shadow-l)"
 };

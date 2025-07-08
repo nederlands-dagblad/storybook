@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-06-25T12:24:07.582Z
+ * Last generated: 2025-07-08T14:28:57.652Z
  */
 
 :root {
@@ -176,6 +176,9 @@
   --color-button-text-pill-disabled: #727272;
   --color-link-text-default-disabled: #727272;
   --color-link-text-brown-disabled: #727272;
+  --box-shadow-s: 0px 1px 8px 0px #0000001a;
+  --box-shadow-m: 0px 10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
+  --box-shadow-l: 0px -10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
   --spacing-layout-breakpoints: 360px;
   --spacing-layout-columns: 4px;
   --spacing-layout-padding: 16px;

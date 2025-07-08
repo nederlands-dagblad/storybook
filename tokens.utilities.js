@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-06-25T12:24:07.582Z
+ * Last generated: 2025-07-08T14:28:57.653Z
  */
 
 export default function ({ addUtilities }) {
@@ -952,6 +952,17 @@ export default function ({ addUtilities }) {
     "lineHeight": "var(--meta-bold-lineHeight)",
     "letterSpacing": "var(--meta-bold-letterSpacing)",
     "textDecoration": "none"
+  }
+},
+    ...{
+  ".shadow-s": {
+    "boxShadow": "var(--box-shadow-s)"
+  },
+  ".shadow-m": {
+    "boxShadow": "var(--box-shadow-m)"
+  },
+  ".shadow-l": {
+    "boxShadow": "var(--box-shadow-l)"
   }
 }
   });

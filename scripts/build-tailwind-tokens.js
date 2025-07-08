@@ -7,6 +7,7 @@ const files = {
     primitives: './tokens/primitives.value.tokens.json',
     semantics: './tokens/semantic-colors.light.tokens.json',
     spacing: './tokens/semantic-layout.mobile.tokens.json',
+    effects: './tokens/effect.styles.tokens.json',
     typography: './tokens/text.styles.tokens.json',
     responsiveTypography: {
         mobile: './tokens/semantic-typography.mobile.tokens.json',
@@ -196,6 +197,7 @@ console.log('🔄 Loading and processing token files...');
 const baseTokens = {
     ...load(files.primitives),
     ...load(files.semantics),
+    ...load(files.effects),
     ...load(files.typography)  // Add typography tokens to base tokens for reference resolution
 };
 
@@ -319,6 +321,91 @@ for (const [state, file] of Object.entries(files.componentStates)) {
         }
     })(component);
 }
+
+// 🌑 Process Shadow Tokens
+// ----------------------
+console.log('🔄 Processing shadow tokens...');
+
+const primitiveBoxShadows = {};
+const shadowUtilities = {};
+
+// Helper function to convert shadow object to CSS string
+function shadowObjectToCSS(shadowObj) {
+    if (typeof shadowObj === 'string') return shadowObj;
+
+    const x = shadowObj.x || shadowObj.offsetX || '0px';
+    const y = shadowObj.y || shadowObj.offsetY || '0px';
+    const blur = shadowObj.blur || shadowObj.blurRadius || '0px';
+    const spread = shadowObj.spread || shadowObj.spreadRadius || '0px';
+    const color = shadowObj.color || 'rgba(0, 0, 0, 0.1)';
+    const inset = shadowObj.inset ? 'inset ' : '';
+
+    return `${inset}${x} ${y} ${blur} ${spread} ${color}`.trim();
+}
+
+// Process shadow tokens from all files
+for (const [tokenPath, token] of Object.entries(flattenedBase)) {
+    // Check for shadows at root level (like shadow-s, shadow-m, shadow-l)
+    if ((tokenPath.includes('shadow') || tokenPath.includes('Shadow')) && token?.$type === 'shadow' && token?.$value !== undefined) {
+        console.log(`  Processing shadow token: ${tokenPath}`);
+
+        let resolved;
+        const raw = token.$value;
+
+        // Handle different value formats
+        if (Array.isArray(raw)) {
+            // Handle array of shadows (multiple shadows)
+            resolved = raw.map(shadow => {
+                const shadowStr = shadowObjectToCSS(shadow);
+                return shadowStr.replace(/\{([^}]+)\}/g, (match, ref) => {
+                    const colorValue = resolveReference(match, flattenedBase);
+                    return colorValue || match;
+                });
+            }).join(', ');
+        } else if (typeof raw === 'object' && !raw.$value) {
+            // Handle single object shadow
+            resolved = shadowObjectToCSS(raw);
+            resolved = resolved.replace(/\{([^}]+)\}/g, (match, ref) => {
+                const colorValue = resolveReference(match, flattenedBase);
+                return colorValue || match;
+            });
+        } else if (typeof raw === 'string') {
+            // Handle string format shadow
+            resolved = raw;
+            if (raw.includes('{')) {
+                resolved = raw.replace(/\{([^}]+)\}/g, (match, ref) => {
+                    const colorValue = resolveReference(match, flattenedBase);
+                    return colorValue || match;
+                });
+            }
+        }
+
+        // Extract shadow name from the path
+        let shadowName = tokenPath;
+
+        // Handle different naming patterns
+        if (tokenPath.startsWith('shadow.')) {
+            shadowName = tokenPath.replace('shadow.', '');
+        } else if (tokenPath.startsWith('shadow-')) {
+            shadowName = tokenPath.replace('shadow-', '');
+        }
+
+        const originalKey = kebab(shadowName);
+        const kebabKey = `box-shadow-${originalKey}`;
+
+        // Store as CSS variable reference
+        primitiveBoxShadows[originalKey] = `var(--${kebabKey})`;
+        // Add to cssVarMap for CSS variable generation
+        cssVarMap[kebabKey] = resolved;
+
+        // Generate shadow utility classes
+        shadowUtilities[`.shadow-${originalKey}`] = { boxShadow: `var(--${kebabKey})` };
+
+        console.log(`  ✅ Processed shadow: ${originalKey} = ${resolved}`);
+    }
+}
+//console.log(`  Total shadows processed: ${Object.keys(primitiveBoxShadows).length}`);
+//console.log(`  Shadows found: ${Object.keys(primitiveBoxShadows).join(', ')}`);
 
 // ----------------------
 // 📏 Process Spacing Tokens
@@ -802,6 +889,7 @@ export const primitiveLetterSpacings = ${JSON.stringify(primitiveLetterSpacings,
 export const primitiveBorderWidths = ${JSON.stringify(primitiveBorderWidths, null, 2)};
 export const primitiveBorderRadius = ${JSON.stringify(primitiveBorderRadius, null, 2)};
 export const semanticBorderRadius = ${JSON.stringify(semanticBorderRadius, null, 2)};
+export const primitiveBoxShadows = ${JSON.stringify(primitiveBoxShadows, null, 2)};
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);
@@ -878,7 +966,8 @@ export default function ({ addUtilities }) {
     ...${JSON.stringify(utilityClasses, null, 2)},
     ...${JSON.stringify(spacingUtilities, null, 2)},
     ...${JSON.stringify(borderUtilities, null, 2)},
-    ...${JSON.stringify(filteredTypographyUtilities, null, 2)}
+    ...${JSON.stringify(filteredTypographyUtilities, null, 2)},
+    ...${JSON.stringify(shadowUtilities, null, 2)}
   });
 }
 `.trim();
