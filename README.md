@@ -10,6 +10,16 @@ This repository contains the design system for our company, built with Vue 3, Ta
 npm install
 ```
 
+### Updating tokens
+
+1. Go to the Design system in Figma: https://www.figma.com/design/KBKdkDiytfjb5XDctGX367.
+2. Install the plugin 'Design token manager' from the Figma community.
+3. Open the plugin and click the 'export' button.
+4. Copy the generated JSON to the `/tokens` folder in this project.
+5. Run the `yarn build-tailwind-tokens` command to generate the Tailwind CSS configuration from the tokens.
+
+> Note: this command only needs to be run when the tokens are updated in Figma. No need to call this method every time you run the project, or deploy it.
+
 ### Development
 
 To run the development server:

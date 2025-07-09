@@ -32,6 +32,6 @@
   }
 
   .description-list-footer {
-    @apply mt-5 pt-4 pb-2 border-t border-gray-200 text-sm font-normal leading-snug text-gray-500;
+    @apply mt-5 pt-4 pb-2h border-t border-gray-200 text-sm font-normal leading-snug text-gray-500;
   }
 }
