@@ -110,7 +110,7 @@
     },
     "accent-gray": {
       "$type": "color",
-      "$value": "{color.neutral.600}"
+      "$value": "{color.neutral.400}"
     },
     "accent-gray-subtle": {
       "$type": "color",
@@ -118,7 +118,7 @@
     },
     "disabled": {
       "$type": "color",
-      "$value": "{color.neutral.600}"
+      "$value": "{color.neutral.400}"
     },
     "warning": {
       "$type": "color",

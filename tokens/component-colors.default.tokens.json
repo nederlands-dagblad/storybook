@@ -91,7 +91,7 @@
     "text": {
       "default": {
         "$type": "color",
-        "$value": "{text.brand}"
+        "$value": "{text.default}"
       },
       "brown": {
         "$type": "color",

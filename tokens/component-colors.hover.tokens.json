@@ -7,7 +7,7 @@
       },
       "checkbox": {
         "$type": "color",
-        "$value": "{background.accent-gray-subtle}"
+        "$value": "{background.accent-gray}"
       }
     },
     "border": {
@@ -91,7 +91,7 @@
     "text": {
       "default": {
         "$type": "color",
-        "$value": "{text.brand-subtle}"
+        "$value": "{text.default}"
       },
       "brown": {
         "$type": "color",

@@ -1,0 +1,110 @@
+@layer components {
+
+    .faq-container {
+        @apply flex flex-col w-full;
+        background: transparent;
+    }
+
+    .faq-title {
+        @apply text-black mb-4;
+        font-family: 'Gulliver', serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0;
+    }
+
+    .faq-items {
+        @apply flex flex-col w-full;
+    }
+
+    .faq-item {
+        @apply w-full border-b;
+        border-color: #BDBDBD;
+        background: white;
+    }
+
+    .faq-item:last-child {
+        @apply border-b-0;
+    }
+
+    .faq-item-question {
+        @apply appearance-none border-none w-full text-left cursor-pointer flex justify-between items-center gap-4 px-0 py-4 transition-colors duration-200 ease-in-out;
+        background: transparent;
+    }
+
+    .faq-item-question:focus {
+        @apply outline-none;
+    }
+
+    .faq-item-question[aria-expanded="true"] {
+        background: transparent;
+    }
+
+    .faq-item-question h3 {
+        @apply text-black m-0 flex-1;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 160%;
+        letter-spacing: 0;
+    }
+
+    .faq-item-icon {
+        @apply w-6 h-6 flex-shrink-0 text-black;
+    }
+
+    .faq-item-answer {
+        @apply px-0 pb-4;
+        background: #F8F8F8;
+        margin-top: -4px;
+        padding-top: 16px;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .faq-item-answer p {
+        @apply text-black m-0;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 160%;
+        letter-spacing: 0;
+    }
+
+    .faq-item-answer a {
+        color: #02A1D9;
+        @apply underline transition-colors duration-200 ease-in-out;
+    }
+
+    .faq-item-answer a:hover {
+        color: #02B4F2;
+    }
+
+    /* Animation for answer reveal */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 100;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .faq-title {
+            font-size: 18px;
+        }
+
+        .faq-item-question h3 {
+            font-size: 16px;
+        }
+
+        .faq-item-answer p {
+            font-size: 16px;
+        }
+    }
+
+}
