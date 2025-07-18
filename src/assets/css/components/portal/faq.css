@@ -1,12 +1,12 @@
 @layer components {
-
     .faq-container {
         @apply flex flex-col w-full;
         background: transparent;
     }
 
     .faq-title {
-        @apply text-black mb-4;
+        @apply mb-4 text-text-default;
+        /* Using heading.2 from your design system */
         font-family: 'Gulliver', serif;
         font-size: 20px;
         font-weight: 700;
@@ -19,22 +19,31 @@
     }
 
     .faq-item {
-        @apply w-full border-b;
-        border-color: #BDBDBD;
-        background: white;
+        @apply w-full mb-4 bg-background-default;
+        border: 1px solid #eceae9; /* Explicit 1px border all around */
+        border-radius: 0;
+        transition: border-color 0.2s ease-in-out;
+        overflow: hidden; /* Ensures content doesn't affect border rendering */
     }
 
     .faq-item:last-child {
-        @apply border-b-0;
+        @apply mb-0;
+    }
+
+    /* When FAQ item is expanded, show blue border */
+    .faq-item:has(.faq-item-question[aria-expanded="true"]) {
+        border-color: #0096cb; /* color.blue.500 from your tokens */
     }
 
     .faq-item-question {
-        @apply appearance-none border-none w-full text-left cursor-pointer flex justify-between items-center gap-4 px-0 py-4 transition-colors duration-200 ease-in-out;
+        @apply appearance-none border-none w-full text-left cursor-pointer
+        flex justify-between items-center gap-4 p-4
+        transition-colors duration-200 ease-in-out;
         background: transparent;
     }
 
     .faq-item-question:focus {
-        @apply outline-none;
+        @apply outline-none ring-2 ring-border-brand ring-offset-2;
     }
 
     .faq-item-question[aria-expanded="true"] {
@@ -42,7 +51,8 @@
     }
 
     .faq-item-question h3 {
-        @apply text-black m-0 flex-1;
+        @apply m-0 flex-1 text-text-default;
+        /* Using body.bold from your design system */
         font-family: 'Fira Sans', sans-serif;
         font-size: 18px;
         font-weight: 700;
@@ -51,19 +61,23 @@
     }
 
     .faq-item-icon {
-        @apply w-6 h-6 flex-shrink-0 text-black;
+        @apply w-6 h-6 flex-shrink-0 text-icons-default;
+    }
+
+    .faq-item[aria-expanded="true"] .faq-item-icon {
+        @apply transform rotate-180;
     }
 
     .faq-item-answer {
-        @apply px-0 pb-4;
-        background: #F8F8F8;
-        margin-top: -4px;
-        padding-top: 16px;
+        @apply px-4 bg-background-default;
+        padding-top: 0;
+        padding-bottom: 16px;
         animation: slideDown 0.3s ease-out;
     }
 
     .faq-item-answer p {
-        @apply text-black m-0;
+        @apply m-0 text-text-default;
+        /* Using body.light from your design system */
         font-family: 'Fira Sans', sans-serif;
         font-size: 18px;
         font-weight: 300;
@@ -72,12 +86,11 @@
     }
 
     .faq-item-answer a {
-        color: #02A1D9;
-        @apply underline transition-colors duration-200 ease-in-out;
+        @apply underline transition-colors duration-200 ease-in-out text-text-brand;
     }
 
     .faq-item-answer a:hover {
-        color: #02B4F2;
+        @apply text-text-brand-subtle;
     }
 
     /* Animation for answer reveal */
@@ -87,24 +100,23 @@
             transform: translateY(-10px);
         }
         to {
-            opacity: 100;
+            opacity: 1;
             transform: translateY(0);
         }
     }
 
-    /* Responsive adjustments */
+    /* Responsive adjustments using your font-size tokens */
     @media (max-width: 768px) {
         .faq-title {
-            font-size: 18px;
+            font-size: 18px; /* heading.m on mobile */
         }
 
         .faq-item-question h3 {
-            font-size: 16px;
+            font-size: 16px; /* body.m on mobile */
         }
 
         .faq-item-answer p {
-            font-size: 16px;
+            font-size: 16px; /* body.m on mobile */
         }
     }
-
 }

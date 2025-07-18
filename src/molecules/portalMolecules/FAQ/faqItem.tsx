@@ -25,7 +25,7 @@ export function FaqItem(props: FaqItemProps) {
             >
                 <h3>{props.question}</h3>
                 <div className="faq-item-icon">
-                    <Icon name={isOpen ? "minus" : "plus"} />
+                    <Icon name={isOpen ? 'minus-outline' : 'plus-outline'} />
                 </div>
             </button>
 
