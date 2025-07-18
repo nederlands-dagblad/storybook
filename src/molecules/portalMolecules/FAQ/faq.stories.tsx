@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Faq } from "./Faq.tsx";
+import Faq from "./faq";
 
 const meta = {
     title: 'Molecules/Portal Molecules/Faq',
