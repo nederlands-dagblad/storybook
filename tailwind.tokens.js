@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-07-08T14:57:46.676Z
+// Last generated: 2025-07-18T09:43:41.654Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -189,7 +189,14 @@ export const typographyStyles = {
   "heading-uppercase": "var(--heading-uppercase)",
   "meta-light": "var(--meta-light)",
   "meta-regular": "var(--meta-regular)",
-  "meta-bold": "var(--meta-bold)"
+  "meta-bold": "var(--meta-bold)",
+  "menu-menu-primary": "var(--menu-menu-primary)",
+  "menu-menu-secondary": "var(--menu-menu-secondary)",
+  "menu-menu-submenu": "var(--menu-menu-submenu)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active)"
 };
 export const fontFamilies = {
   "article-heading": "var(--article-heading-fontFamily)",
@@ -219,7 +226,14 @@ export const fontFamilies = {
   "heading-uppercase": "var(--heading-uppercase-fontFamily)",
   "meta-light": "var(--meta-light-fontFamily)",
   "meta-regular": "var(--meta-regular-fontFamily)",
-  "meta-bold": "var(--meta-bold-fontFamily)"
+  "meta-bold": "var(--meta-bold-fontFamily)",
+  "menu-menu-primary": "var(--menu-menu-primary-fontFamily)",
+  "menu-menu-secondary": "var(--menu-menu-secondary-fontFamily)",
+  "menu-menu-submenu": "var(--menu-menu-submenu-fontFamily)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar-fontFamily)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontFamily)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item-fontFamily)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontFamily)"
 };
 export const fontWeights = {
   "article-heading": "var(--article-heading-fontWeight)",
@@ -249,7 +263,14 @@ export const fontWeights = {
   "heading-uppercase": "var(--heading-uppercase-fontWeight)",
   "meta-light": "var(--meta-light-fontWeight)",
   "meta-regular": "var(--meta-regular-fontWeight)",
-  "meta-bold": "var(--meta-bold-fontWeight)"
+  "meta-bold": "var(--meta-bold-fontWeight)",
+  "menu-menu-primary": "var(--menu-menu-primary-fontWeight)",
+  "menu-menu-secondary": "var(--menu-menu-secondary-fontWeight)",
+  "menu-menu-submenu": "var(--menu-menu-submenu-fontWeight)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar-fontWeight)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontWeight)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item-fontWeight)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontWeight)"
 };
 export const fontSizes = {
   "article-heading": "var(--article-heading-fontSize)",
@@ -279,7 +300,14 @@ export const fontSizes = {
   "heading-uppercase": "var(--heading-uppercase-fontSize)",
   "meta-light": "var(--meta-light-fontSize)",
   "meta-regular": "var(--meta-regular-fontSize)",
-  "meta-bold": "var(--meta-bold-fontSize)"
+  "meta-bold": "var(--meta-bold-fontSize)",
+  "menu-menu-primary": "var(--menu-menu-primary-fontSize)",
+  "menu-menu-secondary": "var(--menu-menu-secondary-fontSize)",
+  "menu-menu-submenu": "var(--menu-menu-submenu-fontSize)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar-fontSize)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontSize)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item-fontSize)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontSize)"
 };
 export const lineHeights = {
   "article-heading": "var(--article-heading-lineHeight)",
@@ -309,7 +337,14 @@ export const lineHeights = {
   "heading-uppercase": "var(--heading-uppercase-lineHeight)",
   "meta-light": "var(--meta-light-lineHeight)",
   "meta-regular": "var(--meta-regular-lineHeight)",
-  "meta-bold": "var(--meta-bold-lineHeight)"
+  "meta-bold": "var(--meta-bold-lineHeight)",
+  "menu-menu-primary": "var(--menu-menu-primary-lineHeight)",
+  "menu-menu-secondary": "var(--menu-menu-secondary-lineHeight)",
+  "menu-menu-submenu": "var(--menu-menu-submenu-lineHeight)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar-lineHeight)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-lineHeight)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item-lineHeight)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-lineHeight)"
 };
 export const letterSpacings = {
   "article-heading": "var(--article-heading-letterSpacing)",
@@ -339,7 +374,14 @@ export const letterSpacings = {
   "heading-uppercase": "var(--heading-uppercase-letterSpacing)",
   "meta-light": "var(--meta-light-letterSpacing)",
   "meta-regular": "var(--meta-regular-letterSpacing)",
-  "meta-bold": "var(--meta-bold-letterSpacing)"
+  "meta-bold": "var(--meta-bold-letterSpacing)",
+  "menu-menu-primary": "var(--menu-menu-primary-letterSpacing)",
+  "menu-menu-secondary": "var(--menu-menu-secondary-letterSpacing)",
+  "menu-menu-submenu": "var(--menu-menu-submenu-letterSpacing)",
+  "menu-menu-tabbar": "var(--menu-menu-tabbar-letterSpacing)",
+  "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-letterSpacing)",
+  "menu-menu-tab-item": "var(--menu-menu-tab-item-letterSpacing)",
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-letterSpacing)"
 };
 export const primitiveFontFamilies = {
   "gulliver": "var(--font-family-gulliver)",

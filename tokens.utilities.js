@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-07-08T14:57:46.678Z
+ * Last generated: 2025-07-18T09:43:41.656Z
  */
 
 export default function ({ addUtilities }) {
@@ -952,6 +952,63 @@ export default function ({ addUtilities }) {
     "lineHeight": "var(--meta-bold-lineHeight)",
     "letterSpacing": "var(--meta-bold-letterSpacing)",
     "textDecoration": "none"
+  },
+  ".text-menu-menu-primary": {
+    "fontFamily": "var(--menu-menu-primary-fontFamily)",
+    "fontSize": "var(--menu-menu-primary-fontSize)",
+    "fontWeight": "var(--menu-menu-primary-fontWeight)",
+    "lineHeight": "var(--menu-menu-primary-lineHeight)",
+    "letterSpacing": "var(--menu-menu-primary-letterSpacing)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-menu-menu-secondary": {
+    "fontFamily": "var(--menu-menu-secondary-fontFamily)",
+    "fontSize": "var(--menu-menu-secondary-fontSize)",
+    "fontWeight": "var(--menu-menu-secondary-fontWeight)",
+    "lineHeight": "var(--menu-menu-secondary-lineHeight)",
+    "letterSpacing": "var(--menu-menu-secondary-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-menu-menu-submenu": {
+    "fontFamily": "var(--menu-menu-submenu-fontFamily)",
+    "fontSize": "var(--menu-menu-submenu-fontSize)",
+    "fontWeight": "var(--menu-menu-submenu-fontWeight)",
+    "lineHeight": "var(--menu-menu-submenu-lineHeight)",
+    "letterSpacing": "var(--menu-menu-submenu-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-menu-menu-tabbar": {
+    "fontFamily": "var(--menu-menu-tabbar-fontFamily)",
+    "fontSize": "var(--menu-menu-tabbar-fontSize)",
+    "fontWeight": "var(--menu-menu-tabbar-fontWeight)",
+    "lineHeight": "var(--menu-menu-tabbar-lineHeight)",
+    "letterSpacing": "var(--menu-menu-tabbar-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-menu-menu-tabbar-active": {
+    "fontFamily": "var(--menu-menu-tabbar-active-fontFamily)",
+    "fontSize": "var(--menu-menu-tabbar-active-fontSize)",
+    "fontWeight": "var(--menu-menu-tabbar-active-fontWeight)",
+    "lineHeight": "var(--menu-menu-tabbar-active-lineHeight)",
+    "letterSpacing": "var(--menu-menu-tabbar-active-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-menu-menu-tab-item": {
+    "fontFamily": "var(--menu-menu-tab-item-fontFamily)",
+    "fontSize": "var(--menu-menu-tab-item-fontSize)",
+    "fontWeight": "var(--menu-menu-tab-item-fontWeight)",
+    "lineHeight": "var(--menu-menu-tab-item-lineHeight)",
+    "letterSpacing": "var(--menu-menu-tab-item-letterSpacing)",
+    "textDecoration": "none"
+  },
+  ".text-menu-menu-tab-item-active": {
+    "fontFamily": "var(--menu-menu-tab-item-active-fontFamily)",
+    "fontSize": "var(--menu-menu-tab-item-active-fontSize)",
+    "fontWeight": "var(--menu-menu-tab-item-active-fontWeight)",
+    "lineHeight": "var(--menu-menu-tab-item-active-lineHeight)",
+    "letterSpacing": "var(--menu-menu-tab-item-active-letterSpacing)",
+    "textDecoration": "underline"
   }
 },
     ...{

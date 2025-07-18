@@ -30,7 +30,7 @@
     },
     "disabled": {
       "$type": "color",
-      "$value": "{color.neutral.500}"
+      "$value": "{color.neutral.400}"
     },
     "inverse": {
       "$type": "color",
