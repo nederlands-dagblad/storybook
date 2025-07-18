@@ -42,6 +42,9 @@ export type { PortalNavigationProps, PortalNavigationItem } from './molecules/na
 export { NavigationCards } from './molecules/portalMolecules/NavigationCards/NavigationCards';
 export type { NavigationCardsProps } from './molecules/portalMolecules/NavigationCards/NavigationCards';
 
+export { Faq } from './molecules/portalMolecules/FAQ/faq';
+export type { FaqProps } from './molecules/portalMolecules/FAQ/faq';
+x
 // Experimental
 export { Card } from './experimental/Card/Card';
 export type { CardProps } from './experimental/Card/Card';
