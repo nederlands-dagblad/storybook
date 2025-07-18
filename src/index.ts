@@ -44,7 +44,7 @@ export type { NavigationCardsProps } from './molecules/portalMolecules/Navigatio
 
 export { Faq } from './molecules/portalMolecules/FAQ/faq';
 export type { FaqProps } from './molecules/portalMolecules/FAQ/faq';
-x
+
 // Experimental
 export { Card } from './experimental/Card/Card';
 export type { CardProps } from './experimental/Card/Card';
