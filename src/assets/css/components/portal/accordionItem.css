@@ -1,0 +1,95 @@
+.accordion-item {
+    /* Your design tokens */
+    border: var(--border-width-s) solid var(--color-border-accent-gray);
+    background: var(--color-background-default);
+
+    /* Ensure proper containment */
+    @apply w-full block;
+
+    /* Smooth border transition */
+    transition: border-color 0.2s ease;
+}
+
+.accordion-item--open {
+    border-color: var(--color-border-brand);
+}
+
+.accordion-item__button {
+    /* Your design tokens for spacing */
+    padding: var(--spacing-xs) var(--spacing-s);
+
+    /* Tailwind utilities */
+    @apply w-full border-0 bg-transparent cursor-pointer
+    flex justify-between items-center text-left;
+}
+
+/* Remove all focus outlines */
+.accordion-item__button:focus {
+    @apply outline-none;
+}
+
+/* Remove the default focus visible ring */
+.accordion-item__button:focus-visible {
+    @apply outline-none;
+}
+
+/* When button is focused and accordion is closed, show blue border on the item */
+.accordion-item:has(.accordion-item__button:focus-visible):not(.accordion-item--open) {
+    border-color: var(--color-border-brand);
+}
+
+/* The open state already has blue border from accordion-item--open class */
+
+.accordion-item__button:hover .accordion-item__question {
+    @apply underline;
+    text-underline-offset: 25%;
+}
+
+.accordion-item__question {
+    @apply flex-1 block;
+}
+
+.accordion-item__icon {
+    @apply w-5 h-5 flex items-center justify-center flex-shrink-0 block;
+
+    /* Smooth rotation animation */
+    transition: transform 0.2s ease;
+}
+
+.accordion-item--open .accordion-item__icon {
+    transform: rotate(180deg);
+}
+
+.accordion-item__answer {
+    /* Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+
+    /* Smooth transition */
+    transition: max-height 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    padding 0.3s ease;
+
+    /* Your spacing tokens */
+    padding: 0 var(--spacing-s);
+
+    /* Ensure it's a separate block */
+    @apply w-full block;
+}
+
+.accordion-item__answer--open {
+    max-height: 500px; /* Adjust based on your content */
+    opacity: 1;
+    transform: translateY(0);
+    padding: var(--spacing-xs) var(--spacing-s) var(--spacing-xs);
+}
+
+.accordion-item__content {
+    /* Your spacing token */
+    margin-top: var(--spacing-xs);
+
+    @apply m-0 block;
+}

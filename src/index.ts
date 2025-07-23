@@ -42,8 +42,11 @@ export type { PortalNavigationProps, PortalNavigationItem } from './molecules/na
 export { NavigationCards } from './molecules/portalMolecules/NavigationCards/NavigationCards';
 export type { NavigationCardsProps } from './molecules/portalMolecules/NavigationCards/NavigationCards';
 
-export { Faq } from './molecules/portalMolecules/FAQ/faq';
-export type { FaqProps } from './molecules/portalMolecules/FAQ/faq';
+export { Accordion } from './molecules/contentOrganizationMolecules/Accordian/accordion';
+export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordian/accordion';
+
+export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordian/accordionItem';
+export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordian/accordionItem';
 
 // Experimental
 export { Card } from './experimental/Card/Card';

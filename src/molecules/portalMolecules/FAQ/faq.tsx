@@ -1,4 +1,4 @@
-import FaqItem, { FaqItemProps } from './faqItem';
+import FaqItem, {FaqItemProps} from './faqItem';
 
 export interface FaqProps {
     items: FaqItemProps[]

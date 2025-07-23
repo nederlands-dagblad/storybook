@@ -1,0 +1,22 @@
+.accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.accordion__title {
+    margin-bottom: var(--spacing-m);
+}
+
+.accordion__items {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion__item-wrapper {
+    margin: 0;
+}
+
+.accordion__item-wrapper + .accordion__item-wrapper {
+    margin-top: var(--spacing-s);
+}
