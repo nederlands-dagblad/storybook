@@ -1,4 +1,4 @@
-import { Accordion } from "@molecules/contentOrganizationMolecules/Accordian/accordion.tsx";
+import { Accordion } from "@molecules/contentOrganizationMolecules/Accordion/accordion.tsx";
 
 export interface FAQItem {
     id?: string;

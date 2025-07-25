@@ -46,11 +46,11 @@ export type { NavigationCardsProps } from './molecules/portalMolecules/Navigatio
 export { FAQ } from './molecules/contentOrganizationMolecules/FAQ/faq';
 export type { FAQProps } from './molecules/contentOrganizationMolecules/FAQ/faq';
 
-export { Accordion } from './molecules/contentOrganizationMolecules/Accordian/accordion';
-export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordian/accordion';
+export { Accordion } from './molecules/contentOrganizationMolecules/Accordion/accordion';
+export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordion/accordion';
 
-export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordian/accordionItem';
-export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordian/accordionItem';
+export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
+export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
 
 // Experimental
 export { Card } from './experimental/Card/Card';
