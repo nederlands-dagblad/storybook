@@ -32,17 +32,21 @@ export function Accordion({
     };
 
     return (
-        <div className="accordion">
+        <div className="accordion flex flex-col w-full">
             {title && (
-                <h2 className="accordion__title text-heading-2">
+                <h2 className="accordion__title text-heading-2 mb-m">
                     {title}
                 </h2>
             )}
-            <div className="accordion__items">
+            <div className="accordion__items flex flex-col">
                 {items.map((item, index) => (
                     <div
                         key={item.id || `accordion-${index}`}
-                        className="accordion__item-wrapper"
+                        className={`
+                            accordion__item-wrapper 
+                            m-0
+                            ${index > 0 ? 'mt-s' : ''}
+                        `}
                     >
                         <AccordionItem
                             {...item}
