@@ -17,45 +17,56 @@ export const Alert: React.FC<AlertProps> = (props) => {
     variant = 'dark'
   } = props;
 
-  const variantMapping = {
-    dark: 'alert-dark',
-    danger: 'alert-danger',
-    info: 'alert-info',
-    success: 'alert-success',
-    warning: 'alert-warning',
+  const variantClasses = {
+    dark: 'bg-neutral-100', // YOUR TOKEN: gray background (info gray)
+    danger: 'bg-[rgba(233,66,91,0.10)]', // Light pink background
+    info: 'bg-background-default border border-neutral-400', // YOUR TOKENS: white bg with gray border
+    success: 'bg-background-brand-subtlest', // YOUR TOKEN
+    warning: 'border-2 border-text-warning', // Light pink bg with red border
   };
-
-  const alertClass = variantMapping[variant];
 
   const iconMapping = {
     dark: 'square-fill',
     danger: 'square-fill',
     info: 'square-fill',
     success: 'square-fill',
-    warning: 'square-fill',
+    warning: 'square-fill', // Will be styled differently
   }
 
-  const iconColorMapping = {
-    dark: 'text-dark',
-    info: 'text-blue-400',
-    success: 'text-green-400',
-    danger: 'text-red-500',
-    warning: 'text-yellow-400',
+  const iconColorClasses = {
+    dark: 'text-blue-400', // YOUR TOKEN: blue square for info gray
+    info: 'text-blue-400', // YOUR TOKEN: blue square
+    success: 'text-text-brand', // YOUR TOKEN
+    danger: 'text-text-warning', // YOUR TOKEN
+    warning: 'text-text-warning', // YOUR TOKEN
   }
 
   const icon = iconMapping[variant] ?? null;
+  const alertClasses = variantClasses[variant];
+  const iconColorClass = iconColorClasses[variant];
+
+  // Special styling only for warning variant's icon
+  const isWarning = variant === 'warning';
 
   return (
-    <div className={`alert ${alertClass} ${className}`}>
-      <div className="alert-content">
-        { icon && <div>
-          <Icon name={icon} className={[iconColorMapping[variant], "mt-1"].join(' ')} />
-        </div> }
-        <span className={'text-body-light'}>
+      <div className={`p-5 ${alertClasses} ${className}`}>
+        <div className="inline-flex gap-xs font-body-light">
+          { icon && (
+              <div className="flex-shrink-0">
+                {isWarning ? (
+                    <div className="w-5 h-5 rounded-full bg-text-warning flex items-center justify-center">
+                      <span className="text-background-default text-body-m font-body-bold">!</span>
+                    </div>
+                ) : (
+                    <Icon name={icon} className={`${iconColorClass} mt-1`} />
+                )}
+              </div>
+          )}
+          <span className="text-body-m font-body-light text-text-default">
           {children}
         </span>
+        </div>
       </div>
-    </div>
   );
 };
 
