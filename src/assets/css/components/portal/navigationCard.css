@@ -1,0 +1,35 @@
+/* Navigation Cards Component Styles */
+
+.navigation-cards {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.navigation-card {
+    @apply flex flex-row items-center gap-m px-l py-[29px];
+    @apply border border-border-accent-gray-subtle bg-background-default;
+    @apply hover:border-border-brand transition-colors duration-200 ease-in-out;
+}
+
+.navigation-card__icon {
+    @apply shrink-0 w-4 h-4;
+    color: var(--color-icons-default);
+}
+
+.navigation-card__content {
+    @apply flex flex-col items-start justify-start min-w-0 flex-1 gap-xs;
+}
+
+.navigation-card__title {
+    @apply text-body-bold;
+    color: var(--color-text-default);
+}
+
+.navigation-card:hover .navigation-card__title {
+    @apply underline;
+    text-underline-offset: 25%;
+}
+
+.navigation-card__description {
+    @apply text-body-light;
+    color: var(--color-text-default);
+}
