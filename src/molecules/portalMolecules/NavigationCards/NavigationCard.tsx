@@ -17,10 +17,10 @@ export function NavigationCard(props: NavigationCardProps) {
                 <Icon name={props.icon} />
             </div>
             <div className="flex flex-col items-start justify-start min-w-0 flex-1 gap-xs">
-                <h3 className="font-body-bold text-text-default group-hover:underline group-hover:[text-underline-offset:25%]">
+                <h3 className="text-body-bold text-default group-hover:underline group-hover:[text-underline-offset:25%]">
                     {props.headline}
                 </h3>
-                <p className="font-body-light text-text-default">
+                <p className="text-body-light text-default">
                     {props.description}
                 </p>
             </div>
