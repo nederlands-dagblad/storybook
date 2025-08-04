@@ -10,7 +10,7 @@
 @import "components/portal/portal-navigation.css";
 @import "components/portal/accordionItem.css";
 @import "components/portal/accordion.css";
-
+@import "components/portal/navigationCard.css";
 @import "experimental/collapsed-card.css";
 
 @tailwind base;
