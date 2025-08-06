@@ -1,35 +1,86 @@
-/* Navigation Cards Component Styles */
+/* Navigation Cards Component Styles - Using Only Design System Tokens */
 
 .navigation-cards {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: var(--spacing-m); /* 16px based on your tokens */
+    gap: var(--spacing-m);
+}
+
+@media (min-width: 768px) {
+    .navigation-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .navigation-card {
-    @apply flex flex-row items-center gap-m px-l py-[29px];
-    @apply border border-border-accent-gray-subtle bg-background-default;
-    @apply hover:border-border-brand transition-colors duration-200 ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-m); /* Space between icon and content */
+    padding-left: var(--spacing-l);
+    padding-right: var(--spacing-l);
+    padding-top: 29px;
+    padding-bottom: 29px;
+
+    /* Using your border tokens */
+    border-width: var(--border-width-s);
+    border-style: solid;
+    border-color: var(--color-border-accent-gray-subtle);
+    background-color: var(--color-background-default);
+
+    /* Transition */
+    transition: border-color 200ms ease-in-out;
+    text-decoration: none;
+    display: flex; /* Ensure it's a flex container */
+}
+
+.navigation-card:hover {
+    border-color: var(--color-border-brand);
 }
 
 .navigation-card__icon {
-    @apply shrink-0 w-4 h-4;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
     color: var(--color-icons-default);
 }
 
 .navigation-card__content {
-    @apply flex flex-col items-start justify-start min-w-0 flex-1 gap-xs;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-width: 0;
+    flex: 1;
+    gap: var(--spacing-xs); /* Space between title and description */
 }
 
 .navigation-card__title {
-    @apply text-body-bold;
+    /* Using your text utility class properties directly */
+    font-family: var(--body-bold-fontFamily);
+    font-size: var(--body-bold-fontSize);
+    font-weight: var(--body-bold-fontWeight);
+    line-height: var(--body-bold-lineHeight);
+    letter-spacing: var(--body-bold-letterSpacing);
+    text-decoration: none;
     color: var(--color-text-default);
+    margin: 0;
 }
 
 .navigation-card:hover .navigation-card__title {
-    @apply underline;
+    text-decoration: underline;
     text-underline-offset: 25%;
 }
 
 .navigation-card__description {
-    @apply text-body-light;
+    /* Using your text utility class properties directly */
+    font-family: var(--body-light-fontFamily);
+    font-size: var(--body-light-fontSize);
+    font-weight: var(--body-light-fontWeight);
+    line-height: var(--body-light-lineHeight);
+    letter-spacing: var(--body-light-letterSpacing);
+    text-decoration: none;
     color: var(--color-text-default);
+    margin: 0;
 }
