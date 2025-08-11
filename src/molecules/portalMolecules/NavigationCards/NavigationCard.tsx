@@ -17,10 +17,10 @@ export function NavigationCard(props: NavigationCardProps) {
                 <Icon name={props.icon} />
             </div>
             <div className="navigation-card__content gap-xs">
-                <h3 className="text-body-bold text-default navigation-card__title">
+                <h3 className="navigation-card__title">
                     {props.headline}
                 </h3>
-                <p className="text-body-light text-default">
+                <p className="navigation-card__description">
                     {props.description}
                 </p>
             </div>
