@@ -1,0 +1,160 @@
+/* Tabs Component Styles - Desktop & Mobile - Using Design System Tokens */
+
+/* Tab Container */
+.tabs {
+    display: flex;
+    position: relative;
+}
+
+.tabs--desktop {
+    flex-direction: row;
+    align-items: center;
+    border-bottom: var(--border-width-s) solid var(--color-border-accent-gray-subtle);
+}
+
+.tabs--mobile {
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Tab Item Base */
+.tab-item {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: all 200ms ease-in-out;
+    color: inherit;
+}
+
+/* Desktop Tab Item */
+.tab-item--desktop {
+    padding: var(--spacing-s) var(--spacing-m);
+    justify-content: center;
+}
+
+/* Mobile Tab Item */
+.tab-item--mobile {
+    padding: var(--spacing-xs) 0;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.tab-item__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+/* Tab Text */
+.tab-item__text {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    color: var(--color-text-default);
+}
+
+/* =========================
+   DESKTOP STYLES
+   ========================= */
+
+/* Desktop Default State */
+.tab-item--desktop:not(.active) .tab-item__text {
+    font-family: var(--menu-menu-tab-item-fontFamily);
+    font-size: 20px; /* Override: Figma shows 20px, token is 18px */
+    font-weight: var(--menu-menu-tab-item-fontWeight);
+    line-height: var(--menu-menu-tab-item-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-letterSpacing);
+    text-decoration: none;
+}
+
+/* Desktop Hover State - gray underline */
+.tab-item--desktop:not(.active):hover .tab-item__text {
+    text-decoration: underline;
+    text-decoration-color: var(--color-icons-gray);
+    text-underline-offset: 25%;
+    text-decoration-thickness: var(--border-width-s);
+}
+
+/* Desktop Active State - bold with blue underline */
+.tab-item--desktop.active .tab-item__text,
+.tab-item--desktop[data-active="true"] .tab-item__text {
+    font-family: var(--menu-menu-tab-item-active-fontFamily);
+    font-size: 20px; /* Override: Figma shows 20px, token is 18px */
+    font-weight: var(--menu-menu-tab-item-active-fontWeight);
+    line-height: var(--menu-menu-tab-item-active-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-active-letterSpacing);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border-brand);
+    text-underline-offset: 25%;
+    text-decoration-thickness: var(--border-width-s);
+}
+
+/* =========================
+   MOBILE STYLES
+   ========================= */
+
+/* Mobile Default State */
+.tab-item--mobile:not(.active) .tab-item__text {
+    font-family: var(--menu-menu-tab-item-fontFamily);
+    font-size: var(--menu-menu-tab-item-fontSize); /* 18px from token - no override */
+    font-weight: var(--menu-menu-tab-item-fontWeight);
+    line-height: var(--menu-menu-tab-item-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-letterSpacing);
+    text-decoration: none;
+}
+
+/* Mobile Active State - bold with blue underline */
+.tab-item--mobile.active .tab-item__text,
+.tab-item--mobile[data-active="true"] .tab-item__text {
+    font-family: var(--menu-menu-tab-item-active-fontFamily);
+    font-size: var(--menu-menu-tab-item-active-fontSize); /* 18px from token - no override */
+    font-weight: var(--menu-menu-tab-item-active-fontWeight);
+    line-height: var(--menu-menu-tab-item-active-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-active-letterSpacing);
+    text-decoration: underline;
+    text-decoration-color: var(--color-border-brand);
+    text-underline-offset: 25%;
+    text-decoration-thickness: var(--border-width-s);
+}
+
+/* Mobile bottom border - only for non-active items */
+.tab-item__border-mobile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--border-width-s);
+    background-color: var(--color-border-accent-gray);
+    display: none;
+}
+
+.tab-item--mobile:not(.active) .tab-item__border-mobile,
+.tab-item--mobile:not([data-active="true"]) .tab-item__border-mobile {
+    display: block;
+}
+
+/* Mobile chevron icons */
+.tab-item__icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-icons-default);
+    flex-shrink: 0;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Focus styles for accessibility */
+.tab-item:focus-visible {
+    outline: 2px solid var(--color-border-brand);
+    outline-offset: 2px;
+}

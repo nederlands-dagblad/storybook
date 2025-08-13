@@ -1,0 +1,93 @@
+/* Menu Item Component Styles - Using Design System Tokens */
+
+.menu-item {
+    position: relative;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    min-width: fit-content;
+}
+
+/* Text styling - inherits from text-menu-menu-primary utility class */
+.menu-item span {
+    /* Typography is applied via text-menu-menu-primary class which includes:
+       - font-family: Fira Sans
+       - font-size: 22px
+       - font-weight: 400
+       - line-height: 140%
+       - letter-spacing: 0
+       - font-variant: all-small-caps
+    */
+    color: var(--color-text-default);
+    display: block;
+    white-space: nowrap;
+}
+
+/* Underline element */
+.menu-item__underline {
+    height: var(--border-width-s); /* Using your border-width-medium token (2px) */
+    width: 100%;
+    margin-top: var(--spacing-xxs);
+    background-color: transparent;
+    transition: background-color 200ms ease-in-out;
+}
+
+/* States */
+.menu-item[data-state="default"] .menu-item__underline {
+    background-color: transparent;
+}
+
+.menu-item[data-state="hover"] .menu-item__underline,
+.menu-item:hover .menu-item__underline {
+    background-color: var(--color-border-accent-gray);
+}
+
+.menu-item[data-state="active"] .menu-item__underline,
+.menu-item.active .menu-item__underline {
+    background-color: var(--color-border-brand);
+}
+
+/* Focus styles for accessibility */
+.menu-item:focus {
+    outline: 2px solid var(--color-border-brand);
+    outline-offset: 4px;
+}
+
+.menu-item:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Container styles */
+.menu-items {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Horizontal menu layout */
+.menu-items.horizontal {
+    flex-direction: row;
+    gap: var(--spacing-l); /* Using your spacing-l token (40px) */
+}
+
+/* Vertical menu layout */
+.menu-items.vertical {
+    flex-direction: column;
+    gap: var(--spacing-xs); /* Using your spacing-xs token (8px) */
+}
+
+.menu-items.vertical .menu-item {
+    width: 100%;
+    text-align: left;
+}
+
+.menu-items.vertical .menu-item span {
+    text-align: left;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .menu-items.horizontal {
+        gap: var(--spacing-m); /* Smaller gap on mobile */
+    }
+}
