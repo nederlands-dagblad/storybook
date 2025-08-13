@@ -409,7 +409,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{font-size.body.l}",
+        "fontSize": "1.25rem",
         "fontWeight": "{typography.font-weight.regular}",
         "letterSpacing": "0%",
         "lineHeight": "130%",
@@ -421,7 +421,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "{font-size.body.l}",
+        "fontSize": "1.25rem",
         "fontWeight": "{typography.font-weight.bold}",
         "letterSpacing": "0%",
         "lineHeight": "130%",

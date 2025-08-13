@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-08-13T19:50:54.897Z
+ * Last generated: 2025-08-13T20:42:50.943Z
  */
 
 :root {
@@ -428,14 +428,14 @@
   --menu-menu-tabbar-active-textTransform: none;
   --menu-menu-tabbar-active-textDecoration: none;
   --menu-menu-tab-item-fontFamily: 'Gulliver', serif;
-  --menu-menu-tab-item-fontSize: 18px;
+  --menu-menu-tab-item-fontSize: 1.25rem;
   --menu-menu-tab-item-fontWeight: 400;
   --menu-menu-tab-item-letterSpacing: 0%;
   --menu-menu-tab-item-lineHeight: 130%;
   --menu-menu-tab-item-textTransform: none;
   --menu-menu-tab-item-textDecoration: none;
   --menu-menu-tab-item-active-fontFamily: 'Gulliver', serif;
-  --menu-menu-tab-item-active-fontSize: 18px;
+  --menu-menu-tab-item-active-fontSize: 1.25rem;
   --menu-menu-tab-item-active-fontWeight: 700;
   --menu-menu-tab-item-active-letterSpacing: 0%;
   --menu-menu-tab-item-active-lineHeight: 130%;
