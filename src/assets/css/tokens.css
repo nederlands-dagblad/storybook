@@ -1,15 +1,15 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-07-18T09:43:41.655Z
+ * Last generated: 2025-08-13T19:50:54.897Z
  */
 
 :root {
-  --font-family-gulliver: Gulliver;
+  --font-family-gulliver: Gulliver Web, Georgia, serif;
   --font-family-fira-sans: Fira Sans;
   --font-family-montserrat: Montserrat;
   --font-family-abril-fatface: Abril Fatface;
-  --font-family-gulliver-semibold: Gulliver Semibold;
+  --font-family-gulliver-semibold: Gulliver Web, Georgia, serif;
   --font-weight-bold: 700;
   --font-weight-semibold: 600;
   --font-weight-regular: 400;
@@ -427,7 +427,7 @@
   --menu-menu-tabbar-active-lineHeight: 140%;
   --menu-menu-tabbar-active-textTransform: none;
   --menu-menu-tabbar-active-textDecoration: none;
-  --menu-menu-tab-item-fontFamily: 'Gulliver Semibold', serif;
+  --menu-menu-tab-item-fontFamily: 'Gulliver', serif;
   --menu-menu-tab-item-fontSize: 18px;
   --menu-menu-tab-item-fontWeight: 400;
   --menu-menu-tab-item-letterSpacing: 0%;

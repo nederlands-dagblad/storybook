@@ -408,7 +408,7 @@
     "menu-tab-item": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font-family.gulliver semibold}",
+        "fontFamily": "{typography.font-family.gulliver}",
         "fontSize": "{font-size.body.l}",
         "fontWeight": "{typography.font-weight.regular}",
         "letterSpacing": "0%",

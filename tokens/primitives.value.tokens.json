@@ -131,7 +131,7 @@
     "font-family": {
       "gulliver": {
         "$type": "string",
-        "$value": "Gulliver"
+        "$value": "Gulliver Web, Georgia, serif"
       },
       "fira-sans": {
         "$type": "string",
@@ -147,7 +147,7 @@
       },
       "gulliver_semibold": {
         "$type": "string",
-        "$value": "Gulliver Semibold"
+        "$value": "Gulliver Web, Georgia, serif"
       }
     },
     "font-weight": {
