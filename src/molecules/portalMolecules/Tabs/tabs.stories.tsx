@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import Tabs from './Tabs';
+import Tabs from './tabs';
 
 
 const meta = {
