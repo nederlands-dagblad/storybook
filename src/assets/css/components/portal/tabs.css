@@ -69,7 +69,7 @@
 /* Desktop Default State */
 .tab-item--desktop:not(.active) .tab-item__text {
     font-family: var(--menu-menu-tab-item-fontFamily);
-    font-size: 20px; /* Override: Figma shows 20px, token is 18px */
+    font-size: var(--menu-menu-primary-fontSize);
     font-weight: var(--menu-menu-tab-item-fontWeight);
     line-height: var(--menu-menu-tab-item-lineHeight);
     letter-spacing: var(--menu-menu-tab-item-letterSpacing);
@@ -88,7 +88,7 @@
 .tab-item--desktop.active .tab-item__text,
 .tab-item--desktop[data-active="true"] .tab-item__text {
     font-family: var(--menu-menu-tab-item-active-fontFamily);
-    font-size: 20px; /* Override: Figma shows 20px, token is 18px */
+    font-size: var(--menu-menu-primary-fontSize);
     font-weight: var(--menu-menu-tab-item-active-fontWeight);
     line-height: var(--menu-menu-tab-item-active-lineHeight);
     letter-spacing: var(--menu-menu-tab-item-active-letterSpacing);
