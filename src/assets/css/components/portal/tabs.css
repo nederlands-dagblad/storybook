@@ -9,7 +9,7 @@
 .tabs--desktop {
     flex-direction: row;
     align-items: center;
-    border-bottom: var(--border-width-s) solid var(--color-border-accent-gray-subtle);
+    border-bottom: none;
 }
 
 .tabs--mobile {
