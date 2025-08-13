@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import MenuItems from './MenuItems';
+import MenuItems from './menuItems';
 import MenuItem from './menuItem';
 
 const meta = {
