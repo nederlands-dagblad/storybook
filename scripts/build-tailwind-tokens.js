@@ -48,37 +48,39 @@ function mapFontWeight(value) {
 
 // Legacy reference mapping to handle old token references
 const legacyReferenceMap = {
-    // Font size mappings
-    'font-size.heading.xl': '28px',
+// Font size mappings
+'font-size.heading.xl': '28px',
     'font-size.heading.l': '25px',
-    'font-size.heading.m': '18px',
-    'font-size.heading.s': '16px',
-    'font-size.heading.xs': '12px',
-    'font-size.body.xxl': '24px',
-    'font-size.body.xl': '18px',
-    'font-size.body.l': '18px',
-    'font-size.body.m': '16px',
-    'font-size.body.s': '14px',
+    'font-size.heading.m': '20px',  // Should be 20px for heading.m
+    'font-size.heading.s': '18px',  // Should be 18px for heading.s
+    'font-size.heading.xs': '14px',  // Should be 14px for heading.xs
+    'font-size.body.xxl': '28px',  // Should be 28px
+    'font-size.body.xl': '22px',  // Should be 22px for body.xl
+    'font-size.body.l': '20px',  // Should be 20px for body.l
+    'font-size.body.m': '18px',  // Should be 18px for body.m
+    'font-size.body.s': '16px',  // Should be 16px for body.s
     'font-size.body.xs': '12px',
-    'font-size.body.drop-cap': '90px',
+    'font-size.body.drop-cap': '96px',  // Should be 96px based on your tokens
     'font-size.meta': '14px',
-    
-    // Font family mappings
-    'typography.font-family.gulliver semibold': "'Gulliver Semibold', serif",
-    'typography.font-family.gulliver': "'Gulliver', serif",
-    'typography.font-family.fira-sans': "'Fira Sans', sans-serif",
-    'typography.font-family.montserrat': "'Montserrat', sans-serif",
-    'typography.font-family.abril-fatface': "'Abril Fatface', cursive",
-    
+
+    // Font family mappings - CORRECTED!
+    'typography.font-family.gulliver semibold': "Gulliver Web, Georgia, serif",  // ✅ Fixed - no quotes wrapping
+    'typography.font-family.gulliver_semibold': "Gulliver Web, Georgia, serif",  // ✅ Added alternate key
+    'typography.font-family.gulliver': "Gulliver Web, Georgia, serif",  // ✅ FIXED - This was the main issue!
+    'typography.font-family.fira-sans': "Fira Sans",  // ✅ Fixed - removed quotes
+    'typography.font-family.montserrat': "Montserrat",  // ✅ Fixed - removed quotes
+    'typography.font-family.abril-fatface': "Abril Fatface",  // ✅ Fixed - removed quotes
+
     // Font weight mappings
     'typography.font-weight.light': '300',
     'typography.font-weight.regular': '400',
+    'typography.font-weight.semibold': '600',  // Added semibold
     'typography.font-weight.bold': '700',
-    
-    // Letter spacing mappings
-    'typography.letter-spacing.0': '0%',
-    'typography.letter-spacing.s': '1px',
-    'typography.letter-spacing.m': '2px',
+
+    // Letter spacing mappings - CORRECTED!
+    'typography.letter-spacing.0': '0px',  // Changed from 0% to 0px
+    'typography.letter-spacing.s': '1.6px',  // Should be 1.6px based on your primitives
+    'typography.letter-spacing.m': '2.4px',  // Should be 2.4px based on your primitives
     'typography.letter-spacing.l': '4px'
 };
 
@@ -96,81 +98,77 @@ function flatten(obj, path = [], result = {}) {
 
 function resolveReference(ref, flatTokens, visited = new Set()) {
     if (!ref || typeof ref !== 'string') return ref;
-    
+
     // If it's not a reference, return as is
     if (!ref.startsWith('{') || !ref.endsWith('}')) return ref;
-    
+
     const path = ref.replace(/[{}]/g, '');
-    
-    // Check if this is a legacy reference that needs to be mapped
-    if (legacyReferenceMap[path]) {
-        return legacyReferenceMap[path];
-    }
-    
+
     // Prevent circular references
     if (visited.has(path)) {
         console.warn(`Circular reference detected: ${path}`);
         return undefined;
     }
-    
+
     visited.add(path);
-    
-    // Try to find the token using the path
+
+    // FIRST: Try to find the token in the actual flattened tokens
     let token = flatTokens[path];
-    
+
     // If not found, try some common variations
     if (!token) {
         // Try with different prefixes/formats
         const variations = [
+            path,
             path.replace(/^font-size\./, 'fontSize.'),
             path.replace(/^typography\.font-family\./, 'fontFamily.'),
-            path.replace(/\s+/g, '-').toLowerCase(),
-            path.replace(/\./g, '-').toLowerCase()
+            path.replace(/\s+/g, '_'),  // Replace spaces with underscores
+            path.replace(/\s+/g, '-'),  // Replace spaces with hyphens
+            path.replace(/\./g, '-').toLowerCase(),
+            // Handle the specific case of gulliver_semibold
+            path.replace('gulliver semibold', 'gulliver_semibold'),
+            path.replace('gulliver-semibold', 'gulliver_semibold')
         ];
-        
+
         for (const variant of variations) {
             if (flatTokens[variant]) {
                 token = flatTokens[variant];
+                console.log(`Found token via variation: ${path} -> ${variant}`);
                 break;
             }
         }
     }
-    
-    if (!token) {
-        console.warn(`Reference not found: ${path}`);
-        
-        // For font sizes, provide fallback values based on the legacy map
-        if (path.includes('font-size') || path.includes('fontSize')) {
-            // Default to medium size if no specific match
-            return legacyReferenceMap['font-size.body.m'] || '16px';
+
+    // If we found the token, use its actual value
+    if (token && token.$value) {
+        const value = token.$value;
+
+        // If the value is another reference, resolve it recursively
+        if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
+            return resolveReference(value, flatTokens, visited);
         }
-        
-        // For font families, provide fallback values
-        if (path.includes('font-family') || path.includes('fontFamily')) {
-            // Default to sans-serif if no specific match
-            return "'Fira Sans', sans-serif";
+
+        // For font weights, convert string to number if needed
+        if (path.includes('font-weight')) {
+            return mapFontWeight(value);
         }
-        
-        // For font weights
-        if (path.includes('font-weight') || path.includes('fontWeight')) {
-            return mapFontWeight('Regular');
-        }
-        
-        // For letter spacing
-        if (path.includes('letter-spacing') || path.includes('letterSpacing')) {
-            return '0%';
-        }
-        
-        return undefined;
+
+        console.log(`✅ Resolved ${ref} -> ${value}`);
+        return value;
     }
-    
-    const value = token.$value;
-    
-    if (typeof value === 'string' && value.startsWith('{') && value.endsWith('}')) {
-        return resolveReference(value, flatTokens, visited);
+
+    // ONLY use legacy map as a last resort fallback
+    if (legacyReferenceMap[path]) {
+        console.warn(`⚠️  Using legacy fallback for ${path} (token not found in source)`);
+        console.warn(`   This should be fixed - token should exist in your JSON files`);
+        return legacyReferenceMap[path];
     }
-    
-    return value;
+
+    console.error(`❌ Reference not found and no fallback: ${path}`);
+    console.error(`   Available font-family tokens:`,
+        Object.keys(flatTokens).filter(k => k.includes('font-family')));
+
+    return undefined;
 }
 
 function toVar(name) {

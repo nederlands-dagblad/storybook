@@ -21,19 +21,28 @@ export function TabItem(props: TabItemProps) {
                 onClick={onClick}
                 href={href}
                 data-active={isActive}
+                role="tab"
+                aria-selected={isActive}
             >
-                <div className="tab-item__content">
+                <div className="tab-item__content gap-xs">
                     {isActive && (
-                        <span className="tab-item__icon tab-item__icon--left">‹</span>
+                        <span className="tab-item__icon tab-item__icon--left">
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 11L1 6.00002L6 1" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </span>
                     )}
-                    <span className="tab-item__text">
+                    <span className="tab-item__text text-menu-menu-tab-item">
                         {label}
                     </span>
                 </div>
                 {!isActive && (
-                    <span className="tab-item__icon tab-item__icon--right">›</span>
+                    <span className="tab-item__icon tab-item__icon--right">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L6 5.99998L1 11" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
                 )}
-                <div className="tab-item__border-mobile" />
             </Component>
         );
     }
@@ -46,8 +55,10 @@ export function TabItem(props: TabItemProps) {
             onClick={onClick}
             href={href}
             data-active={isActive}
+            role="tab"
+            aria-selected={isActive}
         >
-            <span className="tab-item__text">
+            <span className={`tab-item__text ${isActive ? 'text-menu-menu-tab-item-active' : 'text-menu-menu-tab-item'}`}>
                 {label}
             </span>
         </Component>
