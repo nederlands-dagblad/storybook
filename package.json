@@ -1,6 +1,6 @@
 {
   "name": "@nederlands-dagblad/storybook",
-  "version": "0.2.29",
+  "version": "0.2.30",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
