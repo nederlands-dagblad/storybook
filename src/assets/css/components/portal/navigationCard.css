@@ -57,12 +57,12 @@
 }
 
 .navigation-card__title {
-    /* Using your text utility class properties directly */
-    font-family: var(--body-bold-fontFamily);
-    font-size: var(--body-bold-fontSize);
-    font-weight: var(--body-bold-fontWeight);
-    line-height: var(--body-bold-lineHeight);
-    letter-spacing: var(--body-bold-letterSpacing);
+    /* Using MijnND heading tokens */
+    font-family: var(--mijn-nd-heading-fontFamily);
+    font-size: var(--mijn-nd-heading-fontSize);
+    font-weight: var(--mijn-nd-heading-fontWeight);
+    line-height: var(--mijn-nd-heading-lineHeight);
+    letter-spacing: var(--mijn-nd-heading-letterSpacing);
     text-decoration: none;
     color: var(--color-text-default);
     margin: 0;
@@ -74,12 +74,12 @@
 }
 
 .navigation-card__description {
-    /* Using your text utility class properties directly */
-    font-family: var(--body-light-fontFamily);
-    font-size: var(--body-light-fontSize);
-    font-weight: var(--body-light-fontWeight);
-    line-height: var(--body-light-lineHeight);
-    letter-spacing: var(--body-light-letterSpacing);
+    /* Using MijnND description tokens */
+    font-family: var(--mijn-nd-description-fontFamily);
+    font-size: var(--mijn-nd-description-fontSize);
+    font-weight: var(--mijn-nd-description-fontWeight);
+    line-height: var(--mijn-nd-description-lineHeight);
+    letter-spacing: var(--mijn-nd-description-letterSpacing);
     text-decoration: none;
     color: var(--color-text-default);
     margin: 0;

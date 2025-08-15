@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-08-14T12:21:35.854Z
+ * Last generated: 2025-08-15T10:21:21.337Z
  */
 
 :root {
@@ -441,6 +441,20 @@
   --menu-menu-tab-item-active-lineHeight: 130%;
   --menu-menu-tab-item-active-textTransform: none;
   --menu-menu-tab-item-active-textDecoration: underline;
+  --mijn-nd-heading-fontFamily: Fira Sans;
+  --mijn-nd-heading-fontSize: 1.25rem;
+  --mijn-nd-heading-fontWeight: 700;
+  --mijn-nd-heading-letterSpacing: 0px;
+  --mijn-nd-heading-lineHeight: 160%;
+  --mijn-nd-heading-textTransform: none;
+  --mijn-nd-heading-textDecoration: none;
+  --mijn-nd-description-fontFamily: Fira Sans;
+  --mijn-nd-description-fontSize: 1.25rem;
+  --mijn-nd-description-fontWeight: 300;
+  --mijn-nd-description-letterSpacing: 0px;
+  --mijn-nd-description-lineHeight: 160%;
+  --mijn-nd-description-textTransform: none;
+  --mijn-nd-description-textDecoration: none;
   --font-size-heading-xs: 14px;
   --font-size-heading-s: 18px;
   --font-size-heading-m: 20px;
