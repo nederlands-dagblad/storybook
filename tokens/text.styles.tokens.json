@@ -436,7 +436,7 @@
       "$description": "MijnND dashboard card headings",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "1.25rem",
+        "fontSize": "1.125rem",
         "fontWeight": "{typography.font-weight.bold}",
         "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
@@ -449,7 +449,7 @@
       "$description": "MijnND dashboard card descriptions",
       "$value": {
         "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "1.25rem",
+        "fontSize": "1.125rem",
         "fontWeight": "{typography.font-weight.light}",
         "letterSpacing": "{typography.letter-spacing.0}",
         "lineHeight": "160%",
