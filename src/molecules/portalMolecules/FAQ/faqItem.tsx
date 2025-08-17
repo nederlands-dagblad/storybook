@@ -16,7 +16,7 @@ export function FaqItem(props: FaqItemProps) {
     };
 
     return (
-        <div className={`accordion-item ${isOpen ? 'accordion-item--open' : ''}`}>  {/* CHANGE: faq-item → accordion-item with conditional class */}
+        <div className={`accordion-item ${isOpen ? 'accordion-item--open' : ''}`}>  
             <button
                 className="accordion-item__button"  
                 onClick={toggleAccordion}
@@ -24,19 +24,19 @@ export function FaqItem(props: FaqItemProps) {
                 aria-controls={`faq-answer-${props.id}`}
                 tabIndex={0}
             >
-                <span className="accordion-item__question">{props.question}</span>  {/* CHANGE: h3 → span with class */}
-                <span className="accordion-item__icon">  {/* CHANGE: div to span and faq-item-icon → accordion-item__icon */}
+                <span className="accordion-item__question">{props.question}</span>  
+                <span className="accordion-item__icon"> 
                     <Icon name={isOpen ? 'minus-outline' : 'plus-outline'} />
                 </span>
             </button>
 
-            <div  {/* CHANGE: Remove conditional rendering, always render but control with CSS */}
-                  className={`accordion-item__answer ${isOpen ? 'accordion-item__answer--open' : ''}`}  {/* CHANGE: faq-item-answer → accordion-item__answer with conditional */}
+            <div  
+                  className={`accordion-item__answer ${isOpen ? 'accordion-item__answer--open' : ''}`}  
                   id={`faq-answer-${props.id}`}
                   role="region"
                   aria-labelledby={`faq-question-${props.id}`}
             >
-                <div className="accordion-item__content" dangerouslySetInnerHTML={{ __html: props.answer }} />  {/* CHANGE: p → div with class */}
+                <div className="accordion-item__content" dangerouslySetInnerHTML={{ __html: props.answer }} />  
             </div>
         </div>
     );
