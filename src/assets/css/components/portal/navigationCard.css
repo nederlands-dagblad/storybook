@@ -1,20 +1,13 @@
-/* Navigation Cards Component Styles - Using Existing Design System Tokens */
+/* Navigation Cards Component Styles - Using Only Design System Tokens */
 
 .navigation-cards {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-m); /* 24px - already using token */
+    grid-gap: var(--spacing-m); /* 16px based on your tokens */
+    gap: var(--spacing-m);
 }
 
-/* Tablet - 2 columns */
 @media (min-width: 768px) {
-    .navigation-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Desktop - 3 columns */
-@media (min-width: 1024px) {
     .navigation-cards {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -24,50 +17,33 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-m); /* 24px - using token (1.5rem = 24px) */
+    gap: var(--spacing-m); /* Space between icon and content */
+    padding-left: var(--spacing-l);
+    padding-right: var(--spacing-l);
+    padding-top: 29px;
+    padding-bottom: 29px;
 
-    /* Mobile sizing - these are specific to MijnND */
-    padding: 1.25rem; /* 20px - specific to MijnND, no matching token */
-    height: 7.5rem; /* 120px - specific to MijnND */
+    /* Using your border tokens */
+    border-width: var(--border-width-s);
+    border-style: solid;
+    border-color: var(--color-border-accent-gray-subtle);
+    background-color: var(--color-background-default);
 
-    /* Border using existing tokens */
-    border: var(--border-width-s) solid var(--color-neutral-600); /* Using existing tokens! */
-    background-color: var(--color-background-default); /* Already using token */
-
-    /* Other properties */
-    cursor: pointer;
+    /* Transition */
     transition: border-color 200ms ease-in-out;
     text-decoration: none;
-}
-
-/* Desktop sizing - specific to MijnND */
-@media (min-width: 799px) {
-    .navigation-card {
-        padding: var(--spacing-l); /* 40px - using existing token! */
-        height: 8.75rem; /* 140px - specific to MijnND */
-    }
+    display: flex; /* Ensure it's a flex container */
 }
 
 .navigation-card:hover {
-    border-color: var(--color-border-brand); /* Already using token */
+    border-color: var(--color-border-brand);
 }
 
 .navigation-card__icon {
     flex-shrink: 0;
-    width: 24px; /* Could potentially use --spacing-m */
-    height: 24px;
-}
-
-.navigation-card__icon svg {
-    width: 100%;
-    height: 100%;
-    stroke: var(--color-icons-default); /* Already using token */
-    stroke-width: 1.5;
-    fill: none;
-}
-
-.navigation-card:hover .navigation-card__icon svg {
-    stroke: var(--color-icons-brand); /* Already using token */
+    width: 16px;
+    height: 16px;
+    color: var(--color-icons-default);
 }
 
 .navigation-card__content {
@@ -77,36 +53,34 @@
     justify-content: flex-start;
     min-width: 0;
     flex: 1;
-    gap: var(--spacing-xs); /* Already using token */
-    font-weight: var(--font-weight-light); /* Using token for 300 */
+    gap: var(--spacing-xs); /* Space between title and description */
 }
 
 .navigation-card__title {
-    /* Using MijnND heading tokens - already using tokens */
+    /* Using MijnND heading tokens */
     font-family: var(--mijn-nd-heading-fontFamily);
     font-size: var(--mijn-nd-heading-fontSize);
     font-weight: var(--mijn-nd-heading-fontWeight);
     line-height: var(--mijn-nd-heading-lineHeight);
     letter-spacing: var(--mijn-nd-heading-letterSpacing);
     text-decoration: none;
-    color: var(--color-text-default); /* Already using token */
+    color: var(--color-text-default);
     margin: 0;
 }
 
 .navigation-card:hover .navigation-card__title {
     text-decoration: underline;
-    text-underline-color: var(--color-text-default); /* Using token */
-    text-underline-offset: 0.3rem;
+    text-underline-offset: 25%;
 }
 
 .navigation-card__description {
-    /* Using MijnND description tokens - already using tokens */
+    /* Using MijnND description tokens */
     font-family: var(--mijn-nd-description-fontFamily);
     font-size: var(--mijn-nd-description-fontSize);
     font-weight: var(--mijn-nd-description-fontWeight);
     line-height: var(--mijn-nd-description-lineHeight);
     letter-spacing: var(--mijn-nd-description-letterSpacing);
     text-decoration: none;
-    color: var(--color-text-subtle); /* Already using token */
+    color: var(--color-text-default);
     margin: 0;
 }
