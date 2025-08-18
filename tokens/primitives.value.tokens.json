@@ -135,7 +135,7 @@
       },
       "fira-sans": {
         "$type": "string",
-        "$value": "Fira Sans"
+        "$value": "Fira Sans, Arial, sans-serif"
       },
       "montserrat": {
         "$type": "string",
