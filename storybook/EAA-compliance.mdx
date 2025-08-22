@@ -1,0 +1,508 @@
+```mdx
+```
+# 🌍 European Accessibility Act (EAA) Compliance Checklist
+## For Nederlands Dagblad Website
+
+## ⚠️ DEADLINE: June 28, 2025
+#### The European Accessibility Act requires all digital services to be accessible by this date. This checklist covers WCAG 2.1 Level AA standards that your website must meet.
+
+## 1. 🖼️ IMAGES & VISUAL CONTENT
+
+### ✅ Alternative Text for Images
+- **Requirement**: Every image must have descriptive alt text
+- **Example Good**: `alt="Minister Rutte speaking at podium during climate conference"`
+- **Example Bad**: `alt="image1.jpg"` or empty alt text for meaningful images
+- **Test**: Use screen reader or browser inspector to check all images
+
+```html
+<!-- ✅ Good -->
+<img src="rutte.jpg" alt="Minister Rutte spreekt tijdens klimaatconferentie" />
+
+<!-- ❌ Bad -->
+<img src="rutte.jpg" alt="image1.jpg" />
+```
+### ✅ Decorative Images
+- **Requirement**: Purely decorative images should have empty alt text (`alt=""`)
+- **Example**: Background patterns, divider lines should have `alt=""`
+- **Why**: Prevents screen readers from announcing unnecessary content
+
+```html
+<img src="decorative-border.svg" alt="" role="presentation" />
+```
+
+### ✅ Complex Graphics & Charts
+- **Requirement**: Infographics and data visualizations need detailed text descriptions
+- **Example**: A COVID-19 graph needs both alt text AND a text summary of the data trends
+- **Solution**: Add a "Text description" link or expandable section below complex graphics
+
+```html
+<figure>
+  <img src="covid-grafiek.png" alt="COVID-19 besmettingen Nederland 2024" />
+  <figcaption>
+    <details>
+      <summary>Tekstbeschrijving van grafiek</summary>
+      <p>De grafiek toont een stijging van 2.000 naar 15.000 gevallen 
+         tussen januari en maart 2024...</p>
+    </details>
+  </figcaption>
+</figure>
+```
+
+## 2. 🎥 VIDEO & AUDIO CONTENT
+
+### ✅ Video Captions
+- **Requirement**: All videos must have accurate Dutch captions
+- **Example**: News videos, interviews, promotional content all need synchronized captions
+- **Format**: WebVTT or embedded captions showing speaker identification
+
+```html
+<video controls>
+  <source src="nieuws.mp4" type="video/mp4">
+  <track kind="captions" src="captions_nl.vtt" srclang="nl" label="Nederlands">
+</video>
+```
+
+### ✅ Audio Descriptions
+- **Requirement**: Videos with important visual information need audio descriptions
+- **Example**: If a news video shows important statistics on screen, these must be spoken or described
+- **Implementation**: Provide a separate audio track or text transcript
+
+### ✅ Transcripts
+- **Requirement**: Provide full text transcripts for all audio/video content
+- **Example**: Podcast episodes should have complete written transcripts
+- **Location**: Place transcript link directly below the media player
+
+```html
+<video controls>
+  <!-- video sources -->
+</video>
+<a href="/transcripts/video-transcript.html">Lees het volledige transcript</a>
+```
+
+## 3. ⌨️ KEYBOARD NAVIGATION
+
+### ✅ Full Keyboard Access
+- **Requirement**: Every interactive element must be usable with keyboard only
+- **Test**: Navigate entire site using only Tab, Enter, Space, and Arrow keys
+- **Common Issues**:
+- Custom dropdown menus not opening with Enter/Space
+- Modal windows not trapping focus
+- Interactive maps or slideshows requiring mouse
+
+### ✅ Visible Focus Indicators
+- **Requirement**: Clear visual outline when elements are focused
+- **Example Good**: Bright blue 2px outline around focused links
+- **Example Bad**: No outline or outline same color as background
+- **CSS Example**:
+
+```css
+:focus-visible {
+  outline: 2px solid #0066CC;
+  outline-offset: 2px;
+}
+
+/* NEVER do this: */
+* { outline: none; } /* ❌ Removes accessibility */
+```
+
+### ✅ Skip Links
+- **Requirement**: "Skip to main content" link at page start
+- **Implementation**: First focusable element, can be visually hidden until focused
+- **Example**:
+
+```html
+<a href="#main" class="skip-link">Spring naar hoofdinhoud</a>
+
+<style>
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+</style>
+```
+
+## 4. 📱 RESPONSIVE & ZOOM
+
+### ✅ Mobile Responsiveness
+- **Requirement**: Full functionality on all screen sizes
+- **Test Sizes**: 320px minimum width, tablets, phones
+- **Check**: Navigation menus, forms, tables all work on mobile
+
+### ✅ Zoom to 200%
+- **Requirement**: Content remains usable at 200% zoom without horizontal scrolling
+- **Test**: Ctrl/Cmd + Plus to zoom to 200%
+- **Common Failures**: Text overlapping, buttons becoming unreachable
+
+### ✅ Text Spacing Adjustments
+- **Requirement**: Content adapts when users modify text spacing
+- **Minimums**:
+- Line height: 1.5x font size
+- Paragraph spacing: 2x font size
+- Letter spacing: 0.12x font size
+
+## 5. 🎨 COLOR & CONTRAST
+
+### ✅ Color Contrast Ratios
+- **Normal Text**: 4.5:1 contrast ratio minimum
+- **Large Text** (18pt+): 3:1 contrast ratio minimum
+- **Example Good**: Black text (#000000) on white (#FFFFFF) = 21:1
+- **Example Bad**: Light gray (#CCCCCC) on white (#FFFFFF) = 1.6:1
+- **Tool**: Use WebAIM Contrast Checker
+
+### ✅ Don't Rely on Color Alone
+- **Requirement**: Information conveyed by color must have alternative indicator
+- **Example Bad**: "Click the green button to subscribe"
+- **Example Good**: "Click the 'Subscribe' button (green) to subscribe"
+- **Solution**: Add icons, patterns, or text labels alongside color
+
+```html
+<!-- ❌ Bad -->
+<button style="background: green">Publiceren</button>
+<button style="background: red">Verwijderen</button>
+
+<!-- ✅ Good -->
+<button style="background: green">✓ Publiceren</button>
+<button style="background: red">✗ Verwijderen</button>
+```
+
+## 6. 📝 FORMS & INPUTS
+
+### ✅ Clear Labels
+- **Requirement**: Every form field must have visible, associated label
+- **Example HTML**: `<label for="email">E-mailadres:</label><input id="email" type="email">`
+- **Never**: Placeholder text as the only label
+
+```html
+<!-- ✅ Good -->
+<label for="email">E-mailadres:</label>
+<input id="email" type="email" required>
+
+<!-- ❌ Bad -->
+<input type="email" placeholder="E-mailadres">
+```
+
+### ✅ Error Messages
+- **Requirement**: Clear, specific error messages near the field
+- **Example Good**: "E-mailadres moet een @ bevatten"
+- **Example Bad**: "Error" or only red highlighting
+- **Must Include**: What went wrong and how to fix it
+
+```html
+<label for="email">E-mailadres:</label>
+<input id="email" type="email" aria-invalid="true" aria-describedby="email-error">
+<span id="email-error" role="alert">E-mailadres moet een @ bevatten</span>
+```
+
+### ✅ Required Fields
+- **Requirement**: Clearly mark required fields
+- **Example**: "E-mailadres (verplicht)" or use asterisk with legend
+- **ARIA**: Add `aria-required="true"` attribute
+
+## 7. 🏗️ STRUCTURE & SEMANTICS
+
+### ✅ Heading Hierarchy
+- **Requirement**: Logical heading structure (h1 → h2 → h3)
+- **Rules**:
+- Only one h1 per page
+- Don't skip levels (no h1 → h3)
+- Use for structure, not styling
+
+```html
+<!-- ✅ Correct -->
+<h1>Hoofdtitel artikel</h1>
+  <h2>Sectie 1</h2>
+    <h3>Subsectie 1.1</h3>
+    <h3>Subsectie 1.2</h3>
+  <h2>Sectie 2</h2>
+
+<!-- ❌ Wrong - skipping levels -->
+<h1>Titel</h1>
+  <h3>Subsectie</h3> <!-- Should be h2 -->
+```
+
+### ✅ Semantic HTML
+- **Requirement**: Use correct HTML elements for their purpose
+- **Examples**:
+- `<nav>` for navigation
+- `<main>` for main content
+- `<article>` for news articles
+- `<button>` for buttons (not `<div onclick>`)
+
+### ✅ Page Language
+- **Requirement**: Declare language in HTML
+- **Implementation**: `<html lang="nl">` for Dutch pages
+- **Mixed Content**: Use lang attribute for other languages: `<span lang="en">Breaking News</span>`
+
+## 8. 📊 TABLES
+
+### ✅ Table Headers
+- **Requirement**: Use `<th>` elements with scope attributes
+- **Example**:
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Datum</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Auteur</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Januari</th>
+      <td>Artikel titel</td>
+      <td>Jan Jansen</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### ✅ Table Captions
+- **Requirement**: Describe table purpose
+- **Example**: `<caption>Abonnementsprijzen Nederlands Dagblad 2025</caption>`
+
+## 9. 🔄 DYNAMIC CONTENT
+
+### ✅ Screen Reader Announcements
+- **Requirement**: Dynamic updates must be announced
+- **Implementation**: Use ARIA live regions
+- **Example**:
+
+```html
+<div aria-live="polite" aria-atomic="true">
+  3 nieuwe artikelen geladen
+</div>
+```
+
+### ✅ Auto-playing Content
+- **Requirement**: No auto-play longer than 5 seconds OR provide pause button
+- **Applies To**: Videos, carousels, animations
+- **Best Practice**: Let users initiate playback
+
+```html
+<!-- Carousel with pause button -->
+<div class="carousel">
+  <button aria-label="Pauzeer carousel">⏸</button>
+  <!-- carousel content -->
+</div>
+```
+
+## 10. 📄 DOCUMENTS (PDF, Word)
+
+### ✅ Accessible PDFs
+- **Requirements**:
+- Tagged PDF structure
+- Searchable text (not scanned images)
+- Reading order defined
+- Alternative: Provide HTML version
+
+### ✅ Download Information
+- **Requirement**: Indicate file type and size
+- **Example**: "Jaarverslag 2024 (PDF, 2.3 MB)"
+
+```html
+<a href="/downloads/jaarverslag.pdf">
+  Jaarverslag 2024 (PDF, 2.3 MB)
+</a>
+```
+
+## 11. ⚠️ ERROR PREVENTION
+
+### ✅ Confirmation for Important Actions
+- **Requirement**: Confirm or allow reversal of important actions
+- **Examples**:
+- Subscription cancellation
+- Payment submission
+- Article deletion
+
+```html
+<button onclick="return confirm('Weet u zeker dat u uw abonnement wilt opzeggen?')">
+  Abonnement opzeggen
+</button>
+```
+
+### ✅ Session Timeouts
+- **Requirement**: Warn users before timeout
+- **Implementation**: 20-second warning minimum
+- **Option**: Allow session extension
+
+## 12. 🧭 NAVIGATION & WAYFINDING
+
+### ✅ Consistent Navigation
+- **Requirement**: Navigation in same location across pages
+- **Example**: Main menu always at top, search always in same spot
+
+### ✅ Multiple Navigation Methods
+- **Requirement**: Provide at least 2 ways to find content
+- **Examples**:
+- Navigation menu
+- Search function
+- Sitemap
+- Category pages
+
+### ✅ Breadcrumbs
+- **Requirement**: Show location within site hierarchy
+- **Example**: Home > Binnenland > Politiek > Artikel
+
+```html
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a> ></li>
+    <li><a href="/binnenland">Binnenland</a> ></li>
+    <li><a href="/binnenland/politiek">Politiek</a> ></li>
+    <li aria-current="page">Artikel titel</li>
+  </ol>
+</nav>
+```
+
+## 🛠️ TESTING TOOLS
+
+1. **Axe DevTools** - Browser extension for accessibility testing
+2. **WAVE** - WebAIM's evaluation tool
+3. **NVDA/JAWS** - Screen readers for testing
+4. **Lighthouse** - Built into Chrome DevTools
+5. **Color Contrast Analyzer** - Desktop application
+
+### How to Test
+
+<div style={{
+    padding: '1rem',
+    backgroundColor: '#e0f2fe',
+    border: '1px solid #0284c7',
+    borderRadius: '8px',
+    marginTop: '1rem'
+}}>
+    <strong>Quick Testing Steps:</strong>
+    <ol style={{ marginTop: '0.5rem' }}>
+        <li>Install Axe DevTools browser extension</li>
+        <li>Run scan on your homepage</li>
+        <li>Fix critical issues first (usually images and contrast)</li>
+        <li>Test keyboard navigation manually</li>
+        <li>Use NVDA (free) to test with a screen reader</li>
+    </ol>
+</div>
+
+## 📅 IMPLEMENTATION PRIORITY
+
+### High Priority (Do First)
+1. Alt text for all images
+2. Keyboard navigation
+3. Color contrast fixes
+4. Form labels and errors
+5. Video captions
+
+### Medium Priority
+1. Heading structure
+2. Focus indicators
+3. Skip links
+4. ARIA labels
+5. Table headers
+
+### Lower Priority (But Still Required)
+1. Audio descriptions
+2. Advanced ARIA patterns
+3. PDF accessibility
+4. Breadcrumbs
+
+## ✅ FINAL CHECKLIST
+
+Before June 28, 2025, confirm:
+
+<div style={{
+    backgroundColor: '#f9fafb',
+    padding: '1.5rem',
+    borderRadius: '8px',
+    border: '1px solid #d1d5db'
+}}>
+    <h3 style={{ marginTop: '0' }}>Complete EAA Compliance Checklist</h3>
+
+    <h4>Images & Visual Content</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ All images have appropriate alt text</li>
+        <li>☐ Decorative images have empty alt=""</li>
+        <li>☐ Complex graphics have text descriptions</li>
+    </ul>
+
+    <h4>Video & Audio</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ All videos have captions</li>
+        <li>☐ Audio descriptions provided where needed</li>
+        <li>☐ Transcripts available for all media</li>
+    </ul>
+
+    <h4>Navigation & Interaction</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Site is fully keyboard navigable</li>
+        <li>☐ Focus indicators are visible</li>
+        <li>☐ Skip links implemented</li>
+    </ul>
+
+    <h4>Visual Design</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Color contrast meets standards</li>
+        <li>☐ Information not conveyed by color alone</li>
+        <li>☐ Site works at 200% zoom</li>
+    </ul>
+
+    <h4>Forms</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Forms have proper labels and error messages</li>
+        <li>☐ Required fields clearly marked</li>
+        <li>☐ Error prevention for important actions</li>
+    </ul>
+
+    <h4>Content Structure</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Heading hierarchy is logical</li>
+        <li>☐ Semantic HTML used correctly</li>
+        <li>☐ Tables have proper headers</li>
+    </ul>
+
+    <h4>Mobile & Responsive</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Mobile experience is fully accessible</li>
+        <li>☐ Touch targets are large enough (44x44px)</li>
+    </ul>
+
+    <h4>Testing & Documentation</h4>
+    <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
+        <li>☐ Screen readers can navigate content</li>
+        <li>☐ Documents (PDFs) are accessible</li>
+        <li>☐ Automated testing shows no critical errors</li>
+        <li>☐ Manual testing with real users completed</li>
+        <li>☐ Accessibility statement published on website</li>
+        <li>☐ Feedback mechanism for accessibility issues provided</li>
+    </ul>
+</div>
+
+## 📞 NEED HELP?
+
+Consider hiring an accessibility consultant or conducting user testing with people with disabilities to ensure full compliance. The Dutch Accessibility Foundation (Stichting Accessibility) can provide guidance specific to Nederlandse requirements.
+
+### Useful Resources
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [Stichting Accessibility](https://www.accessibility.nl/)
+- [WebAIM Resources](https://webaim.org/resources/)
+- [Nederlands Dagblad Support](mailto:support@nd.nl)
+
+<div style={{
+    marginTop: '3rem',
+    padding: '1rem',
+    backgroundColor: '#fef3c7',
+    border: '1px solid #f59e0b',
+    borderRadius: '8px'
+}}>
+    <strong>Remember:</strong> Accessibility is not just about compliance—it's about ensuring all readers can access your journalism. Every improvement helps real people access your content.
+</div>
+```

@@ -14,6 +14,8 @@
 @import "experimental/collapsed-card.css";
 @import "components/portal/menuItem.css";
 @import "components/portal/tabs.css";
+@import "components/portal/dataFrame.css";
+@import "components/portal/alert.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

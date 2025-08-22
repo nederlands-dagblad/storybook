@@ -1,0 +1,455 @@
+/* DataFrame Component Styles - Maximizing Design Tokens */
+
+.dataframe {
+    border: var(--border-width-s) solid var(--color-border-accent-gray);
+    padding: var(--spacing-s);
+    margin-bottom: var(--spacing-m);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background-default);
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe {
+        padding: var(--spacing-m);
+    }
+}
+
+/* Header */
+.dataframe__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-s);
+    align-self: stretch;
+    margin-bottom: var(--spacing-s);
+    flex-wrap: wrap;
+}
+
+.dataframe--collapsible .dataframe__header {
+    cursor: pointer;
+}
+
+.dataframe--collapsible .dataframe__header:hover .dataframe__title {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: var(--border-width-s);
+}
+
+/* Title using mijn-nd-heading tokens */
+.dataframe__title {
+    margin: var(--spacing-0);
+    color: var(--color-text-default);
+    font-family: var(--mijn-nd-heading-fontFamily);
+    font-size: var(--mijn-nd-heading-fontSize);
+    font-weight: var(--mijn-nd-heading-fontWeight);
+    letter-spacing: var(--mijn-nd-heading-letterSpacing);
+    line-height: var(--mijn-nd-heading-lineHeight);
+}
+
+.dataframe__header-actions {
+    display: flex;
+    gap: var(--spacing-m);
+    align-items: center;
+}
+
+/* Edit Button using button tokens */
+.dataframe__edit-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-s);
+    background-color: var(--color-button-background-pill-default);
+    border: var(--border-width-s) solid var(--color-button-border-pill-default);
+    border-radius: var(--border-radius-pill);
+    color: var(--color-button-text-pill-default);
+    font-family: var(--meta-regular-fontFamily);
+    font-size: var(--meta-regular-fontSize);
+    font-weight: var(--meta-regular-fontWeight);
+    letter-spacing: var(--meta-regular-letterSpacing);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dataframe__edit-button:hover {
+    background-color: var(--color-button-background-pill-hover);
+    border-color: var(--color-button-border-pill-hover);
+    color: var(--color-button-text-pill-hover);
+}
+
+.dataframe__edit-button svg {
+    width: var(--spacing-s);
+    height: var(--spacing-s);
+    stroke: currentColor;
+}
+
+/* Toggle Button */
+.dataframe__toggle-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--spacing-l) - var(--spacing-xs));
+    height: calc(var(--spacing-l) - var(--spacing-xs));
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-icons-gray);
+}
+
+.dataframe__toggle-button svg {
+    width: var(--spacing-m);
+    height: var(--spacing-m);
+}
+
+/* Edit Mode Actions */
+.dataframe__edit-actions {
+    display: flex;
+    gap: var(--spacing-m);
+    align-items: center;
+}
+
+/* Cancel Button using link tokens */
+.dataframe__cancel-button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-link-text-default-default);
+    font-family: var(--meta-bold-fontFamily);
+    font-size: var(--meta-bold-fontSize);
+    font-weight: var(--meta-bold-fontWeight);
+    letter-spacing: var(--meta-bold-letterSpacing);
+    cursor: pointer;
+    padding: var(--spacing-0);
+}
+
+.dataframe__cancel-button:hover {
+    color: var(--color-link-text-default-hover);
+    text-decoration: underline;
+}
+
+/* Save Button using primary button tokens */
+.dataframe__save-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-s);
+    background-color: var(--color-button-background-primary-default);
+    border: var(--border-width-s) solid var(--color-button-background-primary-default);
+    color: var(--color-button-text-primary-default);
+    font-family: var(--meta-bold-fontFamily);
+    font-size: var(--meta-bold-fontSize);
+    font-weight: var(--meta-bold-fontWeight);
+    letter-spacing: var(--meta-bold-letterSpacing);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dataframe__save-button:hover:not(:disabled) {
+    background-color: var(--color-button-background-primary-hover);
+    border-color: var(--color-button-background-primary-hover);
+    color: var(--color-button-text-primary-hover);
+}
+
+.dataframe__save-button:disabled {
+    background-color: var(--color-button-background-primary-disabled);
+    border-color: var(--color-button-background-primary-disabled);
+    color: var(--color-button-text-primary-disabled);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.dataframe__save-button svg {
+    width: var(--spacing-s);
+    height: var(--spacing-s);
+    fill: currentColor;
+}
+
+/* Content Container - View Mode */
+.dataframe__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    width: 100%;
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe__content {
+        width: 30rem;
+    }
+}
+
+/* DataFrame Item - View Mode */
+.dataframe-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe-item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--spacing-0);
+    }
+}
+
+/* Labels using mijn-nd-description tokens */
+.dataframe-item__label {
+    font-family: var(--mijn-nd-description-fontFamily);
+    font-size: var(--mijn-nd-description-fontSize);
+    font-weight: var(--mijn-nd-description-fontWeight);
+    letter-spacing: var(--mijn-nd-description-letterSpacing);
+    line-height: var(--mijn-nd-description-lineHeight);
+    color: var(--color-text-default);
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe-item__label {
+        width: 14rem;
+        flex-shrink: 0;
+    }
+}
+
+/* Values using body-regular tokens */
+.dataframe-item__value {
+    font-family: var(--body-regular-fontFamily);
+    font-size: var(--body-regular-fontSize);
+    font-weight: var(--body-regular-fontWeight);
+    letter-spacing: var(--body-regular-letterSpacing);
+    line-height: var(--body-regular-lineHeight);
+    color: var(--color-text-default);
+    word-break: break-word;
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe-item__value {
+        width: 20rem;
+        flex-shrink: 0;
+    }
+}
+
+/* For multiline values */
+.dataframe-item__value--multiline {
+    white-space: pre-line;
+}
+
+/* Edit Mode Content - Grid Layout */
+.dataframe__edit-content {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--spacing-s);
+    width: 100%;
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe__edit-content {
+        width: 30rem;
+    }
+}
+
+/* Input Row */
+.dataframe__input-row {
+    display: contents;
+}
+
+/* Input Container */
+.dataframe__input-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    grid-column: span 12;
+}
+
+/* Desktop grid spans */
+@media only screen and (min-width: 799px) {
+    .dataframe__input-container[style*="flex: 1"] {
+        grid-column: span 12;
+    }
+
+    .dataframe__input-container[style*="flex: 0 0 50%"] {
+        grid-column: span 6;
+    }
+
+    .dataframe__input-container[style*="flex: 0 0 33.333%"] {
+        grid-column: span 4;
+    }
+}
+
+/* Input Label using mijn-nd-description */
+.dataframe__input-label {
+    font-family: var(--mijn-nd-description-fontFamily);
+    font-size: var(--mijn-nd-description-fontSize);
+    font-weight: var(--mijn-nd-description-fontWeight);
+    letter-spacing: var(--mijn-nd-description-letterSpacing);
+    line-height: var(--mijn-nd-description-lineHeight);
+    color: var(--color-text-default);
+}
+
+/* Input Fields using form tokens */
+.dataframe__input {
+    font-family: var(--body-regular-fontFamily);
+    font-size: var(--body-regular-fontSize);
+    font-weight: var(--body-regular-fontWeight);
+    border: var(--border-width-s) solid var(--color-form-border-input-field-default);
+    border-radius: var(--border-radius-0);
+    padding: var(--spacing-xs) var(--spacing-s);
+    background-color: var(--color-form-background-input-field-default);
+    color: var(--color-text-default);
+    line-height: var(--body-regular-lineHeight);
+    min-height: 42px;
+    width: 100%;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dataframe__input:hover {
+    cursor: text;
+    background-color: var(--color-form-background-input-field-hover);
+    border-color: var(--color-form-border-input-field-hover);
+}
+
+.dataframe__input:focus {
+    outline: none;
+    border-color: var(--color-form-border-input-field-active);
+    background-color: var(--color-form-background-input-field-active);
+}
+
+.dataframe__input:disabled {
+    background-color: var(--color-form-background-input-field-disabled);
+    border-color: var(--color-form-border-input-field-disabled);
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+}
+
+/* Skeleton Loading */
+.dataframe-item__skeleton-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-s);
+    row-gap: var(--spacing-xs);
+}
+
+.dataframe-item__skeleton {
+    display: block;
+    background-color: var(--color-background-accent-gray);
+    width: 12rem;
+    height: 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dataframe-item__skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+            90deg,
+            var(--color-neutral-white-30) 0,
+            rgba(255, 255, 255, 0.2) 20%,
+            rgba(255, 255, 255, 0.5) 60%,
+            var(--color-neutral-white-30)
+    );
+    animation: shimmer 20s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Skeleton size variations */
+.dataframe-item__skeleton--sm {
+    width: 4rem;
+}
+
+.dataframe-item__skeleton--md {
+    width: 8rem;
+}
+
+.dataframe-item__skeleton--lg {
+    width: 15rem;
+}
+
+/* Actions Section */
+.dataframe__actions {
+    display: flex;
+    gap: var(--spacing-s);
+    margin-top: var(--spacing-s);
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 799px) {
+    .dataframe__actions {
+        flex-direction: row;
+        margin-top: var(--spacing-m);
+    }
+}
+
+/* Action Buttons using pill button tokens */
+.dataframe__action-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-s);
+    background-color: var(--color-button-background-pill-default);
+    border: var(--border-width-s) solid var(--color-button-border-pill-default);
+    border-radius: var(--border-radius-pill);
+    color: var(--color-button-text-pill-default);
+    font-family: var(--meta-regular-fontFamily);
+    font-size: var(--meta-regular-fontSize);
+    font-weight: var(--meta-regular-fontWeight);
+    letter-spacing: var(--meta-regular-letterSpacing);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dataframe__action-button:hover {
+    background-color: var(--color-button-background-pill-hover);
+    border-color: var(--color-button-border-pill-hover);
+    color: var(--color-button-text-pill-hover);
+}
+
+.dataframe__action-button svg {
+    width: var(--spacing-s);
+    height: var(--spacing-s);
+    stroke: currentColor;
+}
+
+/* DataFrames Container */
+.dataframes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-0);
+}
+
+/* Alert spacing using spacing tokens */
+.dataframe .alert,
+.dataframe .mb-4 {
+    margin-bottom: var(--spacing-s);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .dataframe {
+        background-color: var(--color-background-default);
+        border-color: var(--color-border-accent-gray);
+    }
+
+    .dataframe__input {
+        background-color: var(--color-background-dark);
+        border-color: var(--color-border-accent-gray);
+        color: var(--color-text-inverse);
+    }
+
+    .dataframe-item__skeleton {
+        background-color: var(--color-background-accent-gray);
+    }
+}

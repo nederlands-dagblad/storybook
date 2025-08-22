@@ -69,16 +69,17 @@
    DESKTOP STYLES
    ========================= */
 
-/* Desktop Default State - Using correct font-size token */
+/* Desktop Default State */
 .tab-item--desktop:not(.active) .tab-item__text {
-    font-family: var(--font-family-gulliver);
+    font-family: var(--menu-menu-tab-item-fontFamily);  /* ← Use the correct variable */
     font-size: var(--menu-menu-tab-item-fontSize);
-    font-weight: var(--font-weight-regular);
-    line-height: 1.3;
-    letter-spacing: 0;
+    font-weight: var(--menu-menu-tab-item-fontWeight);
+    line-height: var(--menu-menu-tab-item-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-letterSpacing);
     text-decoration: none;
     color: var(--color-text-default);
 }
+
 
 /* Desktop Hover State */
 .tab-item--desktop:not(.active):hover {
@@ -101,11 +102,11 @@
 
 .tab-item--desktop.active .tab-item__text,
 .tab-item--desktop[data-active="true"] .tab-item__text {
-    font-family: var(--font-family-gulliver);
-    font-size: var(--menu-menu-tab-item-fontSize);
-    font-weight: var(--font-weight-bold);
-    line-height: 1.3;
-    letter-spacing: 0;
+    font-family: var(--menu-menu-tab-item-active-fontFamily);  /* ← Use the correct variable */
+    font-size: var(--menu-menu-tab-item-active-fontSize);
+    font-weight: var(--menu-menu-tab-item-active-fontWeight);
+    line-height: var(--menu-menu-tab-item-active-lineHeight);
+    letter-spacing: var(--menu-menu-tab-item-active-letterSpacing);
     text-decoration: underline;
     text-decoration-color: var(--color-border-brand);
     text-underline-offset: 25%;

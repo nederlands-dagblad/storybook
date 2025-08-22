@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Meta} from '@storybook/react';
 import Alert, { AlertProps, AlertVariant } from './Alert';
 import {StoryObj} from "@storybook/react-vite";
 
