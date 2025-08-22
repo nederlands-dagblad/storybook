@@ -54,6 +54,15 @@ export type { AccordionProps } from './molecules/contentOrganizationMolecules/Ac
 export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
 export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
 
+export { DataFrame } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
+export type { DataFrameProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
+
+export { DataFrames } from './molecules/contentOrganizationMolecules/DataFrame/dataFrames.tsx';
+export type { DataFramesProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrames.tsx';
+
+export { DataFrameItem } from './molecules/contentOrganizationMolecules/DataFrame/dataFrameItem.tsx';
+export type { DataFrameItemProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrameItem.tsx';
+
 // Experimental
 export { Card } from './experimental/Card/Card';
 export type { CardProps } from './experimental/Card/Card';

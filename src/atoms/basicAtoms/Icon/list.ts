@@ -14,6 +14,8 @@ import PlusFill from "../../../assets/icons/fill/plus.svg";
 import MinusFill from "../../../assets/icons/fill/minus.svg";
 import CloseFill from "../../../assets/icons/fill/close.svg";
 import SubscriptionFill from "../../../assets/icons/fill/subscription.svg";
+import warningFill from "../../../assets/icons/fill/warning-circle.svg";
+import signOutFill from "../../../assets/icons/fill/sign-out.svg";
 
 // Import all outline icons
 import HandsPrayingOutline from "../../../assets/icons/outline/hands-praying.svg";
@@ -29,6 +31,9 @@ import PlusOutline from "../../../assets/icons/outline/plus.svg";
 import MinusOutline from "../../../assets/icons/outline/minus.svg";
 import CloseOutline from "../../../assets/icons/outline/close.svg";
 import SubscriptionOutline from "../../../assets/icons/outline/subscription.svg";
+import truckOutline from "../../../assets/icons/outline/truck.svg";
+import warningOutline from "../../../assets/icons/outline/warning-circle.svg";
+import signOutOutline from "../../../assets/icons/outline/sign-out.svg";
 
 export const outlineIcons = {
   'hands-praying-outline': HandsPrayingOutline,
@@ -44,6 +49,9 @@ export const outlineIcons = {
   'minus-outline': MinusOutline,
   'close-outline': CloseOutline,
   'subscription-outline': SubscriptionOutline,
+  'truck-outline': truckOutline,
+  'warning-circle-outline': warningOutline,
+  'sign-out-outline' : signOutOutline,
 }
 
 export const fillIcons = {
@@ -62,6 +70,8 @@ export const fillIcons = {
   'minus-fill': MinusFill,
   'close-fill': CloseFill,
   'subscription-fill': SubscriptionFill,
+  'warning-circle-fill': warningFill,
+  'sign-out-fill': signOutFill
 }
 
 export const icons = Object.assign({}, outlineIcons, fillIcons);
