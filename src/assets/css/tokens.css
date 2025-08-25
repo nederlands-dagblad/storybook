@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-08-18T10:37:33.806Z
+ * Last generated: 2025-08-25T13:26:41.758Z
  */
 
 :root {
@@ -67,7 +67,7 @@
   --color-neutral-white: #ffffff;
   --color-neutral-white-30: #ffffff4d;
   --color-text-default: #000000;
-  --color-text-subtle: #727272;
+  --color-text-subtle: #bdbdbd;
   --color-text-brand: #0096cb;
   --color-text-brand-subtle: #02b4f2;
   --color-text-accent-brown: #6a4847;
@@ -113,7 +113,7 @@
   --color-button-text-dark-default: #ffffff;
   --color-button-text-secondary-default: #0096cb;
   --color-button-text-ghost-default: #0096cb;
-  --color-button-text-pill-default: #727272;
+  --color-button-text-pill-default: #bdbdbd;
   --color-link-text-default-default: #000000;
   --color-link-text-brown-default: #6a4847;
   --color-form-background-input-field-hover: #f8f8f8;
@@ -125,7 +125,7 @@
   --color-button-background-secondary-hover: #02a1d91a;
   --color-button-background-pill-hover: #f8f8f8;
   --color-button-border-secondary-hover: #0096cb;
-  --color-button-border-pill-hover: #bdbdbd;
+  --color-button-border-pill-hover: #eceae9;
   --color-button-icon-primary-hover: #ffffff;
   --color-button-icon-secondary-hover: #0096cb;
   --color-button-icon-pill-hover: #727272;
@@ -133,7 +133,7 @@
   --color-button-text-dark-hover: #ffffff;
   --color-button-text-secondary-hover: #0096cb;
   --color-button-text-ghost-hover: #02b4f2;
-  --color-button-text-pill-hover: #727272;
+  --color-button-text-pill-hover: #bdbdbd;
   --color-link-text-default-hover: #000000;
   --color-link-text-brown-hover: #a27675;
   --color-form-background-input-field-active: #ffffff;
@@ -153,7 +153,7 @@
   --color-button-text-dark-active: #ffffff;
   --color-button-text-secondary-active: #0096cb;
   --color-button-text-ghost-active: #02b4f2;
-  --color-button-text-pill-active: #727272;
+  --color-button-text-pill-active: #bdbdbd;
   --color-link-text-default-active: #000000;
   --color-link-text-brown-active: #a27675;
   --color-form-background-input-field-disabled: #f2f2f2;

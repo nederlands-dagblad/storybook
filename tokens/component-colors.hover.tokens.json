@@ -47,7 +47,7 @@
       },
       "pill": {
         "$type": "color",
-        "$value": "{border.accent-gray}"
+        "$value": "{border.accent-gray-subtle}"
       }
     },
     "icon": {
