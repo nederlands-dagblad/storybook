@@ -1,7 +1,6 @@
-import { Meta } from '@storybook/addon-docs';
-import {Callout} from "../../.storybook/components/callout.js";
+{/* @ts-nocheck */}
 
-<Meta title="Guides/Forms" />
+import {Callout} from "../../.storybook/components/callout.js";
 
 # 🧩 Building forms using `useFormFactory` & `useFormHandler`
 
@@ -20,7 +19,7 @@ Below is a high-level walkthrough of how the hooks are integrated in the `Create
 
 ### 1. **Initialize Factory and Form Handler**
 
-```tsx
+```javascript
 const formFactory = useFormFactory<FormFactory>({
   url: '/api/bedrijfsportaal/employee/create',
 });
@@ -35,7 +34,7 @@ const formHandler = useFormHandler({
 
 ### 2. **Open Modal After Initialization**
 
-```tsx
+```javascript
 useEffect(() => {
   initialize().then(() => setIsModalOpen(true));
 }, [initialize]);
@@ -54,7 +53,7 @@ useEffect(() => {
 
 Use the `setFactory()` method to update nested properties:
 
-```tsx
+```javascript
 <Input
   label="Voornaam"
   value={factory.formData.firstName}
@@ -67,7 +66,7 @@ This keeps form data **centralized and reactive** using Immer under the hood.
 
 ### 4. **Submit the Form**
 
-```tsx
+```javascript
 function onSubmit() {
   submit(factory?.formData)
     .then(() => {
@@ -91,4 +90,3 @@ function onSubmit() {
 
 - [Hook Reference: `useFormFactory`](/?path=/docs/hooks-useformfactory--docs)
 - [Hook Reference: `useFormHandler`](/?path=/docs/hooks-useformhandler--docs)
-
