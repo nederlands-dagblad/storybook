@@ -114,7 +114,7 @@
     },
     "accent-gray-subtle": {
       "$type": "color",
-      "$value": "{color.neutral.700}"
+      "$value": "{color.neutral.600}"
     },
     "disabled": {
       "$type": "color",
@@ -132,7 +132,7 @@
     },
     "gray": {
       "$type": "color",
-      "$value": "{color.neutral.500}"
+      "$value": "{color.neutral.400}"
     },
     "brand": {
       "$type": "color",
