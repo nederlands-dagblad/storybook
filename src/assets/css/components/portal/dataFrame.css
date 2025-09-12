@@ -1,5 +1,6 @@
-/* DataFrame Component Styles - Maximizing Design Tokens */
+/* DataFrame.css - COMPLETE */
 
+/* Main Container */
 .dataframe {
     border: var(--border-width-s) solid var(--color-border-accent-gray);
     padding: var(--spacing-s);
@@ -7,6 +8,9 @@
     display: flex;
     flex-direction: column;
     background-color: var(--color-background-default);
+    max-width: 799px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media only screen and (min-width: 799px) {
@@ -37,7 +41,7 @@
     text-decoration-thickness: var(--border-width-s);
 }
 
-/* Title using mijn-nd-heading tokens */
+/* Title */
 .dataframe__title {
     margin: var(--spacing-0);
     color: var(--color-text-default);
@@ -54,7 +58,7 @@
     align-items: center;
 }
 
-/* Edit Button using button tokens */
+/* Edit Button */
 .dataframe__edit-button {
     display: inline-flex;
     align-items: center;
@@ -89,8 +93,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: calc(var(--spacing-l) - var(--spacing-xs));
-    height: calc(var(--spacing-l) - var(--spacing-xs));
+    width: 32px;
+    height: 32px;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -109,7 +113,7 @@
     align-items: center;
 }
 
-/* Cancel Button using link tokens */
+/* Cancel Button */
 .dataframe__cancel-button {
     background-color: transparent;
     border: none;
@@ -127,7 +131,7 @@
     text-decoration: underline;
 }
 
-/* Save Button using primary button tokens */
+/* Save Button */
 .dataframe__save-button {
     display: flex;
     flex-direction: row;
@@ -173,12 +177,6 @@
     width: 100%;
 }
 
-@media only screen and (min-width: 799px) {
-    .dataframe__content {
-        width: 30rem;
-    }
-}
-
 /* DataFrame Item - View Mode */
 .dataframe-item {
     display: flex;
@@ -190,11 +188,11 @@
     .dataframe-item {
         flex-direction: row;
         align-items: flex-start;
-        gap: var(--spacing-0);
+        gap: var(--spacing-m);
     }
 }
 
-/* Labels using mijn-nd-description tokens */
+/* Labels */
 .dataframe-item__label {
     font-family: var(--mijn-nd-description-fontFamily);
     font-size: var(--mijn-nd-description-fontSize);
@@ -206,12 +204,13 @@
 
 @media only screen and (min-width: 799px) {
     .dataframe-item__label {
-        width: 14rem;
+        width: 35%;
+        min-width: 10rem;
         flex-shrink: 0;
     }
 }
 
-/* Values using body-regular tokens */
+/* Values */
 .dataframe-item__value {
     font-family: var(--body-regular-fontFamily);
     font-size: var(--body-regular-fontSize);
@@ -224,28 +223,22 @@
 
 @media only screen and (min-width: 799px) {
     .dataframe-item__value {
-        width: 20rem;
-        flex-shrink: 0;
+        flex: 1;
+        min-width: 0;
     }
 }
 
-/* For multiline values */
+/* Multiline values */
 .dataframe-item__value--multiline {
     white-space: pre-line;
 }
 
-/* Edit Mode Content - Grid Layout */
+/* Edit Mode Content */
 .dataframe__edit-content {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: var(--spacing-s);
     width: 100%;
-}
-
-@media only screen and (min-width: 799px) {
-    .dataframe__edit-content {
-        width: 30rem;
-    }
 }
 
 /* Input Row */
@@ -276,7 +269,7 @@
     }
 }
 
-/* Input Label using mijn-nd-description */
+/* Input Label */
 .dataframe__input-label {
     font-family: var(--mijn-nd-description-fontFamily);
     font-size: var(--mijn-nd-description-fontSize);
@@ -286,7 +279,7 @@
     color: var(--color-text-default);
 }
 
-/* Input Fields using form tokens */
+/* Input Fields */
 .dataframe__input {
     font-family: var(--body-regular-fontFamily);
     font-size: var(--body-regular-fontSize);
@@ -393,7 +386,7 @@
     }
 }
 
-/* Action Buttons using pill button tokens */
+/* Action Buttons */
 .dataframe__action-button {
     display: inline-flex;
     align-items: center;
@@ -427,13 +420,15 @@
 .dataframes {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-0);
+    gap: var(--spacing-m);
+    max-width: 799px;
+    width: 100%;
 }
 
-/* Alert spacing using spacing tokens */
-.dataframe .alert,
-.dataframe .mb-4 {
-    margin-bottom: var(--spacing-s);
+/* Alert inside DataFrame */
+.dataframe .alert {
+    margin-bottom: var(--spacing-m);
+    width: 100%;
 }
 
 /* Dark mode support */

@@ -1,12 +1,9 @@
+/* AccordionItem.css - COMPLETE */
 .accordion-item {
-    /* Your design tokens */
     border: var(--border-width-s) solid var(--color-border-accent-gray);
     background: var(--color-background-default);
-
-    /* Ensure proper containment */
-    @apply w-full block;
-
-    /* Smooth border transition */
+    width: 100%;
+    display: block;
     transition: border-color 0.2s ease;
 }
 
@@ -15,44 +12,56 @@
 }
 
 .accordion-item__button {
-    /* Your design tokens for spacing */
     padding: var(--spacing-xs) var(--spacing-s);
-
-    /* Tailwind utilities */
-    @apply w-full border-0 bg-transparent cursor-pointer
-    flex justify-between items-center text-left;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    outline: none;
 }
 
-/* Remove all focus outlines */
-.accordion-item__button:focus {
-    @apply outline-none;
-}
-
-/* Remove the default focus visible ring */
 .accordion-item__button:focus-visible {
-    @apply outline-none;
+    outline: none;
 }
 
-/* When button is focused and accordion is closed, show blue border on the item */
 .accordion-item:has(.accordion-item__button:focus-visible):not(.accordion-item--open) {
     border-color: var(--color-border-brand);
 }
 
-/* The open state already has blue border from accordion-item--open class */
-
 .accordion-item__button:hover .accordion-item__question {
-    @apply underline;
+    text-decoration: underline;
     text-underline-offset: 25%;
 }
 
 .accordion-item__question {
-    @apply flex-1 block;
+    flex: 1;
+    display: block;
+    font-family: var(--body-bold-fontFamily);
+    font-size: var(--body-bold-fontSize);
+    font-weight: var(--body-bold-fontWeight);
+    line-height: var(--body-bold-lineHeight);
+    color: var(--color-text-default);
+}
+
+/* Large variant */
+.accordion-item__question--large {
+    font-family: var(--heading-2-fontFamily);
+    font-size: var(--heading-2-fontSize);
+    font-weight: var(--heading-2-fontWeight);
+    line-height: var(--heading-2-lineHeight);
 }
 
 .accordion-item__icon {
-    @apply w-5 h-5 flex items-center justify-center flex-shrink-0 block;
-
-    /* Smooth rotation animation */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
     transition: transform 0.2s ease;
 }
 
@@ -61,35 +70,33 @@
 }
 
 .accordion-item__answer {
-    /* Hidden by default */
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transform: translateY(-10px);
-
-    /* Smooth transition */
     transition: max-height 0.3s ease,
     opacity 0.3s ease,
     transform 0.3s ease,
     padding 0.3s ease;
-
-    /* Your spacing tokens */
     padding: 0 var(--spacing-s);
-
-    /* Ensure it's a separate block */
-    @apply w-full block;
+    width: 100%;
+    display: block;
 }
 
 .accordion-item__answer--open {
-    max-height: 500px; /* Adjust based on your content */
+    max-height: 500px;
     opacity: 1;
     transform: translateY(0);
     padding: var(--spacing-xs) var(--spacing-s) var(--spacing-xs);
 }
 
 .accordion-item__content {
-    /* Your spacing token */
     margin-top: var(--spacing-xs);
-
-    @apply m-0 block;
+    margin-bottom: 0;
+    display: block;
+    font-family: var(--body-light-fontFamily);
+    font-size: var(--body-light-fontSize);
+    font-weight: var(--body-light-fontWeight);
+    line-height: var(--body-light-lineHeight);
+    color: var(--color-text-default);
 }
