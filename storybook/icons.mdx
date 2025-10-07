@@ -1,6 +1,6 @@
 import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
 import Icon from "@atoms/basicAtoms/Icon/Icon";
-import {keys} from "@atoms/basicAtoms/Icon/list";
+import {getIconNames} from "@atoms/basicAtoms/Icon/list";
 
 <Meta title="Tokens/Icons" />
 
@@ -13,9 +13,9 @@ On this page, you can find all icons available in our design system.
 All icons which are solid/filled.
 
 <IconGallery>
-  {keys('fill').map(iconName => (
-    <IconItem key={iconName} name={iconName.replace('-fill', '')}>
-      <Icon name={iconName} />
+  {getIconNames().map(iconName => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon name={iconName} variant="fill" />
     </IconItem>
   ))}
 </IconGallery>
@@ -25,9 +25,9 @@ All icons which are solid/filled.
 All icons which are outlined.
 
 <IconGallery>
-    {keys('outline').map(iconName => (
-        <IconItem key={iconName} name={iconName.replace('-outline', '')}>
-            <Icon name={iconName} />
+    {getIconNames().map(iconName => (
+        <IconItem key={iconName} name={iconName}>
+            <Icon name={iconName} variant="outline" />
         </IconItem>
     ))}
 </IconGallery>
@@ -36,7 +36,6 @@ All icons which are outlined.
 
 To add a new icon, you need to add the SVG file to the `src/assets/icons` folder. Icons are separated by variation: `outline` or `fill`.
 
-After adding the SVG file, add the both variations to `src/components/Icon/list.ts`. This file contains a list of all available icons in the design system.
+After adding the SVG file, add both variations to `src/components/atoms/basicAtoms/Icon/list.ts`. This file contains a list of all available icons in the design system.
 
-Finally, you can use the icon in your components by importing the `Icon` component and passing the name of the icon as a prop.
-
+You can find the icon component [here](?path=/docs/atoms-basic-atoms-icon--docs).
