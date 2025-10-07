@@ -1,13 +1,17 @@
-/* Alert.css */
+/* Alert.css - COMPLETE */
 .alert {
-    padding: var(--spacing-s);
-    display: inline-flex;
+    padding: var(--spacing-s) var(--spacing-m);
+    display: flex;
+    width: 100%;
     gap: var(--spacing-xs);
     font-family: var(--body-light-fontFamily);
     font-size: var(--body-light-fontSize);
     font-weight: var(--body-light-fontWeight);
     color: var(--color-text-default);
     border-radius: var(--border-radius-0);
+    box-sizing: border-box;
+    min-height: 48px;
+    align-items: flex-start;
 }
 
 .alert--dark {
@@ -33,7 +37,13 @@
     border: 2px solid var(--color-text-warning);
 }
 
-/* icon colors */
+/* Icon adjustments */
+.alert svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Icon colors */
 .alert__icon--dark {
     color: var(--color-blue-400);
 }
@@ -52,4 +62,10 @@
 
 .alert__icon--warning {
     color: var(--color-icons-warning);
+}
+
+/* Alert text content */
+.alert span {
+    flex: 1;
+    line-height: 1.5;
 }
