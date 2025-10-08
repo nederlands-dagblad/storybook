@@ -2,9 +2,4 @@
     <g clip-path="url(#clip0_1574_2607)">
         <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
-    <defs>
-        <clipPath id="clip0_1574_2607">
-            <rect width="16" height="16" fill="white"/>
-        </clipPath>
-    </defs>
 </svg>
