@@ -1,27 +1,28 @@
 @layer components {
 
   .btn {
-    @apply inline-flex items-center gap-x-s p-s text-sm font-fira-sans font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
+    @apply inline-flex items-center gap-x-xs p-xs focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
   }
 
   .btn-primary {
     @apply
+      gap-x-xxs
       bg-button-background-primary
       text-button-text-primary
-      stroke-white
+      text-meta-bold
       hover:bg-button-background-primary-hover
       hover:text-button-text-primary-hover
       disabled:bg-button-background-primary-disabled
-      disabled:text-button-text-primary-disabled;
+      disabled:text-button-text-primary-disabled
   }
 
   .btn-secondary {
     @apply
       bg-button-background-secondary
       text-button-text-secondary
-      border
+      text-meta-regular
+      border-s
       border-button-border-secondary
-      font-normal
       hover:bg-button-background-secondary-hover
       hover:text-button-text-secondary-hover
       hover:border-button-border-secondary-hover
@@ -33,6 +34,7 @@
   .btn-ghost {
     @apply
       text-button-text-ghost
+      text-meta-bold
       hover:text-button-text-ghost-hover
       disabled:text-button-text-ghost-disabled
   }
@@ -41,6 +43,7 @@
     @apply
       bg-button-background-dark
       text-button-text-dark
+      text-meta-bold
       hover:bg-button-background-dark-hover
       hover:text-button-text-dark-hover
       disabled:bg-button-background-dark-disabled
@@ -52,16 +55,14 @@
       bg-button-background-pill
       hover:bg-button-background-pill-hover
       text-button-text-pill
+      text-meta-regular
       border-button-border-pill
       hover:border-button-border-pill-hover
       active:border-button-border-pill-active
       disabled:border-button-border-pill-disabled
       rounded-pill
-      gap-x-s
-      px-m
-      py-s
-      font-normal
-      border
+      px-s
+      border-s
   }
 
   .btn-icon-only {

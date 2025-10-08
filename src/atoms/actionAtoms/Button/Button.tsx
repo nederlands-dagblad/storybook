@@ -30,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
     .filter(key => variantClass[key as keyof typeof variantClass])
     .join(' ');
 
-  const disabledClass = disabled ? 'opacity-50 cursor-not-allowed' : '';
+  const disabledClass = disabled ? 'cursor-not-allowed' : '';
 
   return (
     <button
@@ -39,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       {...props}
     >
-      { icon && <Icon name={icon} size={18} /> }
+      { icon && <Icon name={icon} size={'s'} color={'buttonPrimary'} variant={'outline'} /> }
       { children }
     </button>
   );

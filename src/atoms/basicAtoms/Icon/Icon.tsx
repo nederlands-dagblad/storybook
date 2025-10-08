@@ -4,7 +4,7 @@ import {ReactSVG} from "react-svg";
 import {icons} from "./list";
 
 type IconSize =  's' | 'm' | 'l' | 'xl' | 'xxl';
-type IconColor = 'default' | 'gray' | 'brand' | 'warning' | 'inverse';
+type IconColor = 'default' | 'gray' | 'brand' | 'warning' | 'inverse' | 'buttonPrimary' | 'buttonSecondary' | 'buttonPill';
 type IconVariant = 'outline' | 'fill';
 
 export interface IconProps {
@@ -29,6 +29,10 @@ const colorMap: Record<IconColor, string> = {
     brand: 'text-icons-brand',
     warning: 'text-icons-warning',
     inverse: 'text-icons-inverse',
+    buttonPrimary: 'text-button-icon-primary',
+    buttonSecondary: 'text-button-icon-secondary',
+    buttonPill: 'text-button-icon-pill',
+    
 };
 
 export const Icon: React.FC<IconProps> = (props) => {

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import Button from './Button';
 import { keys } from "../../../atoms/basicAtoms/Icon/list.ts";
 import Icon from "../../basicAtoms/Icon/Icon";
+import iconList from "../../basicAtoms/Icon/list";
 
 /**
  * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
@@ -53,7 +54,7 @@ const meta = {
     },
     icon: {
       control: 'select',
-      options: keys(),
+      options: iconList.getIconNames(),
     },
     disabled: { control: 'boolean' },
     onClick: { action: 'clicked' }
@@ -70,7 +71,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    icon: 'square-fill',
+    icon: 'square',
     children: 'Primary Button',
   },
 };
@@ -81,7 +82,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    icon: 'user-outline',
+    icon: 'user',
     children: 'Secondary Button',
   },
 };
@@ -102,7 +103,7 @@ export const Ghost: Story = {
 export const Dark: Story = {
   args: {
     variant: 'dark',
-    icon: 'square-fill',
+    icon: 'square',
     children: 'Dark Button',
   },
 };
@@ -113,11 +114,11 @@ export const Dark: Story = {
 export const Pill: Story = {
   args: {
     variant: 'pill',
-    icon: 'pencil-simple-outline',
+    icon: 'pencil',
     children: (
       <>
         Label
-        <Icon name="caret-right-outline" size={18} />
+        <Icon name="caret-right" size={'s'} />
       </>
     ),
   },
@@ -129,7 +130,7 @@ export const Pill: Story = {
 export const IconOnly: Story = {
   args: {
     variant: 'pill',
-    icon: 'user-outline',
+    icon: 'user',
     iconOnly: true,
   },
 }
