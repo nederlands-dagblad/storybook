@@ -4,11 +4,6 @@
         <path d="M8 8.5V5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M8 11.25C8.27614 11.25 8.5 11.0261 8.5 10.75C8.5 10.4739 8.27614 10.25 8 10.25C7.72386 10.25 7.5 10.4739 7.5 10.75C7.5 11.0261 7.72386 11.25 8 11.25Z" fill="black"/>
     </g>
-    <defs>
-        <clipPath id="clip0_1574_2585">
-            <rect width="16" height="16" fill="white"/>
-        </clipPath>
-    </defs>
 </svg>
 
 

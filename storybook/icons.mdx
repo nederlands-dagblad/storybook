@@ -34,8 +34,8 @@ All icons which are outlined.
 
 ### Note on adding new icons
 
-To add a new icon, you need to add the SVG file to the `src/assets/icons` folder. Icons are separated by variation: `outline` or `fill`.
+To add a new icon, you need to add the SVG file to the `src/assets/icons` folder. Icons are separated by variation: `outline` or `fill`. Make sure to change the color inside `<path>` to `currentColor` so the icon can inherit the color from its parent element.
 
 After adding the SVG file, add both variations to `src/components/atoms/basicAtoms/Icon/list.ts`. This file contains a list of all available icons in the design system.
 
-You can find the icon component [here](?path=/docs/atoms-basic-atoms-icon--docs).
+You can find the icon React component [here](?path=/docs/atoms-basic-atoms-icon--docs) in Storybook.

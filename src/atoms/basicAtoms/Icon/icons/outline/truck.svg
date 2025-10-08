@@ -1,10 +1,4 @@
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_truck)">
-        <path d="M5.5 12.5a1 1 0 0 1-2 0m2 0a1 1 0 0 0-2 0m2 0h4m-6 0H2.25a.75.75 0 0 1-.75-.75V9.5m11.5 3a1 1 0 0 1-2 0m2 0a1 1 0 0 0-2 0m2 0h.75c.414 0 .753-.336.727-.75a11.935 11.935 0 0 0-2.142-6.128 1.371 1.371 0 0 0-1.054-.574H9.5M11 12.5h-1.5m0-7.451v-.639c0-.379-.281-.699-.658-.737a32.369 32.369 0 0 0-6.684 0 .737.737 0 0 0-.658.737v5.09m8-4.451v4.451m0 3v-3m0 0H1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_truck">
-            <rect width="16" height="16" fill="white"/>
-        </clipPath>
-    </defs>
+    <path d="M5.5 12.5a1 1 0 0 1-2 0m2 0a1 1 0 0 0-2 0m2 0h4m-6 0H2.25a.75.75 0 0 1-.75-.75V9.5m11.5 3a1 1 0 0 1-2 0m2 0a1 1 0 0 0-2 0m2 0h.75c.414 0 .753-.336.727-.75a11.935 11.935 0 0 0-2.142-6.128 1.371 1.371 0 0 0-1.054-.574H9.5M11 12.5h-1.5m0-7.451v-.639c0-.379-.281-.699-.658-.737a32.369 32.369 0 0 0-6.684 0 .737.737 0 0 0-.658.737v5.09m8-4.451v4.451m0 3v-3m0 0H1.5"
+          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
