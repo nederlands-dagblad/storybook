@@ -46,6 +46,17 @@ export const Button: React.FC<ButtonProps> = ({
         pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-subtle border-s border-accent-gray-subtle rounded-pill hover:bg-background-accent-gray-subtle hover:border-accent-gray-subtle active:bg-background-accent-gray-subtle active:border-accent-gray',
     };
 
+    // Map button variants to icon colors
+    const iconColorMap: Record<typeof variant, IconProps['color']> = {
+        primary: 'inverse',
+        secondary: 'brand',
+        ghost: 'brand',
+        dark: 'inverse',
+        pill: 'gray',
+    };
+
+    const iconColor = iconColorMap[variant];
+
     return (
         <button
             className={cn(
@@ -65,9 +76,9 @@ export const Button: React.FC<ButtonProps> = ({
             aria-label={iconOnly ? String(content) : undefined}
             {...props}
         >
-            {iconLeft && <Icon name={iconLeft} size='s' color='default' variant = {iconLeftVariant}/>}
+            {iconLeft && <Icon name={iconLeft} size='s' color={iconColor} variant = {iconLeftVariant}/>}
             {!iconOnly && content}
-            {iconRight && <Icon name={iconRight} size='s' color='default' variant={iconRightVariant}/>}
+            {iconRight && <Icon name={iconRight} size='s' color={iconColor} variant={iconRightVariant}/>}
         </button>
     );
 };

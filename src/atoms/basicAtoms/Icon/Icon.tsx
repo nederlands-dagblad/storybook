@@ -29,9 +29,6 @@ const colorMap: Record<IconColor, string> = {
     brand: 'text-icons-brand',
     warning: 'text-icons-warning',
     inverse: 'text-icons-inverse',
-    buttonPrimary: 'text-button-icon-primary',
-    buttonSecondary: 'text-button-icon-secondary',
-    buttonPill: 'text-button-icon-pill',
     
 };
 
