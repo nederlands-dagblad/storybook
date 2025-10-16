@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Button from './Button';
-import { keys } from "../../../atoms/basicAtoms/Icon/list.ts";
+import iconList from "../../../atoms/basicAtoms/Icon/list.ts";
 import Icon from "../../basicAtoms/Icon/Icon";
-import iconList from "../../basicAtoms/Icon/list";
 
 /**
- * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
+ * Behold, the Button: small in size, mighty in purpose. Whether it's submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
  *
- * Click it. Or don’t. It won’t take it personally (probably).
+ * Click it. Or don't. It won't take it personally (probably).
  *
  * ### React
  *
@@ -15,7 +14,7 @@ import iconList from "../../basicAtoms/Icon/list";
  *
  * ### HTML
  *
- * Using plain HTML? We got you covered. Here’s how you can use the Button component:
+ * Using plain HTML? We got you covered. Here's how you can use the Button component:
  *
  * ```html
  * <button class="nd-btn nd-btn-primary">
@@ -45,6 +44,7 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    controls: { sort: 'requiredFirst' },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -52,85 +52,123 @@ const meta = {
       control: 'select',
       options: ['primary', 'secondary', 'ghost', 'dark', 'pill']
     },
-    icon: {
+    iconLeft: {
       control: 'select',
-      options: iconList.getIconNames(),
+      options: [null, ...iconList.getIconNames()],
+    },
+    iconLeftVariant: {
+      control: 'select',
+      options: ['outline', 'fill'],
+      description: 'Left icon variant',
+    },
+    iconRight: {
+      control: 'select',
+      options: [null, ...iconList.getIconNames()],
+    },
+    iconRightVariant: {
+      control: 'select',
+      options: ['outline', 'fill'],
+      description: 'Right icon variant',
+    },
+    label: {
+      control: 'text',
+      description: 'The button label text',
+    },
+    iconOnly: {
+      control: 'boolean',
     },
     disabled: { control: 'boolean' },
     onClick: { action: 'clicked' }
+    
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 
 /**
- * Yaeg
+ * The primary button variant
  */
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    icon: 'square',
-    children: 'Primary Button',
+    iconLeft: 'square',
+    label: 'Primary Button',
   },
 };
 
 /**
- * Use the `nd-btn-secondary` class to render a secondary button.
+ * The secondary button variant with an outline style
  */
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    icon: 'user',
-    children: 'Secondary Button',
+    iconLeft: 'user',
+    label: 'Secondary Button',
   },
 };
 
 /**
- * Use the `nd-btn-ghost` class to render a ghost button.
+ * The ghost button variant - minimal styling, text only
  */
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
-    children: 'Ghost Button',
+    label: 'Ghost Button',
   },
 };
 
 /**
- * Use the `nd-btn-dark` class to render a dark button.
+ * The dark button variant for dark backgrounds
  */
 export const Dark: Story = {
   args: {
     variant: 'dark',
-    icon: 'square',
-    children: 'Dark Button',
+    iconLeft: 'square',
+    label: 'Dark Button',
   },
 };
 
 /**
- * Use the `nd-btn-pill` class to render a pill button.
+ * The pill button variant with rounded edges
  */
 export const Pill: Story = {
   args: {
     variant: 'pill',
-    icon: 'pencil',
-    children: (
-      <>
-        Label
-        <Icon name="caret-right" size={'s'} />
-      </>
+    iconLeft: 'pencil',
+    label: (
+        <>
+          Label
+          <Icon name="caret-right" size={18} />
+        </>
     ),
   },
 };
 
 /**
- * Use the `iconOnly` prop to render a button with only an icon. This will remove the button's padding and display the icon at the center.
+ * Icon-only button - displays just an icon with minimal padding
  */
 export const IconOnly: Story = {
   args: {
     variant: 'pill',
-    icon: 'user',
+    iconLeft: 'user',
     iconOnly: true,
+    label: '',
   },
-}
+};
+
+/**
+ * Disabled state examples
+ */
+export const DisabledButtons: Story = {
+  render: () => (
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <Button variant="primary" disabled>Primary Disabled</Button>
+        <Button variant="secondary" disabled>Secondary Disabled</Button>
+        <Button variant="ghost" disabled>Ghost Disabled</Button>
+        <Button variant="dark" disabled>Dark Disabled</Button>
+        <Button variant="pill" disabled>Pill Disabled</Button>
+      </div>
+  ),
+};

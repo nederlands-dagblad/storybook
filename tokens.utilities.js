@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-08-25T13:26:41.758Z
+ * Last generated: 2025-10-16T14:15:59.580Z
  */
 
 export default function ({ addUtilities }) {
@@ -1009,22 +1009,6 @@ export default function ({ addUtilities }) {
     "lineHeight": "var(--menu-menu-tab-item-active-lineHeight)",
     "letterSpacing": "var(--menu-menu-tab-item-active-letterSpacing)",
     "textDecoration": "underline"
-  },
-  ".text-mijn-nd-heading": {
-    "fontFamily": "var(--mijn-nd-heading-fontFamily)",
-    "fontSize": "var(--mijn-nd-heading-fontSize)",
-    "fontWeight": "var(--mijn-nd-heading-fontWeight)",
-    "lineHeight": "var(--mijn-nd-heading-lineHeight)",
-    "letterSpacing": "var(--mijn-nd-heading-letterSpacing)",
-    "textDecoration": "none"
-  },
-  ".text-mijn-nd-description": {
-    "fontFamily": "var(--mijn-nd-description-fontFamily)",
-    "fontSize": "var(--mijn-nd-description-fontSize)",
-    "fontWeight": "var(--mijn-nd-description-fontWeight)",
-    "lineHeight": "var(--mijn-nd-description-lineHeight)",
-    "letterSpacing": "var(--mijn-nd-description-letterSpacing)",
-    "textDecoration": "none"
   }
 },
     ...{

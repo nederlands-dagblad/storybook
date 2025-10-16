@@ -1,48 +1,75 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'dark' | 'pill';
-  icon?: string | null;
-  iconOnly?: boolean;
+    variant?: 'primary' | 'secondary' | 'ghost' | 'dark' | 'pill';
+    iconLeft?: string | null;
+    iconRight?: string | null;
+    iconLeftVariant?: 'outline' | 'fill';
+    iconRightVariant?: 'outline' | 'fill'; 
+    iconOnly?: boolean;
+    label?: string | React.ReactNode; // For accessibility when iconOnly is true
+}
+
+// Simple utility function to combine classes
+function cn(...classes: (string | boolean | undefined | null)[]) {
+    return classes.filter(Boolean).join(' ');
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  icon = null,
-  iconOnly = false,
-  disabled = false,
-  children,
-  onClick,
-  ...props
-}) => {
-  // Variant classes
-  const variantClass = {
-    'btn-primary': variant === 'primary',
-    'btn-secondary': variant === 'secondary',
-    'btn-ghost': variant === 'ghost',
-    'btn-dark': variant === 'dark',
-    'btn-pill': variant === 'pill',
-  };
+                                                  variant = 'primary',
+                                                  iconLeft = null,
+                                                  iconRight = null,
+                                                  iconLeftVariant = 'outline',
+                                                  iconRightVariant = 'outline',
+                                                  iconOnly = false,
+                                                  disabled = false,
+                                                  children, 
+                                                  label,
+                                                  className,
+                                                  onClick,
+                                                  ...props
+                                              }) => {
+    
+    const content = label??children;
+    
+    // Map of variant styles
+    const variantStyles = {
+        primary: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-brand text-text-inverse hover:bg-background-brand-subtle disabled:bg-background-disabled',
 
-  // Convert class objects to strings
-  const variantClassString = Object.keys(variantClass)
-    .filter(key => variantClass[key as keyof typeof variantClass])
-    .join(' ');
+        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-subtlest disabled:text-text-disabled disabled:border-border-disabled',
 
-  const disabledClass = disabled ? 'cursor-not-allowed' : '';
+        ghost: 'px-xs py-xs gap-x-xs text-meta-bold text-text-brand hover:text-text-brand-subtle disabled:text-text-disabled',
 
-  return (
-    <button
-      className={`btn ${variantClassString} ${iconOnly ? 'btn-icon-only' : ''} ${disabledClass}`}
-      disabled={disabled}
-      onClick={onClick}
-      {...props}
-    >
-      { icon && <Icon name={icon} size={'s'} color={'buttonPrimary'} variant={'outline'} /> }
-      { children }
-    </button>
-  );
+        dark: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-dark text-text-inverse hover:bg-background-dark-subtle disabled:bg-background-disabled',
+
+        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-subtle border-s border-accent-gray-subtle rounded-pill hover:bg-background-accent-gray-subtle hover:border-accent-gray-subtle active:bg-background-accent-gray-subtle active:border-accent-gray',
+    };
+
+    return (
+        <button
+            className={cn(
+                // Base styles for all buttons
+                'inline-flex items-center transition-colors',
+                // Padding
+                iconOnly && '!p-xs',
+                // Variant specific styles
+                variantStyles[variant],
+                // Disabled state
+                disabled && 'cursor-not-allowed',
+                // Custom classes passed via props
+                className
+            )}
+            disabled={disabled}
+            onClick={onClick}
+            aria-label={iconOnly ? String(content) : undefined}
+            {...props}
+        >
+            {iconLeft && <Icon name={iconLeft} size='s' color='default' variant = {iconLeftVariant}/>}
+            {!iconOnly && content}
+            {iconRight && <Icon name={iconRight} size='s' color='default' variant={iconRightVariant}/>}
+        </button>
+    );
 };
 
 export default Button;

@@ -6,7 +6,7 @@
     },
     "subtle": {
       "$type": "color",
-      "$value": "{color.neutral.400}"
+      "$value": "{color.neutral.600}"
     },
     "brand": {
       "$type": "color",

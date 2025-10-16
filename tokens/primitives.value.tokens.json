@@ -43,7 +43,7 @@
     "pink": {
       "200": {
         "$type": "color",
-        "$value": "#fdecef"
+        "$value": "#fbf1f0"
       },
       "400": {
         "$type": "color",
@@ -131,11 +131,11 @@
     "font-family": {
       "gulliver": {
         "$type": "string",
-        "$value": "Gulliver Web, Georgia, serif"
+        "$value": "Gulliver"
       },
       "fira-sans": {
         "$type": "string",
-        "$value": "Fira Sans, Arial, sans-serif"
+        "$value": "Fira Sans"
       },
       "montserrat": {
         "$type": "string",
@@ -147,7 +147,7 @@
       },
       "gulliver_semibold": {
         "$type": "string",
-        "$value": "Gulliver Web, Georgia, serif"
+        "$value": "Gulliver Semibold"
       }
     },
     "font-weight": {
