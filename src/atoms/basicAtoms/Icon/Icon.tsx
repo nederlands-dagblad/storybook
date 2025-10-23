@@ -29,6 +29,7 @@ const colorMap: Record<IconColor, string> = {
     brand: 'text-icons-brand',
     warning: 'text-icons-warning',
     inverse: 'text-icons-inverse',
+    
 };
 
 export const Icon: React.FC<IconProps> = (props) => {

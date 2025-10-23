@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-08-25T13:26:41.756Z
+// Last generated: 2025-10-16T14:15:59.577Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -196,9 +196,7 @@ export const typographyStyles = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active)",
-  "mijn-nd-heading": "var(--mijn-nd-heading)",
-  "mijn-nd-description": "var(--mijn-nd-description)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active)"
 };
 export const fontFamilies = {
   "article-heading": "var(--article-heading-fontFamily)",
@@ -235,9 +233,7 @@ export const fontFamilies = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar-fontFamily)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontFamily)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item-fontFamily)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontFamily)",
-  "mijn-nd-heading": "var(--mijn-nd-heading-fontFamily)",
-  "mijn-nd-description": "var(--mijn-nd-description-fontFamily)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontFamily)"
 };
 export const fontWeights = {
   "article-heading": "var(--article-heading-fontWeight)",
@@ -274,9 +270,7 @@ export const fontWeights = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar-fontWeight)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontWeight)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item-fontWeight)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontWeight)",
-  "mijn-nd-heading": "var(--mijn-nd-heading-fontWeight)",
-  "mijn-nd-description": "var(--mijn-nd-description-fontWeight)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontWeight)"
 };
 export const fontSizes = {
   "article-heading": "var(--article-heading-fontSize)",
@@ -313,9 +307,7 @@ export const fontSizes = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar-fontSize)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-fontSize)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item-fontSize)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontSize)",
-  "mijn-nd-heading": "var(--mijn-nd-heading-fontSize)",
-  "mijn-nd-description": "var(--mijn-nd-description-fontSize)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-fontSize)"
 };
 export const lineHeights = {
   "article-heading": "var(--article-heading-lineHeight)",
@@ -352,9 +344,7 @@ export const lineHeights = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar-lineHeight)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-lineHeight)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item-lineHeight)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-lineHeight)",
-  "mijn-nd-heading": "var(--mijn-nd-heading-lineHeight)",
-  "mijn-nd-description": "var(--mijn-nd-description-lineHeight)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-lineHeight)"
 };
 export const letterSpacings = {
   "article-heading": "var(--article-heading-letterSpacing)",
@@ -391,9 +381,7 @@ export const letterSpacings = {
   "menu-menu-tabbar": "var(--menu-menu-tabbar-letterSpacing)",
   "menu-menu-tabbar-active": "var(--menu-menu-tabbar-active-letterSpacing)",
   "menu-menu-tab-item": "var(--menu-menu-tab-item-letterSpacing)",
-  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-letterSpacing)",
-  "mijn-nd-heading": "var(--mijn-nd-heading-letterSpacing)",
-  "mijn-nd-description": "var(--mijn-nd-description-letterSpacing)"
+  "menu-menu-tab-item-active": "var(--menu-menu-tab-item-active-letterSpacing)"
 };
 export const primitiveFontFamilies = {
   "gulliver": "var(--font-family-gulliver)",

@@ -1,42 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Button from './Button';
-import { keys } from "../../../atoms/basicAtoms/Icon/list.ts";
+import iconList from "../../../atoms/basicAtoms/Icon/list.ts";
 import Icon from "../../basicAtoms/Icon/Icon";
+import { useState } from 'react';
 
 /**
- * Behold, the Button: small in size, mighty in purpose. Whether it’s submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
+ * Behold, the Button: small in size, mighty in purpose. Whether it's submitting a form, launching a missile (okay, hopefully not), or just pretending to do something important, this little UI warrior is always ready for action. It comes in peace, but with variants.
  *
- * Click it. Or don’t. It won’t take it personally (probably).
+ * Click it. Or don't. It won't take it personally (probably).
  *
- * ### React
+ * ## Features
+ * - Multiple variants: primary, secondary, ghost, dark, and pill
+ * - Optional left and right icons with outline/fill variants
+ * - Icon-only mode for compact buttons
+ * - Interactive states: hover, active, disabled
+ * - Special behaviors:
+ *   - Pill buttons with left icons change to fill when active
+ *   - Pill buttons with caret-down icons rotate on toggle
+ *   - Primary buttons with square icons rotate 90° on hover
  *
- * In React, we have a `<Button>` component available. See the examples below for usage.
- *
- * ### HTML
- *
- * Using plain HTML? We got you covered. Here’s how you can use the Button component:
- *
- * ```html
- * <button class="nd-btn nd-btn-primary">
- *   Primary Button
- * </button>
- *
- * <button class="nd-btn nd-btn-secondary">
- *   Secondary Button
- * </button>
- *
- * <button class="nd-btn nd-btn-ghost">
- *   Ghost Button
- * </button>
- *
- * <button class="nd-btn nd-btn-pill">
- *   Pill Button
- * </button>
- *
- * <button class="nd-btn nd-btn-dark">
- *   Dark Button
- *  </button>
- * ```
  */
 
 const meta = {
@@ -44,92 +26,161 @@ const meta = {
   component: Button,
   parameters: {
     layout: 'centered',
+    controls: { sort: 'requiredFirst' },
   },
   tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'dark', 'pill']
+      options: ['primary', 'secondary', 'ghost', 'dark', 'pill'],
+      description: 'Visual style variant of the button',
     },
-    icon: {
+    iconLeft: {
       control: 'select',
-      options: keys(),
+      options: [null, ...iconList.getIconNames()],
+      description: 'Icon to display on the left side',
     },
-    disabled: { control: 'boolean' },
-    onClick: { action: 'clicked' }
+    iconLeftVariant: {
+      control: 'select',
+      options: ['outline', 'fill'],
+      description: 'Outline or fill',
+    },
+    iconRight: {
+      control: 'select',
+      options: [null, ...iconList.getIconNames()],
+      description: 'Icon to display on the right side',
+    },
+    iconRightVariant: {
+      control: 'select',
+      options: ['outline', 'fill'],
+      description: 'Outline or fill',
+    },
+    label: {
+      control: 'text',
+      description: 'The button label text',
+    },
+    iconOnly: {
+      control: 'boolean',
+      description: 'Display only the icon without text',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disable button interactions',
+    },
+    isActive: {
+      control: 'boolean',
+      description: 'Control active state (for pill variant)',
+    },
+    onClick: { action: 'clicked' },
+    onToggle: { action: 'toggled' }
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 
-/**
- * Yaeg
- */
 type Story = StoryObj<typeof meta>;
 
+/**
+ * The primary button variant
+ */
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    icon: 'square-fill',
-    children: 'Primary Button',
+    label: 'Primary Button',
   },
 };
 
 /**
- * Use the `nd-btn-secondary` class to render a secondary button.
+ * The secondary button variant with an outline style
  */
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    icon: 'user-outline',
-    children: 'Secondary Button',
+    iconLeft: 'user',
+    label: 'Secondary Button',
   },
 };
 
 /**
- * Use the `nd-btn-ghost` class to render a ghost button.
+ * The ghost button variant - minimal styling, text only
  */
 export const Ghost: Story = {
   args: {
     variant: 'ghost',
-    children: 'Ghost Button',
+    label: 'Ghost Button',
   },
 };
 
 /**
- * Use the `nd-btn-dark` class to render a dark button.
+ * The dark button variant for dark backgrounds
  */
 export const Dark: Story = {
   args: {
     variant: 'dark',
-    icon: 'square-fill',
-    children: 'Dark Button',
+    iconLeft: 'square',
+    label: 'Dark Button',
   },
 };
 
 /**
- * Use the `nd-btn-pill` class to render a pill button.
+ *  Pill button example showing controlled state
  */
-export const Pill: Story = {
+export const InteractivePill: Story = {
+  render: () => {
+    const [isActive, setIsActive] = useState(false);
+
+    return (
+        <div style={{ display: 'flex', gap: '10px', flexDirection: 'column', alignItems: 'center' }}>
+          <Button
+              variant="pill"
+              iconLeft="heart"
+              label="Like"
+              isActive={isActive}
+              onToggle={setIsActive}
+          />
+          <p style={{ fontSize: '14px', color: '#666' }}>
+            Status: {isActive ? 'Active (filled icon)' : 'Inactive (outline icon)'}
+          </p>
+        </div>
+    );
+  },
+};
+
+/**
+ * Pill button with caret icon that rotates on toggle
+ */
+export const PillWithCaret: Story = {
   args: {
     variant: 'pill',
-    icon: 'pencil-simple-outline',
-    children: (
-      <>
-        Label
-        <Icon name="caret-right-outline" size={18} />
-      </>
-    ),
+    iconLeft: 'funnel',
+    iconRight: 'caret-down',
+    label: 'Filter',
   },
 };
 
 /**
- * Use the `iconOnly` prop to render a button with only an icon. This will remove the button's padding and display the icon at the center.
+ * Icon-only button - displays just an icon with minimal padding
  */
 export const IconOnly: Story = {
   args: {
     variant: 'pill',
-    icon: 'user-outline',
+    iconLeft: 'user',
     iconOnly: true,
+    label: 'User profile',
   },
-}
+};
+
+/**
+ * Disabled state examples across all variants
+ */
+export const DisabledButtons: Story = {
+  render: () => (
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <Button variant="primary" iconLeft="square" label="Primary" disabled />
+        <Button variant="secondary" iconLeft="user" label="Secondary" disabled />
+        <Button variant="ghost" label="Ghost" disabled />
+        <Button variant="dark" iconLeft="square" label="Dark" disabled />
+        <Button variant="pill" iconLeft="pencil" label="Pill" disabled />
+      </div>
+  ),
+};

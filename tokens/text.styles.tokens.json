@@ -408,8 +408,8 @@
     "menu-tab-item": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "1.25rem",
+        "fontFamily": "{typography.font-family.gulliver semibold}",
+        "fontSize": "{font-size.body.l}",
         "fontWeight": "{typography.font-weight.regular}",
         "letterSpacing": "0%",
         "lineHeight": "130%",
@@ -421,40 +421,12 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{typography.font-family.gulliver}",
-        "fontSize": "1.25rem",
+        "fontSize": "{font-size.body.l}",
         "fontWeight": "{typography.font-weight.bold}",
         "letterSpacing": "0%",
         "lineHeight": "130%",
         "textTransform": "none",
         "textDecoration": "underline"
-      }
-    }
-  },
-  "mijn-nd": {
-    "heading": {
-      "$type": "typography",
-      "$description": "MijnND dashboard card headings",
-      "$value": {
-        "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "1.125rem",
-        "fontWeight": "{typography.font-weight.bold}",
-        "letterSpacing": "{typography.letter-spacing.0}",
-        "lineHeight": "160%",
-        "textTransform": "none",
-        "textDecoration": "none"
-      }
-    },
-    "description": {
-      "$type": "typography",
-      "$description": "MijnND dashboard card descriptions",
-      "$value": {
-        "fontFamily": "{typography.font-family.fira-sans}",
-        "fontSize": "1.125rem",
-        "fontWeight": "{typography.font-weight.light}",
-        "letterSpacing": "{typography.letter-spacing.0}",
-        "lineHeight": "160%",
-        "textTransform": "none",
-        "textDecoration": "none"
       }
     }
   },
