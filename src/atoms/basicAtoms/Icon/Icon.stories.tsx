@@ -27,7 +27,7 @@ const meta = {
     },
     color: {
       control: 'select',
-      options: ['default', 'gray', 'brand', 'warning', 'inverse', 'button-primary', 'button-secondary', 'button-pill'],
+      options: ['default', 'gray', 'brand', 'warning', 'inverse'],
     },
     className: { control: 'text' }
   },
