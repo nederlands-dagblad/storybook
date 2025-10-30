@@ -3,7 +3,7 @@ import { CardContainer } from './CardContainer';
 import { IconText } from '@atoms/basicAtoms/IconText/IconText';
 
 const meta: Meta<typeof CardContainer> = {
-    title: 'Atoms/CardContainer',
+    title: 'Atoms/Display Atoms/CardContainer',
     component: CardContainer,
     parameters: {
         layout: 'centered',
