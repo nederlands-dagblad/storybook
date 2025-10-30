@@ -1,64 +1,87 @@
-import React from 'react';
-import { Meta} from '@storybook/react';
-import Alert, { AlertProps, AlertVariant } from './Alert';
-import {StoryObj} from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Alert } from './Alert';
 
-const meta = {
-  title: 'Molecules/Feedback Molecules/Alert',
+const meta: Meta<typeof Alert> = {
+  title: 'Atoms/Alert',
   component: Alert,
-  argTypes: {
-    variant: {
-      control: {
-        type: 'select',
-        options: ['dark', 'danger', 'info', 'success', 'warning'],
-      },
-    },
+  parameters: {
+    layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Alert>;
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['info', 'info-dark', 'warning'],
+      description: 'Visual variant of the alert',
+    },
+    children: {
+      control: 'text',
+      description: 'Content of the alert message',
+    },
+    className: {
+      control: 'text',
+      description: 'Additional tailwind classes',
+    },
+  },
+  decorators: [
+    (Story) => (
+        <div style={{ width: '480px' }}>
+          <Story />
+        </div>
+    ),
+  ],
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    variant: 'info',
-  }
-};
+type Story = StoryObj<typeof Alert>;
 
 export const Info: Story = {
   args: {
-    children: 'This is an info message.',
     variant: 'info',
-  }
+    children: 'Dit is standaard informatie.',
+  },
 };
 
-export const Dark: Story = {
+export const InfoDark: Story = {
   args: {
-    children: 'This is a dark alert message.',
-    variant: 'dark',
-  }
-};
-
-export const Danger: Story = {
-  args: {
-    children: 'This is a danger alert message.',
-    variant: 'danger',
-  }
-};
-
-export const Success: Story = {
-  args: {
-    children: 'This is a success alert message.',
-    variant: 'success',
-  }
+    variant: 'info-dark',
+    children: 'Hier staat informatie met grijze achtergrond.',
+  },
 };
 
 export const Warning: Story = {
   args: {
-    children: 'This is a warning alert message.',
     variant: 'warning',
-  }
+    children: 'Dit is een foutmelding.',
+  },
 };
 
+export const RichContent: Story = {
+  render: () => (
+      <Alert variant="info-dark">
+            <span>
+                Voor meer informatie, bezoek onze{' '}
+              <a href="#" className="text-text-brand underline">
+                    help pagina
+                </a>
+                .
+            </span>
+      </Alert>
+  ),
+};
+
+export const StackedWarnings: Story = {
+  render: () => (
+      <div className="flex flex-col gap-xs">
+        <Alert variant="warning">
+          Veld "Naam" is verplicht.
+        </Alert>
+        <Alert variant="warning">
+          Veld "Email" is ongeldig.
+        </Alert>
+        <Alert variant="warning">
+          Veld "Telefoonnummer" is te kort.
+        </Alert>
+      </div>
+  ),
+};

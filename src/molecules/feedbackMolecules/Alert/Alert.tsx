@@ -1,42 +1,69 @@
 import React, { ReactNode } from "react";
-import Icon from "@atoms/basicAtoms/Icon/Icon";
-
+import { CardContainer } from "@atoms/displayAtoms/CardContainer/CardContainer";
+import { IconText } from "@atoms/basicAtoms/IconText/IconText";
+import { IconProps } from "@atoms/basicAtoms/Icon/Icon";
 
 export interface AlertProps {
-  className?: string;
-  children: ReactNode;
-  variant?: AlertVariant;
+    className?: string;
+    children: ReactNode;
+    variant?: AlertVariant;
 }
 
-export type AlertVariant = "dark" | "danger" | "info" | "success" | "warning";
+export type AlertVariant = "info" | "info-dark" | "warning";
+
+interface AlertConfig {
+    icon: string;
+    iconVariant: IconProps['variant'];
+    iconColor: IconProps['color'];
+    borderColor: 'accent-gray' | 'warning' | 'none';
+    background: 'transparent' | 'accent-gray';
+}
+
+const alertConfigMap: Record<AlertVariant, AlertConfig> = {
+    info: {
+        icon: "square",
+        iconVariant: "fill",
+        iconColor: "brand",
+        borderColor: "accent-gray",
+        background: "transparent",
+    },
+    "info-dark": {
+        icon: "square",
+        iconVariant: "fill",
+        iconColor: "brand",
+        borderColor: "none",
+        background: "accent-gray",
+    },
+    warning: {
+        icon: "warning-circle",
+        iconVariant: "fill",
+        iconColor: "warning",
+        borderColor: "warning",
+        background: "transparent",
+    },
+};
 
 export const Alert: React.FC<AlertProps> = ({
-                                              className = "",
-                                              children,
-                                              variant = "dark",
+                                                className = "",
+                                                children,
+                                                variant = "info",
                                             }) => {
-  const iconMapping: Record<AlertVariant, string> = {
-    dark: "square-fill",
-    danger: "warning-circle-fill",
-    info: "square-fill",
-    success: "square-fill",
-    warning: "warning-circle-fill",
-  };
+    const config = alertConfigMap[variant];
 
-  const icon = iconMapping[variant];
-
-  return (
-      <div className={`alert alert--${variant} ${className}`}>
-        {icon && (
-            <Icon
-                name={icon}
-                className={`alert__icon--${variant} mt-1`}
-                size={20}
+    return (
+        <CardContainer
+            borderColor={config.borderColor}
+            background={config.background}
+            className={className}
+        >
+            <IconText
+                icon={config.icon}
+                text={children}
+                iconVariant={config.iconVariant}
+                iconColor={config.iconColor}
             />
-        )}
-        <span>{children}</span>
-      </div>
-  );
+        </CardContainer>
+    );
 };
 
 export default Alert;
