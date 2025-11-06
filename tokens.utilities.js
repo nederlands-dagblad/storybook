@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-10-16T14:15:59.580Z
+ * Last generated: 2025-11-06T14:24:09.349Z
  */
 
 export default function ({ addUtilities }) {
@@ -888,6 +888,14 @@ export default function ({ addUtilities }) {
     "textDecoration": "none",
     "fontVariant": "all-small-caps"
   },
+  ".text-body-gulliver-semibold": {
+    "fontFamily": "var(--body-gulliver-semibold-fontFamily)",
+    "fontSize": "var(--body-gulliver-semibold-fontSize)",
+    "fontWeight": "var(--body-gulliver-semibold-fontWeight)",
+    "lineHeight": "var(--body-gulliver-semibold-lineHeight)",
+    "letterSpacing": "var(--body-gulliver-semibold-letterSpacing)",
+    "textDecoration": "none"
+  },
   ".text-heading-2": {
     "fontFamily": "var(--heading-2-fontFamily)",
     "fontSize": "var(--heading-2-fontSize)",
@@ -952,6 +960,15 @@ export default function ({ addUtilities }) {
     "lineHeight": "var(--meta-bold-lineHeight)",
     "letterSpacing": "var(--meta-bold-letterSpacing)",
     "textDecoration": "none"
+  },
+  ".text-meta-uppercase": {
+    "fontFamily": "var(--meta-uppercase-fontFamily)",
+    "fontSize": "var(--meta-uppercase-fontSize)",
+    "fontWeight": "var(--meta-uppercase-fontWeight)",
+    "lineHeight": "var(--meta-uppercase-lineHeight)",
+    "letterSpacing": "var(--meta-uppercase-letterSpacing)",
+    "textDecoration": "none",
+    "textTransform": "uppercase"
   },
   ".text-menu-menu-primary": {
     "fontFamily": "var(--menu-menu-primary-fontFamily)",
