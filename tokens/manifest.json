@@ -75,9 +75,6 @@
     "effect": [
       "effect.styles.tokens.json"
     ],
-    "color": [
-      "color.styles.tokens.json"
-    ],
     "grid": [
       "grid.styles.tokens.json"
     ]

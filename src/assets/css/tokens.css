@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-10-16T14:15:59.580Z
+ * Last generated: 2025-11-06T13:14:14.274Z
  */
 
 :root {
@@ -336,6 +336,13 @@
   --body-uppercase-bold-small-lineHeight: normal;
   --body-uppercase-bold-small-textTransform: small-caps;
   --body-uppercase-bold-small-textDecoration: none;
+  --body-gulliver-semibold-fontFamily: Gulliver Semibold;
+  --body-gulliver-semibold-fontSize: 16px;
+  --body-gulliver-semibold-fontWeight: 400;
+  --body-gulliver-semibold-letterSpacing: 0%;
+  --body-gulliver-semibold-lineHeight: 130%;
+  --body-gulliver-semibold-textTransform: none;
+  --body-gulliver-semibold-textDecoration: none;
   --heading-2-fontFamily: Gulliver;
   --heading-2-fontSize: 20px;
   --heading-2-fontWeight: 700;
@@ -392,6 +399,13 @@
   --meta-bold-lineHeight: 140%;
   --meta-bold-textTransform: none;
   --meta-bold-textDecoration: none;
+  --meta-uppercase-fontFamily: Fira Sans;
+  --meta-uppercase-fontSize: 12px;
+  --meta-uppercase-fontWeight: 700;
+  --meta-uppercase-letterSpacing: 1px;
+  --meta-uppercase-lineHeight: 140%;
+  --meta-uppercase-textTransform: uppercase;
+  --meta-uppercase-textDecoration: none;
   --menu-menu-primary-fontFamily: Fira Sans;
   --menu-menu-primary-fontSize: 22px;
   --menu-menu-primary-fontWeight: 400;
