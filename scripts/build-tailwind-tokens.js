@@ -42,14 +42,14 @@ function mapFontWeight(value) {
         'Regular': 400,
         'Light': 300
     };
-    
+
     return fontWeightMap[value] || value;
 }
 
 // Legacy reference mapping to handle old token references
 const legacyReferenceMap = {
 // Font size mappings
-'font-size.heading.xl': '28px',
+    'font-size.heading.xl': '28px',
     'font-size.heading.l': '25px',
     'font-size.heading.m': '20px',  // Should be 20px for heading.m
     'font-size.heading.s': '18px',  // Should be 18px for heading.s
@@ -209,13 +209,32 @@ const primitiveFontSizes = {};
 const primitiveFontWeights = {};
 const primitiveLetterSpacings = {};
 
+// Font family fallbacks mapping
+const fontFamilyFallbacks = {
+    'gulliver': '"Gulliver Web", Georgia, serif',
+    'fira-sans': '"Fira Sans", Arial, sans-serif',
+    'montserrat': '"Montserrat", "Helvetica Neue", Arial, sans-serif',
+    'abril-fatface': '"Abril Fatface", "Playfair Display", Georgia, serif'
+};
+
 for (const [tokenPath, token] of Object.entries(flattenedBase)) {
     // Process font families
     if (tokenPath.includes('font-family') || tokenPath.includes('fontFamily')) {
         const fontName = tokenPath.split('.').pop();
-        const fontKey = `font-family-${kebab(fontName)}`;
-        primitiveFontFamilies[kebab(fontName)] = toVar(fontKey);
-        cssVarMap[fontKey] = token.$value;
+
+        // Skip gulliver-semibold since it should just use gulliver
+        if (fontName.toLowerCase().includes('gulliver') && fontName.toLowerCase().includes('semibold')) {
+            continue;
+        }
+
+        const kebabName = kebab(fontName);
+        const fontKey = `font-family-${kebabName}`;
+
+        // Use fallback if available, otherwise use the token value
+        const fontValue = fontFamilyFallbacks[kebabName] || token.$value;
+
+        primitiveFontFamilies[kebabName] = toVar(fontKey);
+        cssVarMap[fontKey] = fontValue;
     }
     // Process font weights
     else if (tokenPath.includes('font-weight') || tokenPath.includes('fontWeight')) {
@@ -237,7 +256,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         const sizeKey = `font-size-${kebab(sizeName)}`;
         primitiveFontSizes[kebab(sizeName)] = toVar(sizeKey);
         cssVarMap[sizeKey] = token.$value;
-        
+
         // Add additional mappings for common references
         if (sizeName.includes('heading') || sizeName.includes('body')) {
             // Create mappings for the old reference format
@@ -261,17 +280,17 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
             ? resolveReference(raw, flattenedBase) ?? raw
             : raw;
         const kebabKey = kebab(tokenPath);
-        
+
         // Always prefix with "color-" regardless of whether it's primitive or semantic
         const prefixedKey = tokenPath.startsWith('color.') ? kebabKey : `color-${kebabKey}`;
-        
+
         if (tokenPath.startsWith('color.')) {
             const tailwindKey = kebabKey.replace(/^color-/, '');
             primitiveColors[tailwindKey] = toVar(prefixedKey);
         } else {
             semanticColors[kebabKey] = toVar(prefixedKey);
         }
-        
+
         cssVarMap[prefixedKey] = resolved;
     }
 }
@@ -286,25 +305,25 @@ const utilityClasses = {};
 
 for (const [state, file] of Object.entries(files.componentStates)) {
     const component = load(file);
-    
+
     (function process(obj, prefix = '') {
         for (const [key, val] of Object.entries(obj)) {
             const path = prefix ? `${prefix}-${key}` : key;
-            
+
             if (val?.$value) {
                 const raw = val.$value;
                 const resolved = raw.startsWith('{')
                     ? resolveReference(raw, flattenedBase) ?? raw
                     : raw;
-                    
+
                 const fullVarName = `${path}-${state}`;
                 const tailwindKey = state === 'default' ? path : `${path}-${state}`;
-                
+
                 // Prefix component colors with "color-" instead of "component-"
                 const prefixedVarName = `color-${fullVarName}`;
                 componentColors[tailwindKey] = toVar(prefixedVarName);
                 cssVarMap[prefixedVarName] = resolved;
-                
+
                 // Generate utility classes based on token name patterns
                 if (path.includes('bg')) {
                     utilityClasses[`.bg-${tailwindKey}`] = { backgroundColor: `var(--${prefixedVarName})` };
@@ -420,7 +439,7 @@ const borderUtilities = {};
 try {
     const rawSpacing = load(files.spacing);
     const flattenedSpacing = flatten({ spacing: rawSpacing }, []);
-    
+
     for (const [tokenPath, token] of Object.entries(flattenedSpacing)) {
         if (token?.$type === 'dimension') {
             const raw = token.$value;
@@ -436,10 +455,10 @@ try {
 
             const kebabKey = kebab(tokenPath);
             const varName = `--${kebabKey}`;
-            
+
             spacing[kebabKey] = `var(${varName})`;
             cssVarMap[kebabKey] = resolved;
-            
+
             // Generate spacing utility classes
             spacingUtilities[`.p-${kebabKey}`] = { padding: `var(${varName})` };
             spacingUtilities[`.px-${kebabKey}`] = { paddingLeft: `var(${varName})`, paddingRight: `var(${varName})` };
@@ -448,7 +467,7 @@ try {
             spacingUtilities[`.pr-${kebabKey}`] = { paddingRight: `var(${varName})` };
             spacingUtilities[`.pb-${kebabKey}`] = { paddingBottom: `var(${varName})` };
             spacingUtilities[`.pl-${kebabKey}`] = { paddingLeft: `var(${varName})` };
-            
+
             spacingUtilities[`.m-${kebabKey}`] = { margin: `var(${varName})` };
             spacingUtilities[`.mx-${kebabKey}`] = { marginLeft: `var(${varName})`, marginRight: `var(${varName})` };
             spacingUtilities[`.my-${kebabKey}`] = { marginTop: `var(${varName})`, marginBottom: `var(${varName})` };
@@ -456,7 +475,7 @@ try {
             spacingUtilities[`.mr-${kebabKey}`] = { marginRight: `var(${varName})` };
             spacingUtilities[`.mb-${kebabKey}`] = { marginBottom: `var(${varName})` };
             spacingUtilities[`.ml-${kebabKey}`] = { marginLeft: `var(${varName})` };
-            
+
             spacingUtilities[`.gap-${kebabKey}`] = { gap: `var(${varName})` };
         }
     }
@@ -484,11 +503,11 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         // But keep the CSS variable name prefixed
         const kebabKey = `spacing-${originalKey}`;
         const varName = `--${kebabKey}`;
-        
+
         // Use the original name as the key in the spacing object
         spacing[originalKey] = `var(${varName})`;
         cssVarMap[kebabKey] = resolved;
-        
+
         // Generate spacing utility classes with the original name
         spacingUtilities[`.p-${originalKey}`] = { padding: `var(${varName})` };
         spacingUtilities[`.px-${originalKey}`] = { paddingLeft: `var(${varName})`, paddingRight: `var(${varName})` };
@@ -497,7 +516,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         spacingUtilities[`.pr-${originalKey}`] = { paddingRight: `var(${varName})` };
         spacingUtilities[`.pb-${originalKey}`] = { paddingBottom: `var(${varName})` };
         spacingUtilities[`.pl-${originalKey}`] = { paddingLeft: `var(${varName})` };
-        
+
         spacingUtilities[`.m-${originalKey}`] = { margin: `var(${varName})` };
         spacingUtilities[`.mx-${originalKey}`] = { marginLeft: `var(${varName})`, marginRight: `var(${varName})` };
         spacingUtilities[`.my-${originalKey}`] = { marginTop: `var(${varName})`, marginBottom: `var(${varName})` };
@@ -505,7 +524,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         spacingUtilities[`.mr-${originalKey}`] = { marginRight: `var(${varName})` };
         spacingUtilities[`.mb-${originalKey}`] = { marginBottom: `var(${varName})` };
         spacingUtilities[`.ml-${originalKey}`] = { marginLeft: `var(${varName})` };
-        
+
         spacingUtilities[`.gap-${originalKey}`] = { gap: `var(${varName})` };
     }
 }
@@ -533,12 +552,12 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         const widthName = tokenPath.split('.').pop();
         const originalKey = kebab(widthName);
         const kebabKey = `border-width-${originalKey}`;
-    
+
         // Store as CSS variable reference instead of raw value
         primitiveBorderWidths[originalKey] = `var(--${kebabKey})`;
         // Make sure to add to cssVarMap for CSS variable generation
         cssVarMap[kebabKey] = resolved;
-        
+
         // Generate border width utility classes
         borderUtilities[`.border-${originalKey}`] = { borderWidth: `var(--${kebabKey})` };
         borderUtilities[`.border-t-${originalKey}`] = { borderTopWidth: `var(--${kebabKey})` };
@@ -546,7 +565,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         borderUtilities[`.border-b-${originalKey}`] = { borderBottomWidth: `var(--${kebabKey})` };
         borderUtilities[`.border-l-${originalKey}`] = { borderLeftWidth: `var(--${kebabKey})` };
     }
-    
+
     // Process border radius tokens
     if (tokenPath.startsWith('border.border-radius.') && token?.$type === 'dimension') {
         const raw = token.$value;
@@ -563,29 +582,29 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         const radiusName = tokenPath.split('.').pop();
         const originalKey = kebab(radiusName);
         const kebabKey = `border-radius-${originalKey}`;
-    
+
         // Store as CSS variable reference instead of raw value
         primitiveBorderRadius[originalKey] = `var(--${kebabKey})`;
         // Make sure to add to cssVarMap for CSS variable generation
         cssVarMap[kebabKey] = resolved;
-        
+
         // Generate border radius utility classes
         borderUtilities[`.rounded-${originalKey}`] = { borderRadius: `var(--${kebabKey})` };
-        borderUtilities[`.rounded-t-${originalKey}`] = { 
-            borderTopLeftRadius: `var(--${kebabKey})`, 
-            borderTopRightRadius: `var(--${kebabKey})` 
+        borderUtilities[`.rounded-t-${originalKey}`] = {
+            borderTopLeftRadius: `var(--${kebabKey})`,
+            borderTopRightRadius: `var(--${kebabKey})`
         };
-        borderUtilities[`.rounded-r-${originalKey}`] = { 
-            borderTopRightRadius: `var(--${kebabKey})`, 
-            borderBottomRightRadius: `var(--${kebabKey})` 
+        borderUtilities[`.rounded-r-${originalKey}`] = {
+            borderTopRightRadius: `var(--${kebabKey})`,
+            borderBottomRightRadius: `var(--${kebabKey})`
         };
-        borderUtilities[`.rounded-b-${originalKey}`] = { 
-            borderBottomLeftRadius: `var(--${kebabKey})`, 
-            borderBottomRightRadius: `var(--${kebabKey})` 
+        borderUtilities[`.rounded-b-${originalKey}`] = {
+            borderBottomLeftRadius: `var(--${kebabKey})`,
+            borderBottomRightRadius: `var(--${kebabKey})`
         };
-        borderUtilities[`.rounded-l-${originalKey}`] = { 
-            borderTopLeftRadius: `var(--${kebabKey})`, 
-            borderBottomLeftRadius: `var(--${kebabKey})` 
+        borderUtilities[`.rounded-l-${originalKey}`] = {
+            borderTopLeftRadius: `var(--${kebabKey})`,
+            borderBottomLeftRadius: `var(--${kebabKey})`
         };
         borderUtilities[`.rounded-tl-${originalKey}`] = { borderTopLeftRadius: `var(--${kebabKey})` };
         borderUtilities[`.rounded-tr-${originalKey}`] = { borderTopRightRadius: `var(--${kebabKey})` };
@@ -604,7 +623,7 @@ if (Object.keys(primitiveBorderRadius).length === 0) {
     // Only add the known tokens that exist in the design system
     cssVarMap["border-radius-0"] = "0px";
     cssVarMap["border-radius-xl"] = "80px";
-    
+
     // Store as CSS variable references
     primitiveBorderRadius["0"] = "var(--border-radius-0)";
     primitiveBorderRadius["xl"] = "var(--border-radius-xl)";
@@ -619,7 +638,7 @@ if (Object.keys(primitiveBorderWidths).length === 0) {
     // Only add the known tokens that exist in the design system
     cssVarMap["border-width-0"] = "0px";
     cssVarMap["border-width-s"] = "1px";
-    
+
     // Store as CSS variable references
     primitiveBorderWidths["0"] = "var(--border-width-0)";
     primitiveBorderWidths["s"] = "var(--border-width-s)";
@@ -642,17 +661,13 @@ const letterSpacings = {};
 function processTypographyTokens(obj, prefix = '') {
     for (const [key, value] of Object.entries(obj)) {
         const path = prefix ? `${prefix}.${key}` : key;
-        
-        // Skip tokens that start with "old"
-        if (path.startsWith('old') || key.startsWith('old')) {
-            continue;
-        }
 
         if (value?.$type === 'typography' && value?.$value) {
             const typographyValue = value.$value;
             const kebabKey = kebab(path);
 
             // Create CSS variables for each typography property
+            // These are only added to cssVarMap for filtering later
             for (const [propKey, propValue] of Object.entries(typographyValue)) {
                 const propName = `${kebabKey}-${propKey}`;
                 let resolvedValue = propValue;
@@ -673,27 +688,65 @@ function processTypographyTokens(obj, prefix = '') {
 
                 cssVarMap[propName] = resolvedValue;
 
-                // Collect unique values for Tailwind config
-                if (propKey === 'fontFamily') {
-                    fontFamilies[kebabKey] = `var(--${propName})`;
-                } else if (propKey === 'fontWeight') {
-                    fontWeights[kebabKey] = `var(--${propName})`;
-                } else if (propKey === 'fontSize') {
-                    fontSizes[kebabKey] = `var(--${propName})`;
-                } else if (propKey === 'lineHeight') {
-                    lineHeights[kebabKey] = `var(--${propName})`;
-                } else if (propKey === 'letterSpacing') {
-                    letterSpacings[kebabKey] = `var(--${propName})`;
-                }
+                // NOTE: We do NOT collect these into fontFamilies, fontWeights, etc.
+                // since we don't want them exported in tailwind.tokens.js
             }
 
-            // Create a utility class for the complete typography style
+            // Helper function to convert a value or reference to a CSS variable reference
+            function toCssVarReference(propValue, propKey) {
+                // If it's a reference like {typography.font-family.gulliver}
+                if (typeof propValue === 'string' && propValue.startsWith('{') && propValue.endsWith('}')) {
+                    const refPath = propValue.replace(/[{}]/g, '');
+
+                    // Find the corresponding primitive variable
+                    // For font-family references
+                    if (refPath.includes('font-family')) {
+                        let fontName = refPath.split('.').pop();
+
+                        // Special handling: "gulliver semibold" should map to "gulliver"
+                        // since "Gulliver Semibold" is just the Gulliver font family
+                        if (fontName.includes('gulliver') && fontName.includes('semibold')) {
+                            fontName = 'gulliver';
+                        }
+
+                        const kebabName = kebab(fontName);
+                        return `var(--font-family-${kebabName})`;
+                    }
+                    // For font-weight references
+                    else if (refPath.includes('font-weight')) {
+                        const weightName = refPath.split('.').pop();
+                        const kebabName = kebab(weightName);
+                        return `var(--font-weight-${kebabName})`;
+                    }
+                    // For letter-spacing references
+                    else if (refPath.includes('letter-spacing')) {
+                        const spacingName = refPath.split('.').pop();
+                        const kebabName = kebab(spacingName);
+                        return `var(--letter-spacing-${kebabName})`;
+                    }
+                    // For font-size references
+                    else if (refPath.includes('font-size')) {
+                        // Handle different font-size reference patterns
+                        if (refPath.includes('font-size.heading.') || refPath.includes('font-size.body.') || refPath.includes('font-size.meta')) {
+                            return `var(--${kebab(refPath)})`;
+                        }
+                        // Handle numeric font sizes like {typography.font-size.22}
+                        const sizeName = refPath.split('.').pop();
+                        return `var(--font-size-${sizeName})`;
+                    }
+                }
+
+                // If it's not a reference, return the value as-is
+                return propValue;
+            }
+
+            // Create a utility class with CSS variable references to primitives
             const utilityStyle = {
-                fontFamily: `var(--${kebabKey}-fontFamily)`,
-                fontSize: `var(--${kebabKey}-fontSize)`,
-                fontWeight: `var(--${kebabKey}-fontWeight)`,
-                lineHeight: `var(--${kebabKey}-lineHeight)`,
-                letterSpacing: `var(--${kebabKey}-letterSpacing)`,
+                fontFamily: toCssVarReference(typographyValue.fontFamily, 'fontFamily'),
+                fontSize: toCssVarReference(typographyValue.fontSize, 'fontSize'),
+                fontWeight: toCssVarReference(typographyValue.fontWeight, 'fontWeight'),
+                lineHeight: typographyValue.lineHeight,
+                letterSpacing: toCssVarReference(typographyValue.letterSpacing, 'letterSpacing'),
                 textDecoration: typographyValue.textDecoration || 'none'
             };
 
@@ -743,7 +796,7 @@ function processResponsiveTypography() {
                     processResponsiveTypographySection(value, key, breakpoint, combinedTokens);
                 }
             }
-            
+
             // Process font sizes specifically
             if (rawTokens['font-size']) {
                 processFontSizes(rawTokens['font-size'], breakpoint);
@@ -762,7 +815,7 @@ function processFontSizes(fontSizes, breakpoint) {
             if (value.$value) {
                 const varName = `font-size-heading-${size}`;
                 responsiveTokens[breakpoint][varName] = resolveReference(value.$value, flattenedBase) || value.$value;
-                
+
                 // For desktop, also add to the main CSS var map (without breakpoint suffix)
                 if (breakpoint === 'desktop') {
                     cssVarMap[varName] = responsiveTokens[breakpoint][varName];
@@ -770,14 +823,14 @@ function processFontSizes(fontSizes, breakpoint) {
             }
         });
     }
-    
+
     // Process body sizes
     if (fontSizes.body) {
         Object.entries(fontSizes.body).forEach(([size, value]) => {
             if (value.$value) {
                 const varName = `font-size-body-${size}`;
                 responsiveTokens[breakpoint][varName] = resolveReference(value.$value, flattenedBase) || value.$value;
-                
+
                 // For desktop, also add to the main CSS var map (without breakpoint suffix)
                 if (breakpoint === 'desktop') {
                     cssVarMap[varName] = responsiveTokens[breakpoint][varName];
@@ -785,12 +838,12 @@ function processFontSizes(fontSizes, breakpoint) {
             }
         });
     }
-    
+
     // Process meta size
     if (fontSizes.meta && fontSizes.meta.$value) {
         const varName = `font-size-meta`;
-        responsiveTokens[breakpoint][varName] = resolveReference(fontSizes.meta.$value, flattenedBase) || value.$value;
-        
+        responsiveTokens[breakpoint][varName] = resolveReference(fontSizes.meta.$value, flattenedBase) || fontSizes.meta.$value;
+
         // For desktop, also add to the main CSS var map (without breakpoint suffix)
         if (breakpoint === 'desktop') {
             cssVarMap[varName] = responsiveTokens[breakpoint][varName];
@@ -801,11 +854,6 @@ function processFontSizes(fontSizes, breakpoint) {
 function processResponsiveTypographySection(obj, prefix, breakpoint, combinedTokens) {
     for (const [key, value] of Object.entries(obj)) {
         const path = prefix ? `${prefix}.${key}` : key;
-        
-        // Skip tokens that start with "old"
-        if (path.startsWith('old') || key.startsWith('old')) {
-            continue;
-        }
 
         if (value?.$type === 'typography' && value?.$value) {
             const typographyValue = value.$value;
@@ -846,26 +894,6 @@ processResponsiveTypography();
 // ----------------------
 console.log('📝 Writing tailwind.tokens.js...');
 
-// Filter out any typography styles that start with "old-"
-const filteredTypographyStyles = Object.fromEntries(
-    Object.entries(typographyStyles).filter(([key]) => !key.startsWith('old-'))
-);
-const filteredFontFamilies = Object.fromEntries(
-    Object.entries(fontFamilies).filter(([key]) => !key.startsWith('old-'))
-);
-const filteredFontWeights = Object.fromEntries(
-    Object.entries(fontWeights).filter(([key]) => !key.startsWith('old-'))
-);
-const filteredFontSizes = Object.fromEntries(
-    Object.entries(fontSizes).filter(([key]) => !key.startsWith('old-'))
-);
-const filteredLineHeights = Object.fromEntries(
-    Object.entries(lineHeights).filter(([key]) => !key.startsWith('old-'))
-);
-const filteredLetterSpacings = Object.fromEntries(
-    Object.entries(letterSpacings).filter(([key]) => !key.startsWith('old-'))
-);
-
 const jsOutput = `
 // Generated from design tokens - DO NOT EDIT DIRECTLY
 // Last generated: ${new Date().toISOString()}
@@ -874,12 +902,7 @@ export const primitiveColors = ${JSON.stringify(primitiveColors, null, 2)};
 export const semanticColors = ${JSON.stringify(semanticColors, null, 2)};
 export const componentColors = ${JSON.stringify(componentColors, null, 2)};
 export const spacing = ${JSON.stringify(spacing, null, 2)};
-export const typographyStyles = ${JSON.stringify(filteredTypographyStyles, null, 2)};
-export const fontFamilies = ${JSON.stringify(filteredFontFamilies, null, 2)};
-export const fontWeights = ${JSON.stringify(filteredFontWeights, null, 2)};
-export const fontSizes = ${JSON.stringify(filteredFontSizes, null, 2)};
-export const lineHeights = ${JSON.stringify(filteredLineHeights, null, 2)};
-export const letterSpacings = ${JSON.stringify(filteredLetterSpacings, null, 2)};
+export const typographyStyles = ${JSON.stringify(typographyStyles, null, 2)};
 export const primitiveFontFamilies = ${JSON.stringify(primitiveFontFamilies, null, 2)};
 export const primitiveFontSizes = ${JSON.stringify(primitiveFontSizes, null, 2)};
 export const primitiveFontWeights = ${JSON.stringify(primitiveFontWeights, null, 2)};
@@ -898,9 +921,18 @@ console.log('✅ tailwind.tokens.js written.');
 // ----------------------
 console.log('📝 Writing tokens.css...');
 
-// Filter out any CSS variables that start with "old-"
+// Filter out individual typography tokens (we only want font-size-* tokens in the CSS)
 const filteredCssVarMap = Object.fromEntries(
-    Object.entries(cssVarMap).filter(([key]) => !key.startsWith('old-'))
+    Object.entries(cssVarMap).filter(([key]) => {
+        // Exclude individual typography property tokens (article-*, body-*, heading-*, meta-*, menu-*)
+        // but keep font-size-* tokens
+        if (key.startsWith('font-size-')) return true;
+
+        const isTypographyToken = key.match(/^(article|body|heading|meta|menu)-.*-(fontFamily|fontSize|fontWeight|letterSpacing|lineHeight|textTransform|textDecoration)$/);
+        if (isTypographyToken) return false;
+
+        return true;
+    })
 );
 
 const cssOutput = `
@@ -920,7 +952,6 @@ ${Object.entries(filteredCssVarMap)
 @media (max-width: 767px) {
   :root {
 ${Object.entries(responsiveTokens.mobile)
-    .filter(([key]) => !key.startsWith('old-'))
     .map(([key, val]) => `    --${key}: ${val};`)
     .join('\n')}
   }
@@ -930,7 +961,6 @@ ${Object.entries(responsiveTokens.mobile)
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
 ${Object.entries(responsiveTokens.tablet)
-    .filter(([key]) => !key.startsWith('old-'))
     .map(([key, val]) => `    --${key}: ${val};`)
     .join('\n')}
   }
@@ -947,11 +977,6 @@ console.log('✅ tokens.css written.');
 // ----------------------
 console.log('📝 Writing tokens.utilities.js...');
 
-// Filter out any utility classes that contain "old-"
-const filteredTypographyUtilities = Object.fromEntries(
-    Object.entries(typographyUtilities).filter(([key]) => !key.includes('old-'))
-);
-
 const utilOutput = `
 /**
  * Tailwind CSS Utilities Plugin
@@ -964,7 +989,7 @@ export default function ({ addUtilities }) {
     ...${JSON.stringify(utilityClasses, null, 2)},
     ...${JSON.stringify(spacingUtilities, null, 2)},
     ...${JSON.stringify(borderUtilities, null, 2)},
-    ...${JSON.stringify(filteredTypographyUtilities, null, 2)},
+    ...${JSON.stringify(typographyUtilities, null, 2)},
     ...${JSON.stringify(shadowUtilities, null, 2)}
   });
 }
