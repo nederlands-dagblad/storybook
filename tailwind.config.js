@@ -3,11 +3,6 @@ import {
     semanticColors,
     componentColors,
     spacing,
-    fontFamilies,
-    fontWeights,
-    fontSizes,
-    lineHeights,
-    letterSpacings,
     primitiveFontFamilies,
     primitiveFontSizes,
     primitiveFontWeights,
@@ -45,15 +40,12 @@ export default {
         },
 
         fontFamily: {
-            ...fontFamilies,
             ...primitiveFontFamilies
         },
         fontWeight: {
-            ...fontWeights,
             ...primitiveFontWeights
         },
         fontSize: {
-            ...fontSizes,
             ...primitiveFontSizes,
             'heading-xs': 'var(--font-size-heading-xs)',
             'heading-s': 'var(--font-size-heading-s)',
@@ -69,9 +61,7 @@ export default {
             'body-drop-cap': 'var(--font-size-body-drop-cap)',
             'meta': 'var(--font-size-meta)'
         },
-        lineHeight: lineHeights,
         letterSpacing: {
-            ...letterSpacings,
             ...primitiveLetterSpacings,
             '0': 'var(--typography-letter-spacing-0)',
             's': 'var(--typography-letter-spacing-s)',

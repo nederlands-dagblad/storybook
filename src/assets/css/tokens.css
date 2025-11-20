@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-11-10T13:58:00.598Z
+ * Last generated: 2025-11-20T14:17:23.867Z
  */
 
 :root {
@@ -178,10 +178,6 @@
   --box-shadow-s: 0px 1px 8px 0px #0000001a;
   --box-shadow-m: 0px 10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
   --box-shadow-l: 0px -10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
-  --spacing-layout-breakpoints: 360px;
-  --spacing-layout-columns: 4px;
-  --spacing-layout-padding: 16px;
-  --spacing-layout-gutter: 16px;
   --spacing-0: 0px;
   --spacing-xxs: 4px;
   --spacing-xs: 8px;

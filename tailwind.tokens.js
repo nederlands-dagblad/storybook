@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-11-10T13:58:00.596Z
+// Last generated: 2025-11-20T14:17:23.866Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -149,10 +149,6 @@ export const componentColors = {
 };
 export const spacing = {
   "0": "var(--spacing-0)",
-  "spacing-layout-breakpoints": "var(--spacing-layout-breakpoints)",
-  "spacing-layout-columns": "var(--spacing-layout-columns)",
-  "spacing-layout-padding": "var(--spacing-layout-padding)",
-  "spacing-layout-gutter": "var(--spacing-layout-gutter)",
   "xxs": "var(--spacing-xxs)",
   "xs": "var(--spacing-xs)",
   "s": "var(--spacing-s)",
