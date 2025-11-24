@@ -53,19 +53,6 @@
           "semantic-border.value.tokens.json"
         ]
       }
-    },
-    "semantic-layout": {
-      "modes": {
-        "mobile": [
-          "semantic-layout.mobile.tokens.json"
-        ],
-        "tablet": [
-          "semantic-layout.tablet.tokens.json"
-        ],
-        "desktop": [
-          "semantic-layout.desktop.tokens.json"
-        ]
-      }
     }
   },
   "styles": {

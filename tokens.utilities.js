@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-11-10T13:58:00.598Z
+ * Last generated: 2025-11-24T13:43:30.558Z
  */
 
 export default function ({ addUtilities }) {
@@ -141,202 +141,6 @@ export default function ({ addUtilities }) {
   }
 },
     ...{
-  ".p-spacing-layout-breakpoints": {
-    "padding": "var(--spacing-layout-breakpoints)"
-  },
-  ".px-spacing-layout-breakpoints": {
-    "paddingLeft": "var(--spacing-layout-breakpoints)",
-    "paddingRight": "var(--spacing-layout-breakpoints)"
-  },
-  ".py-spacing-layout-breakpoints": {
-    "paddingTop": "var(--spacing-layout-breakpoints)",
-    "paddingBottom": "var(--spacing-layout-breakpoints)"
-  },
-  ".pt-spacing-layout-breakpoints": {
-    "paddingTop": "var(--spacing-layout-breakpoints)"
-  },
-  ".pr-spacing-layout-breakpoints": {
-    "paddingRight": "var(--spacing-layout-breakpoints)"
-  },
-  ".pb-spacing-layout-breakpoints": {
-    "paddingBottom": "var(--spacing-layout-breakpoints)"
-  },
-  ".pl-spacing-layout-breakpoints": {
-    "paddingLeft": "var(--spacing-layout-breakpoints)"
-  },
-  ".m-spacing-layout-breakpoints": {
-    "margin": "var(--spacing-layout-breakpoints)"
-  },
-  ".mx-spacing-layout-breakpoints": {
-    "marginLeft": "var(--spacing-layout-breakpoints)",
-    "marginRight": "var(--spacing-layout-breakpoints)"
-  },
-  ".my-spacing-layout-breakpoints": {
-    "marginTop": "var(--spacing-layout-breakpoints)",
-    "marginBottom": "var(--spacing-layout-breakpoints)"
-  },
-  ".mt-spacing-layout-breakpoints": {
-    "marginTop": "var(--spacing-layout-breakpoints)"
-  },
-  ".mr-spacing-layout-breakpoints": {
-    "marginRight": "var(--spacing-layout-breakpoints)"
-  },
-  ".mb-spacing-layout-breakpoints": {
-    "marginBottom": "var(--spacing-layout-breakpoints)"
-  },
-  ".ml-spacing-layout-breakpoints": {
-    "marginLeft": "var(--spacing-layout-breakpoints)"
-  },
-  ".gap-spacing-layout-breakpoints": {
-    "gap": "var(--spacing-layout-breakpoints)"
-  },
-  ".p-spacing-layout-columns": {
-    "padding": "var(--spacing-layout-columns)"
-  },
-  ".px-spacing-layout-columns": {
-    "paddingLeft": "var(--spacing-layout-columns)",
-    "paddingRight": "var(--spacing-layout-columns)"
-  },
-  ".py-spacing-layout-columns": {
-    "paddingTop": "var(--spacing-layout-columns)",
-    "paddingBottom": "var(--spacing-layout-columns)"
-  },
-  ".pt-spacing-layout-columns": {
-    "paddingTop": "var(--spacing-layout-columns)"
-  },
-  ".pr-spacing-layout-columns": {
-    "paddingRight": "var(--spacing-layout-columns)"
-  },
-  ".pb-spacing-layout-columns": {
-    "paddingBottom": "var(--spacing-layout-columns)"
-  },
-  ".pl-spacing-layout-columns": {
-    "paddingLeft": "var(--spacing-layout-columns)"
-  },
-  ".m-spacing-layout-columns": {
-    "margin": "var(--spacing-layout-columns)"
-  },
-  ".mx-spacing-layout-columns": {
-    "marginLeft": "var(--spacing-layout-columns)",
-    "marginRight": "var(--spacing-layout-columns)"
-  },
-  ".my-spacing-layout-columns": {
-    "marginTop": "var(--spacing-layout-columns)",
-    "marginBottom": "var(--spacing-layout-columns)"
-  },
-  ".mt-spacing-layout-columns": {
-    "marginTop": "var(--spacing-layout-columns)"
-  },
-  ".mr-spacing-layout-columns": {
-    "marginRight": "var(--spacing-layout-columns)"
-  },
-  ".mb-spacing-layout-columns": {
-    "marginBottom": "var(--spacing-layout-columns)"
-  },
-  ".ml-spacing-layout-columns": {
-    "marginLeft": "var(--spacing-layout-columns)"
-  },
-  ".gap-spacing-layout-columns": {
-    "gap": "var(--spacing-layout-columns)"
-  },
-  ".p-spacing-layout-padding": {
-    "padding": "var(--spacing-layout-padding)"
-  },
-  ".px-spacing-layout-padding": {
-    "paddingLeft": "var(--spacing-layout-padding)",
-    "paddingRight": "var(--spacing-layout-padding)"
-  },
-  ".py-spacing-layout-padding": {
-    "paddingTop": "var(--spacing-layout-padding)",
-    "paddingBottom": "var(--spacing-layout-padding)"
-  },
-  ".pt-spacing-layout-padding": {
-    "paddingTop": "var(--spacing-layout-padding)"
-  },
-  ".pr-spacing-layout-padding": {
-    "paddingRight": "var(--spacing-layout-padding)"
-  },
-  ".pb-spacing-layout-padding": {
-    "paddingBottom": "var(--spacing-layout-padding)"
-  },
-  ".pl-spacing-layout-padding": {
-    "paddingLeft": "var(--spacing-layout-padding)"
-  },
-  ".m-spacing-layout-padding": {
-    "margin": "var(--spacing-layout-padding)"
-  },
-  ".mx-spacing-layout-padding": {
-    "marginLeft": "var(--spacing-layout-padding)",
-    "marginRight": "var(--spacing-layout-padding)"
-  },
-  ".my-spacing-layout-padding": {
-    "marginTop": "var(--spacing-layout-padding)",
-    "marginBottom": "var(--spacing-layout-padding)"
-  },
-  ".mt-spacing-layout-padding": {
-    "marginTop": "var(--spacing-layout-padding)"
-  },
-  ".mr-spacing-layout-padding": {
-    "marginRight": "var(--spacing-layout-padding)"
-  },
-  ".mb-spacing-layout-padding": {
-    "marginBottom": "var(--spacing-layout-padding)"
-  },
-  ".ml-spacing-layout-padding": {
-    "marginLeft": "var(--spacing-layout-padding)"
-  },
-  ".gap-spacing-layout-padding": {
-    "gap": "var(--spacing-layout-padding)"
-  },
-  ".p-spacing-layout-gutter": {
-    "padding": "var(--spacing-layout-gutter)"
-  },
-  ".px-spacing-layout-gutter": {
-    "paddingLeft": "var(--spacing-layout-gutter)",
-    "paddingRight": "var(--spacing-layout-gutter)"
-  },
-  ".py-spacing-layout-gutter": {
-    "paddingTop": "var(--spacing-layout-gutter)",
-    "paddingBottom": "var(--spacing-layout-gutter)"
-  },
-  ".pt-spacing-layout-gutter": {
-    "paddingTop": "var(--spacing-layout-gutter)"
-  },
-  ".pr-spacing-layout-gutter": {
-    "paddingRight": "var(--spacing-layout-gutter)"
-  },
-  ".pb-spacing-layout-gutter": {
-    "paddingBottom": "var(--spacing-layout-gutter)"
-  },
-  ".pl-spacing-layout-gutter": {
-    "paddingLeft": "var(--spacing-layout-gutter)"
-  },
-  ".m-spacing-layout-gutter": {
-    "margin": "var(--spacing-layout-gutter)"
-  },
-  ".mx-spacing-layout-gutter": {
-    "marginLeft": "var(--spacing-layout-gutter)",
-    "marginRight": "var(--spacing-layout-gutter)"
-  },
-  ".my-spacing-layout-gutter": {
-    "marginTop": "var(--spacing-layout-gutter)",
-    "marginBottom": "var(--spacing-layout-gutter)"
-  },
-  ".mt-spacing-layout-gutter": {
-    "marginTop": "var(--spacing-layout-gutter)"
-  },
-  ".mr-spacing-layout-gutter": {
-    "marginRight": "var(--spacing-layout-gutter)"
-  },
-  ".mb-spacing-layout-gutter": {
-    "marginBottom": "var(--spacing-layout-gutter)"
-  },
-  ".ml-spacing-layout-gutter": {
-    "marginLeft": "var(--spacing-layout-gutter)"
-  },
-  ".gap-spacing-layout-gutter": {
-    "gap": "var(--spacing-layout-gutter)"
-  },
   ".p-0": {
     "padding": "var(--spacing-0)"
   },
@@ -900,7 +704,7 @@ export default function ({ addUtilities }) {
   ".text-body-gulliver-semibold": {
     "fontFamily": "var(--font-family-gulliver)",
     "fontSize": "var(--font-size-body-s)",
-    "fontWeight": "var(--font-weight-regular)",
+    "fontWeight": "var(--font-weight-semibold)",
     "lineHeight": "130%",
     "letterSpacing": "0%",
     "textDecoration": "none"
@@ -1046,6 +850,20 @@ export default function ({ addUtilities }) {
   },
   ".shadow-l": {
     "boxShadow": "var(--box-shadow-l)"
+  }
+},
+    ...{
+  ".text-left": {
+    "textAlign": "left"
+  },
+  ".text-center": {
+    "textAlign": "center"
+  },
+  ".text-right": {
+    "textAlign": "right"
+  },
+  ".text-justify": {
+    "textAlign": "justify"
   }
 }
   });

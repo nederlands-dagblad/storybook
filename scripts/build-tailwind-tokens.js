@@ -890,6 +890,18 @@ function processResponsiveTypographySection(obj, prefix, breakpoint, combinedTok
 processResponsiveTypography();
 
 // ----------------------
+// 📐 Text Alignment Utilities
+// ----------------------
+console.log('🔄 Adding text alignment utilities...');
+
+const textAlignmentUtilities = {
+    '.text-left': { textAlign: 'left' },
+    '.text-center': { textAlign: 'center' },
+    '.text-right': { textAlign: 'right' },
+    '.text-justify': { textAlign: 'justify' }
+};
+
+// ----------------------
 // ✏️ Write tailwind.tokens.js
 // ----------------------
 console.log('📝 Writing tailwind.tokens.js...');
@@ -990,7 +1002,8 @@ export default function ({ addUtilities }) {
     ...${JSON.stringify(spacingUtilities, null, 2)},
     ...${JSON.stringify(borderUtilities, null, 2)},
     ...${JSON.stringify(typographyUtilities, null, 2)},
-    ...${JSON.stringify(shadowUtilities, null, 2)}
+    ...${JSON.stringify(shadowUtilities, null, 2)},
+    ...${JSON.stringify(textAlignmentUtilities, null, 2)}
   });
 }
 `.trim();

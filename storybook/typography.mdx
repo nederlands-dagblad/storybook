@@ -1,5 +1,5 @@
-import {Meta, Canvas, Story, SourceState} from '@storybook/addon-docs/blocks';
-import {HeadingArticle, HeadingPage, Heading2, Heading3, BodyStandard, BodyStandardBold, BodyArticle, BodyArticleIntro, MetaStandard} from '../src/textStyles/Typography/Typography';
+import {Meta, Canvas} from '@storybook/addon-docs/blocks';
+import * as TypographyStories from '../src/textStyles/Typography/Typography.stories';
 import '../src/assets/css/tokens.css';
 import '../storybook/style.css';
 
@@ -16,38 +16,38 @@ This page demonstrates the typography styles used across our design system, incl
 Our design system uses several font families:
 
 <div>
-  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
-    <h3 style={{ fontFamily: "'Gulliver', serif", fontSize: '24px', marginBottom: '0.5rem' }}>Gulliver</h3>
-    <p style={{ fontFamily: "'Gulliver', serif", fontSize: '18px', marginBottom: '0.5rem' }}>Used for headings and quotes</p>
-    <p style={{ fontFamily: "'Gulliver Semibold', serif", fontSize: '18px' }}>Gulliver Semibold variant</p>
-  </div>
-
-  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
-    <h3 style={{ fontFamily: "'Fira Sans', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Fira Sans</h3>
-    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 300, fontSize: '16px', marginBottom: '0.5rem' }}>Light weight for body text</p>
-    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 400, fontSize: '16px', marginBottom: '0.5rem' }}>Regular weight for standard content</p>
-    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 700, fontSize: '16px' }}>Bold weight for emphasis</p>
-  </div>
-
-  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
-    <h3 style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '24px', marginBottom: '0.5rem' }}>Abril Fatface</h3>
-    <p style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '16px', marginBottom: '0.5rem' }}>Used for drop caps in articles</p>
-    <div>
-      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>A</span>
-      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>B</span>
-      <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px" }}>C</span>
+    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+        <h3 style={{ fontFamily: "'Gulliver', serif", fontSize: '24px', marginBottom: '0.5rem' }}>Gulliver</h3>
+        <p style={{ fontFamily: "'Gulliver', serif", fontSize: '18px', marginBottom: '0.5rem' }}>Used for headings and quotes</p>
+        <p style={{ fontFamily: "'Gulliver Semibold', serif", fontSize: '18px' }}>Gulliver Semibold variant</p>
     </div>
-  </div>
 
-  <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
-    <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Montserrat</h3>
-    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', marginBottom: '0.5rem' }}>Used for alternative drop caps and headings</p>
-    <div>
-      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>A</span>
-      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>B</span>
-      <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300 }}>C</span>
+    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+        <h3 style={{ fontFamily: "'Fira Sans', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Fira Sans</h3>
+        <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 300, fontSize: '16px', marginBottom: '0.5rem' }}>Light weight for body text</p>
+        <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 400, fontSize: '16px', marginBottom: '0.5rem' }}>Regular weight for standard content</p>
+        <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: 700, fontSize: '16px' }}>Bold weight for emphasis</p>
     </div>
-  </div>
+
+    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+        <h3 style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '24px', marginBottom: '0.5rem' }}>Abril Fatface</h3>
+        <p style={{ fontFamily: "'Abril Fatface', cursive", fontSize: '16px', marginBottom: '0.5rem' }}>Used for drop caps in articles</p>
+        <div>
+            <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>A</span>
+            <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px", marginRight: '0.5rem' }}>B</span>
+            <span style={{ fontFamily: "'Abril Fatface', cursive", fontSize: "90px" }}>C</span>
+        </div>
+    </div>
+
+    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+        <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '24px', marginBottom: '0.5rem' }}>Montserrat</h3>
+        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '16px', marginBottom: '0.5rem' }}>Used for alternative drop caps and headings (used for Opinie)</p>
+        <div>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>A</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300, marginRight: '0.5rem' }}>B</span>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "90px", fontWeight: 300 }}>C</span>
+        </div>
+    </div>
 </div>
 
 ## Font weights
@@ -60,7 +60,6 @@ Our typography system uses various font weights to create visual hierarchy and e
 - **Bold (700)**: Used for headings, important information, and emphasis
 
 Font weights can be applied using tailwind classes:
-
 ```html
 <span class="font-bold">
   This is bold text
@@ -73,14 +72,13 @@ Font weights can be applied using tailwind classes:
 <span class="font-light">
   This is light text
 </span>
-
 ```
 
 ## Text Styles
 
 Our typography system is organized into several categories:
 
-- **Article styles** - Article related stiles like headings, types, quotes, body, drop caps
+- **Article styles** - Article related styles like headings, types, quotes, body, drop caps
 - **Body text styles** - Standard body text styles
 - **Headings** - Multiple headings for other pages than articles
 - **Meta text** - Meta information like author, date, etc.
@@ -89,30 +87,22 @@ Our typography system is organized into several categories:
 
 These are our article-specific text styles:
 
-<Canvas sourceState={'hidden'} withSource={false}>
-  <Story id="components-typography--article-styles" />
-</Canvas>
+<Canvas of={TypographyStories.ArticleStyles} />
 
 ### Body Text
 
 These are our body text styles we use all over the site:
 
-<Canvas>
-  <Story id="components-typography--body-text" />
-</Canvas>
+<Canvas of={TypographyStories.BodyText} />
 
 ### Headings
 
 The headings mentioned below are used for non-article-pages.
 
-<Canvas>
-  <Story id="components-typography--headings" />
-</Canvas>
+<Canvas of={TypographyStories.Headings} />
 
 ### Meta Text
 
 Meta texts are for displaying short information like author, date, etc. on articles or pages.
 
-<Canvas>
-  <Story id="components-typography--meta-text" />
-</Canvas>
+<Canvas of={TypographyStories.MetaText} />

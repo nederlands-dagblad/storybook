@@ -248,7 +248,7 @@
       "$value": {
         "fontFamily": "{typography.font-family.gulliver semibold}",
         "fontSize": "{font-size.body.s}",
-        "fontWeight": "{typography.font-weight.regular}",
+        "fontWeight": "{typography.font-weight.semibold}",
         "letterSpacing": "0%",
         "lineHeight": "130%",
         "textTransform": "none",
