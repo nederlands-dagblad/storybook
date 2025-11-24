@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-11-20T14:17:23.868Z
+ * Last generated: 2025-11-24T13:43:30.558Z
  */
 
 export default function ({ addUtilities }) {
@@ -850,6 +850,20 @@ export default function ({ addUtilities }) {
   },
   ".shadow-l": {
     "boxShadow": "var(--box-shadow-l)"
+  }
+},
+    ...{
+  ".text-left": {
+    "textAlign": "left"
+  },
+  ".text-center": {
+    "textAlign": "center"
+  },
+  ".text-right": {
+    "textAlign": "right"
+  },
+  ".text-justify": {
+    "textAlign": "justify"
   }
 }
   });
