@@ -1,65 +1,79 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import PremiumBadge from './PremiumBadge';
 
-/**
- * This isn’t just any badge. This is the badge. The digital equivalent of velvet ropes, gold stars, and secret handshakes. Slap this on something, and suddenly it's too cool for free trials.
- *
- * Use responsibly—too much premium and your app might start charging you.
- *
- * ### React
- *
- * In React, we have a `<PremiumBadge>` component available. See the examples below for usage.
- *
- * ### HTML
- *
- * Using plain HTML? We got you covered. Here’s how you can use the PremiumBadge component:
- *
- * ```html
- * <div class="badge-premium">
- *   <Icon name="star-fill" size="18" />
- *   <span>Premium</span>
- * </div>
- */
-
 const meta = {
-  title: 'Atoms/Display Atoms/Premium Badge',
-  component: PremiumBadge,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    className: { control: 'text' }
-  },
+    title: 'Atoms/Display Atoms/PremiumBadge',
+    component: PremiumBadge,
+    parameters: {
+        layout: 'centered',
+    },
+    tags: ['autodocs'],
+    argTypes: {
+        size: {
+            control: 'select',
+            options: ['small', 'large'],
+            description: 'Size variant of the badge',
+        },
+        className: {
+            control: 'text',
+            description: 'Additional CSS classes',
+        },
+    },
 } satisfies Meta<typeof PremiumBadge>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * Default large premium badge
+ */
 export const Default: Story = {
-  args: {},
+    args: {
+        size: 'large',
+    },
 };
 
 /**
- * Use the `premium-badge-small` class to render a smaller version of the badge.
+ * Small variant of the premium badge
  */
 export const Small: Story = {
-  args: {
-    size: 'small',
-  },
+    args: {
+        size: 'small',
+    },
 };
 
+/**
+ * Example showing the badge in context with article content
+ */
 export const InContext: Story = {
-  render: () => (
-    <div className="max-w-md p-4 border border-neutral-200 rounded">
-      <h2 className="text-xl font-bold mb-2">Article Title</h2>
-      <div className="flex items-center gap-2 mb-4">
-        <span className="text-sm text-neutral-600">March 29, 2025</span>
-        <PremiumBadge />
-      </div>
-      <p className="text-neutral-800">
-        This premium article provides in-depth analysis of the latest developments...
-      </p>
-    </div>
-  ),
+    render: () => (
+        <div className="max-w-md p-m border border-border-default">
+            <h2 className="text-heading-2 mb-xs">Article Title</h2>
+            <div className="flex items-center gap-xs mb-s">
+                <span className="text-meta-regular text-text-subtle">March 29, 2025</span>
+                <PremiumBadge />
+            </div>
+            <p className="text-body-regular text-text-default">
+                This premium article provides in-depth analysis of the latest developments...
+            </p>
+        </div>
+    ),
+};
+
+/**
+ * Comparison of both sizes side by side
+ */
+export const SizeComparison: Story = {
+    render: () => (
+        <div className="flex items-center gap-m">
+            <div className="flex flex-col items-center gap-xs">
+                <PremiumBadge size="small" />
+                <span className="text-meta-regular text-text-subtle">Small</span>
+            </div>
+            <div className="flex flex-col items-center gap-xs">
+                <PremiumBadge size="large" />
+                <span className="text-meta-regular text-text-subtle">Large</span>
+            </div>
+        </div>
+    ),
 };
