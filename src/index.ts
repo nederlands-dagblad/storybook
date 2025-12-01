@@ -63,13 +63,6 @@ export type { DataFramesProps } from './molecules/contentOrganizationMolecules/D
 export { DataFrameItem } from './molecules/contentOrganizationMolecules/DataFrame/dataFrameItem.tsx';
 export type { DataFrameItemProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrameItem.tsx';
 
-// Experimental
-export { Card } from './experimental/Card/Card';
-export type { CardProps } from './experimental/Card/Card';
-
-export { CollapsedCard } from './experimental/CollapsedCard/CollapsedCard';
-export type { CollapsedCardProps } from './experimental/CollapsedCard/CollapsedCard';
-
 // Molecules
 export { Alert } from './molecules/feedbackMolecules/Alert/Alert';
 export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Alert/Alert';

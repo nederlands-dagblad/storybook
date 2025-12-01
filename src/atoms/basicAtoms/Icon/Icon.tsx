@@ -3,9 +3,9 @@ import {ReactSVG} from "react-svg";
 
 import {icons} from "./list";
 
-type IconSize =  's' | 'm' | 'l' | 'xl' | 'xxl';
-type IconColor = 'default' | 'gray' | 'brand' | 'warning' | 'inverse';
-type IconVariant = 'outline' | 'fill';
+export type IconSize =  's' | 'm' | 'l' | 'xl' | 'xxl';
+export type IconColor = 'default' | 'gray' | 'brand' | 'warning' | 'inverse';
+export type IconVariant = 'outline' | 'fill';
 
 export interface IconProps {
     name: string;

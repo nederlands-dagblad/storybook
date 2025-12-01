@@ -1,6 +1,5 @@
 @import "tokens.css";
 @import "typography.css";
-@import "badge.css";
 
 @import "molecules/form.css";
 
@@ -10,7 +9,6 @@
 @import "components/portal/accordionItem.css";
 @import "components/portal/accordion.css";
 @import "components/portal/navigationCard.css";
-@import "experimental/collapsed-card.css";
 @import "components/portal/menuItem.css";
 @import "components/portal/tabs.css";
 @import "components/portal/dataFrame.css";

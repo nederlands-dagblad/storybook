@@ -25,10 +25,10 @@ export const ExampleModal: React.FC = (props: any) => {
     }
 
     const footer = (
-      <>
-          <Button variant={'ghost'} onClick={onClose}>Close</Button>
-          <Button icon="square-fill">Accepteren</Button>
-      </>
+        <>
+            <Button variant={'ghost'} onClick={onClose}>Close</Button>
+            <Button iconLeft="square" label="Accepteren" />
+        </>
     )
 
     return (
