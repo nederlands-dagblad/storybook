@@ -21,7 +21,7 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx,stories.js}",
     "./storybook/**/*.{mdx,vue,js,ts,jsx,tsx,stories.js}",
   ],
-  darkMode: 'class',
+  darkMode: 'media',
   theme: {
     extend: {
         colors: {
