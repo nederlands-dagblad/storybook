@@ -1,5 +1,52 @@
 import React, { ReactNode } from 'react';
 
+/**
+ * Typography Components
+ *
+ * IMPORTANT: These components are NOT automatically updated when design tokens change.
+ * If you add/modify text styles in tokens.css, you must manually update this file.
+ *
+ * WHEN TO USE:
+ * - ✅ Content-heavy pages (articles, blog posts) where semantic HTML is critical
+ * - ✅ When you need to enforce proper HTML tags (e.g., always use <h1> for article headings)
+ * - ✅ For teams that prefer components over utility classes
+ *
+ * WHEN NOT TO USE:
+ * - ❌ UI components (buttons, cards, alerts) - use Tailwind classes directly instead
+ * - ❌ When you need flexibility to override the HTML tag
+ * - ❌ If your team is comfortable with Tailwind utility classes
+ *
+ * EXAMPLES:
+ *
+ * Using Typography components:
+ * ```tsx
+ * <HeadingArticle className="text-text-default">
+ *   The Future of Design
+ * </HeadingArticle>
+ * <BodyArticleIntro className="text-text-subtle">
+ *   Exploring modern design systems...
+ * </BodyArticleIntro>
+ * ```
+ *
+ * Equivalent with Tailwind classes:
+ * ```tsx
+ * <h1 className="text-article-heading text-text-default">
+ *   The Future of Design
+ * </h1>
+ * <p className="text-article-intro text-text-subtle">
+ *   Exploring modern design systems...
+ * </p>
+ * ```
+ *
+ * MAINTENANCE NOTE:
+ * When adding new text styles to the design system:
+ * 1. Add the style to tokens.css
+ * 2. Run the token generation script (generates tokens.utilities.js)
+ * 3. Manually add a new component here following the existing pattern
+ * 4. Update this documentation and Storybook stories
+ */
+
+
 export interface TypographyProps {
   children: ReactNode;
   className?: string;
