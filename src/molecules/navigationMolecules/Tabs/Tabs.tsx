@@ -79,7 +79,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
             <li
                 key={item.href}
                 className={`
-          ${useVerticalMobile ? "w-full flex border-b border-s border-border-default" : "flex-shrink-0"}
+          ${useVerticalMobile ? "w-full flex border-b border-border-default" : "flex-shrink-0"}
           ${isDesktop || useHorizontalMobile ? "w-auto" : ""}
         `.trim()}
             >
@@ -115,7 +115,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
             <div>
                 <a className="flex flex-row items-center gap-xs" href={backHref}>
                     <div className="flex">
-                        <Icon name="caret-left" variant="outline" size="m" color="default" />
+                        <Icon name="caret-left" variant="outline" size="s" color="default" />
                     </div>
                     <span className="text-menu-menu-tab-item-active text-text-default underline underline-offset-[0.3rem] decoration-[0.1rem] !decoration-text-brand">
             {activeItem.label}
@@ -148,7 +148,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
                 ref={scrollContainerRef}
                 className={`
         flex
-        ${useVerticalMobile ? "flex-col gap-0" : "flex-row gap-l overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"}
+        ${useVerticalMobile ? "flex-col gap-0" : "flex-row gap-m overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"}
       `.trim()}>
                 {displayItems.map((item, index) => itemRenderer(item, index))}
             </ul>
