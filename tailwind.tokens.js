@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2025-12-02T13:54:03.896Z
+// Last generated: 2025-12-08T13:56:43.110Z
 
 export const primitiveColors = {
   "blue-400": "var(--color-blue-400)",
@@ -10,6 +10,7 @@ export const primitiveColors = {
   "pink-400": "var(--color-pink-400)",
   "pink-600": "var(--color-pink-600)",
   "pink-700": "var(--color-pink-700)",
+  "pink-800": "var(--color-pink-800)",
   "brown-500": "var(--color-brown-500)",
   "brown-800": "var(--color-brown-800)",
   "brown-900": "var(--color-brown-900)",
@@ -63,7 +64,9 @@ export const semanticColors = {
   "icons-brand": "var(--color-icons-brand)",
   "icons-warning": "var(--color-icons-warning)",
   "icons-inverse": "var(--color-icons-inverse)",
-  "shadow-default": "var(--color-shadow-default)"
+  "shadow-default": "var(--color-shadow-default)",
+  "dnk-brand": "var(--color-dnk-brand)",
+  "dnk-background": "var(--color-dnk-background)"
 };
 export const componentColors = {
   "form-background-input-field": "var(--color-form-background-input-field-default)",

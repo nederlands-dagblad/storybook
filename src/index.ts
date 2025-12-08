@@ -6,8 +6,8 @@ export * from '@atoms/basicAtoms/Icon/Icon';
 export type { IconProps } from './atoms/basicAtoms/Icon/Icon';
 export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
 
-export * from '@atoms/displayAtoms/PremiumBadge/PremiumBadge';
-export type { PremiumBadgeProps } from './atoms/displayAtoms/PremiumBadge/PremiumBadge';
+export * from '@atoms/displayAtoms/Badge/Badge';
+export type { BadgeProps } from './atoms/displayAtoms/Badge/Badge';
 
 export * from './atoms/displayAtoms/Skeleton/Skeleton';
 export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/Skeleton';
