@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-11-24T13:43:30.558Z
+ * Last generated: 2025-12-02T13:54:03.897Z
  */
 
 :root {
@@ -204,6 +204,48 @@
   --font-size-body-xxl: 28px;
   --font-size-body-drop-cap: 96px;
   --font-size-meta: 14px;
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-default: #ffffff;
+    --color-text-subtle: #bdbdbd;
+    --color-text-brand: #0096cb;
+    --color-text-brand-subtle: #02b4f2;
+    --color-text-accent-brown: #a27675;
+    --color-text-accent-brown-subtle: #a27675;
+    --color-text-accent-pink: #e9425b;
+    --color-text-disabled: #bdbdbd;
+    --color-text-inverse: #ffffff;
+    --color-text-warning: #e9425b;
+    --color-text-warning-inverse: #ffffff;
+    --color-background-default: #121212;
+    --color-background-dark: #222222;
+    --color-background-dark-subtle: #727272;
+    --color-background-brand: #0096cb;
+    --color-background-brand-subtle: #02b4f2;
+    --color-background-brand-subtlest: #02a1d91a;
+    --color-background-accent-gray: #484544;
+    --color-background-accent-gray-subtle: #222222;
+    --color-background-accent-brown: #a27675;
+    --color-background-accent-pink: #e9425b;
+    --color-background-accent-pink-subtle: #ec596f;
+    --color-background-accent-pink-subtlest: #f2e1df;
+    --color-background-disabled: #222222;
+    --color-border-default: #ffffff;
+    --color-border-brand: #0096cb;
+    --color-border-accent-gray: #999999;
+    --color-border-accent-gray-subtle: #727272;
+    --color-border-disabled: #999999;
+    --color-border-warning: #e9425b;
+    --color-icons-default: #ffffff;
+    --color-icons-gray: #bdbdbd;
+    --color-icons-brand: #0096cb;
+    --color-icons-warning: #e9425b;
+    --color-icons-inverse: #ffffff;
+    --color-shadow-default: #ffffff4d;
+  }
 }
 
 /* Mobile Typography (Default) */

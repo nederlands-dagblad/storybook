@@ -6,6 +6,7 @@ import fs from 'fs';
 const files = {
     primitives: './tokens/primitives.value.tokens.json',
     semantics: './tokens/semantic-colors.light.tokens.json',
+    semanticsDark: './tokens/semantic-colors.dark.tokens.json',
     spacing: './tokens/semantic-layout.mobile.tokens.json',
     effects: './tokens/effect.styles.tokens.json',
     typography: './tokens/text.styles.tokens.json',
@@ -293,6 +294,37 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
 
         cssVarMap[prefixedKey] = resolved;
     }
+}
+
+// ----------------------
+// 🌑 Process Dark Mode Colors
+// ----------------------
+console.log('🔄 Processing dark mode colors...');
+
+const darkModeColors = {};
+
+try {
+    const darkSemantics = load(files.semanticsDark);
+    const flattenedDark = flatten(darkSemantics);
+
+    for (const [tokenPath, token] of Object.entries(flattenedDark)) {
+        if (token?.$type === 'color') {
+            const raw = token.$value;
+            const resolved = raw.startsWith('{')
+                ? resolveReference(raw, { ...flattenedBase, ...flattenedDark }) ?? raw
+                : raw;
+            const kebabKey = kebab(tokenPath);
+
+            // Use the same key structure as light mode
+            const prefixedKey = tokenPath.startsWith('color.') ? kebabKey : `color-${kebabKey}`;
+
+            darkModeColors[prefixedKey] = resolved;
+        }
+    }
+
+    console.log(`✅ Processed ${Object.keys(darkModeColors).length} dark mode color tokens`);
+} catch (error) {
+    console.error(`Error processing dark mode colors: ${error.message}`);
 }
 
 // ----------------------
@@ -958,6 +990,15 @@ const cssOutput = `
 ${Object.entries(filteredCssVarMap)
     .map(([key, val]) => `  --${key}: ${val};`)
     .join('\n')}
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+${Object.entries(darkModeColors)
+    .map(([key, val]) => `    --${key}: ${val};`)
+    .join('\n')}
+  }
 }
 
 /* Mobile Typography (Default) */
