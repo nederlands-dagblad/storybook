@@ -152,5 +152,15 @@
       "$type": "color",
       "$value": "{color.neutral.black-10}"
     }
+  },
+  "DNK": {
+    "brand": {
+      "$type": "color",
+      "$value": "{color.pink.800}"
+    },
+    "background": {
+      "$type": "color",
+      "$value": "{color.pink.200}"
+    }
   }
 }

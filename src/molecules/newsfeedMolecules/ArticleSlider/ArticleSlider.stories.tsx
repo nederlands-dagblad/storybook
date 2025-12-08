@@ -80,6 +80,75 @@ const mockArticles = [
     },
 ];
 
+const mockDnkArticles = [
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=11',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Jongeren over geloof: "We zoeken naar nieuwe wegen"',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=12',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Innovatieve kerkdiensten trekken nieuwe bezoekers',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=13',
+        articleType: 'De Nieuwe Koers',
+        heading: 'De toekomst van geloof in Nederland: een andere aanpak',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=14',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Moderne theologie bereikt nieuwe generaties',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=15',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Digitale kerk: geloof in het online tijdperk',
+        variant: 'de-nieuwe-koers' as const,
+    },
+];
+
+const mockMixedArticles = [
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=21',
+        articleType: 'ACHTERGROND',
+        heading: 'Traditionele waarden in een moderne wereld',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=22',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Nieuwe geloofsgemeenschappen in stedelijk gebied',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=23',
+        articleType: 'NIEUWS',
+        heading: 'Ontwikkelingen in de protestantse kerk',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=24',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Jongerenwerk in de kerk krijgt nieuwe impulse',
+        variant: 'de-nieuwe-koers' as const,
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=25',
+        articleType: 'INTERVIEW',
+        heading: 'Gesprek met een kerkelijk werker over verandering',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/120?random=26',
+        articleType: 'De Nieuwe Koers',
+        heading: 'Experimentele vormen van gemeenschap en aanbidding',
+        variant: 'de-nieuwe-koers' as const,
+    },
+];
+
 export const Default: Story = {
     args: {
         articles: mockArticles,
@@ -113,5 +182,23 @@ export const ManyArticles: Story = {
     args: {
         articles: [...mockArticles, ...mockArticles, ...mockArticles],
         title: 'Alle artikelen',
+    },
+};
+
+export const DeNieuweKoers: Story = {
+    args: {
+        articles: mockDnkArticles,
+        title: 'De Nieuwe Koers',
+        showButton: true,
+        buttonLabel: 'Bekijk alle artikelen',
+    },
+};
+
+export const MixedVariants: Story = {
+    args: {
+        articles: mockMixedArticles,
+        title: 'Gemengde artikelen',
+        showButton: true,
+        buttonLabel: 'Meer artikelen',
     },
 };

@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2025-12-02T13:54:03.897Z
+ * Last generated: 2025-12-08T13:56:43.111Z
  */
 
 :root {
@@ -45,10 +45,11 @@
   --color-blue-500: #0096cb;
   --color-blue-900: #09254a;
   --color-blue-500-10: #02a1d91a;
-  --color-pink-200: #fbf1f0;
+  --color-pink-200: #fef3f2;
   --color-pink-400: #f2e1df;
   --color-pink-600: #ec596f;
   --color-pink-700: #e9425b;
+  --color-pink-800: #be123c;
   --color-brown-500: #a27675;
   --color-brown-800: #6a4847;
   --color-brown-900: #3a1a1c;
@@ -95,6 +96,8 @@
   --color-icons-warning: #e9425b;
   --color-icons-inverse: #ffffff;
   --color-shadow-default: #0000001a;
+  --color-dnk-brand: #be123c;
+  --color-dnk-background: #fef3f2;
   --color-form-background-input-field-default: #ffffff;
   --color-form-background-checkbox-default: #ffffff;
   --color-form-border-input-field-default: #bdbdbd;
@@ -245,6 +248,8 @@
     --color-icons-warning: #e9425b;
     --color-icons-inverse: #ffffff;
     --color-shadow-default: #ffffff4d;
+    --color-dnk-brand: #be123c;
+    --color-dnk-background: #fef3f2;
   }
 }
 

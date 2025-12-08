@@ -43,7 +43,7 @@
     "pink": {
       "200": {
         "$type": "color",
-        "$value": "#fbf1f0"
+        "$value": "#fef3f2"
       },
       "400": {
         "$type": "color",
@@ -56,6 +56,10 @@
       "700": {
         "$type": "color",
         "$value": "#e9425b"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#be123c"
       }
     },
     "brown": {
