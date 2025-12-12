@@ -9,7 +9,6 @@ export interface AccordionItemProps {
     onToggle?: () => void;
     variant?: 'default' | 'large';
 }
-
 export function AccordionItem({
                                   question,
                                   answer,
