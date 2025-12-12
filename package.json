@@ -1,5 +1,5 @@
 {
-  "name": "@nederlands-dagblad/storybook",
+  "name": "@nd-storybook/storybook",
   "version": "0.3.1",
   "type": "module",
   "main": "dist/index.cjs.js",
