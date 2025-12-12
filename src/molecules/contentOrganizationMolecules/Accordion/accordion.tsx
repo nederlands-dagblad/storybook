@@ -7,7 +7,6 @@ export interface AccordionProps {
     allowMultiple?: boolean;
     variant?: 'default' | 'large';
 }
-
 export function Accordion({
                               items,
                               title,
