@@ -60,5 +60,4 @@ export function Accordion({
         </div>
     );
 }
-
 export default Accordion;
