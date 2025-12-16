@@ -70,6 +70,12 @@ export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Ale
 export { Input } from './molecules/formMolecules/Input/Input';
 export type { InputProps } from './molecules/formMolecules/Input/Input';
 
+export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
+export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
+
+export { ArticleCard } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
+export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';
