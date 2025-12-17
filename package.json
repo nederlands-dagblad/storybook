@@ -1,6 +1,6 @@
 {
   "name": "@nd-storybook/storybook",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -10,6 +10,7 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     },
+    "./style.css": "./dist/style.css",
     "./tailwind.config.js": "./tailwind.config.js",
     "./dist/tailwind.config.js": "./dist/tailwind.config.js",
     "./tailwind.tokens.js": "./tailwind.tokens.js",
@@ -27,7 +28,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/build-types.js && mkdir -p dist/css && cp -r src/assets/css/* dist/css/ && node scripts/copy-tailwind-files.js && echo '✓ CSS files copied to dist/css/'",
+    "build": "tsc && vite build && node scripts/build-types.js && npm run build-css && node scripts/copy-tailwind-files.js",
+    "build-css": "tailwindcss -i ./src/assets/css/tailwind.css -o ./dist/style.css --minify",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
