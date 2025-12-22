@@ -1,15 +1,17 @@
 import React from "react";
 import Badge from "@atoms/displayAtoms/Badge/Badge";
+import Icon from "@atoms/basicAtoms/Icon/Icon";
 
 export interface ArticleCardProps {
     imageUrl?: string;
     articleType: string;
     heading: string;
-    variant?: 'default' | 'de-nieuwe-koers';
+    variant?: 'default' | 'de-nieuwe-koers' | 'video';
     isPremium?: boolean;
     href?: string;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
     className?: string;
+    videoDuration?: string; // For video variant, e.g. "1:55"
 }
 
 export const ArticleCard = ({
@@ -21,20 +23,89 @@ export const ArticleCard = ({
                                 href,
                                 onClick,
                                 className = "",
+                                videoDuration,
                             }: ArticleCardProps): JSX.Element => {
     // Determine article type color based on variant
     const articleTypeColor = variant === 'de-nieuwe-koers'
         ? 'text-dnk-brand'
-        : 'text-text-brand';
+        : variant === 'video'
+            ? 'text-text-inverse'
+            : 'text-text-brand';
 
-    // Determine hover border color based on variant
+    // Determine hover border color for non-video variants
     const hoverBorderColor = variant === 'de-nieuwe-koers'
         ? 'hover:border-dnk-brand'
         : 'hover:border-border-brand';
 
+    // Shared article type and badge component
+    const ArticleTypeAndBadge = () => (
+        <div className="flex items-center gap-xxs">
+            <div className={`text-meta-uppercase ${articleTypeColor}`}>
+                {articleType}
+            </div>
+            {isPremium && <Badge variant="premium" size="small"/>}
+        </div>
+    );
+
+    // Shared heading component
+    const Heading = ({inverse = false, lines = 5}: { inverse?: boolean; lines?: number }) => (
+        <h3 className={`text-body-gulliver-semibold ${inverse ? 'text-text-inverse' : 'text-text-default'} line-clamp-${lines}`}>
+            {heading}
+        </h3>
+    );
+
+    // Video variant has different layout
+    if (variant === 'video') {
+        const videoContent = (
+            <div className="w-full h-[19.125rem] overflow-hidden relative">
+                {imageUrl ? (
+                    <img
+                        src={imageUrl}
+                        alt={heading}
+                        className="w-full h-[19.125rem] object-cover"
+                    />
+                ) : (
+                    <div className="w-full h-[19.125rem] bg-background-accent-gray"/>
+                )}
+
+                {/* Dark gradient overlay for better text readability */}
+                <div
+                    className="absolute inset-0 bg-gradient-to-t from-neutral-black via-neutral-black-30 to-transparent"/>
+
+                {/* Play icon and duration centered */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="group-hover:scale-110 transition-transform duration-300">
+                        <Icon name="play-circle" variant="fill" size="xl" color="inverse"/>
+                    </div>
+                    {videoDuration && (
+                        <span className="text-meta-bold text-text-inverse">{videoDuration}</span>
+                    )}
+                </div>
+
+                {/* Content overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-s flex flex-col gap-xs">
+                    <ArticleTypeAndBadge/>
+                    <Heading inverse lines={3}/>
+                </div>
+            </div>
+        );
+
+        const videoBaseClasses = `inline-flex flex-col w-[13.25rem] group ${className}`.trim();
+
+        return href ? (
+            <a href={href} onClick={onClick} className={videoBaseClasses}>
+                {videoContent}
+            </a>
+        ) : (
+            <div className={videoBaseClasses}>
+                {videoContent}
+            </div>
+        );
+    }
+
+    // Default and de-nieuwe-koers variants
     const cardContent = (
         <>
-            {/* Image placeholder */}
             <div className="w-full h-[7.5rem] overflow-hidden relative">
                 {imageUrl ? (
                     <img
@@ -46,7 +117,7 @@ export const ArticleCard = ({
                     <div className="w-full h-[7.5rem] bg-background-accent-gray"/>
                 )}
 
-                {/* DNK Badge overlay for de-nieuwe-koers variant */}
+                {/* DNK Badge overlay */}
                 {variant === 'de-nieuwe-koers' && (
                     <div className="absolute bottom-xs left-xs">
                         <Badge variant="dnk" size="small"/>
@@ -55,50 +126,23 @@ export const ArticleCard = ({
             </div>
 
             <div className="flex flex-col gap-xs w-full h-[8.5rem]">
-                {/* Article type with optional premium badge */}
-                <div className="flex items-center gap-xxs">
-                    <div className={`text-meta-uppercase ${articleTypeColor}`}>
-                        {articleType}
-                    </div>
-                    {isPremium && (
-                        <Badge variant="premium" size="small"/>
-                    )}
-                </div>
-
-                {/* Heading */}
-                <h3 className="text-body-gulliver-semibold text-text-default line-clamp-5">
-                    {heading}
-                </h3>
+                <ArticleTypeAndBadge/>
+                <Heading/>
             </div>
         </>
     );
 
-    const baseClasses = `
-        inline-flex flex-col
-        items-center
-        w-[13.25rem]
-        p-s
-        gap-s
-        bg-background-default
-        border border-width-s border-border-accent-gray-subtle
-        ${className}
-    `.trim();
+    const baseClasses = `inline-flex flex-col items-center w-[13.25rem] p-s gap-s bg-background-default border border-width-s border-border-accent-gray-subtle ${className}`.trim();
 
-    // If href is provided, render as a link
-    if (href) {
-        return (
-            <a
-                href={href}
-                onClick={onClick}
-                className={`${baseClasses} transition-colors ${hoverBorderColor}`}
-            >
-                {cardContent}
-            </a>
-        );
-    }
-
-    // Otherwise, render as a div
-    return (
+    return href ? (
+        <a
+            href={href}
+            onClick={onClick}
+            className={`${baseClasses} transition-colors ${hoverBorderColor}`}
+        >
+            {cardContent}
+        </a>
+    ) : (
         <div className={baseClasses}>
             {cardContent}
         </div>
