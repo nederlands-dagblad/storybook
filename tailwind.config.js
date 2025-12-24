@@ -22,13 +22,13 @@ export default {
         "./storybook/**/*.{mdx,vue,js,ts,jsx,tsx,stories.js}",
     ],
 
-    //test
+    //Safelist utilities that get purged in Storybook production builds
     safelist: [
         'line-clamp-5',
-        'line-clamp-1',
-        'line-clamp-2',
+        'line-clamp-4',
         'line-clamp-3',
-        // Add any other line-clamp values you use
+        'line-clamp-2',
+        'line-clamp-1',
     ],
     
     darkMode: 'media',
