@@ -43,7 +43,10 @@ export const ArticleCard = ({
             <div className={`text-meta-uppercase ${articleTypeColor}`}>
                 {articleType}
             </div>
-            {isPremium && <Badge variant="premium" size="small"/>}
+            {/* Only show premium badge if isPremium is true AND variant is NOT de-nieuwe-koers */}
+            {isPremium && variant !== 'de-nieuwe-koers' && (
+                <Badge variant="premium" size="small"/>
+            )}
         </div>
     );
 
