@@ -11,7 +11,7 @@ const meta: Meta<typeof ArticleCard> = {
     argTypes: {
         imageUrl: {
             control: 'text',
-            description: 'URL of the article image (180x120px or 11.25x7.5rem)',
+            description: 'URL of the article image (180x120px or 11.25x7.5rem for default, 180x306px or 11.25x19.125rem for video)',
         },
         articleType: {
             control: 'text',
@@ -23,8 +23,8 @@ const meta: Meta<typeof ArticleCard> = {
         },
         variant: {
             control: 'select',
-            options: ['default', 'de-nieuwe-koers'],
-            description: 'Default of De Nieuwe Koers variant',
+            options: ['default', 'de-nieuwe-koers', 'video'],
+            description: 'Default, De Nieuwe Koers, or Video variant',
         },
         isPremium: {
             control: 'boolean',
@@ -37,6 +37,10 @@ const meta: Meta<typeof ArticleCard> = {
         onClick: {
             action: 'clicked',
             description: 'Custom click handler',
+        },
+        videoDuration: {
+            control: 'text',
+            description: 'Duration of the video (e.g., "1:55") - only for video variant',
         },
         className: {
             control: 'text',
@@ -134,6 +138,50 @@ export const PremiumNoImage: Story = {
     },
 };
 
+export const Video: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/180/306',
+        articleType: 'Video',
+        heading: 'Dit is een video artikel met een grotere thumbnail',
+        variant: 'video',
+        videoDuration: '1:55',
+        href: '/videos/1',
+    },
+};
+
+export const VideoShortHeading: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/180/306',
+        articleType: 'Video',
+        heading: 'Korte video titel',
+        variant: 'video',
+        videoDuration: '3:24',
+        href: '/videos/2',
+    },
+};
+
+export const VideoNoImage: Story = {
+    args: {
+        articleType: 'Video',
+        heading: 'Video zonder thumbnail toont een grijze placeholder',
+        variant: 'video',
+        videoDuration: '2:10',
+        href: '/videos/3',
+    },
+};
+
+export const VideoPremium: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/180/306',
+        articleType: 'Video',
+        heading: 'Premium video artikel alleen voor abonnees',
+        variant: 'video',
+        videoDuration: '5:43',
+        isPremium: true,
+        href: '/videos/premium-1',
+    },
+};
+
 export const WithoutLink: Story = {
     args: {
         imageUrl: 'https://picsum.photos/180/120',
@@ -174,6 +222,34 @@ export const InteractiveGrid: Story = {
                 heading="Derde artikel in grid"
                 href="/articles/grid-3"
                 variant="de-nieuwe-koers"
+            />
+        </div>
+    ),
+};
+
+export const MixedVariantsGrid: Story = {
+    render: () => (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', alignItems: 'start' }}>
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/120?random=4"
+                articleType="Nieuws"
+                heading="Standaard artikel"
+                href="/articles/mixed-1"
+            />
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/120?random=5"
+                articleType="De Nieuwe Koers"
+                heading="De Nieuwe Koers artikel"
+                href="/articles/mixed-2"
+                variant="de-nieuwe-koers"
+            />
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/306?random=6"
+                articleType="Video"
+                heading="Video artikel met grotere thumbnail"
+                href="/videos/mixed-1"
+                variant="video"
+                videoDuration="4:12"
             />
         </div>
     ),
