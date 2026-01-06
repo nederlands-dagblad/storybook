@@ -9,9 +9,9 @@ type BaseButtonProps = {
     iconLeftVariant?: 'outline' | 'fill';
     iconRightVariant?: 'outline' | 'fill';
     iconOnly?: boolean;
-    label?: string | React.ReactNode; // For accessibility when iconOnly is true
-    isActive?: boolean; // For controlled component
-    onToggle?: (isActive: boolean) => void; // Callback when toggled
+    label?: string | React.ReactNode;
+    isActive?: boolean;
+    onToggle?: (isActive: boolean) => void;
 }
 
 // Button als <button> element (zonder href)
@@ -22,9 +22,8 @@ type ButtonAsButton = BaseButtonProps &
 
 // Button als <a> element (met href)
 type ButtonAsLink = BaseButtonProps &
-    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'onClick'> & {
+    AnchorHTMLAttributes<HTMLAnchorElement> & {
     href: string;
-    onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
@@ -100,22 +99,6 @@ export const Button: React.FC<ButtonProps> = (props) => {
     // Check if it's a square icon for primary buttons
     const isSquareIconLeft = defaultIconLeft === 'square';
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
-        // For pill variant, toggle active state
-        if (variant === 'pill') {
-            const newActiveState = !isActive;
-            if (controlledIsActive === undefined) {
-                setInternalIsActive(newActiveState);
-            }
-            onToggle?.(newActiveState);
-        }
-
-        // Call the original onClick handler
-        if ('onClick' in restProps && restProps.onClick) {
-            restProps.onClick(e as any);
-        }
-    };
-
     const buttonClasses = cn(
         // Base styles for all buttons
         'inline-flex items-center transition-colors',
@@ -157,24 +140,46 @@ export const Button: React.FC<ButtonProps> = (props) => {
         </>
     );
 
+    // Handler for click events
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+        // For pill variant, toggle active state
+        if (variant === 'pill') {
+            const newActiveState = !isActive;
+            if (controlledIsActive === undefined) {
+                setInternalIsActive(newActiveState);
+            }
+            onToggle?.(newActiveState);
+        }
+
+        // Call the original onClick handler
+        if ('onClick' in restProps && restProps.onClick) {
+            restProps.onClick(e as any);
+        }
+    };
+
     // Render as link if href is provided
     if ('href' in restProps && restProps.href) {
-        const {href, ...anchorProps} = restProps;
+        // Type guard: nu weet TypeScript dat dit een anchor is
+        const anchorProps = restProps as AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+        const {href, onClick, ...safeAnchorProps} = anchorProps;
+
         return (
             <a
                 href={href}
                 className={buttonClasses}
                 onClick={handleClick}
                 aria-label={iconOnly ? String(content) : undefined}
-                {...anchorProps}
+                {...safeAnchorProps}
             >
                 {buttonContent}
             </a>
         );
     }
 
-    // Render as button
-    const {onClick, ...buttonProps} = restProps as ButtonHTMLAttributes<HTMLButtonElement>;
+// Render as button
+    const buttonProps = restProps as ButtonHTMLAttributes<HTMLButtonElement>;
+    const {onClick, ...safeButtonProps} = buttonProps;
+
     return (
         <button
             className={buttonClasses}
@@ -182,7 +187,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
             onClick={handleClick}
             aria-label={iconOnly ? String(content) : undefined}
             aria-pressed={variant === 'pill' ? isActive : undefined}
-            {...buttonProps}
+            {...safeButtonProps}
         >
             {buttonContent}
         </button>
