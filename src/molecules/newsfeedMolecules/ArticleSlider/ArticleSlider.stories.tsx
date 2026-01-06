@@ -24,9 +24,13 @@ const meta: Meta<typeof ArticleSlider> = {
             control: 'text',
             description: 'Label text for the button',
         },
+        buttonUrl: {
+            control: 'text',
+            description: 'URL to navigate to when button is clicked',
+        },
         onButtonClick: {
             action: 'button clicked',
-            description: 'Callback function when button is clicked',
+            description: 'Optional callback function when button is clicked (for tracking, etc.)',
         },
         className: {
             control: 'text',
@@ -182,6 +186,7 @@ export const WithButton: Story = {
         title: 'Laatste artikelen',
         showButton: true,
         buttonLabel: 'Meer laden',
+        buttonUrl: '/meer-artikelen',
     },
 };
 
@@ -195,6 +200,9 @@ export const FewArticles: Story = {
     args: {
         articles: mockArticles.slice(0, 3),
         title: 'Uitgelichte artikelen',
+        showButton: true,
+        buttonLabel: 'Bekijk meer',
+        buttonUrl: '/uitgelicht',
     },
 };
 
@@ -211,6 +219,7 @@ export const DeNieuweKoers: Story = {
         title: 'De Nieuwe Koers',
         showButton: true,
         buttonLabel: 'Bekijk alle artikelen',
+        buttonUrl: '/de-nieuwe-koers',
     },
 };
 
@@ -220,5 +229,6 @@ export const MixedVariants: Story = {
         title: 'Gemengde artikelen',
         showButton: true,
         buttonLabel: 'Meer artikelen',
+        buttonUrl: '/artikelen',
     },
 };

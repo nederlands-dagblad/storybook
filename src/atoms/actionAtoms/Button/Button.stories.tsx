@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Button from './Button';
 import iconList from "../../../atoms/basicAtoms/Icon/list.ts";
-import Icon from "../../basicAtoms/Icon/Icon";
 import { useState } from 'react';
 
 /**
@@ -14,6 +13,7 @@ import { useState } from 'react';
  * - Optional left and right icons with outline/fill variants
  * - Icon-only mode for compact buttons
  * - Interactive states: hover, active, disabled
+ * - Can render as a link with `href` prop
  * - Special behaviors:
  *   - Pill buttons with left icons change to fill when active
  *   - Pill buttons with caret-down icons rotate on toggle
@@ -58,6 +58,10 @@ const meta = {
     label: {
       control: 'text',
       description: 'The button label text',
+    },
+    href: {
+      control: 'text',
+      description: 'URL to navigate to (renders as < a> instead of [< button>])',
     },
     iconOnly: {
       control: 'boolean',
@@ -123,7 +127,7 @@ export const Dark: Story = {
 };
 
 /**
- *  Pill button example showing controlled state
+ * Pill button example showing controlled state
  */
 export const InteractivePill: Story = {
   render: () => {
@@ -171,6 +175,47 @@ export const IconOnly: Story = {
 };
 
 /**
+ * Button as a link - renders as <a> tag with href
+ */
+export const AsLink: Story = {
+  args: {
+    variant: 'primary',
+    label: 'Go to page',
+    href: 'https://example.com',
+  },
+};
+
+/**
+ * Pill button as link with icon - common pattern for "load more" buttons
+ */
+export const LoadMoreLink: Story = {
+  args: {
+    variant: 'pill',
+    iconRight: 'caret-right',
+    label: 'Meer laden',
+    href: '/more-articles',
+  },
+};
+
+/**
+ * Link with onClick handler - useful for tracking before navigation
+ */
+export const LinkWithTracking: Story = {
+  render: () => (
+      <Button
+          variant="secondary"
+          iconLeft="arrow-square-out"      // ← = in plaats van :
+          label="External link"            // ← = in plaats van :
+          href="https://example.com"       // ← = in plaats van :
+          onClick={(e) => {
+            console.log('Link clicked! Tracking event sent.');
+            // In real app: trackEvent('external_link_clicked');
+          }}
+      />
+  ),
+};
+
+/**
  * Disabled state examples across all variants
  */
 export const DisabledButtons: Story = {
@@ -181,6 +226,29 @@ export const DisabledButtons: Story = {
         <Button variant="ghost" label="Ghost" disabled />
         <Button variant="dark" iconLeft="square" label="Dark" disabled />
         <Button variant="pill" iconLeft="pencil" label="Pill" disabled />
+      </div>
+  ),
+};
+
+/**
+ * Comparison: Button vs Link styling
+ */
+export const ButtonVsLink: Story = {
+  render: () => (
+      <div style={{ display: 'flex', gap: '10px', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Button
+            variant="primary"
+            label="Button with onClick"
+            onClick={() => alert('Button clicked!')}
+        />
+        <Button
+            variant="primary"
+            label="Link with href"
+            href="#"
+        />
+        <p style={{ fontSize: '14px', color: '#666', maxWidth: '300px' }}>
+          Both look identical but the second one renders as an {'<a>'} tag and can be middle-clicked or right-clicked for "Open in new tab"
+        </p>
       </div>
   ),
 };
