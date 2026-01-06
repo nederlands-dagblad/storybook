@@ -8,6 +8,7 @@ export interface ArticleSliderProps {
     title?: string;
     showButton?: boolean;
     buttonLabel?: string;
+    buttonUrl?: string;
     onButtonClick?: () => void;
     className?: string;
 }
@@ -17,6 +18,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 title,
                                                                 showButton = false,
                                                                 buttonLabel = "",
+                                                                buttonUrl,
                                                                 onButtonClick,
                                                                 className = "",
                                                             }) => {
@@ -131,6 +133,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                 <Button
                     variant="pill"
                     iconRight="caret-right"
+                    href={buttonUrl}
                     onClick={onButtonClick}
                     className="w-fit"
                 >
