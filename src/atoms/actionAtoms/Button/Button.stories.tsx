@@ -204,9 +204,9 @@ export const LinkWithTracking: Story = {
   render: () => (
       <Button
           variant="secondary"
-          iconLeft="arrow-square-out"      // ← = in plaats van :
-          label="External link"            // ← = in plaats van :
-          href="https://example.com"       // ← = in plaats van :
+          iconLeft="arrow-square-out"
+          label="External link"
+          href="https://example.com"    
           onClick={(e) => {
             console.log('Link clicked! Tracking event sent.');
             // In real app: trackEvent('external_link_clicked');
