@@ -12,8 +12,6 @@ import {
 
 import tokenUtilities from './tokens.utilities.js';
 
-// No longer needed as we're using CSS classes directly
-
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -29,9 +27,12 @@ export default {
         'line-clamp-3',
         'line-clamp-2',
         'line-clamp-1',
-        {
-            pattern: /^(sm|md|lg|xl|2xl):(flex|block|hidden|grid|inline-flex)$/,
-        }
+        // Safelist responsive display utilities
+        'sm:flex', 'sm:block', 'sm:hidden', 'sm:grid', 'sm:inline-flex',
+        'md:flex', 'md:block', 'md:hidden', 'md:grid', 'md:inline-flex',
+        'lg:flex', 'lg:block', 'lg:hidden', 'lg:grid', 'lg:inline-flex',
+        'xl:flex', 'xl:block', 'xl:hidden', 'xl:grid', 'xl:inline-flex',
+        '2xl:flex', '2xl:block', '2xl:hidden', '2xl:grid', '2xl:inline-flex',
     ],
     
     darkMode: 'media',
