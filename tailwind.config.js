@@ -29,6 +29,9 @@ export default {
         'line-clamp-3',
         'line-clamp-2',
         'line-clamp-1',
+        {
+            pattern: /^(sm|md|lg|xl|2xl):(flex|block|hidden|grid|inline-flex)$/,
+        }
     ],
     
     darkMode: 'media',
