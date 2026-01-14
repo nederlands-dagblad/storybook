@@ -3,8 +3,22 @@ import { ArticleCard, ArticleCardProps } from "@molecules/newsfeedMolecules/Arti
 import { SectionHeading } from "@atoms/displayAtoms/SectionHeading/SectionHeading";
 import { Button } from "@atoms/actionAtoms/Button/Button";
 
+// Backend API configuration
+export interface VideoConfig {
+    apiEndpoint: string;     // e.g., "/api/youtube/channel"
+    channelId?: string;      // For channel endpoint
+    playlistId?: string;     // For playlist endpoint
+    maxResults?: number;     // Default: 10
+}
+
 export interface ArticleSliderProps {
-    articles: ArticleCardProps[];
+    // Manual article data
+    articles?: ArticleCardProps[];
+
+    // Backend video fetching
+    videoConfig?: VideoConfig;
+
+    // Common props
     title?: string;
     showButton?: boolean;
     buttonLabel?: string;
@@ -13,8 +27,17 @@ export interface ArticleSliderProps {
     className?: string;
 }
 
+// Backend response type (matches C# YouTubeVideoItem)
+interface YouTubeVideoItem {
+    videoId: string;
+    title: string;
+    thumbnailUrl?: string;
+    duration?: string;
+}
+
 export const ArticleSlider: React.FC<ArticleSliderProps> = ({
-                                                                articles,
+                                                                articles: manualArticles,
+                                                                videoConfig,
                                                                 title,
                                                                 showButton = false,
                                                                 buttonLabel = "",
@@ -29,6 +52,62 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     const hasMovedRef = useRef(false);
     const [showLeftFade, setShowLeftFade] = useState(false);
     const [showRightFade, setShowRightFade] = useState(true);
+
+    // Video state
+    const [videoArticles, setVideoArticles] = useState<ArticleCardProps[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    // Fetch videos from backend if videoConfig is provided
+    useEffect(() => {
+        if (!videoConfig) return;
+
+        const fetchVideos = async () => {
+            setLoading(true);
+            setError(null);
+
+            try {
+                const { apiEndpoint, channelId, playlistId, maxResults = 10 } = videoConfig;
+
+                // Build query params
+                const params = new URLSearchParams();
+                if (channelId) params.append('channelId', channelId);
+                if (playlistId) params.append('playlistId', playlistId);
+                params.append('maxResults', maxResults.toString());
+
+                const url = `${apiEndpoint}?${params.toString()}`;
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch videos: ${response.statusText}`);
+                }
+
+                const videos: YouTubeVideoItem[] = await response.json();
+
+                // Transform backend response to ArticleCardProps
+                const transformedArticles: ArticleCardProps[] = videos.map((video) => ({
+                    imageUrl: video.thumbnailUrl || `https://img.youtube.com/vi/${video.videoId}/mqdefault.jpg`,
+                    articleType: 'Video',
+                    heading: video.title,
+                    variant: 'video' as const,
+                    videoDuration: video.duration,
+                    href: `https://www.youtube.com/watch?v=${video.videoId}`,
+                }));
+
+                setVideoArticles(transformedArticles);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'Error loading videos');
+                console.error('Video fetch error:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchVideos();
+    }, [videoConfig]);
+
+    // Use video articles if videoConfig provided, otherwise use manual articles
+    const articles = videoConfig ? videoArticles : (manualArticles || []);
 
     // Update fade visibility based on scroll position
     const updateFadeVisibility = () => {
@@ -88,7 +167,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
         slider.addEventListener('mousemove', handleMouseMove);
         slider.addEventListener('mouseup', handleMouseUp);
         slider.addEventListener('mouseleave', handleMouseUp);
-        slider.addEventListener('click', handleClick, true); // Use capture phase
+        slider.addEventListener('click', handleClick, true);
 
         return () => {
             slider.removeEventListener('scroll', updateFadeVisibility);
@@ -99,7 +178,32 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             slider.removeEventListener('mouseleave', handleMouseUp);
             slider.removeEventListener('click', handleClick, true);
         };
-    }, []);
+    }, [articles]); // Re-run when articles change (videos loaded)
+
+    // Loading state
+    if (loading) {
+        return (
+            <div className={`w-full flex flex-col gap-s ${className}`}>
+                {title && <SectionHeading>{title}</SectionHeading>}
+                <p className="text-body-regular text-text-subtle">Video's laden...</p>
+            </div>
+        );
+    }
+
+    // Error state
+    if (error) {
+        return (
+            <div className={`w-full flex flex-col gap-s ${className}`}>
+                {title && <SectionHeading>{title}</SectionHeading>}
+                <p className="text-body-regular text-text-warning">Fout bij laden: {error}</p>
+            </div>
+        );
+    }
+
+    // No articles
+    if (!articles || articles.length === 0) {
+        return null;
+    }
 
     return (
         <div className={`w-full flex flex-col gap-s ${className}`}>
