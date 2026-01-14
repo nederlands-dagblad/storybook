@@ -23,10 +23,10 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 className = "",
                                                             }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
-    const [hasMoved, setHasMoved] = useState(false);
+    const isDraggingRef = useRef(false);
+    const startXRef = useRef(0);
+    const scrollLeftRef = useRef(0);
+    const hasMovedRef = useRef(false);
     const [showLeftFade, setShowLeftFade] = useState(false);
     const [showRightFade, setShowRightFade] = useState(true);
 
@@ -48,47 +48,58 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
         slider.addEventListener('scroll', updateFadeVisibility);
         window.addEventListener('resize', updateFadeVisibility);
 
+        // Native event listeners
+        const handleMouseDown = (e: MouseEvent) => {
+            isDraggingRef.current = true;
+            hasMovedRef.current = false;
+            slider.classList.remove('scroll-smooth');
+            startXRef.current = e.pageX;
+            scrollLeftRef.current = slider.scrollLeft;
+        };
+
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!isDraggingRef.current) return;
+
+            const x = e.pageX;
+            const distance = startXRef.current - x;
+
+            // Only preventDefault and scroll if actually moving
+            if (Math.abs(distance) > 3) {
+                e.preventDefault();
+                slider.scrollLeft = scrollLeftRef.current + distance;
+                hasMovedRef.current = true;
+            }
+        };
+
+        const handleMouseUp = () => {
+            slider.classList.add('scroll-smooth');
+            isDraggingRef.current = false;
+        };
+
+        const handleClick = (e: MouseEvent) => {
+            if (hasMovedRef.current) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            hasMovedRef.current = false;
+        };
+
+        slider.addEventListener('mousedown', handleMouseDown);
+        slider.addEventListener('mousemove', handleMouseMove);
+        slider.addEventListener('mouseup', handleMouseUp);
+        slider.addEventListener('mouseleave', handleMouseUp);
+        slider.addEventListener('click', handleClick, true); // Use capture phase
+
         return () => {
             slider.removeEventListener('scroll', updateFadeVisibility);
             window.removeEventListener('resize', updateFadeVisibility);
+            slider.removeEventListener('mousedown', handleMouseDown);
+            slider.removeEventListener('mousemove', handleMouseMove);
+            slider.removeEventListener('mouseup', handleMouseUp);
+            slider.removeEventListener('mouseleave', handleMouseUp);
+            slider.removeEventListener('click', handleClick, true);
         };
     }, []);
-
-    const handleMouseDown = (e: React.MouseEvent) => {
-        if (!sliderRef.current) return;
-        e.preventDefault();
-        setIsDragging(true);
-        setHasMoved(false);
-        sliderRef.current.classList.remove('scroll-smooth');
-        setStartX(e.pageX);
-        setScrollLeft(sliderRef.current.scrollLeft);
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging || !sliderRef.current) return;
-        e.preventDefault();
-        const x = e.pageX;
-        const distance = startX - x;
-        sliderRef.current.scrollLeft = scrollLeft + distance;
-        if (Math.abs(distance) > 5) {
-            setHasMoved(true);
-        }
-    };
-
-    const handleMouseUpOrLeave = () => {
-        if (sliderRef.current) {
-            sliderRef.current.classList.add('scroll-smooth');
-        }
-        setIsDragging(false);
-    };
-
-    // Prevent clicks on links when dragging
-    const handleClick = (e: React.MouseEvent) => {
-        if (hasMoved) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-    };
 
     return (
         <div className={`w-full flex flex-col gap-s ${className}`}>
@@ -109,16 +120,11 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
                 <div
                     ref={sliderRef}
-                    className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing select-none [&_img]:pointer-events-none [&_a]:pointer-events-auto"
+                    className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing [&_img]:pointer-events-none"
                     style={{
                         scrollbarWidth: "thin",
                         scrollbarColor: "var(--color-border-accent-gray) transparent"
                     }}
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUpOrLeave}
-                    onMouseLeave={handleMouseUpOrLeave}
-                    onClick={handleClick}
                 >
                     {articles.map((article, index) => (
                         <div key={index} className="flex-shrink-0">

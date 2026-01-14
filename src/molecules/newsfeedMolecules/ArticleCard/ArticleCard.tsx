@@ -96,7 +96,7 @@ export const ArticleCard = ({
         const videoBaseClasses = `inline-flex flex-col w-[13.25rem] group ${className}`.trim();
 
         return href ? (
-            <a href={href} onClick={onClick} className={videoBaseClasses}>
+            <a href={href} onClick={onClick} draggable={false} className={videoBaseClasses}>
                 {videoContent}
             </a>
         ) : (
@@ -141,6 +141,7 @@ export const ArticleCard = ({
         <a
             href={href}
             onClick={onClick}
+            draggable={false}
             className={`${baseClasses} transition-colors ${hoverBorderColor}`}
         >
             {cardContent}
