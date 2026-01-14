@@ -1,7 +1,11 @@
 import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 
 import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
+
+// Initialize MSW
+initialize();
 
 const viewports = {
   mobile: {
@@ -69,4 +73,6 @@ export default {
       }
     },
   },
+  // Add MSW loader
+  loaders: [mswLoader],
 };

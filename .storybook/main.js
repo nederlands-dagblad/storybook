@@ -13,6 +13,7 @@ export default {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-docs',
+    'msw-storybook-addon',
     {
       name: '@storybook/addon-postcss',
       options: {
