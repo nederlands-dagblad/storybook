@@ -169,6 +169,57 @@ const mockDnkArticles = [
     },
 ];
 
+const mockDnkPublications = [
+    {
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'Februari 2025',
+        placeholderText: 'Volgende editie: 1 februari',
+        href: '/publications/feb-2025',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/306?random=31',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'Januari 2025',
+        href: '/publications/jan-2025',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/306?random=32',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'December 2024',
+        href: '/publications/dec-2024',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/306?random=33',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'November 2024',
+        href: '/publications/nov-2024',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/306?random=34',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'Oktober 2024',
+        href: '/publications/oct-2024',
+    },
+    {
+        imageUrl: 'https://picsum.photos/180/306?random=35',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications' as const,
+        publicationMonth: 'September 2024',
+        href: '/publications/sep-2024',
+    },
+];
+
 // 1. Default Articles
 export const DefaultArticles: Story = {
     args: {
@@ -206,5 +257,17 @@ export const VideoSlider: Story = {
         showButton: true,
         buttonLabel: "Bekijk alle video's",
         buttonUrl: 'https://www.youtube.com/@nederlandsdagblad',
+    },
+};
+
+// 4. DNK Publications with Selection
+export const DnkPublicationsWithSelection: Story = {
+    args: {
+        title: 'De Nieuwe Koers Publicaties',
+        articles: mockDnkPublications,
+        enableSelection: true,
+        showButton: true,
+        buttonLabel: 'Bekijk alle publicaties',
+        buttonUrl: '/publicaties',
     },
 };

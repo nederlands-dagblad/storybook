@@ -25,6 +25,10 @@ export interface ArticleSliderProps {
     buttonUrl?: string;
     onButtonClick?: () => void;
     className?: string;
+
+    // Track selected publication (for dnk-publications variant)
+    enableSelection?: boolean;
+    onArticleSelect?: (index: number) => void;
 }
 
 // Backend response type (matches C# YouTubeVideoItem)
@@ -44,6 +48,8 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 buttonUrl,
                                                                 onButtonClick,
                                                                 className = "",
+                                                                enableSelection = false,
+                                                                onArticleSelect,
                                                             }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const isDraggingRef = useRef(false);
@@ -52,6 +58,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     const hasMovedRef = useRef(false);
     const [showLeftFade, setShowLeftFade] = useState(false);
     const [showRightFade, setShowRightFade] = useState(true);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     // Video state
     const [videoArticles, setVideoArticles] = useState<ArticleCardProps[]>([]);
@@ -230,11 +237,27 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                         scrollbarColor: "var(--color-border-accent-gray) transparent"
                     }}
                 >
-                    {articles.map((article, index) => (
-                        <div key={index} className="flex-shrink-0">
-                            <ArticleCard {...article} />
-                        </div>
-                    ))}
+                    {articles.map((article, index) => {
+                        const isSelected = enableSelection && selectedIndex === index;
+                        const handleArticleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                            if (enableSelection && !hasMovedRef.current) {
+                                e.preventDefault();
+                                setSelectedIndex(index);
+                                onArticleSelect?.(index);
+                            }
+                            article.onClick?.(e);
+                        };
+
+                        return (
+                            <div key={index} className="flex-shrink-0">
+                                <ArticleCard
+                                    {...article}
+                                    onClick={enableSelection ? handleArticleClick : article.onClick}
+                                    className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
 
