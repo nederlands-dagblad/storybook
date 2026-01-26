@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleCard } from './ArticleCard';
+import { useState } from 'react';
 
 const meta: Meta<typeof ArticleCard> = {
     title: 'Molecules/Newsfeed Molecules/ArticleCard',
@@ -23,8 +24,8 @@ const meta: Meta<typeof ArticleCard> = {
         },
         variant: {
             control: 'select',
-            options: ['default', 'de-nieuwe-koers', 'video'],
-            description: 'Default, De Nieuwe Koers, or Video variant',
+            options: ['default', 'de-nieuwe-koers', 'video', 'dnk-publications'],
+            description: 'Default, De Nieuwe Koers, Video, or DNK Publications variant',
         },
         isPremium: {
             control: 'boolean',
@@ -41,6 +42,14 @@ const meta: Meta<typeof ArticleCard> = {
         videoDuration: {
             control: 'text',
             description: 'Duration of the video (e.g., "1:55") - only for video variant',
+        },
+        publicationMonth: {
+            control: 'text',
+            description: 'Publication month (e.g., "Januari 2025") - only for dnk-publications variant',
+        },
+        placeholderText: {
+            control: 'text',
+            description: 'Text to display when no image (e.g., "Volgende editie: 1 februari") - only for dnk-publications variant',
         },
         className: {
             control: 'text',
@@ -250,6 +259,59 @@ export const MixedVariantsGrid: Story = {
                 href="/videos/mixed-1"
                 variant="video"
                 videoDuration="4:12"
+            />
+        </div>
+    ),
+};
+
+export const DnkPublications: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/180/306?random=7',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications',
+        publicationMonth: 'Januari 2025',
+        href: '/publications/january-2025',
+    },
+};
+
+export const DnkPublicationsNoImage: Story = {
+    args: {
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications',
+        publicationMonth: 'December 2024',
+        placeholderText: 'Volgende editie: 1 februari',
+        href: '/publications/december-2024',
+    },
+};
+
+export const DnkPublicationsGrid: Story = {
+    render: () => (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', alignItems: 'start' }}>
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/306?random=10"
+                articleType="De Nieuwe Koers"
+                heading="DNK Publications"
+                variant="dnk-publications"
+                publicationMonth="Januari 2025"
+                href="/publications/jan-2025"
+            />
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/306?random=11"
+                articleType="De Nieuwe Koers"
+                heading="DNK Publications"
+                variant="dnk-publications"
+                publicationMonth="December 2024"
+                href="/publications/dec-2024"
+            />
+            <ArticleCard
+                imageUrl="https://picsum.photos/180/306?random=12"
+                articleType="De Nieuwe Koers"
+                heading="DNK Publications"
+                variant="dnk-publications"
+                publicationMonth="November 2024"
+                href="/publications/nov-2024"
             />
         </div>
     ),
