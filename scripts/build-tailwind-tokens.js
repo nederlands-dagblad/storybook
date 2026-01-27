@@ -311,7 +311,7 @@ try {
         if (token?.$type === 'color') {
             const raw = token.$value;
             const resolved = raw.startsWith('{')
-                ? resolveReference(raw, { ...flattenedBase, ...flattenedDark }) ?? raw
+                ? resolveReference(raw, {...flattenedBase, ...flattenedDark}) ?? raw
                 : raw;
             const kebabKey = kebab(tokenPath);
 
@@ -358,11 +358,11 @@ for (const [state, file] of Object.entries(files.componentStates)) {
 
                 // Generate utility classes based on token name patterns
                 if (path.includes('bg')) {
-                    utilityClasses[`.bg-${tailwindKey}`] = { backgroundColor: `var(--${prefixedVarName})` };
+                    utilityClasses[`.bg-${tailwindKey}`] = {backgroundColor: `var(--${prefixedVarName})`};
                 } else if (path.includes('text')) {
-                    utilityClasses[`.text-${tailwindKey}`] = { color: `var(--${prefixedVarName})` };
+                    utilityClasses[`.text-${tailwindKey}`] = {color: `var(--${prefixedVarName})`};
                 } else if (path.includes('border')) {
-                    utilityClasses[`.border-${tailwindKey}`] = { borderColor: `var(--${prefixedVarName})` };
+                    utilityClasses[`.border-${tailwindKey}`] = {borderColor: `var(--${prefixedVarName})`};
                 }
             } else if (typeof val === 'object' && val !== null) {
                 process(val, path);
@@ -448,7 +448,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         cssVarMap[kebabKey] = resolved;
 
         // Generate shadow utility classes
-        shadowUtilities[`.shadow-${originalKey}`] = { boxShadow: `var(--${kebabKey})` };
+        shadowUtilities[`.shadow-${originalKey}`] = {boxShadow: `var(--${kebabKey})`};
 
         console.log(`  ✅ Processed shadow: ${originalKey} = ${resolved}`);
     }
@@ -470,13 +470,13 @@ const borderUtilities = {};
 // Process spacing tokens from semantic-spacing file
 try {
     const rawSpacing = load(files.spacing);
-    const flattenedSpacing = flatten({ spacing: rawSpacing }, []);
+    const flattenedSpacing = flatten({spacing: rawSpacing}, []);
 
     for (const [tokenPath, token] of Object.entries(flattenedSpacing)) {
         if (token?.$type === 'dimension') {
             const raw = token.$value;
             const resolved = raw.startsWith('{')
-                ? resolveReference(raw, { ...flattenedBase, ...flattenedSpacing })
+                ? resolveReference(raw, {...flattenedBase, ...flattenedSpacing})
                 : raw;
 
             // Skip if reference couldn't be resolved
@@ -492,23 +492,23 @@ try {
             cssVarMap[kebabKey] = resolved;
 
             // Generate spacing utility classes
-            spacingUtilities[`.p-${kebabKey}`] = { padding: `var(${varName})` };
-            spacingUtilities[`.px-${kebabKey}`] = { paddingLeft: `var(${varName})`, paddingRight: `var(${varName})` };
-            spacingUtilities[`.py-${kebabKey}`] = { paddingTop: `var(${varName})`, paddingBottom: `var(${varName})` };
-            spacingUtilities[`.pt-${kebabKey}`] = { paddingTop: `var(${varName})` };
-            spacingUtilities[`.pr-${kebabKey}`] = { paddingRight: `var(${varName})` };
-            spacingUtilities[`.pb-${kebabKey}`] = { paddingBottom: `var(${varName})` };
-            spacingUtilities[`.pl-${kebabKey}`] = { paddingLeft: `var(${varName})` };
+            spacingUtilities[`.p-${kebabKey}`] = {padding: `var(${varName})`};
+            spacingUtilities[`.px-${kebabKey}`] = {paddingLeft: `var(${varName})`, paddingRight: `var(${varName})`};
+            spacingUtilities[`.py-${kebabKey}`] = {paddingTop: `var(${varName})`, paddingBottom: `var(${varName})`};
+            spacingUtilities[`.pt-${kebabKey}`] = {paddingTop: `var(${varName})`};
+            spacingUtilities[`.pr-${kebabKey}`] = {paddingRight: `var(${varName})`};
+            spacingUtilities[`.pb-${kebabKey}`] = {paddingBottom: `var(${varName})`};
+            spacingUtilities[`.pl-${kebabKey}`] = {paddingLeft: `var(${varName})`};
 
-            spacingUtilities[`.m-${kebabKey}`] = { margin: `var(${varName})` };
-            spacingUtilities[`.mx-${kebabKey}`] = { marginLeft: `var(${varName})`, marginRight: `var(${varName})` };
-            spacingUtilities[`.my-${kebabKey}`] = { marginTop: `var(${varName})`, marginBottom: `var(${varName})` };
-            spacingUtilities[`.mt-${kebabKey}`] = { marginTop: `var(${varName})` };
-            spacingUtilities[`.mr-${kebabKey}`] = { marginRight: `var(${varName})` };
-            spacingUtilities[`.mb-${kebabKey}`] = { marginBottom: `var(${varName})` };
-            spacingUtilities[`.ml-${kebabKey}`] = { marginLeft: `var(${varName})` };
+            spacingUtilities[`.m-${kebabKey}`] = {margin: `var(${varName})`};
+            spacingUtilities[`.mx-${kebabKey}`] = {marginLeft: `var(${varName})`, marginRight: `var(${varName})`};
+            spacingUtilities[`.my-${kebabKey}`] = {marginTop: `var(${varName})`, marginBottom: `var(${varName})`};
+            spacingUtilities[`.mt-${kebabKey}`] = {marginTop: `var(${varName})`};
+            spacingUtilities[`.mr-${kebabKey}`] = {marginRight: `var(${varName})`};
+            spacingUtilities[`.mb-${kebabKey}`] = {marginBottom: `var(${varName})`};
+            spacingUtilities[`.ml-${kebabKey}`] = {marginLeft: `var(${varName})`};
 
-            spacingUtilities[`.gap-${kebabKey}`] = { gap: `var(${varName})` };
+            spacingUtilities[`.gap-${kebabKey}`] = {gap: `var(${varName})`};
         }
     }
 } catch (error) {
@@ -541,23 +541,23 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         cssVarMap[kebabKey] = resolved;
 
         // Generate spacing utility classes with the original name
-        spacingUtilities[`.p-${originalKey}`] = { padding: `var(${varName})` };
-        spacingUtilities[`.px-${originalKey}`] = { paddingLeft: `var(${varName})`, paddingRight: `var(${varName})` };
-        spacingUtilities[`.py-${originalKey}`] = { paddingTop: `var(${varName})`, paddingBottom: `var(${varName})` };
-        spacingUtilities[`.pt-${originalKey}`] = { paddingTop: `var(${varName})` };
-        spacingUtilities[`.pr-${originalKey}`] = { paddingRight: `var(${varName})` };
-        spacingUtilities[`.pb-${originalKey}`] = { paddingBottom: `var(${varName})` };
-        spacingUtilities[`.pl-${originalKey}`] = { paddingLeft: `var(${varName})` };
+        spacingUtilities[`.p-${originalKey}`] = {padding: `var(${varName})`};
+        spacingUtilities[`.px-${originalKey}`] = {paddingLeft: `var(${varName})`, paddingRight: `var(${varName})`};
+        spacingUtilities[`.py-${originalKey}`] = {paddingTop: `var(${varName})`, paddingBottom: `var(${varName})`};
+        spacingUtilities[`.pt-${originalKey}`] = {paddingTop: `var(${varName})`};
+        spacingUtilities[`.pr-${originalKey}`] = {paddingRight: `var(${varName})`};
+        spacingUtilities[`.pb-${originalKey}`] = {paddingBottom: `var(${varName})`};
+        spacingUtilities[`.pl-${originalKey}`] = {paddingLeft: `var(${varName})`};
 
-        spacingUtilities[`.m-${originalKey}`] = { margin: `var(${varName})` };
-        spacingUtilities[`.mx-${originalKey}`] = { marginLeft: `var(${varName})`, marginRight: `var(${varName})` };
-        spacingUtilities[`.my-${originalKey}`] = { marginTop: `var(${varName})`, marginBottom: `var(${varName})` };
-        spacingUtilities[`.mt-${originalKey}`] = { marginTop: `var(${varName})` };
-        spacingUtilities[`.mr-${originalKey}`] = { marginRight: `var(${varName})` };
-        spacingUtilities[`.mb-${originalKey}`] = { marginBottom: `var(${varName})` };
-        spacingUtilities[`.ml-${originalKey}`] = { marginLeft: `var(${varName})` };
+        spacingUtilities[`.m-${originalKey}`] = {margin: `var(${varName})`};
+        spacingUtilities[`.mx-${originalKey}`] = {marginLeft: `var(${varName})`, marginRight: `var(${varName})`};
+        spacingUtilities[`.my-${originalKey}`] = {marginTop: `var(${varName})`, marginBottom: `var(${varName})`};
+        spacingUtilities[`.mt-${originalKey}`] = {marginTop: `var(${varName})`};
+        spacingUtilities[`.mr-${originalKey}`] = {marginRight: `var(${varName})`};
+        spacingUtilities[`.mb-${originalKey}`] = {marginBottom: `var(${varName})`};
+        spacingUtilities[`.ml-${originalKey}`] = {marginLeft: `var(${varName})`};
 
-        spacingUtilities[`.gap-${originalKey}`] = { gap: `var(${varName})` };
+        spacingUtilities[`.gap-${originalKey}`] = {gap: `var(${varName})`};
     }
 }
 
@@ -591,11 +591,11 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         cssVarMap[kebabKey] = resolved;
 
         // Generate border width utility classes
-        borderUtilities[`.border-${originalKey}`] = { borderWidth: `var(--${kebabKey})` };
-        borderUtilities[`.border-t-${originalKey}`] = { borderTopWidth: `var(--${kebabKey})` };
-        borderUtilities[`.border-r-${originalKey}`] = { borderRightWidth: `var(--${kebabKey})` };
-        borderUtilities[`.border-b-${originalKey}`] = { borderBottomWidth: `var(--${kebabKey})` };
-        borderUtilities[`.border-l-${originalKey}`] = { borderLeftWidth: `var(--${kebabKey})` };
+        borderUtilities[`.border-${originalKey}`] = {borderWidth: `var(--${kebabKey})`};
+        borderUtilities[`.border-t-${originalKey}`] = {borderTopWidth: `var(--${kebabKey})`};
+        borderUtilities[`.border-r-${originalKey}`] = {borderRightWidth: `var(--${kebabKey})`};
+        borderUtilities[`.border-b-${originalKey}`] = {borderBottomWidth: `var(--${kebabKey})`};
+        borderUtilities[`.border-l-${originalKey}`] = {borderLeftWidth: `var(--${kebabKey})`};
     }
 
     // Process border radius tokens
@@ -621,7 +621,7 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
         cssVarMap[kebabKey] = resolved;
 
         // Generate border radius utility classes
-        borderUtilities[`.rounded-${originalKey}`] = { borderRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-${originalKey}`] = {borderRadius: `var(--${kebabKey})`};
         borderUtilities[`.rounded-t-${originalKey}`] = {
             borderTopLeftRadius: `var(--${kebabKey})`,
             borderTopRightRadius: `var(--${kebabKey})`
@@ -638,10 +638,10 @@ for (const [tokenPath, token] of Object.entries(flattenedBase)) {
             borderTopLeftRadius: `var(--${kebabKey})`,
             borderBottomLeftRadius: `var(--${kebabKey})`
         };
-        borderUtilities[`.rounded-tl-${originalKey}`] = { borderTopLeftRadius: `var(--${kebabKey})` };
-        borderUtilities[`.rounded-tr-${originalKey}`] = { borderTopRightRadius: `var(--${kebabKey})` };
-        borderUtilities[`.rounded-bl-${originalKey}`] = { borderBottomLeftRadius: `var(--${kebabKey})` };
-        borderUtilities[`.rounded-br-${originalKey}`] = { borderBottomRightRadius: `var(--${kebabKey})` };
+        borderUtilities[`.rounded-tl-${originalKey}`] = {borderTopLeftRadius: `var(--${kebabKey})`};
+        borderUtilities[`.rounded-tr-${originalKey}`] = {borderTopRightRadius: `var(--${kebabKey})`};
+        borderUtilities[`.rounded-bl-${originalKey}`] = {borderBottomLeftRadius: `var(--${kebabKey})`};
+        borderUtilities[`.rounded-br-${originalKey}`] = {borderBottomRightRadius: `var(--${kebabKey})`};
     }
 }
 
@@ -927,10 +927,10 @@ processResponsiveTypography();
 console.log('🔄 Adding text alignment utilities...');
 
 const textAlignmentUtilities = {
-    '.text-left': { textAlign: 'left' },
-    '.text-center': { textAlign: 'center' },
-    '.text-right': { textAlign: 'right' },
-    '.text-justify': { textAlign: 'justify' }
+    '.text-left': {textAlign: 'left'},
+    '.text-center': {textAlign: 'center'},
+    '.text-right': {textAlign: 'right'},
+    '.text-justify': {textAlign: 'justify'}
 };
 
 // ----------------------
@@ -955,6 +955,37 @@ export const primitiveBorderWidths = ${JSON.stringify(primitiveBorderWidths, nul
 export const primitiveBorderRadius = ${JSON.stringify(primitiveBorderRadius, null, 2)};
 export const semanticBorderRadius = ${JSON.stringify(semanticBorderRadius, null, 2)};
 export const primitiveBoxShadows = ${JSON.stringify(primitiveBoxShadows, null, 2)};
+
+export function generateTokenSafelist() {
+  const safelist = [];
+  
+  Object.keys(semanticColors).forEach(color => {
+    safelist.push(\`bg-\${color}\`);
+    safelist.push(\`text-\${color}\`);
+    safelist.push(\`border-\${color}\`);
+  });
+  
+  Object.keys(spacing).forEach(space => {
+    safelist.push(\`p-\${space}\`);
+    safelist.push(\`m-\${space}\`);
+    safelist.push(\`gap-\${space}\`);
+    safelist.push(\`px-\${space}\`);
+    safelist.push(\`py-\${space}\`);
+    safelist.push(\`pt-\${space}\`);
+    safelist.push(\`pr-\${space}\`);
+    safelist.push(\`pb-\${space}\`);
+    safelist.push(\`pl-\${space}\`);
+    safelist.push(\`mx-\${space}\`);
+    safelist.push(\`my-\${space}\`);
+    safelist.push(\`mt-\${space}\`);
+    safelist.push(\`mr-\${space}\`);
+    safelist.push(\`mb-\${space}\`);
+    safelist.push(\`ml-\${space}\`);
+  });
+  
+  return safelist;
+}
+
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);
