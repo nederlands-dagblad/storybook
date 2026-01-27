@@ -7,7 +7,8 @@ import {
     primitiveFontSizes,
     primitiveFontWeights,
     primitiveLetterSpacings, primitiveBorderRadius, primitiveBorderWidths, semanticBorderRadius,
-    primitiveBoxShadows
+    primitiveBoxShadows,
+    generateTokenSafelist
 } from './tailwind.tokens.js';
 
 import tokenUtilities from './tokens.utilities.js';
@@ -33,6 +34,9 @@ export default {
         'lg:flex', 'lg:block', 'lg:hidden', 'lg:grid', 'lg:inline-flex',
         'xl:flex', 'xl:block', 'xl:hidden', 'xl:grid', 'xl:inline-flex',
         '2xl:flex', '2xl:block', '2xl:hidden', '2xl:grid', '2xl:inline-flex',
+
+        // Auto-generated token utilities
+        ...generateTokenSafelist(),
     ],
     
     darkMode: 'media',
