@@ -956,36 +956,6 @@ export const primitiveBorderRadius = ${JSON.stringify(primitiveBorderRadius, nul
 export const semanticBorderRadius = ${JSON.stringify(semanticBorderRadius, null, 2)};
 export const primitiveBoxShadows = ${JSON.stringify(primitiveBoxShadows, null, 2)};
 
-export function generateTokenSafelist() {
-  const safelist = [];
-  
-  Object.keys(semanticColors).forEach(color => {
-    safelist.push(\`bg-\${color}\`);
-    safelist.push(\`text-\${color}\`);
-    safelist.push(\`border-\${color}\`);
-  });
-  
-  Object.keys(spacing).forEach(space => {
-    safelist.push(\`p-\${space}\`);
-    safelist.push(\`m-\${space}\`);
-    safelist.push(\`gap-\${space}\`);
-    safelist.push(\`px-\${space}\`);
-    safelist.push(\`py-\${space}\`);
-    safelist.push(\`pt-\${space}\`);
-    safelist.push(\`pr-\${space}\`);
-    safelist.push(\`pb-\${space}\`);
-    safelist.push(\`pl-\${space}\`);
-    safelist.push(\`mx-\${space}\`);
-    safelist.push(\`my-\${space}\`);
-    safelist.push(\`mt-\${space}\`);
-    safelist.push(\`mr-\${space}\`);
-    safelist.push(\`mb-\${space}\`);
-    safelist.push(\`ml-\${space}\`);
-  });
-  
-  return safelist;
-}
-
 `.trim();
 
 fs.writeFileSync('./tailwind.tokens.js', jsOutput);

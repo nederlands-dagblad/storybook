@@ -64,7 +64,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     const variantStyles = {
         primary: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-brand text-text-inverse hover:bg-background-brand-subtle disabled:bg-background-disabled group',
 
-        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-subtlest disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default',
+        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-accent disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default',
 
         ghost: 'px-xs py-xs gap-x-xs text-meta-bold text-text-brand hover:text-text-brand-subtle disabled:text-text-disabled',
 
