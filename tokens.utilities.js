@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-13T11:57:44.254Z
+ * Last generated: 2026-01-27T09:29:14.678Z
  */
 
 export default function ({ addUtilities }) {

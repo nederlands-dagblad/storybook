@@ -23,6 +23,10 @@
   },
   "color": {
     "blue": {
+      "200": {
+        "$type": "color",
+        "$value": "#f1fbfd"
+      },
       "400": {
         "$type": "color",
         "$value": "#02b4f2"
@@ -31,13 +35,13 @@
         "$type": "color",
         "$value": "#0096cb"
       },
+      "800": {
+        "$type": "color",
+        "$value": "#01475f"
+      },
       "900": {
         "$type": "color",
         "$value": "#09254a"
-      },
-      "500-10": {
-        "$type": "color",
-        "$value": "#02a1d91a"
       }
     },
     "pink": {

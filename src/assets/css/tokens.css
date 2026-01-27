@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-13T11:57:44.254Z
+ * Last generated: 2026-01-27T09:29:14.677Z
  */
 
 :root {
@@ -41,10 +41,11 @@
   --color-border-accent-gray-subtle: #eceae9;
   --color-border-disabled: #bdbdbd;
   --color-border-warning: #e9425b;
+  --color-blue-200: #f1fbfd;
   --color-blue-400: #02b4f2;
   --color-blue-500: #0096cb;
+  --color-blue-800: #01475f;
   --color-blue-900: #09254a;
-  --color-blue-500-10: #02a1d91a;
   --color-pink-200: #fef3f2;
   --color-pink-400: #f2e1df;
   --color-pink-600: #ec596f;
@@ -82,7 +83,7 @@
   --color-background-dark-subtle: #222222;
   --color-background-brand: #0096cb;
   --color-background-brand-subtle: #02b4f2;
-  --color-background-brand-subtlest: #02a1d91a;
+  --color-background-brand-accent: #f1fbfd;
   --color-background-accent-gray: #f2f2f2;
   --color-background-accent-gray-subtle: #f8f8f8;
   --color-background-accent-brown: #6a4847;
@@ -124,7 +125,7 @@
   --color-form-border-checkbox-hover: #bdbdbd;
   --color-button-background-primary-hover: #02b4f2;
   --color-button-background-dark-hover: #222222;
-  --color-button-background-secondary-hover: #02a1d91a;
+  --color-button-background-secondary-hover: #f1fbfd;
   --color-button-background-pill-hover: #f8f8f8;
   --color-button-border-secondary-hover: #0096cb;
   --color-button-border-pill-hover: #eceae9;
@@ -144,7 +145,7 @@
   --color-form-border-checkbox-active: #0096cb;
   --color-button-background-primary-active: #02b4f2;
   --color-button-background-dark-active: #222222;
-  --color-button-background-secondary-active: #02a1d91a;
+  --color-button-background-secondary-active: #f1fbfd;
   --color-button-background-pill-active: #f8f8f8;
   --color-button-border-secondary-active: #0096cb;
   --color-button-border-pill-active: #bdbdbd;
@@ -228,7 +229,7 @@
     --color-background-dark-subtle: #727272;
     --color-background-brand: #0096cb;
     --color-background-brand-subtle: #02b4f2;
-    --color-background-brand-subtlest: #02a1d91a;
+    --color-background-brand-accent: #01475f;
     --color-background-accent-gray: #484544;
     --color-background-accent-gray-subtle: #222222;
     --color-background-accent-brown: #a27675;

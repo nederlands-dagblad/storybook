@@ -1,11 +1,12 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-01-13T11:57:44.252Z
+// Last generated: 2026-01-27T09:29:14.675Z
 
 export const primitiveColors = {
+  "blue-200": "var(--color-blue-200)",
   "blue-400": "var(--color-blue-400)",
   "blue-500": "var(--color-blue-500)",
+  "blue-800": "var(--color-blue-800)",
   "blue-900": "var(--color-blue-900)",
-  "blue-500-10": "var(--color-blue-500-10)",
   "pink-200": "var(--color-pink-200)",
   "pink-400": "var(--color-pink-400)",
   "pink-600": "var(--color-pink-600)",
@@ -51,7 +52,7 @@ export const semanticColors = {
   "background-dark-subtle": "var(--color-background-dark-subtle)",
   "background-brand": "var(--color-background-brand)",
   "background-brand-subtle": "var(--color-background-brand-subtle)",
-  "background-brand-subtlest": "var(--color-background-brand-subtlest)",
+  "background-brand-accent": "var(--color-background-brand-accent)",
   "background-accent-gray": "var(--color-background-accent-gray)",
   "background-accent-gray-subtle": "var(--color-background-accent-gray-subtle)",
   "background-accent-brown": "var(--color-background-accent-brown)",
