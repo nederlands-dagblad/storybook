@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-01-27T12:57:02.523Z
+// Last generated: 2026-01-27T13:25:56.801Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -254,33 +254,3 @@ export const primitiveBoxShadows = {
   "m": "var(--box-shadow-m)",
   "l": "var(--box-shadow-l)"
 };
-
-export function generateTokenSafelist() {
-  const safelist = [];
-  
-  Object.keys(semanticColors).forEach(color => {
-    safelist.push(`bg-${color}`);
-    safelist.push(`text-${color}`);
-    safelist.push(`border-${color}`);
-  });
-  
-  Object.keys(spacing).forEach(space => {
-    safelist.push(`p-${space}`);
-    safelist.push(`m-${space}`);
-    safelist.push(`gap-${space}`);
-    safelist.push(`px-${space}`);
-    safelist.push(`py-${space}`);
-    safelist.push(`pt-${space}`);
-    safelist.push(`pr-${space}`);
-    safelist.push(`pb-${space}`);
-    safelist.push(`pl-${space}`);
-    safelist.push(`mx-${space}`);
-    safelist.push(`my-${space}`);
-    safelist.push(`mt-${space}`);
-    safelist.push(`mr-${space}`);
-    safelist.push(`mb-${space}`);
-    safelist.push(`ml-${space}`);
-  });
-  
-  return safelist;
-}
