@@ -66,9 +66,9 @@
       "$type": "color",
       "$value": "{color.blue.400}"
     },
-    "brand-subtlest": {
+    "brand-accent": {
       "$type": "color",
-      "$value": "{color.blue.500-10}"
+      "$value": "{color.blue.800}"
     },
     "accent-gray": {
       "$type": "color",

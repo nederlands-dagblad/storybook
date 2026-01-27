@@ -33,7 +33,7 @@
       },
       "secondary": {
         "$type": "color",
-        "$value": "{background.brand-subtlest}"
+        "$value": "{background.brand-accent}"
       },
       "pill": {
         "$type": "color",
