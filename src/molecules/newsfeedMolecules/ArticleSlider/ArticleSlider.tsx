@@ -28,6 +28,7 @@ export interface ArticleSliderProps {
 
     // Track selected publication (for dnk-publications variant)
     enableSelection?: boolean;
+    defaultSelectedIndex?: number;
     onArticleSelect?: (index: number) => void;
 }
 
@@ -49,6 +50,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 onButtonClick,
                                                                 className = "",
                                                                 enableSelection = false,
+                                                                defaultSelectedIndex,
                                                                 onArticleSelect,
                                                             }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -58,7 +60,9 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     const hasMovedRef = useRef(false);
     const [showLeftFade, setShowLeftFade] = useState(false);
     const [showRightFade, setShowRightFade] = useState(true);
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(
+        defaultSelectedIndex !== undefined ? defaultSelectedIndex : null
+    );
 
     // Video state
     const [videoArticles, setVideoArticles] = useState<ArticleCardProps[]>([]);
