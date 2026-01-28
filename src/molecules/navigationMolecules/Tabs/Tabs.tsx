@@ -10,16 +10,20 @@ export interface TabsProps {
     items: TabItem[];
     active?: boolean;
     backHref?: string;
-    currentLocation?: string; // Add this prop for Storybook testing
-    mobileLayout?: 'vertical' | 'horizontal'; // Control mobile layout behavior
+    currentLocation?: string; // Full URL or pathname+search for matching
+    mobileLayout?: 'vertical' | 'horizontal';
 }
 
 export const Tabs: React.FC<TabsProps> = (props) => {
     const { items, active, backHref, mobileLayout = 'vertical' } = props;
 
-    const currentLocation = props.currentLocation || window.location.pathname;
+    // Use full pathname + search for matching (supports query strings)
+    const currentLocation = props.currentLocation ||
+        (typeof window !== 'undefined' ? window.location.pathname + window.location.search : '');
 
-    const [isDesktop, setIsDesktop] = React.useState(window.innerWidth >= 768);
+    const [isDesktop, setIsDesktop] = React.useState(
+        typeof window !== 'undefined' ? window.innerWidth >= 768 : true
+    );
     const [showLeftFade, setShowLeftFade] = React.useState(false);
     const [showRightFade, setShowRightFade] = React.useState(false);
     const scrollContainerRef = React.useRef<HTMLUListElement>(null);
@@ -41,11 +45,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
         if (!container) return;
 
         const { scrollLeft, scrollWidth, clientWidth } = container;
-
-        // Show left fade if scrolled right from start
         setShowLeftFade(scrollLeft > 0);
-
-        // Show right fade if not scrolled to end
         setShowRightFade(scrollLeft < scrollWidth - clientWidth - 1);
     };
 
@@ -53,13 +53,8 @@ export const Tabs: React.FC<TabsProps> = (props) => {
         const container = scrollContainerRef.current;
         if (!container) return;
 
-        // Check on mount and when items change
         checkScroll();
-
-        // Add scroll listener
         container.addEventListener('scroll', checkScroll);
-
-        // Add resize listener to recheck when window resizes
         window.addEventListener('resize', checkScroll);
 
         return () => {
@@ -72,34 +67,67 @@ export const Tabs: React.FC<TabsProps> = (props) => {
     const useVerticalMobile = !isDesktop && mobileLayout === 'vertical';
     const useHorizontalMobile = !isDesktop && mobileLayout === 'horizontal';
 
+    // Helper function to check if a tab is active
+    const isTabActive = (itemHref: string): boolean => {
+        // Exact match first
+        if (itemHref === currentLocation) return true;
+
+        // Check if both have the same pathname and matching query params
+        try {
+            const itemUrl = new URL(itemHref, window.location.origin);
+            const currentUrl = new URL(currentLocation, window.location.origin);
+
+            // If pathnames match, check the 'tab' query param
+            if (itemUrl.pathname === currentUrl.pathname) {
+                const itemTab = itemUrl.searchParams.get('tab');
+                const currentTab = currentUrl.searchParams.get('tab');
+
+                // Both have tab param - compare them
+                if (itemTab && currentTab) {
+                    return itemTab === currentTab;
+                }
+
+                // Neither has tab param - they match
+                if (!itemTab && !currentTab) {
+                    return true;
+                }
+            }
+        } catch {
+            // Fallback to simple comparison
+            return itemHref === currentLocation;
+        }
+
+        return false;
+    };
+
     const itemRenderer = (item: TabItem, index: number) => {
-        const isActive = item.href === currentLocation;
+        const isActive = isTabActive(item.href);
 
         return (
             <li
                 key={item.href}
                 className={`
-          ${useVerticalMobile ? "w-full flex border-b border-border-default" : "flex-shrink-0"}
-          ${isDesktop || useHorizontalMobile ? "w-auto" : ""}
-        `.trim()}
+                    ${useVerticalMobile ? "w-full flex border-b border-border-default" : "flex-shrink-0"}
+                    ${isDesktop || useHorizontalMobile ? "w-auto" : ""}
+                `.trim()}
             >
                 <a
                     href={item.href}
                     className={`
-            ${useVerticalMobile ? "flex flex-row justify-between items-center w-full py-s" : ""}
-            ${isDesktop || useHorizontalMobile ? "w-auto py-0" : ""}
-            ${index === 0 && useVerticalMobile ? "pt-0" : ""}
-            ${
+                        ${useVerticalMobile ? "flex flex-row justify-between items-center w-full py-s" : ""}
+                        ${isDesktop || useHorizontalMobile ? "w-auto py-0" : ""}
+                        ${index === 0 && useVerticalMobile ? "pt-0" : ""}
+                        ${
                         isActive
                             ? "text-menu-menu-tab-item-active text-text-default underline underline-offset-[0.3rem] decoration-[0.1rem] !decoration-text-brand"
                             : "text-menu-menu-tab-item text-text-default no-underline hover:underline hover:underline-offset-[0.3rem] hover:decoration-[0.1rem]"
                     }
-          `.trim()}
+                    `.trim()}
                 >
                     {item.label}
                     <span className={useVerticalMobile ? "flex" : "hidden"}>
-            <Icon name="caret-right" variant="outline" size="s" color={isActive ? "brand" : "default"} />
-          </span>
+                        <Icon name="caret-right" variant="outline" size="s" color={isActive ? "brand" : "default"} />
+                    </span>
                 </a>
             </li>
         );
@@ -107,7 +135,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
 
     // Mobile active view (only for vertical layout when a tab is selected on mobile)
     if (useVerticalMobile && active) {
-        const activeItem = items.find(item => item.href === currentLocation);
+        const activeItem = items.find(item => isTabActive(item.href));
 
         if (!activeItem) return null;
 
@@ -118,8 +146,8 @@ export const Tabs: React.FC<TabsProps> = (props) => {
                         <Icon name="caret-left" variant="outline" size="s" color="default" />
                     </div>
                     <span className="text-menu-menu-tab-item-active text-text-default underline underline-offset-[0.3rem] decoration-[0.1rem] !decoration-text-brand">
-            {activeItem.label}
-          </span>
+                        {activeItem.label}
+                    </span>
                 </a>
             </div>
         );
@@ -127,13 +155,11 @@ export const Tabs: React.FC<TabsProps> = (props) => {
 
     // Filter out active item on mobile vertical layout (not on horizontal or desktop)
     const displayItems = useVerticalMobile
-        ? items.filter(item => item.href !== currentLocation)
+        ? items.filter(item => !isTabActive(item.href))
         : items;
 
     return (
-        <div className={`
-      ${useVerticalMobile ? "" : "relative"}
-    `.trim()}>
+        <div className={`${useVerticalMobile ? "" : "relative"}`.trim()}>
             {/* Left fade overlay */}
             {!useVerticalMobile && showLeftFade && (
                 <div className="absolute left-0 top-0 bottom-0 w-l bg-gradient-to-r from-background-default to-transparent pointer-events-none z-10" />
@@ -147,9 +173,9 @@ export const Tabs: React.FC<TabsProps> = (props) => {
             <ul
                 ref={scrollContainerRef}
                 className={`
-        flex
-        ${useVerticalMobile ? "flex-col gap-0" : "flex-row gap-m overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"}
-      `.trim()}>
+                    flex
+                    ${useVerticalMobile ? "flex-col gap-0" : "flex-row gap-m overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"}
+                `.trim()}>
                 {displayItems.map((item, index) => itemRenderer(item, index))}
             </ul>
         </div>
