@@ -243,25 +243,20 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                 >
                     {articles.map((article, index) => {
                         const isSelected = enableSelection && selectedIndex === index;
-                        const handleArticleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-                            if (enableSelection && !hasMovedRef.current) {
-                                setSelectedIndex(index);
-                                onArticleSelect?.(index);
-
-                                // Only prevent navigation if there's no href (selection-only mode)
-                                if (!article.href) {
-                                    e.preventDefault();
-                                }
-                                // If there IS an href, let the navigation happen
-                            }
-                            article.onClick?.(e);
-                        };
 
                         return (
-                            <div key={index} className="flex-shrink-0">
+                            <div
+                                key={index}
+                                className="flex-shrink-0"
+                                onClick={() => {
+                                    if (enableSelection && !hasMovedRef.current) {
+                                        setSelectedIndex(index);
+                                        onArticleSelect?.(index);
+                                    }
+                                }}
+                            >
                                 <ArticleCard
                                     {...article}
-                                    onClick={enableSelection ? handleArticleClick : article.onClick}
                                     className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
                                 />
                             </div>
