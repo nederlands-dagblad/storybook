@@ -245,9 +245,14 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                         const isSelected = enableSelection && selectedIndex === index;
                         const handleArticleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
                             if (enableSelection && !hasMovedRef.current) {
-                                e.preventDefault();
                                 setSelectedIndex(index);
                                 onArticleSelect?.(index);
+
+                                // Only prevent navigation if there's no href (selection-only mode)
+                                if (!article.href) {
+                                    e.preventDefault();
+                                }
+                                // If there IS an href, let the navigation happen
                             }
                             article.onClick?.(e);
                         };
