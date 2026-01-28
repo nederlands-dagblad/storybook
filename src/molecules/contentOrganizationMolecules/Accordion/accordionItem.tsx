@@ -38,9 +38,9 @@ export function AccordionItem({
             accordion-item 
             ${isOpen ? 'accordion-item--open' : ''}
             w-full block
-            border-border-accent-gray bg-background-default
+            border-border-gray bg-background-default
             transition-[border-color] duration-200 ease-in-out
-            ${isOpen ? 'border-border-brand' : 'border-border-accent-gray'}
+            ${isOpen ? 'border-border-brand' : 'border-border-gray'}
             border-[length:var(--border-width-s)]
         `}>
             <button

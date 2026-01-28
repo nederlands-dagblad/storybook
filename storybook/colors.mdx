@@ -1,47 +1,242 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import tailwindConfig from '../tailwind.config.js';
+import primitives from '../tokens/primitives.value.tokens.json';
+import semanticLight from '../tokens/semantic-colors.light.tokens.json';
+import semanticDark from '../tokens/semantic-colors.dark.tokens.json';
 
 <Meta title="Tokens/Colors" />
 
-# Colors
+# Color Tokens
+
+## Primitives
+
+These are the base color values used throughout the design system.
 
 {(() => {
-  const rawColors = tailwindConfig.theme.extend?.colors ?? {};
+const colors = primitives.color;
 
-  const grouped = Object.entries(rawColors).reduce((acc, [token, cssVar]) => {
-    const match = token.match(/^([a-zA-Z]+)-/);
-    const group = match ? match[1] : 'other';
-    if (!acc[group]) acc[group] = [];
-    acc[group].push({ token, cssVar });
-    return acc;
-  }, {});
+return Object.entries(colors).map(([family, shades]) => (
+<div key={family} style={{ marginBottom: '3rem' }}>
+<h3 style={{
+fontSize: '1.125rem',
+fontWeight: 600,
+marginBottom: '1rem',
+textTransform: 'capitalize'
+}}>
+{family}
+</h3>
+<div style={{
+display: 'grid',
+gap: '0.5rem',
+backgroundColor: '#f8f8f8',
+padding: '1rem',
+borderRadius: '8px'
+}}>
+{Object.entries(shades).map(([shade, data]) => (
+<div
+key={shade}
+style={{
+display: 'grid',
+gridTemplateColumns: '120px 80px 1fr',
+alignItems: 'center',
+gap: '1rem',
+padding: '0.5rem',
+backgroundColor: 'white',
+borderRadius: '4px'
+}}
+>
+<div style={{
+fontFamily: 'monospace',
+fontSize: '0.875rem',
+fontWeight: 500
+}}>
+{family}.{shade}
+</div>
+<div
+style={{
+backgroundColor: data.$value,
+height: '32px',
+borderRadius: '4px',
+border: '1px solid #ddd',
+}}
+/>
+<div style={{
+fontFamily: 'monospace',
+fontSize: '0.875rem',
+color: '#666'
+}}>
+{data.$value}
+</div>
+</div>
+))}
+</div>
+</div>
+));
+})()}
 
-  return Object.entries(grouped).map(([family, items]) => (
-    <div key={family} style={{ marginBottom: '2rem' }}>
-      <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-        {family.charAt(0).toUpperCase() + family.slice(1)}
-      </h2>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-          gap: '1rem',
-        }}
-      >
-        {items.map(({ token, cssVar }) => (
-          <div key={token} style={{ textAlign: 'center' }}>
-            <div
-              style={{
-                backgroundColor: cssVar,
-                height: '50px',
-                borderRadius: '6px',
-                border: '1px solid #ddd',
-              }}
-            />
-            <div style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>{token}</div>
+---
+
+## Semantic Tokens
+
+These tokens reference the primitives above and adapt to light/dark mode.
+
+{(() => {
+const categories = ['text', 'background', 'border', 'icons', 'shadow'];
+
+// Token descriptions/usage
+const descriptions = {
+'text-brand-hover': 'Hover state for primary and ghost buttons',
+'text-inverse': 'Primary and dark buttons (stays white in dark mode)',
+'text-opinie': 'Opinie articles',
+'background-brand-hover': 'Hover state for primary and ghost buttons',
+'background-dark': 'Dark button',
+'background-dark-hover': 'Hover state for dark button',
+'background-pink': 'Premium badge',
+'background-opinie': 'Opinie articles',
+'background-dnk': 'De Nieuwe Koers section background',
+'icons-opinie': 'Opinie articles',
+};
+
+const resolveValue = (value) => {
+// Remove the curly braces and resolve the reference
+const ref = value.replace(/[{}]/g, '');
+const parts = ref.split('.');
+let current = primitives;
+for (const part of parts) {
+current = current[part];
+if (!current) return value;
+}
+return current.$value || value;
+};
+
+return categories.map(category => {
+const lightTokens = semanticLight[category] || {};
+const darkTokens = semanticDark[category] || {};
+const tokenNames = Object.keys(lightTokens);
+
+    if (tokenNames.length === 0) return null;
+    
+    return (
+      <div key={category} style={{ marginBottom: '3rem' }}>
+        <h3 style={{ 
+          fontSize: '1.125rem', 
+          fontWeight: 600, 
+          marginBottom: '1rem',
+          textTransform: 'capitalize'
+        }}>
+          {category}
+        </h3>
+        <div style={{ 
+          display: 'grid', 
+          gap: '0.5rem',
+          backgroundColor: '#f8f8f8',
+          padding: '1rem',
+          borderRadius: '8px'
+        }}>
+          {/* Header row */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '180px 1fr 1fr',
+            gap: '1rem',
+            padding: '0.5rem',
+            fontWeight: 600,
+            fontSize: '0.875rem',
+            borderBottom: '2px solid #ddd'
+          }}>
+            <div>Token</div>
+            <div>Light Mode</div>
+            <div>Dark Mode</div>
           </div>
-        ))}
+          
+          {/* Token rows */}
+          {tokenNames.map(tokenName => {
+            const lightValue = lightTokens[tokenName].$value;
+            const darkValue = darkTokens[tokenName].$value;
+            const lightHex = resolveValue(lightValue);
+            const darkHex = resolveValue(darkValue);
+            const tokenKey = `${category}-${tokenName}`;
+            const description = descriptions[tokenKey];
+            
+            return (
+              <div 
+                key={tokenName}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '180px 1fr 1fr',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  padding: '0.5rem',
+                  backgroundColor: 'white',
+                  borderRadius: '4px'
+                }}
+              >
+                <div>
+                  <div style={{ 
+                    fontFamily: 'monospace', 
+                    fontSize: '0.875rem',
+                    fontWeight: 500
+                  }}>
+                    {category}-{tokenName}
+                  </div>
+                  {description && (
+                    <div style={{
+                      fontSize: '0.7rem',
+                      color: '#666',
+                      marginTop: '0.25rem',
+                      fontStyle: 'italic'
+                    }}>
+                      {description}
+                    </div>
+                  )}
+                </div>
+                
+                {/* Light mode */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div
+                    style={{
+                      backgroundColor: lightHex,
+                      width: '48px',
+                      height: '32px',
+                      borderRadius: '4px',
+                      border: '1px solid #ddd',
+                      flexShrink: 0
+                    }}
+                  />
+                  <div style={{ fontSize: '0.75rem' }}>
+                    <div style={{ fontFamily: 'monospace', color: '#666' }}>
+                      {lightValue.replace(/[{}]/g, '')}
+                    </div>
+                    <div style={{ fontFamily: 'monospace', color: '#999', fontSize: '0.7rem' }}>
+                      {lightHex}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Dark mode */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div
+                    style={{
+                      backgroundColor: darkHex,
+                      width: '48px',
+                      height: '32px',
+                      borderRadius: '4px',
+                      border: '1px solid #ddd',
+                      flexShrink: 0
+                    }}
+                  />
+                  <div style={{ fontSize: '0.75rem' }}>
+                    <div style={{ fontFamily: 'monospace', color: '#666' }}>
+                      {darkValue.replace(/[{}]/g, '')}
+                    </div>
+                    <div style={{ fontFamily: 'monospace', color: '#999', fontSize: '0.7rem' }}>
+                      {darkHex}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  ));
+    );
+});
 })()}

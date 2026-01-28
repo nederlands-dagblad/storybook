@@ -1,6 +1,6 @@
 /* AccordionItem.css - COMPLETE */
 .accordion-item {
-    border: var(--border-width-s) solid var(--color-border-accent-gray);
+    border: var(--border-width-s) solid var(--color-border-gray);
     background: var(--color-background-default);
     width: 100%;
     display: block;

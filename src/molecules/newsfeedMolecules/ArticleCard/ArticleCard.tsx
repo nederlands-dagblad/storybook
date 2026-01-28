@@ -31,14 +31,14 @@ export const ArticleCard = ({
                             }: ArticleCardProps): JSX.Element => {
     // Determine article type color based on variant
     const articleTypeColor = variant === 'de-nieuwe-koers'
-        ? 'text-dnk-brand'
+        ? 'text-text-dnk'
         : variant === 'video'
             ? 'text-text-inverse'
             : 'text-text-brand';
 
     // Determine hover border color for non-video variants
     const hoverBorderColor = variant === 'de-nieuwe-koers'
-        ? 'hover:border-dnk-brand'
+        ? 'hover:border-border-dnk'
         : 'hover:border-border-brand';
 
     // Shared article type and badge component
@@ -72,7 +72,7 @@ export const ArticleCard = ({
                         className="w-full h-[19.125rem] object-cover"
                     />
                 ) : (
-                    <div className="w-full h-[19.125rem] bg-background-accent-gray"/>
+                    <div className="w-full h-[19.125rem] bg-background-gray"/>
                 )}
 
                 {/* Dark gradient overlay for better text readability */}
@@ -114,7 +114,7 @@ export const ArticleCard = ({
     if (variant === 'dnk-publications') {
         const dnkPublicationsContent = (
             <>
-                <div className="w-[13.25rem] border border-width-s border-border-accent-gray-subtle hover:border-dnk-brand active:border-dnk-brand transition-colors overflow-hidden">
+                <div className="w-[13.25rem] border border-width-s border-border-gray-subtle hover:border-border-dnk active:border-dnk-brand transition-colors overflow-hidden">
                     {imageUrl ? (
                         <img
                             src={imageUrl}
@@ -122,7 +122,7 @@ export const ArticleCard = ({
                             className="w-full h-[19.125rem] object-cover"
                         />
                     ) : (
-                        <div className="w-full h-[19.125rem] bg-background-accent-gray flex items-center justify-center">
+                        <div className="w-full h-[19.125rem] bg-background-gray flex items-center justify-center">
                             {placeholderText && (
                                 <span className="text-body-light text-text-default text-center px-s">{placeholderText}</span>
                             )}
@@ -161,7 +161,7 @@ export const ArticleCard = ({
                         className="w-full h-[7.5rem] object-cover"
                     />
                 ) : (
-                    <div className="w-full h-[7.5rem] bg-background-accent-gray"/>
+                    <div className="w-full h-[7.5rem] bg-background-gray"/>
                 )}
 
                 {/* DNK Badge overlay */}
@@ -179,7 +179,7 @@ export const ArticleCard = ({
         </>
     );
 
-    const baseClasses = `inline-flex flex-col items-center w-[13.25rem] p-s gap-s bg-background-default border border-width-s border-border-accent-gray-subtle ${className}`.trim();
+    const baseClasses = `inline-flex flex-col items-center w-[13.25rem] p-s gap-s bg-background-default border border-width-s border-border-gray-subtle ${className}`.trim();
 
     return href ? (
         <a

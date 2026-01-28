@@ -56,7 +56,7 @@ export const Badge: React.FC<BadgeProps> = ({
         <div
             className={`inline-flex items-center gap-xxs ${
                 size === 'small' ? 'p-[0.125rem]' : 'p-xs'
-            } bg-background-accent-pink-subtlest text-meta text-neutral-black ${className}`}
+            } bg-background-pink text-meta text-neutral-black ${className}`}
         >
             <Icon
                 name="star-small"

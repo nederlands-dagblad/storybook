@@ -17,12 +17,12 @@ const meta: Meta<typeof CardContainer> = {
         },
         borderColor: {
             control: 'select',
-            options: ['default', 'brand', 'accent-gray', 'accent-gray-subtle', 'disabled', 'warning', 'none'],
+            options: ['default', 'brand', 'gray', 'gray-subtle', 'disabled', 'warning', 'none'],
             description: 'Border color of the container',
         },
         background: {
             control: 'select',
-            options: ['transparent', 'accent-gray'],
+            options: ['transparent', 'gray'],
             description: 'Background color variant',
         },
         className: {

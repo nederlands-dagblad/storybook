@@ -192,7 +192,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
         return (
             <div className={`w-full flex flex-col gap-s ${className}`}>
                 {title && <SectionHeading>{title}</SectionHeading>}
-                <p className="text-body-regular text-text-subtle">Video's laden...</p>
+                <p className="text-body-regular text-text-gray">Video's laden...</p>
             </div>
         );
     }
@@ -234,7 +234,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                     className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing [&_img]:pointer-events-none"
                     style={{
                         scrollbarWidth: "thin",
-                        scrollbarColor: "var(--color-border-accent-gray) transparent"
+                        scrollbarColor: "var(--color-border-gray) transparent"
                     }}
                 >
                     {articles.map((article, index) => {
@@ -253,7 +253,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                 <ArticleCard
                                     {...article}
                                     onClick={enableSelection ? handleArticleClick : article.onClick}
-                                    className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
+                                    className={`${article.className || ''} ${isSelected ? '[&>div]:!border-border-dnk' : ''}`.trim()}
                                 />
                             </div>
                         );
