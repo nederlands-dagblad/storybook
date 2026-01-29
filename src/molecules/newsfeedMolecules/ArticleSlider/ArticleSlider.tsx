@@ -258,16 +258,25 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                     >
                         {articles.map((article, index) => {
                             const isSelected = enableSelection && selectedIndex === index;
+                            const isVideoMode = !!videoConfig;
+                            const articleWithVideo = article as ArticleCardProps & { videoId?: string };
 
                             return (
                                 <div
                                     key={index}
                                     className="flex-shrink-0 cursor-pointer"
-                                    onClick={() => handleVideoClick(article as ArticleCardProps & { videoId?: string }, index)}
+                                    onClickCapture={(e) => {
+                                        // Only intercept for video mode
+                                        if (isVideoMode && articleWithVideo.videoId && !hasMovedRef.current) {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setActiveVideoId(articleWithVideo.videoId);
+                                        }
+                                    }}
                                 >
                                     <ArticleCard
                                         {...article}
-                                        href={undefined} // Remove href to prevent navigation
+                                        href={isVideoMode ? undefined : article.href}  // Only remove href in video mode
                                         className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
                                     />
                                 </div>
