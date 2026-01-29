@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-01-28T15:11:36.819Z
+// Last generated: 2026-01-29T13:57:39.062Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -27,13 +27,6 @@ export const primitiveColors = {
   "brown-800": "var(--color-brown-800)"
 };
 export const semanticColors = {
-  "border-default": "var(--color-border-default)",
-  "border-brand": "var(--color-border-brand)",
-  "border-warning": "var(--color-border-warning)",
-  "border-disabled": "var(--color-border-disabled)",
-  "border-gray": "var(--color-border-gray)",
-  "border-gray-subtle": "var(--color-border-gray-subtle)",
-  "border-dnk": "var(--color-border-dnk)",
   "text-default": "var(--color-text-default)",
   "text-brand": "var(--color-text-brand)",
   "text-brand-hover": "var(--color-text-brand-hover)",
@@ -152,13 +145,14 @@ export const primitiveLetterSpacings = {
   "m": "var(--letter-spacing-m)",
   "l": "var(--letter-spacing-l)"
 };
-export const primitiveBorderWidths = {
-  "0": "var(--border-width-0)",
+export const primitiveBorderWidth = {
   "s": "var(--border-width-s)"
 };
 export const primitiveBorderRadius = {
-  "0": "var(--border-radius-0)",
   "xl": "var(--border-radius-xl)"
+};
+export const semanticBorderWidth = {
+  "default": "var(--border-width-default)"
 };
 export const semanticBorderRadius = {
   "pill": "var(--border-radius-pill)"

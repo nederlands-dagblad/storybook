@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-28T15:11:36.821Z
+ * Last generated: 2026-01-29T13:57:39.063Z
  */
 
 :root {
@@ -35,36 +35,6 @@
   --letter-spacing-s: 1.6px;
   --letter-spacing-m: 2.4px;
   --letter-spacing-l: 4px;
-  --color-border-default: #000000;
-  --color-border-brand: #0096cb;
-  --color-border-warning: #be123c;
-  --color-border-disabled: #bdbdbd;
-  --color-border-gray: #bdbdbd;
-  --color-border-gray-subtle: #eceae9;
-  --color-border-dnk: #be123c;
-  --color-blue-200: #f1fbfd;
-  --color-blue-400: #02b4f2;
-  --color-blue-500: #0096cb;
-  --color-blue-800: #01475f;
-  --color-neutral-100: #f8f8f8;
-  --color-neutral-200: #f2f2f2;
-  --color-neutral-300: #eceae9;
-  --color-neutral-400: #bdbdbd;
-  --color-neutral-500: #999999;
-  --color-neutral-600: #727272;
-  --color-neutral-700: #484544;
-  --color-neutral-800: #222222;
-  --color-neutral-900: #121212;
-  --color-neutral-black: #000000;
-  --color-neutral-black-10: #0000001a;
-  --color-neutral-white: #ffffff;
-  --color-neutral-white-30: #ffffff4d;
-  --color-pink-200: #fef3f2;
-  --color-pink-400: #f2e1df;
-  --color-pink-700: #e63950;
-  --color-pink-800: #be123c;
-  --color-brown-500: #a27675;
-  --color-brown-800: #6a4847;
   --color-text-default: #000000;
   --color-text-brand: #0096cb;
   --color-text-brand-hover: #02b4f2;
@@ -94,6 +64,29 @@
   --color-icons-gray: #727272;
   --color-icons-dnk: #be123c;
   --color-shadow-default: #0000001a;
+  --color-blue-200: #f1fbfd;
+  --color-blue-400: #02b4f2;
+  --color-blue-500: #0096cb;
+  --color-blue-800: #01475f;
+  --color-neutral-100: #f8f8f8;
+  --color-neutral-200: #f2f2f2;
+  --color-neutral-300: #eceae9;
+  --color-neutral-400: #bdbdbd;
+  --color-neutral-500: #999999;
+  --color-neutral-600: #727272;
+  --color-neutral-700: #484544;
+  --color-neutral-800: #222222;
+  --color-neutral-900: #121212;
+  --color-neutral-black: #000000;
+  --color-neutral-black-10: #0000001a;
+  --color-neutral-white: #ffffff;
+  --color-neutral-white-30: #ffffff4d;
+  --color-pink-200: #fef3f2;
+  --color-pink-400: #f2e1df;
+  --color-pink-700: #e63950;
+  --color-pink-800: #be123c;
+  --color-brown-500: #a27675;
+  --color-brown-800: #6a4847;
   --box-shadow-s: 0px 1px 8px 0px #0000001a;
   --box-shadow-m: 0px 10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
   --box-shadow-l: 0px -10px 20px 0px #0000001a, 0px 1px 2px 0px #0000001a;
@@ -105,11 +98,10 @@
   --spacing-l: 40px;
   --spacing-xl: 64px;
   --spacing-xxl: 128px;
-  --border-radius-0: 0px;
-  --border-radius-xl: 80px;
-  --border-radius-pill: 80px;
-  --border-width-0: 0px;
   --border-width-s: 1px;
+  --border-radius-xl: 80px;
+  --border-width-default: 1px;
+  --border-radius-pill: 80px;
   --font-size-heading-xs: 14px;
   --font-size-heading-s: 18px;
   --font-size-heading-m: 20px;

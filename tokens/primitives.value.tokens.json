@@ -1,20 +1,12 @@
 {
   "border": {
     "border-width": {
-      "0": {
-        "$type": "dimension",
-        "$value": "0px"
-      },
       "s": {
         "$type": "dimension",
         "$value": "1px"
       }
     },
     "border-radius": {
-      "0": {
-        "$type": "dimension",
-        "$value": "0px"
-      },
       "xl": {
         "$type": "dimension",
         "$value": "80px"

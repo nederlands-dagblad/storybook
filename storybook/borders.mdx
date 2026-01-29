@@ -1,71 +1,247 @@
 import {Meta} from '@storybook/addon-docs/blocks';
-import tailwindConfig from '../tailwind.config.js';
+import primitives from '../tokens/primitives.value.tokens.json';
+import semantic from '../tokens/semantic-border.value.tokens.json';
 
-<Meta title="Tokens/Borders" />
+<Meta title="Tokens/Borders"/>
 
-# Borders
+# Border Tokens
 
-## Border-width
+## Semantic Tokens
 
-<table>
-    <thead>
-    <tr>
-        <th>Variable</th>
-        <th>Value</th>
-        <th>Example</th>
-    </tr>
-    </thead>
-    <tbody>
-    {Object.entries(tailwindConfig.theme.extend.borderWidth).map(([key, value]) => (
-        <tr key={key}>
-            <td>border-width-{key}</td>
-            <td>{value}</td>
-            <td>
-                <div
-                    style={{
-                        background: 'var(--background-gray, #F2F2F2)',
-                        width: 'var(--spacing-xl, 80px)',
-                        height: 'var(--spacing-xl, 80px)',
-                        border: `${value} solid #000000`,
-                        borderRadius: 'var(--border-radius-s, 8px)',
-                        margin: '0 auto'
-                    }}
-                />
-            </td>
+These tokens reference the primitives below for consistent usage across the design system.
+
+{(() => {
+const resolveValue = (value) => {
+const ref = value.replace(/[{}]/g, '');
+const parts = ref.split('.');
+let current = primitives;
+for (const part of parts) {
+current = current[part];
+if (!current) return value;
+}
+return current.$value || value;
+};
+
+const descriptions = {
+'border-width-default': 'Default border width for cards, inputs, and containers',
+'border-radius-pill': 'Pill-shaped border radius for buttons and badges',
+};
+
+// Map to get the actual primitive key that the semantic token references
+const getPrimitiveKey = (value) => {
+const ref = value.replace(/[{}]/g, '');
+const parts = ref.split('.');
+// Return the last part (e.g., 's' from 'border.border-width.s')
+return parts[parts.length - 1];
+};
+
+return (
+<>
+    {semantic['border-width'] && (
+        <div className="mb-l sb-unstyled">
+            <h3 className="text-heading-2 mb-s">
+                Border Width
+            </h3>
+            <table className="sb-unstyled w-full border-collapse bg-background-default">
+                <thead>
+                <tr className="bg-background-gray-subtle">
+                    <th className="px-m py-s text-left text-body-bold">Token</th>
+                    <th className="px-m py-s text-left text-body-bold">Reference</th>
+                    <th className="px-m py-s text-left text-body-bold">Value</th>
+                    <th className="px-m py-s text-center text-body-bold">Example</th>
+                    <th className="px-m py-s text-left text-body-bold">Tailwind Class</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.entries(semantic['border-width']).map(([key, data]) => {
+                    const resolvedValue = resolveValue(data.$value);
+                    const tokenKey = `border-width-${key}`;
+                    const description = descriptions[tokenKey];
+                    const tailwindClass = `border-${key}`; // Just use key directly
+
+                    return (
+                        <tr key={key} className="border-t border-border-gray-subtle">
+                            <td className="px-m py-s">
+                                <div className="text-body-light text-text-default">
+                                    border-width-{key}
+                                </div>
+                                {description && (
+                                    <div className="text-meta-light text-text-gray mt-xxs">
+                                        {description}
+                                    </div>
+                                )}
+                            </td>
+                            <td className="px-m py-s text-body-light text-text-default">
+                                {data.$value.replace(/[{}]/g, '')}
+                            </td>
+                            <td className="px-m py-s text-body-light text-text-default">
+                                {resolvedValue}
+                            </td>
+                            <td className="px-m py-s">
+                                <div className="flex justify-center">
+                                    <div
+                                        className="w-[80px] h-[48px] rounded-[4px] border-border-default"
+                                        style={{ border: `${resolvedValue} solid` }}
+                                    />
+                                </div>
+                            </td>
+                            <td className="px-m py-s">
+                                <div className="text-text-default font-mono">
+                                    {tailwindClass}
+                                </div>
+                            </td>
+                        </tr>
+                    );
+                })}
+                </tbody>
+            </table>
+        </div>
+    )}
+
+    {semantic['border-radius'] && (
+        <div className="mb-l sb-unstyled">
+            <h3 className="text-heading-2 mb-s">
+                Border Radius
+            </h3>
+            <table className="sb-unstyled w-full border-collapse bg-background-default">
+                <thead>
+                <tr className="bg-background-gray-subtle">
+                    <th className="px-m py-s text-left text-body-bold">Token</th>
+                    <th className="px-m py-s text-left text-body-bold">Reference</th>
+                    <th className="px-m py-s text-left text-body-bold">Value</th>
+                    <th className="px-m py-s text-center text-body-bold">Example</th>
+                    <th className="px-m py-s text-left text-body-bold">Tailwind Class</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.entries(semantic['border-radius']).map(([key, data]) => {
+                    const resolvedValue = resolveValue(data.$value);
+                    const tokenKey = `border-radius-${key}`;
+                    const description = descriptions[tokenKey];
+                    const tailwindClass = `rounded-${key}`; // Just use key directly
+
+                    return (
+                        <tr key={key} className="border-t border-border-gray-subtle">
+                            <td className="px-m py-s">
+                                <div className="text-body-light text-text-default">
+                                    border-radius-{key}
+                                </div>
+                                {description && (
+                                    <div className="text-meta-light text-text-gray mt-xxs">
+                                        {description}
+                                    </div>
+                                )}
+                            </td>
+                            <td className="px-m py-s text-body-light text-text-default">
+                                {data.$value.replace(/[{}]/g, '')}
+                            </td>
+                            <td className="px-m py-s text-body-light text-text-default">
+                                {resolvedValue}
+                            </td>
+                            <td className="px-m py-s">
+                                <div className="flex justify-center">
+                                    <div
+                                        className="w-[80px] h-[48px] rounded-[4px] bg-background-gray border border-border-gray"
+                                        style={{ borderRadius: resolvedValue }}
+                                    />
+                                </div>
+                            </td>
+                            <td className="px-m py-s">
+                                <div className="text-text-default font-mono">
+                                    {tailwindClass}
+                                </div>
+                            </td>
+                        </tr>
+                    );
+                })}
+                </tbody>
+            </table>
+        </div>
+    )}
+</>
+            );
+})()}
+
+---
+
+## Primitives
+
+These are the base border values used throughout the design system.
+
+<div className="mb-l sb-unstyled">
+    <h3 className="text-heading-2 mb-s">Border Width</h3>
+    <table className="sb-unstyled w-full border-collapse bg-background-default">
+        <thead>
+        <tr className="bg-background-gray-subtle">
+            <th className="px-m py-s text-left text-body-bold">Token</th>
+            <th className="px-m py-s text-left text-body-bold">Value</th>
+            <th className="px-m py-s text-center text-body-bold">Example</th>
+            <th className="px-m py-s text-left text-body-bold">Tailwind Class</th>
         </tr>
-    ))}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {Object.entries(primitives.border['border-width']).map(([key, data]) => (
+            <tr key={key} className="border-t border-border-gray-subtle">
+                <td className="px-m py-s text-body-light text-text-default">
+                    border-width-{key}
+                </td>
+                <td className="px-m py-s text-body-light text-text-default font-mono">
+                    {data.$value}
+                </td>
+                <td className="px-m py-s">
+                    <div className="flex justify-center">
+                        <div
+                            className="w-[80px] h-[48px] rounded-[4px] border-border-default"
+                            style={{ border: `${data.$value} solid` }}
+                        />
+                    </div>
+                </td>
+                <td className="px-m py-s">
+                    <div className="text-text-default font-mono">
+                        border-{key}
+                    </div>
+                </td>
+            </tr>
+        ))}
+        </tbody>
+    </table>
+</div>
 
-## Border-radius
-
-<table>
-    <thead>
-    <tr>
-        <th>Variable</th>
-        <th>Value</th>
-        <th>Example</th>
-    </tr>
-    </thead>
-    <tbody>
-    {Object.entries(tailwindConfig.theme.extend.borderRadius).map(([key, value]) => (
-        <tr key={key}>
-            <td>border-radius-{key}</td>
-            <td>{value}</td>
-            <td>
-                <div
-                    style={{
-                        background: 'var(--background-gray, #F2F2F2)',
-                        width: '145px',
-                        height: '60px',
-                        border: '1px solid var(--border-default, #000000)',
-                        borderRadius: value,
-                        margin: '0 auto'
-                    }}
-                />
-            </td>
+<div className="mb-l sb-unstyled">
+    <h3 className="text-heading-2 mb-s">Border Radius</h3>
+    <table className="sb-unstyled w-full border-collapse bg-background-default">
+        <thead>
+        <tr className="bg-background-gray-subtle">
+            <th className="px-m py-s text-left text-body-bold">Token</th>
+            <th className="px-m py-s text-left text-body-bold">Value</th>
+            <th className="px-m py-s text-center text-body-bold">Example</th>
+            <th className="px-m py-s text-left text-body-bold">Tailwind Class</th>
         </tr>
-    ))}
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+        {Object.entries(primitives.border['border-radius']).map(([key, data]) => (
+            <tr key={key} className="border-t border-border-gray-subtle">
+                <td className="px-m py-s text-body-light text-text-default">
+                    border-radius-{key}
+                </td>
+                <td className="px-m py-s text-body-light text-text-default font-mono">
+                    {data.$value}
+                </td>
+                <td className="px-m py-s">
+                    <div className="flex justify-center">
+                        <div
+                            className="w-[80px] h-[48px] rounded-[4px] bg-background-gray border border-border-gray"
+                            style={{ borderRadius: data.$value }}
+                        />
+                    </div>
+                </td>
+                <td className="px-m py-s">
+                    <div className="text-text-default font-mono">
+                        rounded-{key}
+                    </div>
+                </td>
+            </tr>
+        ))}
+        </tbody>
+    </table>
+</div>

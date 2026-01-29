@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-28T15:11:36.821Z
+ * Last generated: 2026-01-29T13:57:39.064Z
  */
 
 export default function ({ addUtilities }) {
@@ -401,7 +401,60 @@ export default function ({ addUtilities }) {
     "gap": "var(--spacing-xxl)"
   }
 },
-    ...{},
+    ...{
+  ".border-s": {
+    "borderWidth": "var(--border-width-s)"
+  },
+  ".border-t-s": {
+    "borderTopWidth": "var(--border-width-s)"
+  },
+  ".border-r-s": {
+    "borderRightWidth": "var(--border-width-s)"
+  },
+  ".border-b-s": {
+    "borderBottomWidth": "var(--border-width-s)"
+  },
+  ".border-l-s": {
+    "borderLeftWidth": "var(--border-width-s)"
+  },
+  ".rounded-xl": {
+    "borderRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-t-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)",
+    "borderTopRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-r-xl": {
+    "borderTopRightRadius": "var(--border-radius-xl)",
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-b-xl": {
+    "borderBottomLeftRadius": "var(--border-radius-xl)",
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-l-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)",
+    "borderBottomLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-tl-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-tr-xl": {
+    "borderTopRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-bl-xl": {
+    "borderBottomLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-br-xl": {
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".border-default": {
+    "borderWidth": "var(--border-width-default)"
+  },
+  ".rounded-pill": {
+    "borderRadius": "var(--border-radius-pill)"
+  }
+},
     ...{
   ".text-article-heading": {
     "fontFamily": "var(--font-family-gulliver)",
