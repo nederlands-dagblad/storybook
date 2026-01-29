@@ -1,8 +1,8 @@
 import React from "react";
 
 type Padding = 'none' | 'xs' | 's' | 'm' | 'l' | 'xl';
-type BorderColor = 'default' | 'brand' | 'accent-gray' | 'accent-gray-subtle' | 'disabled' | 'warning';
-type BackgroundVariant = 'transparent' | 'accent-gray';
+type BorderColor = 'default' | 'brand' | 'gray' | 'gray-subtle' | 'disabled' | 'warning';
+type BackgroundVariant = 'transparent' | 'gray';
 
 export interface CardContainerProps {
     children: React.ReactNode;
@@ -24,28 +24,28 @@ const paddingMap: Record<Padding, string> = {
 const borderColorMap: Record<BorderColor, string> = {
     default: 'border-border-default',
     brand: 'border-border-brand',
-    'accent-gray': 'border-border-accent-gray',
-    'accent-gray-subtle': 'border-border-accent-gray-subtle',
+    'gray': 'border-border-gray',
+    'gray-subtle': 'border-border-gray-subtle',
     disabled: 'border-border-disabled',
     warning: 'border-border-warning',
 };
 
 const backgroundMap: Record<BackgroundVariant, string> = {
     transparent: 'bg-transparent',
-    'accent-gray': 'bg-background-accent-gray',
+    'gray': 'bg-background-gray',
 };
 
 export const CardContainer: React.FC<CardContainerProps> = ({
                                                                 children,
                                                                 padding = 's',
-                                                                borderColor = 'accent-gray',
+                                                                borderColor = 'gray',
                                                                 background = 'transparent',
                                                                 className = '',
                                                             }) => {
     const paddingClass = paddingMap[padding];
     const backgroundClass = backgroundMap[background];
 
-    // If background is accent-gray, no border
+    // If background is gray, no border
     const hasBorder = background === 'transparent' && borderColor !== 'none';
     const borderClass = hasBorder ? `border border-width-s ${borderColorMap[borderColor as BorderColor]}` : '';
 

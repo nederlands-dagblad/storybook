@@ -26,7 +26,7 @@
     /* Using your border tokens */
     border-width: var(--border-width-s);
     border-style: solid;
-    border-color: var(--color-border-accent-gray-subtle);
+    border-color: var(--color-border-gray-subtle);
     background-color: var(--color-background-default);
 
     /* Transition */

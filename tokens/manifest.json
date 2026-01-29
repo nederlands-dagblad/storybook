@@ -31,22 +31,6 @@
         ]
       }
     },
-    "component-colors": {
-      "modes": {
-        "default": [
-          "component-colors.default.tokens.json"
-        ],
-        "hover": [
-          "component-colors.hover.tokens.json"
-        ],
-        "active": [
-          "component-colors.active.tokens.json"
-        ],
-        "disabled": [
-          "component-colors.disabled.tokens.json"
-        ]
-      }
-    },
     "semantic-border": {
       "modes": {
         "value": [

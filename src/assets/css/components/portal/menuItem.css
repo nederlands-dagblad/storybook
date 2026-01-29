@@ -40,7 +40,7 @@
 
 .menu-item[data-state="hover"] .menu-item__underline,
 .menu-item:hover .menu-item__underline {
-    background-color: var(--color-border-accent-gray);
+    background-color: var(--color-border-gray);
 }
 
 .menu-item[data-state="active"] .menu-item__underline,

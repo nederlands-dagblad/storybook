@@ -4,33 +4,13 @@
       "$type": "color",
       "$value": "{color.neutral.white}"
     },
-    "subtle": {
-      "$type": "color",
-      "$value": "{color.neutral.400}"
-    },
     "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "brand-subtle": {
+    "brand-hover": {
       "$type": "color",
       "$value": "{color.blue.400}"
-    },
-    "accent-brown": {
-      "$type": "color",
-      "$value": "{color.brown.500}"
-    },
-    "accent-brown-subtle": {
-      "$type": "color",
-      "$value": "{color.brown.500}"
-    },
-    "accent-pink": {
-      "$type": "color",
-      "$value": "{color.pink.700}"
-    },
-    "disabled": {
-      "$type": "color",
-      "$value": "{color.neutral.400}"
     },
     "inverse": {
       "$type": "color",
@@ -40,9 +20,21 @@
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "warning-inverse": {
+    "disabled": {
       "$type": "color",
-      "$value": "{color.neutral.white}"
+      "$value": "{color.neutral.400}"
+    },
+    "gray": {
+      "$type": "color",
+      "$value": "{color.neutral.400}"
+    },
+    "opinie": {
+      "$type": "color",
+      "$value": "{color.brown.500}"
+    },
+    "dnk": {
+      "$type": "color",
+      "$value": "{color.pink.700}"
     }
   },
   "background": {
@@ -50,51 +42,47 @@
       "$type": "color",
       "$value": "{color.neutral.900}"
     },
-    "dark": {
-      "$type": "color",
-      "$value": "{color.neutral.800}"
-    },
-    "dark-subtle": {
-      "$type": "color",
-      "$value": "{color.neutral.600}"
-    },
     "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "brand-subtle": {
+    "brand-hover": {
       "$type": "color",
       "$value": "{color.blue.400}"
     },
-    "brand-accent": {
+    "brand-subtle": {
       "$type": "color",
       "$value": "{color.blue.800}"
     },
-    "accent-gray": {
-      "$type": "color",
-      "$value": "{color.neutral.700}"
-    },
-    "accent-gray-subtle": {
+    "dark": {
       "$type": "color",
       "$value": "{color.neutral.800}"
     },
-    "accent-brown": {
+    "dark-hover": {
       "$type": "color",
-      "$value": "{color.brown.500}"
+      "$value": "{color.neutral.700}"
     },
-    "accent-pink": {
+    "disabled": {
       "$type": "color",
-      "$value": "{color.pink.700}"
+      "$value": "{color.neutral.800}"
     },
-    "accent-pink-subtle": {
+    "gray": {
       "$type": "color",
-      "$value": "{color.pink.600}"
+      "$value": "{color.neutral.700}"
     },
-    "accent-pink-subtlest": {
+    "gray-subtle": {
+      "$type": "color",
+      "$value": "{color.neutral.800}"
+    },
+    "pink": {
       "$type": "color",
       "$value": "{color.pink.400}"
     },
-    "disabled": {
+    "opinie": {
+      "$type": "color",
+      "$value": "{color.brown.500}"
+    },
+    "dnk": {
       "$type": "color",
       "$value": "{color.neutral.800}"
     }
@@ -108,19 +96,23 @@
       "$type": "color",
       "$value": "{color.blue.500}"
     },
-    "accent-gray": {
+    "warning": {
       "$type": "color",
-      "$value": "{color.neutral.500}"
-    },
-    "accent-gray-subtle": {
-      "$type": "color",
-      "$value": "{color.neutral.600}"
+      "$value": "{color.pink.700}"
     },
     "disabled": {
       "$type": "color",
       "$value": "{color.neutral.500}"
     },
-    "warning": {
+    "gray": {
+      "$type": "color",
+      "$value": "{color.neutral.500}"
+    },
+    "gray-subtle": {
+      "$type": "color",
+      "$value": "{color.neutral.600}"
+    },
+    "dnk": {
       "$type": "color",
       "$value": "{color.pink.700}"
     }
@@ -130,37 +122,35 @@
       "$type": "color",
       "$value": "{color.neutral.white}"
     },
-    "gray": {
-      "$type": "color",
-      "$value": "{color.neutral.400}"
-    },
     "brand": {
       "$type": "color",
       "$value": "{color.blue.500}"
+    },
+    "inverse": {
+      "$type": "color",
+      "$value": "{color.neutral.white}"
     },
     "warning": {
       "$type": "color",
       "$value": "{color.pink.700}"
     },
-    "inverse": {
+    "disabled": {
       "$type": "color",
-      "$value": "{color.neutral.white}"
+      "$value": "{color.neutral.400}"
+    },
+    "gray": {
+      "$type": "color",
+      "$value": "{color.neutral.400}"
+    },
+    "dnk": {
+      "$type": "color",
+      "$value": "{color.pink.700}"
     }
   },
   "shadow": {
     "default": {
       "$type": "color",
       "$value": "{color.neutral.white-30}"
-    }
-  },
-  "DNK": {
-    "brand": {
-      "$type": "color",
-      "$value": "{color.pink.800}"
-    },
-    "background": {
-      "$type": "color",
-      "$value": "{color.pink.200}"
     }
   }
 }

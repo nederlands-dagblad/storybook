@@ -36,7 +36,7 @@ export const ResponsiveTypographyDemo: Story = {
         <p className="text-xs text-neutral-500 mb-4">Resize your browser to see the changes</p>
         <div className="flex flex-col gap-2">
           <div className="hidden sm:block md:hidden">
-            <ResponsiveText className="text-pink-600">You're viewing on a small tablet (sm breakpoint)</ResponsiveText>
+            <ResponsiveText className="text-warning">You're viewing on a small tablet (sm breakpoint)</ResponsiveText>
           </div>
           <div className="hidden md:block lg:hidden">
             <ResponsiveText className="text-blue-500">You're viewing on a tablet (md breakpoint)</ResponsiveText>

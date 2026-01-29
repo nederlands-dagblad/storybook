@@ -1,145 +1,12 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-27T13:25:56.803Z
+ * Last generated: 2026-01-29T13:57:39.064Z
  */
 
 export default function ({ addUtilities }) {
   addUtilities({
-    ...{
-  ".border-form-border-input-field": {
-    "borderColor": "var(--color-form-border-input-field-default)"
-  },
-  ".border-form-border-checkbox": {
-    "borderColor": "var(--color-form-border-checkbox-default)"
-  },
-  ".border-button-border-secondary": {
-    "borderColor": "var(--color-button-border-secondary-default)"
-  },
-  ".border-button-border-pill": {
-    "borderColor": "var(--color-button-border-pill-default)"
-  },
-  ".text-button-text-primary": {
-    "color": "var(--color-button-text-primary-default)"
-  },
-  ".text-button-text-dark": {
-    "color": "var(--color-button-text-dark-default)"
-  },
-  ".text-button-text-secondary": {
-    "color": "var(--color-button-text-secondary-default)"
-  },
-  ".text-button-text-ghost": {
-    "color": "var(--color-button-text-ghost-default)"
-  },
-  ".text-button-text-pill": {
-    "color": "var(--color-button-text-pill-default)"
-  },
-  ".text-link-text-default": {
-    "color": "var(--color-link-text-default-default)"
-  },
-  ".text-link-text-brown": {
-    "color": "var(--color-link-text-brown-default)"
-  },
-  ".border-form-border-input-field-hover": {
-    "borderColor": "var(--color-form-border-input-field-hover)"
-  },
-  ".border-form-border-checkbox-hover": {
-    "borderColor": "var(--color-form-border-checkbox-hover)"
-  },
-  ".border-button-border-secondary-hover": {
-    "borderColor": "var(--color-button-border-secondary-hover)"
-  },
-  ".border-button-border-pill-hover": {
-    "borderColor": "var(--color-button-border-pill-hover)"
-  },
-  ".text-button-text-primary-hover": {
-    "color": "var(--color-button-text-primary-hover)"
-  },
-  ".text-button-text-dark-hover": {
-    "color": "var(--color-button-text-dark-hover)"
-  },
-  ".text-button-text-secondary-hover": {
-    "color": "var(--color-button-text-secondary-hover)"
-  },
-  ".text-button-text-ghost-hover": {
-    "color": "var(--color-button-text-ghost-hover)"
-  },
-  ".text-button-text-pill-hover": {
-    "color": "var(--color-button-text-pill-hover)"
-  },
-  ".text-link-text-default-hover": {
-    "color": "var(--color-link-text-default-hover)"
-  },
-  ".text-link-text-brown-hover": {
-    "color": "var(--color-link-text-brown-hover)"
-  },
-  ".border-form-border-input-field-active": {
-    "borderColor": "var(--color-form-border-input-field-active)"
-  },
-  ".border-form-border-checkbox-active": {
-    "borderColor": "var(--color-form-border-checkbox-active)"
-  },
-  ".border-button-border-secondary-active": {
-    "borderColor": "var(--color-button-border-secondary-active)"
-  },
-  ".border-button-border-pill-active": {
-    "borderColor": "var(--color-button-border-pill-active)"
-  },
-  ".text-button-text-primary-active": {
-    "color": "var(--color-button-text-primary-active)"
-  },
-  ".text-button-text-dark-active": {
-    "color": "var(--color-button-text-dark-active)"
-  },
-  ".text-button-text-secondary-active": {
-    "color": "var(--color-button-text-secondary-active)"
-  },
-  ".text-button-text-ghost-active": {
-    "color": "var(--color-button-text-ghost-active)"
-  },
-  ".text-button-text-pill-active": {
-    "color": "var(--color-button-text-pill-active)"
-  },
-  ".text-link-text-default-active": {
-    "color": "var(--color-link-text-default-active)"
-  },
-  ".text-link-text-brown-active": {
-    "color": "var(--color-link-text-brown-active)"
-  },
-  ".border-form-border-input-field-disabled": {
-    "borderColor": "var(--color-form-border-input-field-disabled)"
-  },
-  ".border-form-border-checkbox-disabled": {
-    "borderColor": "var(--color-form-border-checkbox-disabled)"
-  },
-  ".border-button-border-secondary-disabled": {
-    "borderColor": "var(--color-button-border-secondary-disabled)"
-  },
-  ".border-button-border-pill-disabled": {
-    "borderColor": "var(--color-button-border-pill-disabled)"
-  },
-  ".text-button-text-primary-disabled": {
-    "color": "var(--color-button-text-primary-disabled)"
-  },
-  ".text-button-text-dark-disabled": {
-    "color": "var(--color-button-text-dark-disabled)"
-  },
-  ".text-button-text-secondary-disabled": {
-    "color": "var(--color-button-text-secondary-disabled)"
-  },
-  ".text-button-text-ghost-disabled": {
-    "color": "var(--color-button-text-ghost-disabled)"
-  },
-  ".text-button-text-pill-disabled": {
-    "color": "var(--color-button-text-pill-disabled)"
-  },
-  ".text-link-text-default-disabled": {
-    "color": "var(--color-link-text-default-disabled)"
-  },
-  ".text-link-text-brown-disabled": {
-    "color": "var(--color-link-text-brown-disabled)"
-  }
-},
+    ...{},
     ...{
   ".p-0": {
     "padding": "var(--spacing-0)"
@@ -534,7 +401,60 @@ export default function ({ addUtilities }) {
     "gap": "var(--spacing-xxl)"
   }
 },
-    ...{},
+    ...{
+  ".border-s": {
+    "borderWidth": "var(--border-width-s)"
+  },
+  ".border-t-s": {
+    "borderTopWidth": "var(--border-width-s)"
+  },
+  ".border-r-s": {
+    "borderRightWidth": "var(--border-width-s)"
+  },
+  ".border-b-s": {
+    "borderBottomWidth": "var(--border-width-s)"
+  },
+  ".border-l-s": {
+    "borderLeftWidth": "var(--border-width-s)"
+  },
+  ".rounded-xl": {
+    "borderRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-t-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)",
+    "borderTopRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-r-xl": {
+    "borderTopRightRadius": "var(--border-radius-xl)",
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-b-xl": {
+    "borderBottomLeftRadius": "var(--border-radius-xl)",
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-l-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)",
+    "borderBottomLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-tl-xl": {
+    "borderTopLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-tr-xl": {
+    "borderTopRightRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-bl-xl": {
+    "borderBottomLeftRadius": "var(--border-radius-xl)"
+  },
+  ".rounded-br-xl": {
+    "borderBottomRightRadius": "var(--border-radius-xl)"
+  },
+  ".border-default": {
+    "borderWidth": "var(--border-width-default)"
+  },
+  ".rounded-pill": {
+    "borderRadius": "var(--border-radius-pill)"
+  }
+},
     ...{
   ".text-article-heading": {
     "fontFamily": "var(--font-family-gulliver)",

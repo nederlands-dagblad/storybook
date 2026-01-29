@@ -6,7 +6,7 @@ import {
     primitiveFontFamilies,
     primitiveFontSizes,
     primitiveFontWeights,
-    primitiveLetterSpacings, primitiveBorderRadius, primitiveBorderWidths, semanticBorderRadius,
+    primitiveLetterSpacings, primitiveBorderRadius, primitiveBorderWidth, semanticBorderRadius, semanticBorderWidth,
     primitiveBoxShadows,
 } from './tailwind.tokens.js';
 
@@ -83,7 +83,8 @@ export default {
                 'l': 'var(--typography-letter-spacing-l)'
             },
             borderWidth: {
-                ...primitiveBorderWidths
+                ...primitiveBorderWidth,
+                ...semanticBorderWidth,
             },
             borderRadius: {
                 ...primitiveBorderRadius,

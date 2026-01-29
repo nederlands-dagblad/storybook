@@ -253,7 +253,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                         className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing [&_img]:pointer-events-none"
                         style={{
                             scrollbarWidth: "thin",
-                            scrollbarColor: "var(--color-border-accent-gray) transparent"
+                            scrollbarColor: "var(--color-border-gray) transparent"
                         }}
                     >
                         {articles.map((article, index) => {

@@ -1,47 +1,191 @@
-import { Meta } from '@storybook/addon-docs/blocks';
-import tailwindConfig from '../tailwind.config.js';
+import {Meta} from '@storybook/addon-docs/blocks';
+import primitives from '../tokens/primitives.value.tokens.json';
+import semanticLight from '../tokens/semantic-colors.light.tokens.json';
+import semanticDark from '../tokens/semantic-colors.dark.tokens.json';
 
-<Meta title="Tokens/Colors" />
+<Meta title="Tokens/Colors"/>
 
-# Colors
+# Color Tokens
+
+## Semantic Tokens
+
+These tokens reference the primitives below and adapt to light/dark mode.
 
 {(() => {
-  const rawColors = tailwindConfig.theme.extend?.colors ?? {};
+const categories = ['text', 'background', 'border', 'icons', 'shadow'];
 
-  const grouped = Object.entries(rawColors).reduce((acc, [token, cssVar]) => {
-    const match = token.match(/^([a-zA-Z]+)-/);
-    const group = match ? match[1] : 'other';
-    if (!acc[group]) acc[group] = [];
-    acc[group].push({ token, cssVar });
-    return acc;
-  }, {});
+// Token descriptions/usage
+const descriptions = {
+'text-brand-hover': 'Hover state for primary and ghost buttons',
+'text-inverse': 'Primary and dark buttons (stays white in dark mode)',
+'text-opinie': 'Opinie articles',
+'background-brand-hover': 'Hover state for primary and ghost buttons',
+'background-dark': 'Dark button',
+'background-dark-hover': 'Hover state for dark button',
+'background-pink': 'Premium badge',
+'background-opinie': 'Opinie articles',
+'background-dnk': 'De Nieuwe Koers section background',
+'icons-opinie': 'Opinie articles',
+};
 
-  return Object.entries(grouped).map(([family, items]) => (
-    <div key={family} style={{ marginBottom: '2rem' }}>
-      <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-        {family.charAt(0).toUpperCase() + family.slice(1)}
-      </h2>
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-          gap: '1rem',
-        }}
-      >
-        {items.map(({ token, cssVar }) => (
-          <div key={token} style={{ textAlign: 'center' }}>
-            <div
-              style={{
-                backgroundColor: cssVar,
-                height: '50px',
-                borderRadius: '6px',
-                border: '1px solid #ddd',
-              }}
-            />
-            <div style={{ marginTop: '0.5rem', fontSize: '0.875rem' }}>{token}</div>
-          </div>
+// Map categories to Tailwind prefixes
+const tailwindPrefixes = {
+'text': 'text',
+'background': 'bg',
+'border': 'border',
+'icons': 'text',
+'shadow': 'shadow'
+};
+
+const resolveValue = (value) => {
+const ref = value.replace(/[{}]/g, '');
+const parts = ref.split('.');
+let current = primitives;
+for (const part of parts) {
+current = current[part];
+if (!current) return value;
+}
+return current.$value || value;
+};
+
+return categories.map(category => {
+const lightTokens = semanticLight[category] || {};
+const darkTokens = semanticDark[category] || {};
+const tokenNames = Object.keys(lightTokens);
+const tailwindPrefix = tailwindPrefixes[category];
+
+if (tokenNames.length === 0) return null;
+
+return (
+<div key={category} className="mb-l sb-unstyled">
+    <h3 className="text-heading-2 mb-s capitalize">
+        {category}
+    </h3>
+    <table className="sb-unstyled w-full border-collapse bg-background-default">
+        <thead>
+        <tr className="bg-background-gray-subtle">
+            <th className="px-m py-s text-left text-body-bold">Token</th>
+            <th className="px-m py-s text-left text-body-bold">Light Mode</th>
+            <th className="px-m py-s text-left text-body-bold">Dark Mode</th>
+            <th className="px-m py-s text-left text-body-bold">Tailwind Class</th>
+        </tr>
+        </thead>
+        <tbody>
+        {tokenNames.map(tokenName => {
+            const lightValue = lightTokens[tokenName].$value;
+            const darkValue = darkTokens[tokenName].$value;
+            const lightHex = resolveValue(lightValue);
+            const darkHex = resolveValue(darkValue);
+            const tokenKey = `${category}-${tokenName}`;
+            const description = descriptions[tokenKey];
+            const tailwindClass = `${tailwindPrefix}-${category}-${tokenName}`;
+
+            return (
+                <tr key={tokenName} className="border-t border-border-gray-subtle">
+                    <td className="px-m py-s">
+                        <div className="text-body-light text-text-default">
+                            {category}-{tokenName}
+                        </div>
+                        {description && (
+                            <div className="text-meta-light text-text-gray mt-xxs">
+                                {description}
+                            </div>
+                        )}
+                    </td>
+
+                    <td className="px-m py-s">
+                        <div className="flex items-center gap-s">
+                            <div
+                                className="w-[48px] h-[48px] rounded-[4px] border border-border-gray-subtle shrink-0"
+                                style={{ backgroundColor: lightHex }}
+                            />
+                            <div>
+                                <div className="text-body-light text-text-default">
+                                    {lightValue.replace(/[{}]/g, '')}
+                                </div>
+                                <div className="text-meta-light text-text-gray">
+                                    {lightHex}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td className="px-m py-s">
+                        <div className="flex items-center gap-s">
+                            <div
+                                className="w-[48px] h-[48px] rounded-[4px] border border-border-gray-subtle shrink-0"
+                                style={{ backgroundColor: darkHex }}
+                            />
+                            <div>
+                                <div className="text-body-light text-text-default">
+                                    {darkValue.replace(/[{}]/g, '')}
+                                </div>
+                                <div className="text-meta-light text-text-gray">
+                                    {darkHex}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td className="px-m py-s">
+                        <div className="text-text-default font-mono">
+                            {tailwindClass}
+                        </div>
+                    </td>
+                </tr>
+            );
+        })}
+        </tbody>
+    </table>
+</div>
+);
+});
+})()}
+
+---
+
+## Primitives
+
+These are the base color values used throughout the design system.
+
+{(() => {
+const colors = primitives.color;
+
+return Object.entries(colors).map(([family, shades]) => (
+<div key={family} className="mb-xl">
+    <h3 className="text-heading-2 mb-xs capitalize sb-unstyled">
+        {family}
+    </h3>
+    <table className="sb-unstyled w-full border-collapse bg-background-default">
+        <thead>
+        <tr className="bg-background-gray-subtle">
+            <th className="px-m py-s text-left text-body-bold">Token</th>
+            <th className="px-m py-s text-left text-body-bold">Value</th>
+            <th className="px-m py-s text-center text-body-bold">Example</th>
+        </tr>
+        </thead>
+        <tbody>
+        {Object.entries(shades).map(([shade, data]) => (
+            <tr key={shade} className="border-t border-border-gray-subtle">
+                <td className="px-m py-s text-body-light text-text-default">
+                    {family}-{shade}
+                </td>
+                <td className="px-m py-s text-body-light text-text-default font-mono">
+                    {data.$value}
+                </td>
+
+                <td className="px-m py-s">
+                    <div className="flex justify-center">
+                        <div
+                            className="h-[48px] w-[80px] rounded-[4px] border border-border-gray-subtle"
+                            style={{backgroundColor: data.$value}}
+                        />
+                    </div>
+                </td>
+            </tr>
         ))}
-      </div>
-    </div>
-  ));
+        </tbody>
+    </table>
+</div>
+));
 })()}

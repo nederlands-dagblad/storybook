@@ -62,15 +62,15 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
     // Map of variant styles
     const variantStyles = {
-        primary: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-brand text-text-inverse hover:bg-background-brand-subtle disabled:bg-background-disabled group',
+        primary: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-brand text-text-inverse hover:bg-background-brand-hover disabled:bg-background-disabled group',
 
-        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-accent disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default',
+        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-subtle disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default',
 
-        ghost: 'px-xs py-xs gap-x-xs text-meta-bold text-text-brand hover:text-text-brand-subtle disabled:text-text-disabled',
+        ghost: 'px-xs py-xs gap-x-xs text-meta-bold text-text-brand hover:text-text-brand-hover disabled:text-text-disabled',
 
-        dark: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-dark text-text-inverse hover:bg-background-dark-subtle disabled:bg-background-disabled',
+        dark: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-dark text-text-inverse hover:bg-background-dark-hover disabled:bg-background-disabled',
 
-        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-subtle border-s border-accent-gray-subtle rounded-pill hover:bg-background-accent-gray-subtle hover:border-accent-gray-subtle active:bg-background-accent-gray-subtle active:border-accent-gray disabled:hover:bg-background-default disabled:hover:border-accent-gray-subtle',
+        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-gray border-s border-gray-subtle rounded-pill hover:bg-background-gray-subtle hover:border-gray-subtle active:bg-background-gray-subtle active:border-gray disabled:hover:bg-background-default disabled:hover:border-gray-subtle',
     };
 
     // Determine icon color based on variant
@@ -107,7 +107,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
         // Variant specific styles
         variantStyles[variant],
         // Active state for pill
-        variant === 'pill' && isActive && 'border-accent-gray',
+        variant === 'pill' && isActive && 'border-gray',
         // Disabled state
         disabled && 'cursor-not-allowed',
         // Custom classes passed via props
