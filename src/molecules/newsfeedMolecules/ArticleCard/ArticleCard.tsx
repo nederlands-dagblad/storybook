@@ -14,6 +14,7 @@ export interface ArticleCardProps {
     videoDuration?: string; // For video variant, e.g. "1:55"
     publicationMonth?: string; // For dnk-publications variant
     placeholderText?: string; // Text to display when no image (e.g., "Volgende editie: 1 februari")
+    videoId?: string;
 }
 
 export const ArticleCard = ({
