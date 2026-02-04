@@ -18,6 +18,14 @@ const meta: Meta<typeof VideoModal> = {
             action: 'closed',
             description: 'Callback function when modal is closed',
         },
+        onNext: {
+            action: 'next',
+            description: 'Callback function when next button is clicked',
+        },
+        onPrevious: {
+            action: 'previous',
+            description: 'Callback function when previous button is clicked',
+        },
     },
 };
 
@@ -69,11 +77,12 @@ export const Closed: Story = {
 };
 
 /**
- * Interactive example with multiple videos
+ * Interactive example with multiple videos and navigation
+ * Use arrow keys or on-screen buttons to navigate
  */
 export const MultipleVideos: Story = {
     render: () => {
-        const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+        const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
         const videos = [
             { id: 'dQw4w9WgXcQ', title: 'Video 1' },
@@ -81,22 +90,44 @@ export const MultipleVideos: Story = {
             { id: '9bZkp7q19f0', title: 'Video 3' },
         ];
 
+        const handleNext = () => {
+            if (currentIndex !== null && currentIndex < videos.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+            }
+        };
+
+        const handlePrevious = () => {
+            if (currentIndex !== null && currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+            }
+        };
+
         return (
             <div className="p-m">
-                <div className="flex gap-s">
-                    {videos.map((video) => (
+                <div className="flex gap-s flex-wrap">
+                    {videos.map((video, index) => (
                         <button
                             key={video.id}
-                            onClick={() => setActiveVideoId(video.id)}
-                            className="px-s py-xs bg-background-accent-gray hover:bg-background-accent-gray-subtle border border-border-gray-subtle transition-colors"
+                            onClick={() => setCurrentIndex(index)}
+                            className="px-s py-xs bg-background-accent-gray hover:bg-background-accent-gray-subtle border border-border-accent-gray-subtle transition-colors"
                         >
                             {video.title}
                         </button>
                     ))}
                 </div>
+                <p className="mt-s text-body-light text-text-subtle">
+                    Click a video, then navigate using:
+                    <br />• Arrow keys (← →)
+                    <br />• On-screen navigation buttons
+                    <br />• ESC to close
+                </p>
                 <VideoModal
-                    videoId={activeVideoId}
-                    onClose={() => setActiveVideoId(null)}
+                    videoId={currentIndex !== null ? videos[currentIndex].id : null}
+                    onClose={() => setCurrentIndex(null)}
+                    onNext={handleNext}
+                    onPrevious={handlePrevious}
+                    hasNext={currentIndex !== null && currentIndex < videos.length - 1}
+                    hasPrevious={currentIndex !== null && currentIndex > 0}
                 />
             </div>
         );
@@ -104,26 +135,100 @@ export const MultipleVideos: Story = {
 };
 
 /**
- * Test keyboard interaction (Escape key to close)
+ * Test keyboard interaction (Escape key to close, arrow keys to navigate)
  */
 export const KeyboardInteraction: Story = {
     render: () => {
-        const [isOpen, setIsOpen] = useState(false);
+        const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
+        const videos = [
+            { id: 'dQw4w9WgXcQ', title: 'Video 1' },
+            { id: 'jNQXAC9IVRw', title: 'Video 2' },
+        ];
+
+        const handleNext = () => {
+            if (currentIndex !== null && currentIndex < videos.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+            }
+        };
+
+        const handlePrevious = () => {
+            if (currentIndex !== null && currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+            }
+        };
 
         return (
             <div className="p-m">
                 <button
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => setCurrentIndex(0)}
                     className="px-m py-s bg-background-brand text-text-inverse rounded"
                 >
-                    Open Modal (Press ESC to close)
+                    Open Modal
                 </button>
                 <p className="mt-s text-body-light text-text-subtle">
-                    Try pressing the Escape key when the modal is open
+                    Keyboard shortcuts:
+                    <br />• ESC to close
+                    <br />• ← → arrow keys to navigate between videos
                 </p>
                 <VideoModal
-                    videoId={isOpen ? 'dQw4w9WgXcQ' : null}
-                    onClose={() => setIsOpen(false)}
+                    videoId={currentIndex !== null ? videos[currentIndex].id : null}
+                    onClose={() => setCurrentIndex(null)}
+                    onNext={handleNext}
+                    onPrevious={handlePrevious}
+                    hasNext={currentIndex !== null && currentIndex < videos.length - 1}
+                    hasPrevious={currentIndex !== null && currentIndex > 0}
+                />
+            </div>
+        );
+    },
+};
+
+/**
+ * Video playlist example with multiple videos
+ */
+export const VideoPlaylist: Story = {
+    render: () => {
+        const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+
+        const videos = [
+            { id: 'dQw4w9WgXcQ', title: 'Video 1' },
+            { id: 'jNQXAC9IVRw', title: 'Video 2' },
+            { id: '9bZkp7q19f0', title: 'Video 3' },
+            { id: 'L_jWHffIx5E', title: 'Video 4' },
+        ];
+
+        const handleNext = () => {
+            if (currentIndex !== null && currentIndex < videos.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+            }
+        };
+
+        const handlePrevious = () => {
+            if (currentIndex !== null && currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+            }
+        };
+
+        return (
+            <div className="p-m">
+                <button
+                    onClick={() => setCurrentIndex(0)}
+                    className="px-m py-s bg-background-brand text-text-inverse rounded"
+                >
+                    Start Video Playlist
+                </button>
+                <p className="mt-s text-body-light text-text-subtle">
+                    Navigate using arrow keys or on-screen buttons
+                    {currentIndex !== null && <><br />Current: {videos[currentIndex].title}</>}
+                </p>
+                <VideoModal
+                    videoId={currentIndex !== null ? videos[currentIndex].id : null}
+                    onClose={() => setCurrentIndex(null)}
+                    onNext={handleNext}
+                    onPrevious={handlePrevious}
+                    hasNext={currentIndex !== null && currentIndex < videos.length - 1}
+                    hasPrevious={currentIndex !== null && currentIndex > 0}
                 />
             </div>
         );

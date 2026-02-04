@@ -43,30 +43,31 @@ export const VideoModal: React.FC<VideoModalProps> = ({
 
     if (!videoId) return null;
 
-    const navigationButtonClass = "fixed text-text-inverse hover:bg-neutral-800 transition-colors p-xs rounded-xl";
+    const navigationButtonClass = "text-text-inverse hover:bg-neutral-800 transition-colors p-xxs rounded-xl";
+    const mobileNavigationButtonClass = "text-text-inverse transition-colors px-s py-xxs";
 
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-black-80"
             onClick={onClose}
         >
-            {/* Close button */}
+            {/* Close button - fixed on mobile (above video), absolute on desktop (on video) */}
             <button
                 onClick={onClose}
-                className="${navigationButtonClass} top-m right-m "
+                className={`fixed top-m sm:top-xs right-m sm:right-xs z-20 ${navigationButtonClass}`}
                 aria-label="Sluiten"
             >
                 <Icon name="x-mark" variant="outline" size="m" color="inverse" />
             </button>
 
-            {/* Previous button */}
+            {/* Desktop: Previous button (left side, fixed position) - hidden on mobile */}
             {hasPrevious && onPrevious && (
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
                         onPrevious();
                     }}
-                    className="left-m ${navigationButtonClass}"
+                    className={`fixed left-m hidden sm:block ${navigationButtonClass}`}
                     aria-label="Vorige video"
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
                 >
@@ -74,14 +75,14 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                 </button>
             )}
 
-            {/* Next button */}
+            {/* Desktop: Next button (right side, fixed position) - hidden on mobile */}
             {hasNext && onNext && (
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
                         onNext();
                     }}
-                    className="right-m ${navigationButtonClass}"
+                    className={`fixed right-m hidden sm:block ${navigationButtonClass}`}
                     aria-label="Volgende video"
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
                 >
@@ -90,7 +91,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             )}
 
             <div
-                className="relative w-full max-w-[400px] mx-m"
+                className="relative w-full max-w-[400px] mx-m flex flex-col items-center"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Shorts-style vertical video container */}
@@ -105,6 +106,43 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                         allow="autoplay; encrypted-media; fullscreen"
                         allowFullScreen
                     />
+                </div>
+
+                {/* Mobile: Navigation buttons below video - always show both slots */}
+                <div className="flex sm:hidden gap-s mt-xs w-full justify-between">
+                    {/* Left slot - always present */}
+                    <div className="flex-1">
+                        {hasPrevious && onPrevious && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onPrevious();
+                                }}
+                                className={`${mobileNavigationButtonClass} flex items-center gap-xxs w-full justify-center`}
+                                aria-label="Vorige video"
+                            >
+                                <Icon name="caret-left" variant="outline" size="s" color="inverse" />
+                                <span className="text-meta-regular text-text-inverse">Vorige</span>
+                            </button>
+                        )}
+                    </div>
+
+                    {/* Right slot - always present */}
+                    <div className="flex-1">
+                        {hasNext && onNext && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onNext();
+                                }}
+                                className={`${mobileNavigationButtonClass} flex items-center gap-xxs w-full justify-center`}
+                                aria-label="Volgende video"
+                            >
+                                <span className="text-meta-regular text-text-inverse">Volgende</span>
+                                <Icon name="caret-right" variant="outline" size="s" color="inverse" />
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
