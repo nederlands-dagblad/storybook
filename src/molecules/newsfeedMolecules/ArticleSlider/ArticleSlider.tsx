@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { ArticleCard, ArticleCardProps } from "@molecules/newsfeedMolecules/ArticleCard/ArticleCard";
 import { SectionHeading } from "@atoms/displayAtoms/SectionHeading/SectionHeading";
 import { Button } from "@atoms/actionAtoms/Button/Button";
+import { VideoModal } from "@molecules/newsfeedMolecules/VideoModal/VideoModal";
 
 // Backend API configuration
 export interface VideoConfig {
@@ -22,7 +23,6 @@ export interface ArticleSliderProps {
     className?: string;
     enableSelection?: boolean;
     defaultSelectedIndex?: number;
-    onArticleSelect?: (index: number) => void;
 }
 
 interface YouTubeVideoItem {
@@ -43,7 +43,6 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 className = "",
                                                                 enableSelection = false,
                                                                 defaultSelectedIndex,
-                                                                onArticleSelect,
                                                             }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const isDraggingRef = useRef(false);
@@ -61,8 +60,9 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    // NEW: Active video for popup
+    // Active video for popup
     const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+    const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(null);
 
     // Fetch videos from backend if videoConfig is provided
     useEffect(() => {
@@ -95,7 +95,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                     heading: video.title,
                     variant: 'video' as const,
                     videoDuration: video.duration,
-                    videoId: video.videoId, // Store videoId for popup
+                    videoId: video.videoId,
                 }));
 
                 setVideoArticles(transformedArticles);
@@ -155,7 +155,29 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             if (hasMovedRef.current) {
                 e.preventDefault();
                 e.stopPropagation();
+                hasMovedRef.current = false;
+                return;
             }
+
+            if (videoConfig) {
+                const target = e.target as HTMLElement;
+                const cardWrapper = target.closest('[data-video-index]') as HTMLElement;
+
+                if (cardWrapper) {
+                    const videoIndex = cardWrapper.getAttribute('data-video-index');
+                    if (videoIndex !== null) {
+                        const index = parseInt(videoIndex, 10);
+                        setCurrentVideoIndex(index);
+                        const article = articles[index];
+                        if (article.videoId) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setActiveVideoId(article.videoId);
+                        }
+                    }
+                }
+            }
+
             hasMovedRef.current = false;
         };
 
@@ -174,43 +196,35 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             slider.removeEventListener('mouseleave', handleMouseUp);
             slider.removeEventListener('click', handleClick, true);
         };
-    }, [articles]);
+    }, [articles, videoConfig]);
 
-    // Handle video click - open popup instead of navigating
-    const handleVideoClick = (article: ArticleCardProps & { videoId?: string }, index: number) => {
-        if (hasMovedRef.current) return;
-
-        if (article.videoId) {
-            setActiveVideoId(article.videoId);
-        } else if (enableSelection) {
-            setSelectedIndex(index);
-            onArticleSelect?.(index);
+    // Navigation handlers
+    const handleNextVideo = () => {
+        if (currentVideoIndex !== null && currentVideoIndex < articles.length - 1) {
+            const nextIndex = currentVideoIndex + 1;
+            setCurrentVideoIndex(nextIndex);
+            const nextArticle = articles[nextIndex];
+            if (nextArticle.videoId) {
+                setActiveVideoId(nextArticle.videoId);
+            }
         }
     };
 
-    // Close popup
+    const handlePreviousVideo = () => {
+        if (currentVideoIndex !== null && currentVideoIndex > 0) {
+            const prevIndex = currentVideoIndex - 1;
+            setCurrentVideoIndex(prevIndex);
+            const prevArticle = articles[prevIndex];
+            if (prevArticle.videoId) {
+                setActiveVideoId(prevArticle.videoId);
+            }
+        }
+    };
+
     const handleClosePopup = () => {
         setActiveVideoId(null);
+        setCurrentVideoIndex(null);
     };
-
-    // Close on escape key
-    useEffect(() => {
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                setActiveVideoId(null);
-            }
-        };
-
-        if (activeVideoId) {
-            document.addEventListener('keydown', handleEscape);
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-
-        return () => {
-            document.removeEventListener('keydown', handleEscape);
-            document.body.style.overflow = '';
-        };
-    }, [activeVideoId]);
 
     if (loading) {
         return (
@@ -250,7 +264,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
                     <div
                         ref={sliderRef}
-                        className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing [&_img]:pointer-events-none"
+                        className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing select-none [&_img]:pointer-events-none"
                         style={{
                             scrollbarWidth: "thin",
                             scrollbarColor: "var(--color-border-gray) transparent"
@@ -259,24 +273,16 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                         {articles.map((article, index) => {
                             const isSelected = enableSelection && selectedIndex === index;
                             const isVideoMode = !!videoConfig;
-                            const articleWithVideo = article as ArticleCardProps & { videoId?: string };
 
                             return (
                                 <div
                                     key={index}
-                                    className="flex-shrink-0 cursor-pointer"
-                                    onClickCapture={(e) => {
-                                        // Only intercept for video mode
-                                        if (isVideoMode && articleWithVideo.videoId && !hasMovedRef.current) {
-                                            e.preventDefault();
-                                            e.stopPropagation();
-                                            setActiveVideoId(articleWithVideo.videoId);
-                                        }
-                                    }}
+                                    className="flex-shrink-0"
+                                    data-video-index={isVideoMode ? index : undefined}
                                 >
                                     <ArticleCard
                                         {...article}
-                                        href={isVideoMode ? undefined : article.href}  // Only remove href in video mode
+                                        href={isVideoMode ? undefined : article.href}
                                         className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
                                     />
                                 </div>
@@ -299,40 +305,14 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             </div>
 
             {/* Video Popup Modal */}
-            {activeVideoId && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-                    onClick={handleClosePopup}
-                >
-                    <div
-                        className="relative w-full max-w-[400px] mx-4"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Close button */}
-                        <button
-                            onClick={handleClosePopup}
-                            className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
-                            aria-label="Sluiten"
-                        >
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        </button>
-
-                        {/* Shorts-style vertical video container */}
-                        <div className="relative w-full bg-black rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                            <iframe
-                                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0&modestbranding=1`}
-                                title="YouTube Short"
-                                className="absolute inset-0 w-full h-full"
-                                allow="autoplay; encrypted-media; fullscreen"
-                                allowFullScreen
-                            />
-                        </div>
-                    </div>
-                </div>
-            )}
+            <VideoModal
+                videoId={activeVideoId}
+                onClose={handleClosePopup}
+                onNext={handleNextVideo}
+                onPrevious={handlePreviousVideo}
+                hasNext={currentVideoIndex !== null && currentVideoIndex < articles.length - 1}
+                hasPrevious={currentVideoIndex !== null && currentVideoIndex > 0}
+            />
         </>
     );
 };

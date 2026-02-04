@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-01-29T13:57:39.063Z
+ * Last generated: 2026-02-04T14:25:36.722Z
  */
 
 :root {
@@ -79,6 +79,7 @@
   --color-neutral-900: #121212;
   --color-neutral-black: #000000;
   --color-neutral-black-10: #0000001a;
+  --color-neutral-black-80: #000000cc;
   --color-neutral-white: #ffffff;
   --color-neutral-white-30: #ffffff4d;
   --color-pink-200: #fef3f2;

@@ -77,6 +77,10 @@
         "$type": "color",
         "$value": "#0000001a"
       },
+      "black-80": {
+        "$type": "color",
+        "$value": "#000000cc"
+      },
       "white": {
         "$type": "color",
         "$value": "#ffffff"
