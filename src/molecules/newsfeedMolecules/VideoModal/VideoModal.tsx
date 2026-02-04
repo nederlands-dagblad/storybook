@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import Icon from "@atoms/basicAtoms/Icon/Icon";
 
 export interface VideoModalProps {
@@ -18,10 +18,6 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                                                           hasNext = false,
                                                           hasPrevious = false,
                                                       }) => {
-    const touchStartX = useRef<number | null>(null);
-    const touchStartY = useRef<number | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-
     // Close on escape key, navigate with arrow keys
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -45,39 +41,6 @@ export const VideoModal: React.FC<VideoModalProps> = ({
         };
     }, [videoId, onClose, onNext, onPrevious, hasNext, hasPrevious]);
 
-    // Touch/swipe handlers
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.touches[0].clientX;
-        touchStartY.current = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e: React.TouchEvent) => {
-        if (touchStartX.current === null || touchStartY.current === null) return;
-
-        const touchEndX = e.changedTouches[0].clientX;
-        const touchEndY = e.changedTouches[0].clientY;
-
-        const deltaX = touchStartX.current - touchEndX;
-        const deltaY = touchStartY.current - touchEndY;
-
-        // Only trigger swipe if horizontal movement is greater than vertical
-        // This prevents accidental swipes while scrolling
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            const minSwipeDistance = 50; // Minimum distance for a swipe
-
-            if (deltaX > minSwipeDistance && hasNext && onNext) {
-                // Swiped left - go to next video
-                onNext();
-            } else if (deltaX < -minSwipeDistance && hasPrevious && onPrevious) {
-                // Swiped right - go to previous video
-                onPrevious();
-            }
-        }
-
-        touchStartX.current = null;
-        touchStartY.current = null;
-    };
-
     if (!videoId) return null;
 
     const navigationButtonClass = "fixed text-text-inverse hover:bg-neutral-800 transition-colors p-xs rounded-xl";
@@ -90,7 +53,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             {/* Close button */}
             <button
                 onClick={onClose}
-                className={`${navigationButtonClass} top-m right-m`}
+                className="${navigationButtonClass} top-m right-m "
                 aria-label="Sluiten"
             >
                 <Icon name="x-mark" variant="outline" size="m" color="inverse" />
@@ -103,7 +66,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                         e.stopPropagation();
                         onPrevious();
                     }}
-                    className={`${navigationButtonClass} left-m`}
+                    className="left-m ${navigationButtonClass}"
                     aria-label="Vorige video"
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
                 >
@@ -118,7 +81,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                         e.stopPropagation();
                         onNext();
                     }}
-                    className={`${navigationButtonClass} right-m`}
+                    className="right-m ${navigationButtonClass}"
                     aria-label="Volgende video"
                     style={{ top: '50%', transform: 'translateY(-50%)' }}
                 >
@@ -127,11 +90,8 @@ export const VideoModal: React.FC<VideoModalProps> = ({
             )}
 
             <div
-                ref={containerRef}
                 className="relative w-full max-w-[400px] mx-m"
                 onClick={(e) => e.stopPropagation()}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
             >
                 {/* Shorts-style vertical video container */}
                 <div
