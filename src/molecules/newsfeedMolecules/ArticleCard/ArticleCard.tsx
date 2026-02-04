@@ -185,6 +185,7 @@ export const ArticleCard = ({
         <a
             href={href}
             onClick={onClick}
+            draggable={false}
             className={`${baseClasses} transition-colors ${hoverBorderColor}`}
         >
             {cardContent}

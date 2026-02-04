@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { ArticleCard, ArticleCardProps } from "@molecules/newsfeedMolecules/ArticleCard/ArticleCard";
 import { SectionHeading } from "@atoms/displayAtoms/SectionHeading/SectionHeading";
 import { Button } from "@atoms/actionAtoms/Button/Button";
+import { VideoModal } from "@molecules/newsfeedMolecules/VideoModal/VideoModal";
 
 // Backend API configuration
 export interface VideoConfig {
@@ -250,7 +251,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
                     <div
                         ref={sliderRef}
-                        className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing [&_img]:pointer-events-none"
+                        className="flex gap-m overflow-x-auto scroll-smooth py-s cursor-grab active:cursor-grabbing select-none [&_img]:pointer-events-none"
                         style={{
                             scrollbarWidth: "thin",
                             scrollbarColor: "var(--color-border-gray) transparent"
@@ -299,40 +300,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             </div>
 
             {/* Video Popup Modal */}
-            {activeVideoId && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-                    onClick={handleClosePopup}
-                >
-                    <div
-                        className="relative w-full max-w-[400px] mx-4"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Close button */}
-                        <button
-                            onClick={handleClosePopup}
-                            className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
-                            aria-label="Sluiten"
-                        >
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        </button>
-
-                        {/* Shorts-style vertical video container */}
-                        <div className="relative w-full bg-black rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                            <iframe
-                                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0&modestbranding=1`}
-                                title="YouTube Short"
-                                className="absolute inset-0 w-full h-full"
-                                allow="autoplay; encrypted-media; fullscreen"
-                                allowFullScreen
-                            />
-                        </div>
-                    </div>
-                </div>
-            )}
+            <VideoModal videoId={activeVideoId} onClose={handleClosePopup} />
         </>
     );
 };

@@ -76,6 +76,9 @@ export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSl
 export { ArticleCard } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
 export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
 
+export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
+export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';

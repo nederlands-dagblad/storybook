@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-01-29T13:57:39.062Z
+// Last generated: 2026-02-04T14:25:36.720Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -17,6 +17,7 @@ export const primitiveColors = {
   "neutral-900": "var(--color-neutral-900)",
   "neutral-black": "var(--color-neutral-black)",
   "neutral-black-10": "var(--color-neutral-black-10)",
+  "neutral-black-80": "var(--color-neutral-black-80)",
   "neutral-white": "var(--color-neutral-white)",
   "neutral-white-30": "var(--color-neutral-white-30)",
   "pink-200": "var(--color-pink-200)",
