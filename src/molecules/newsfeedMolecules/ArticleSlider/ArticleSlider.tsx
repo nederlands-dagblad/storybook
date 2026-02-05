@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
-import { ArticleCard, ArticleCardProps } from "@molecules/newsfeedMolecules/ArticleCard/ArticleCard";
-import { SectionHeading } from "@atoms/displayAtoms/SectionHeading/SectionHeading";
-import { Button } from "@atoms/actionAtoms/Button/Button";
-import { VideoModal } from "@molecules/newsfeedMolecules/VideoModal/VideoModal";
+import React, {useRef, useState, useEffect} from "react";
+import {ArticleCard, ArticleCardProps} from "@molecules/newsfeedMolecules/ArticleCard/ArticleCard";
+import {SectionHeading} from "@atoms/displayAtoms/SectionHeading/SectionHeading";
+import {Button} from "@atoms/actionAtoms/Button/Button";
+import {VideoModal} from "@molecules/newsfeedMolecules/VideoModal/VideoModal";
 
 // Backend API configuration
 export interface VideoConfig {
@@ -20,6 +20,7 @@ export interface ArticleSliderProps {
     buttonLabel?: string;
     buttonUrl?: string;
     onButtonClick?: () => void;
+    onArticleSelect?: (index: number) => void;
     className?: string;
     enableSelection?: boolean;
     defaultSelectedIndex?: number;
@@ -43,6 +44,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                                                 className = "",
                                                                 enableSelection = false,
                                                                 defaultSelectedIndex,
+                                                                onArticleSelect,
                                                             }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const isDraggingRef = useRef(false);
@@ -73,7 +75,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             setError(null);
 
             try {
-                const { apiEndpoint, channelId, playlistId, maxResults = 10 } = videoConfig;
+                const {apiEndpoint, channelId, playlistId, maxResults = 10} = videoConfig;
 
                 const params = new URLSearchParams();
                 if (channelId) params.append('channelId', channelId);
@@ -114,7 +116,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
     const updateFadeVisibility = () => {
         if (!sliderRef.current) return;
-        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+        const {scrollLeft, scrollWidth, clientWidth} = sliderRef.current;
         setShowLeftFade(scrollLeft > 0);
         setShowRightFade(scrollLeft < scrollWidth - clientWidth - 1);
     };
@@ -159,14 +161,16 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                 return;
             }
 
-            if (videoConfig) {
-                const target = e.target as HTMLElement;
-                const cardWrapper = target.closest('[data-video-index]') as HTMLElement;
+            const target = e.target as HTMLElement;
+            const cardWrapper = target.closest('[data-index]') as HTMLElement;
 
-                if (cardWrapper) {
-                    const videoIndex = cardWrapper.getAttribute('data-video-index');
-                    if (videoIndex !== null) {
-                        const index = parseInt(videoIndex, 10);
+            if (cardWrapper) {
+                const indexStr = cardWrapper.getAttribute('data-index');
+                if (indexStr !== null) {
+                    const index = parseInt(indexStr, 10);
+
+                    // Handle video mode
+                    if (videoConfig) {
                         setCurrentVideoIndex(index);
                         const article = articles[index];
                         if (article.videoId) {
@@ -174,6 +178,12 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                             e.stopPropagation();
                             setActiveVideoId(article.videoId);
                         }
+                    }
+                    // Handle selection mode
+                    else if (enableSelection) {
+                        e.preventDefault();
+                        setSelectedIndex(index);
+                        onArticleSelect?.(index);
                     }
                 }
             }
@@ -196,7 +206,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             slider.removeEventListener('mouseleave', handleMouseUp);
             slider.removeEventListener('click', handleClick, true);
         };
-    }, [articles, videoConfig]);
+    }, [articles, videoConfig, enableSelection, onArticleSelect]);
 
     // Navigation handlers
     const handleNextVideo = () => {
@@ -255,11 +265,13 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
 
                 <div className="relative">
                     {showLeftFade && (
-                        <div className="absolute left-0 top-0 bottom-0 w-m bg-gradient-to-r from-background-default to-transparent pointer-events-none z-10" />
+                        <div
+                            className="absolute left-0 top-0 bottom-0 w-m bg-gradient-to-r from-background-default to-transparent pointer-events-none z-10"/>
                     )}
 
                     {showRightFade && (
-                        <div className="absolute right-0 top-0 bottom-0 w-m bg-gradient-to-l from-background-default to-transparent pointer-events-none z-10" />
+                        <div
+                            className="absolute right-0 top-0 bottom-0 w-m bg-gradient-to-l from-background-default to-transparent pointer-events-none z-10"/>
                     )}
 
                     <div
@@ -278,12 +290,12 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                                 <div
                                     key={index}
                                     className="flex-shrink-0"
-                                    data-video-index={isVideoMode ? index : undefined}
+                                    data-index={index}
                                 >
                                     <ArticleCard
                                         {...article}
                                         href={isVideoMode ? undefined : article.href}
-                                        className={`${article.className || ''} ${isSelected ? '[&>div]:!border-dnk-brand' : ''}`.trim()}
+                                        className={`${article.className || ''} ${isSelected ? '[&>div]:!border-border-dnk' : ''}`.trim()}
                                     />
                                 </div>
                             );
@@ -305,14 +317,16 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
             </div>
 
             {/* Video Popup Modal */}
-            <VideoModal
-                videoId={activeVideoId}
-                onClose={handleClosePopup}
-                onNext={handleNextVideo}
-                onPrevious={handlePreviousVideo}
-                hasNext={currentVideoIndex !== null && currentVideoIndex < articles.length - 1}
-                hasPrevious={currentVideoIndex !== null && currentVideoIndex > 0}
-            />
+            {videoConfig && (
+                <VideoModal
+                    videoId={activeVideoId}
+                    onClose={handleClosePopup}
+                    onNext={handleNextVideo}
+                    onPrevious={handlePreviousVideo}
+                    hasNext={currentVideoIndex !== null && currentVideoIndex < articles.length - 1}
+                    hasPrevious={currentVideoIndex !== null && currentVideoIndex > 0}
+                />
+            )}
         </>
     );
 };
