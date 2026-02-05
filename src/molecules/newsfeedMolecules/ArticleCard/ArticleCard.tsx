@@ -115,7 +115,7 @@ export const ArticleCard = ({
     if (variant === 'dnk-publications') {
         const dnkPublicationsContent = (
             <>
-                <div className="w-[13.25rem] border border-width-s border-border-gray-subtle hover:border-border-dnk active:border-dnk-brand transition-colors overflow-hidden">
+                <div className="w-[13.25rem] border border-default border-border-gray-subtle hover:border-border-dnk active:border-dnk-brand transition-colors overflow-hidden">
                     {imageUrl ? (
                         <img
                             src={imageUrl}

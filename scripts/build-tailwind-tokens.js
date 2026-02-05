@@ -188,18 +188,37 @@ function kebab(str) {
         .toLowerCase();                      // Convert to lowercase
 }
 
+// Deep merge utility to properly combine nested objects without overwriting
+function deepMerge(target, source) {
+    const result = { ...target };
+    for (const key of Object.keys(source)) {
+        if (
+            source[key] &&
+            typeof source[key] === 'object' &&
+            !('$value' in source[key]) &&
+            !Array.isArray(source[key])
+        ) {
+            // If both are objects (and not token values), merge recursively
+            result[key] = deepMerge(result[key] || {}, source[key]);
+        } else {
+            // Otherwise, use source value
+            result[key] = source[key];
+        }
+    }
+    return result;
+}
+
 // ----------------------
 // 🚀 Build All Token Sets
 // ----------------------
 console.log('🔄 Loading and processing token files...');
 
-// Load all base tokens
-const baseTokens = {
-    ...load(files.semantics),
-    ...load(files.effects),
-    ...load(files.typography),
-    ...load(files.primitives)
-};
+// Load all base tokens using deep merge to preserve nested structures
+// (e.g., border.border-width from primitives AND border.gray from semantics)
+let baseTokens = load(files.primitives);
+baseTokens = deepMerge(baseTokens, load(files.semantics));
+baseTokens = deepMerge(baseTokens, load(files.effects));
+baseTokens = deepMerge(baseTokens, load(files.typography));
 
 const flattenedBase = flatten(baseTokens);
 

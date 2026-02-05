@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-02-04T14:25:36.720Z
+// Last generated: 2026-02-05T14:17:43.660Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -28,6 +28,13 @@ export const primitiveColors = {
   "brown-800": "var(--color-brown-800)"
 };
 export const semanticColors = {
+  "border-default": "var(--color-border-default)",
+  "border-brand": "var(--color-border-brand)",
+  "border-warning": "var(--color-border-warning)",
+  "border-disabled": "var(--color-border-disabled)",
+  "border-gray": "var(--color-border-gray)",
+  "border-gray-subtle": "var(--color-border-gray-subtle)",
+  "border-dnk": "var(--color-border-dnk)",
   "text-default": "var(--color-text-default)",
   "text-brand": "var(--color-text-brand)",
   "text-brand-hover": "var(--color-text-brand-hover)",
