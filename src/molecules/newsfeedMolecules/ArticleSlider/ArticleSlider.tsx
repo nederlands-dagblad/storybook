@@ -168,11 +168,11 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                 const indexStr = cardWrapper.getAttribute('data-index');
                 if (indexStr !== null) {
                     const index = parseInt(indexStr, 10);
+                    const article = articles[index];
 
                     // Handle video mode
                     if (videoConfig) {
                         setCurrentVideoIndex(index);
-                        const article = articles[index];
                         if (article.videoId) {
                             e.preventDefault();
                             e.stopPropagation();
@@ -181,9 +181,13 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
                     }
                     // Handle selection mode
                     else if (enableSelection) {
-                        e.preventDefault();
                         setSelectedIndex(index);
                         onArticleSelect?.(index);
+
+                        // Allow navigation if href exists, prevent only for pure selection
+                        if (!article.href) {
+                            e.preventDefault();
+                        }
                     }
                 }
             }
