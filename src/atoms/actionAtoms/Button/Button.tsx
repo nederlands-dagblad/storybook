@@ -70,7 +70,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
         dark: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-dark text-text-inverse hover:bg-background-dark-hover disabled:bg-background-disabled',
 
-        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-gray border-s border-gray-subtle rounded-pill hover:bg-background-gray-subtle hover:border-gray-subtle active:bg-background-gray-subtle active:border-gray disabled:hover:bg-background-default disabled:hover:border-gray-subtle',
+        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-gray border-s rounded-pill hover:bg-background-gray-subtle disabled:hover:bg-background-default',
     };
 
     // Determine icon color based on variant
@@ -106,8 +106,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
         iconOnly && '!p-xs',
         // Variant specific styles
         variantStyles[variant],
-        // Active state for pill
-        variant === 'pill' && isActive && 'border-gray',
+        // Border color for pill (conditional based on active state)
+        variant === 'pill' && (isActive ? 'border-border-gray' : 'border-border-gray-subtle'),
         // Disabled state
         disabled && 'cursor-not-allowed',
         // Custom classes passed via props
