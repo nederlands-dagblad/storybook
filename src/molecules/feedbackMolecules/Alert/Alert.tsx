@@ -64,7 +64,7 @@ export const Alert: React.FC<AlertProps> = ({
                     isHtmlString
                         ? <span
                             dangerouslySetInnerHTML={{ __html: children as string }}
-                            className="[&_a]:text-text-brand [&_a]:underline"
+                            className="[&_a]:underline"
                         />
                         : children
                 }
