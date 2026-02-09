@@ -50,6 +50,8 @@ export const Alert: React.FC<AlertProps> = ({
                                             }) => {
     const config = alertConfigMap[variant];
 
+    const isHtmlString = typeof children === 'string';
+
     return (
         <CardContainer
             borderColor={config.borderColor}
@@ -58,7 +60,14 @@ export const Alert: React.FC<AlertProps> = ({
         >
             <IconText
                 icon={config.icon}
-                text={children}
+                text={
+                    isHtmlString
+                        ? <span
+                            dangerouslySetInnerHTML={{ __html: children as string }}
+                            className="[&_a]:underline"
+                        />
+                        : children
+                }
                 iconVariant={config.iconVariant}
                 iconColor={config.iconColor}
             />
