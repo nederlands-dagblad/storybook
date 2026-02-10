@@ -9,6 +9,9 @@ export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
 export * from '@atoms/displayAtoms/Badge/Badge';
 export type { BadgeProps } from './atoms/displayAtoms/Badge/Badge';
 
+export { PageHeading } from './atoms/displayAtoms/PageHeading/PageHeading';
+export type { PageHeadingProps } from './atoms/displayAtoms/PageHeading/PageHeading';
+
 export * from './atoms/displayAtoms/Skeleton/Skeleton';
 export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/Skeleton';
 
