@@ -2,6 +2,9 @@
 export * from '@atoms/actionAtoms/Button/Button';
 export type { ButtonProps } from './atoms/actionAtoms/Button/Button';
 
+export * from '@atoms/actionAtoms/RadioButton/RadioButton';
+export type { RadioButtonProps } from './atoms/actionAtoms/RadioButton/RadioButton';
+
 export * from '@atoms/basicAtoms/Icon/Icon';
 export type { IconProps } from './atoms/basicAtoms/Icon/Icon';
 export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
@@ -72,6 +75,9 @@ export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Ale
 
 export { Input } from './molecules/formMolecules/Input/Input';
 export type { InputProps } from './molecules/formMolecules/Input/Input';
+
+export { ArtikelCadeauModal } from './molecules/formMolecules/ArtikelCadeauModal/ArtikelCadeauModal';
+export type { ArtikelCadeauModalProps } from './molecules/formMolecules/ArtikelCadeauModal/ArtikelCadeauModal';
 
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
