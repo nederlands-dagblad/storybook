@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardContainer from "@atoms/displayAtoms/CardContainer/CardContainer.tsx";
 import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
 
 export interface ArtikelCadeauModalProps {
-    isOpen: boolean;
-    onClose: () => void;
     remainingGifts?: number;
 }
 
 export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
-                                                                        isOpen,
-                                                                        onClose,
-                                                                        remainingGifts = 5,
-                                                                    }) => {
+                                                                          remainingGifts = 5,
+                                                                      }) => {
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<'gift' | 'standard'>('gift');
+
+    useEffect(() => {
+        const handleOpen = () => setIsOpen(true);
+        window.addEventListener('open-artikel-cadeau', handleOpen);
+        return () => window.removeEventListener('open-artikel-cadeau', handleOpen);
+    }, []);
+
+    const handleClose = () => setIsOpen(false);
 
     if (!isOpen) return null;
 
@@ -32,7 +37,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
             {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black bg-opacity-50"
-                onClick={onClose}
+                onClick={handleClose}
             />
 
             {/* Modal */}
@@ -46,7 +51,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-heading-2xl font-bold">Artikel delen</h2>
                         <button
-                            onClick={onClose}
+                            onClick={handleClose}
                             className="p-2 hover:bg-background-gray rounded transition-colors text-2xl"
                             aria-label="Sluiten"
                         >
