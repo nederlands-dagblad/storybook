@@ -4,8 +4,21 @@ import { initialize, mswLoader } from 'msw-storybook-addon';
 import '../src/assets/css/tailwind.css';
 import '../storybook/style.css';
 
-// Initialize MSW
-initialize();
+// Initialize MSW with dynamic path detection
+const getServiceWorkerUrl = () => {
+  // In production (GitHub Pages), use /storybook/ prefix
+  if (typeof window !== 'undefined' && window.location.hostname.includes('github.io')) {
+    return '/storybook/mockServiceWorker.js';
+  }
+  // In local development, use root path
+  return '/mockServiceWorker.js';
+};
+
+initialize({
+  serviceWorker: {
+    url: getServiceWorkerUrl()
+  }
+});
 
 const viewports = {
   mobile: {
