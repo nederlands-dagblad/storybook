@@ -27,7 +27,17 @@ type Story = StoryObj<typeof ArtikelCadeauModal>;
 export const Default: Story = {
     render: () => {
         const [isOpen, setIsOpen] = useState(false);
+        
+        const handleShareAsGift = (platform: string) => {
+            console.log(`Sharing as GIFT on ${platform}`);
+            alert(`Gift link shared via ${platform}`);
+        };
 
+        const handleShareAsStandard = (platform: string) => {
+            console.log(`Sharing as STANDARD on ${platform}`);
+            alert(`Standard link shared via ${platform}`);
+        };
+        
         return (
             <div className="min-h-screen bg-background-gray p-4">
                 <button
@@ -41,6 +51,8 @@ export const Default: Story = {
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
                     remainingGifts={5}
+                    onShareAsGift={handleShareAsGift}
+                    onShareAsStandard={handleShareAsStandard}
                 />
             </div>
         );
@@ -50,13 +62,23 @@ export const Default: Story = {
 export const OpenByDefault: Story = {
     render: () => {
         const [isOpen, setIsOpen] = useState(true);
+        
+        const handleShareAsGift = (platform: string) => {
+            console.log(`Sharing as GIFT on ${platform}`);
+        };
 
+        const handleShareAsStandard = (platform: string) => {
+            console.log(`Sharing as STANDARD on ${platform}`);
+        };
+        
         return (
             <div className="min-h-screen bg-background-gray p-4">
                 <ArtikelCadeauModal
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
                     remainingGifts={5}
+                    onShareAsGift={handleShareAsGift}
+                    onShareAsStandard={handleShareAsStandard}
                 />
             </div>
         );
@@ -66,13 +88,23 @@ export const OpenByDefault: Story = {
 export const LowGiftsRemaining: Story = {
     render: () => {
         const [isOpen, setIsOpen] = useState(true);
+        
+        const handleShareAsGift = (platform: string) => {
+            console.log(`Sharing as GIFT on ${platform} (only 1 gift left!)`);
+        };
 
+        const handleShareAsStandard = (platform: string) => {
+            console.log(`Sharing as STANDARD on ${platform}`);
+        };
+        
         return (
             <div className="min-h-screen bg-background-gray p-4">
                 <ArtikelCadeauModal
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
                     remainingGifts={1}
+                    onShareAsGift={handleShareAsGift}
+                    onShareAsStandard={handleShareAsStandard}
                 />
             </div>
         );
@@ -82,13 +114,23 @@ export const LowGiftsRemaining: Story = {
 export const NoGiftsRemaining: Story = {
     render: () => {
         const [isOpen, setIsOpen] = useState(true);
+        
+        const handleShareAsGift = (platform: string) => {
+            console.log(`Cannot share as gift - no gifts remaining - ${platform}`);
+            alert('No gifts remaining!');
+        };
 
+        const handleShareAsStandard = (platform: string) => {
+            console.log(`Sharing as STANDARD on ${platform}`);
+        };
         return (
             <div className="min-h-screen bg-background-gray p-4">
                 <ArtikelCadeauModal
                     isOpen={isOpen}
                     onClose={() => setIsOpen(false)}
                     remainingGifts={0}
+                    onShareAsGift={handleShareAsGift}
+                    onShareAsStandard={handleShareAsStandard}
                 />
             </div>
         );
