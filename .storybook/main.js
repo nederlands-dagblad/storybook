@@ -6,6 +6,8 @@ export default {
     '../storybook/**/*.mdx',
   ],
 
+  staticDirs: ['../public'],
+
   features: {
     viewportStoryGlobals: true,
   },
