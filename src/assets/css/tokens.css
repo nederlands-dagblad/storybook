@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-02-05T14:17:43.662Z
+ * Last generated: 2026-02-17T09:10:40.596Z
  */
 
 :root {
@@ -110,7 +110,7 @@
   --border-radius-xl: 80px;
   --border-width-default: 1px;
   --border-radius-pill: 80px;
-  --font-size-heading-xs: 14px;
+  --font-size-heading-xs: 12px;
   --font-size-heading-s: 18px;
   --font-size-heading-m: 20px;
   --font-size-heading-l: 40px;
@@ -170,7 +170,7 @@
 /* Mobile Typography (Default) */
 @media (max-width: 767px) {
   :root {
-    --font-size-heading-xs: 14px;
+    --font-size-heading-xs: 12px;
     --font-size-heading-s: 16px;
     --font-size-heading-m: 18px;
     --font-size-heading-l: 26px;
@@ -189,7 +189,7 @@
 /* Tablet Typography (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
-    --font-size-heading-xs: 14px;
+    --font-size-heading-xs: 12px;
     --font-size-heading-s: 18px;
     --font-size-heading-m: 20px;
     --font-size-heading-l: 36px;
