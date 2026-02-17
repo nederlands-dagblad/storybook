@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import CardContainer from "@atoms/displayAtoms/CardContainer/CardContainer.tsx";
-import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 
-export interface BaseModalProps {
+export interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     children: React.ReactNode;
     heading: string;
 }
 
-export const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children, heading }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, heading }) => {
 
     if (!isOpen) return null;
     
@@ -23,16 +21,16 @@ export const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children,
             />
 
             {/* Modal */}
-            <div className="relative w-full md:w-[600px] md:mx-4 bg-white p-m h-[60vh] md:h-auto md:max-h-[90vh] overflow-y-auto bg-background-default">
+            <div className="relative w-full md:w-[600px] md:mx-4 bg-white p-m max-h-[60vh] md:h-auto md:max-h-[90vh] overflow-y-auto bg-background-default">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-heading-2">{heading}</h2>
+                    <h2 className="text-heading-2 text-text-default">{heading}</h2>
                     <button
                         onClick={onClose}
-                        className="p-2 hover:bg-background-gray rounded transition-colors text-2xl"
+                        className="p-1 hover:bg-background-gray-subtle rounded transition-colors"
                         aria-label="Sluiten"
                     >
-                        <Icon name={'x-mark'} size="m" color="default" variant="outline"/>
+                        <Icon name={'x-mark'} size="s" color="default" variant="outline"/>
                     </button>
                 </div>
                 {
@@ -43,4 +41,4 @@ export const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children,
     );
 };
 
-export default BaseModal;
+export default Modal;

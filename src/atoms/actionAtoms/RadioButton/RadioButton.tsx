@@ -4,62 +4,86 @@ export type RadioButtonProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type
     label: string;
     heading?: string;
     badgeText?: string;
+    variant?: 'default' | 'card';
 };
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
-                                                            label,
-                                                            heading,
-                                                            badgeText,
-                                                            checked,
-                                                            disabled,
-                                                            className,
-                                                            ...restProps
-                                                        }) => {
+    label,
+    heading,
+    badgeText,
+    variant = 'default',
+    checked,
+    disabled,
+    className,
+    ...restProps
+}) => {
+    // Radio circle element (shared between variants)
+    const radioCircle = (
+        <div className="relative flex-shrink-0 inline-flex items-center justify-center w-5 h-5">
+            <input
+                type="radio"
+                checked={checked}
+                disabled={disabled}
+                className={`peer appearance-none w-5 h-5 rounded-full border-default border-border-gray checked:border-border-brand transition-colors ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                {...restProps}
+            />
+            <span
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-background-brand pointer-events-none transition-opacity ${checked ? 'opacity-100' : 'opacity-0'}`}
+            />
+        </div>
+    );
+
+    // Default variant: simple radio with label
+    if (variant === 'default') {
+        return (
+            <label
+                className={`inline-flex items-center gap-x-s ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${className ?? ''}`}
+            >
+                {radioCircle}
+                <span className="text-body-regular text-text-default">{label}</span>
+            </label>
+        );
+    }
+
+    // Card variant: bordered card with heading, label, and optional badge
     return (
         <label
             className={`
-                relative flex items-center gap-x-s p-4 border-[1px] cursor-pointer space-xs
+                relative flex flex-col md:flex-row items-center gap-s p-s border-s
                 transition-all duration-200
                 ${checked
-                ? 'border-border-brand'
-                : 'border-border-gray-subtle bg-background-default hover:border-icons-brand'
-            }
-                ${disabled ? 'cursor-not-allowed opacity-50' : ''}
+                    ? 'border-border-brand'
+                    : 'border-border-gray-subtle bg-background-default hover:border-border-brand'
+                }
+                ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
                 ${className ?? ''}
             `}
         >
-            {/* Radio Button Circle */}
-            <div className="relative flex-shrink-0 inline-flex items-center justify-center w-6 h-6">
-                <input
-                    type="radio"
-                    checked={checked}
-                    disabled={disabled}
-                    className={` peer appearance-none w-6 h-6 rounded-full border-icons-brand border-[1px]  checked:border-border-brand cursor-pointer disabled:cursor-not-allowed transition-colors`}
-                    {...restProps}
-                />
-                <span
-                    className={`${checked ? 'bg-blue-400 border-border-brand opacity-100' : ''} absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-background-brand opacity-0 pointer-events-none transition-opacity`}
-                />
+            {/* Mobile: radio on top, Desktop: radio on left */}
+            <div className="flex-shrink-0">
+                {radioCircle}
             </div>
 
-            {/* Content */}
-            <div className="flex-1 min-w-0">
-                {heading && (
-                    <div className="text-body-bold text-si mb-1">
-                        {heading}
+            {/* Content: heading + label stacked, with badge on the right */}
+            <div className="flex flex-1 items-start justify-between items-center gap-s">
+                <div className="flex flex-col">
+                    {heading && (
+                        <div className="text-body-bold text-text-default">
+                            {heading}
+                        </div>
+                    )}
+                    <div className="text-meta-light text-text-default">
+                        {label}
+                    </div>
+                </div>
+
+                {/* Badge */}
+                {badgeText && (
+                    <div className="flex-shrink-0 px-xs py-xxs bg-background-brand text-meta-regular text-text-inverse">
+                        {badgeText}
                     </div>
                 )}
-                <div className="font-fira-sans text-meta-light">
-                    {label}
-                </div>
             </div>
-
-            {/* Optional Badge */}
-            {badgeText && (
-                <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center px-3 bg-background-brand text-text-inverse size-m font-fira-sans gap-10">
-                    {badgeText}
-                </div>
-            )}
         </label>
     );
 };

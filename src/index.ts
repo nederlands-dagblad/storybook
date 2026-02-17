@@ -76,8 +76,8 @@ export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Ale
 export { Input } from './molecules/formMolecules/Input/Input';
 export type { InputProps } from './molecules/formMolecules/Input/Input';
 
-export { BaseModal } from './molecules/modalMolecules/baseModal/BaseModal';
-export type { BaseModalProps } from './molecules/modalMolecules/baseModal/BaseModal';
+export { Modal } from './molecules/feedbackMolecules/Modal/Modal';
+export type { ModalProps } from './molecules/feedbackMolecules/Modal/Modal';
 
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';

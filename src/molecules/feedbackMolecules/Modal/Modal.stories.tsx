@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import BaseModal from './BaseModal';
+import Modal from './Modal';
 
-const meta: Meta<typeof BaseModal> = {
-    title: 'Molecules/Modal Molecules/BaseModal',
-    component: BaseModal,
+const meta: Meta<typeof Modal> = {
+    title: 'Molecules/Feedback Molecules/Modal',
+    component: Modal,
     parameters: {
         layout: 'fullscreen',
     },
@@ -12,7 +12,7 @@ const meta: Meta<typeof BaseModal> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BaseModal>;
+type Story = StoryObj<typeof Modal>;
 
 // Wrapper component to handle state
 const ModalWrapper = ({ children, heading }: { children: React.ReactNode; heading: string }) => {
@@ -26,13 +26,13 @@ const ModalWrapper = ({ children, heading }: { children: React.ReactNode; headin
             >
                 Open Modal
             </button>
-            <BaseModal
+            <Modal
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}
                 heading={heading}
             >
                 {children}
-            </BaseModal>
+            </Modal>
         </div>
     );
 };
