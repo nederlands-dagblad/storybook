@@ -76,8 +76,8 @@ export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Ale
 export { Input } from './molecules/formMolecules/Input/Input';
 export type { InputProps } from './molecules/formMolecules/Input/Input';
 
-export { ArtikelCadeauModal } from './molecules/formMolecules/ArtikelCadeauModal/ArtikelCadeauModal';
-export type { ArtikelCadeauModalProps } from './molecules/formMolecules/ArtikelCadeauModal/ArtikelCadeauModal';
+export { BaseModal } from './molecules/modalMolecules/baseModal/BaseModal';
+export type { BaseModalProps } from './molecules/modalMolecules/baseModal/BaseModal';
 
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
@@ -87,6 +87,10 @@ export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard
 
 export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
+
+// Organisms
+export { ArtikelCadeauModal } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+export type { ArtikelCadeauModalProps } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import CardContainer from "@atoms/displayAtoms/CardContainer/CardContainer.tsx";
 import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
+import BaseModal from "@molecules/modalMolecules/baseModal/BaseModal";
 
 export interface ArtikelCadeauModalProps {
     isOpen: boolean;
@@ -47,27 +47,8 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
     };
     
     return (
-        <div className="fixed inset-0 z-50 flex items-end md:items-center md:justify-center">
-            {/* Backdrop */}
-            <div
-                className="absolute inset-0 bg-black bg-opacity-50"
-                onClick={onClose}
-            />
-
-            {/* Modal */}
-            <div className="relative w-full md:w-auto md:max-w-4xl md:mx-4 bg-white p-m h-[60vh] md:h-auto md:max-h-[90vh] overflow-y-auto bg-background-default">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6   ">
-                    <h2 className="font-bold font-gulliver text-heading-2">Artikel delen</h2>
-                    <button
-                        onClick={onClose}
-                        className="p-2 hover:bg-background-gray rounded transition-colors text-2xl"
-                        aria-label="Sluiten"
-                    >
-                        <Icon name={'x-mark'} size="m" color="default" variant="outline"/>
-                    </button>
-                </div>
-
+        <BaseModal isOpen={isOpen} onClose={onClose} heading={'Artikel delen'} children={
+            <>
                 {/* Radio Options */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <RadioButton
@@ -91,13 +72,25 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
 
                 {/* Info Text */}
                 <div className="mb-6 space-y-2">
-                    <p className="font-fira-sans text-body-light">
-                        Geef <span className="text-body-bold">7 dagen</span> gratis toegang tot dit artikel.
-                    </p>
-                    <p className="font-fira-sans text-body-light">
-                        Je kunt deze maand nog <span
-                        className="text-body-bold">{remainingGifts} artikelen</span> cadeau geven.
-                    </p>
+                    {
+                        selectedOption === 'gift' ?
+                            <>
+                                <p className="font-fira-sans text-body-light">
+                                    Geef <span className="text-body-bold">7 dagen</span> gratis toegang tot dit artikel.
+                                </p>
+                                <p className="font-fira-sans text-body-light">
+                                    Je kunt deze maand nog <span
+                                    className="text-body-bold">{remainingGifts} artikelen</span> cadeau geven.
+                                </p>
+                            </>
+                            :
+                            <>
+                                <p className="font-fira-sans text-body-light">
+                                    Deel dit artikel met een ND-abonnee. Niet-abonnees krijgen een betaalmuur te zien.
+                                </p>
+                            </>
+                    }
+
                 </div>
 
                 {/* Share Buttons */}
@@ -113,8 +106,8 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                         </button>
                     ))}
                 </div>
-            </div>
-        </div>
+            </>
+        }/>
     );
 };
 
