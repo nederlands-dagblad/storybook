@@ -49,7 +49,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
     return (
         <label
             className={`
-                relative flex flex-col md:flex-row items-center gap-s p-s border-s
+                relative flex flex-col md:flex-row items-center gap-s p-s border-s text-center md:text-left
                 transition-all duration-200
                 ${checked
                     ? 'border-border-brand'
@@ -59,31 +59,26 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
                 ${className ?? ''}
             `}
         >
-            {/* Mobile: radio on top, Desktop: radio on left */}
-            <div className="flex-shrink-0">
-                {radioCircle}
-            </div>
+            {radioCircle}
 
-            {/* Content: heading + label stacked, with badge on the right */}
-            <div className="flex flex-1 items-start justify-between items-center gap-s">
-                <div className="flex flex-col">
-                    {heading && (
-                        <div className="text-body-bold text-text-default">
-                            {heading}
-                        </div>
-                    )}
-                    <div className="text-meta-light text-text-default">
-                        {label}
-                    </div>
-                </div>
-
-                {/* Badge */}
-                {badgeText && (
-                    <div className="flex-shrink-0 px-xs py-xxs bg-background-brand text-meta-regular text-text-inverse">
-                        {badgeText}
+            {/* Content: heading + label stacked */}
+            <div className="flex flex-col md:flex-1">
+                {heading && (
+                    <div className="text-body-bold text-text-default">
+                        {heading}
                     </div>
                 )}
+                <div className="text-meta-light text-text-default">
+                    {label}
+                </div>
             </div>
+
+            {/* Badge */}
+            {badgeText && (
+                <div className="px-xs py-xxs bg-background-brand text-meta-regular text-text-inverse">
+                    {badgeText}
+                </div>
+            )}
         </label>
     );
 };

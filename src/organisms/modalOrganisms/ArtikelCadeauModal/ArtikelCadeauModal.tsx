@@ -51,7 +51,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
             <>
                 <div className="flex flex-col gap-m">
                     {/* Radio Options */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-s">
+                    <div className="grid grid-cols-2 gap-s">
                         <RadioButton
                             variant="card"
                             label="Door iedereen te lezen"

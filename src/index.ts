@@ -21,17 +21,6 @@ export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/
 export * from './textStyles/Typography/Typography';
 export type { TypographyProps } from './textStyles/Typography/Typography';
 
-// Components - Modal
-export { ConfirmModal } from './molecules/feedbackMolecules/modal/ConfirmModal';
-export type { ConfirmModalProps } from './molecules/feedbackMolecules/modal/ConfirmModal';
-
-export { ExampleModal } from './molecules/feedbackMolecules/modal/ExampleModal';
-
-export { ModalManager } from './molecules/feedbackMolecules/modal/ModalManager';
-
-export { NModal } from './molecules/feedbackMolecules/modal/NModal';
-export type { NModalProps } from './molecules/feedbackMolecules/modal/NModal';
-
 // Components - Portal
 export { DescriptionList } from './molecules/portalMolecules/DescriptionList/DescriptionList';
 export type { DescriptionListProps } from './molecules/portalMolecules/DescriptionList/DescriptionList';
