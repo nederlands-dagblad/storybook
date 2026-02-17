@@ -2,6 +2,9 @@
 export * from '@atoms/actionAtoms/Button/Button';
 export type { ButtonProps } from './atoms/actionAtoms/Button/Button';
 
+export * from '@atoms/actionAtoms/RadioButton/RadioButton';
+export type { RadioButtonProps } from './atoms/actionAtoms/RadioButton/RadioButton';
+
 export * from '@atoms/basicAtoms/Icon/Icon';
 export type { IconProps } from './atoms/basicAtoms/Icon/Icon';
 export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
@@ -17,17 +20,6 @@ export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/
 
 export * from './textStyles/Typography/Typography';
 export type { TypographyProps } from './textStyles/Typography/Typography';
-
-// Components - Modal
-export { ConfirmModal } from './molecules/feedbackMolecules/modal/ConfirmModal';
-export type { ConfirmModalProps } from './molecules/feedbackMolecules/modal/ConfirmModal';
-
-export { ExampleModal } from './molecules/feedbackMolecules/modal/ExampleModal';
-
-export { ModalManager } from './molecules/feedbackMolecules/modal/ModalManager';
-
-export { NModal } from './molecules/feedbackMolecules/modal/NModal';
-export type { NModalProps } from './molecules/feedbackMolecules/modal/NModal';
 
 // Components - Portal
 export { DescriptionList } from './molecules/portalMolecules/DescriptionList/DescriptionList';
@@ -73,6 +65,9 @@ export type { AlertProps, AlertVariant } from './molecules/feedbackMolecules/Ale
 export { Input } from './molecules/formMolecules/Input/Input';
 export type { InputProps } from './molecules/formMolecules/Input/Input';
 
+export { Modal } from './molecules/feedbackMolecules/Modal/Modal';
+export type { ModalProps } from './molecules/feedbackMolecules/Modal/Modal';
+
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 
@@ -81,6 +76,10 @@ export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard
 
 export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
+
+// Organisms
+export { ArtikelCadeauModal } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+export type { ArtikelCadeauModalProps } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
