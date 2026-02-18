@@ -54,7 +54,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                                                                       }) => {
     const [internalIsOpen, setInternalIsOpen] = useState(controlledIsOpen ?? false);
     const [selectedOption, setSelectedOption] = useState<'gift' | 'standard'>('gift');
-    const [currentRemainingGifts, setCurrentRemainingGifts] = useState(remainingGifts);
+    const [currentRemainingGifts, setCurrentRemainingGifts] = useState(Math.max(0, remainingGifts));
     const [toast, setToast] = useState<ToastState>({message: '', visible: false});
 
     // Sync with controlled prop when provided
@@ -77,7 +77,6 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
             const newCount = Math.max(0, e.detail.remainingGifts);
             setCurrentRemainingGifts(newCount);
 
-            // Force update badge text in RadioButton via DOM
             const badgeEl = document.querySelector('.bg-background-brand.text-text-inverse.size-m');
             if (badgeEl) {
                 badgeEl.textContent = newCount.toString();
@@ -134,6 +133,10 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
 
     const handleShareClick = (platform: string) => {
         if (selectedOption === 'gift') {
+            if (currentRemainingGifts <= 0) {
+                showToast('Je hebt geen artikelen meer over om cadeau te geven deze maand.');
+                return;
+            }
             if (onShareAsGift) {
                 onShareAsGift(platform);
             } else if (window.handleShareAsGift) {
