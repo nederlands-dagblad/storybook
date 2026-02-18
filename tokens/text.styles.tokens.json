@@ -313,7 +313,7 @@
         "fontWeight": "{typography.font-weight.bold}",
         "letterSpacing": "{typography.letter-spacing.l}",
         "lineHeight": "130%",
-        "textTransform": "small-caps",
+        "textTransform": "uppercase",
         "textDecoration": "none"
       }
     }

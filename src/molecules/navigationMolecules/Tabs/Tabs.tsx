@@ -120,7 +120,7 @@ export const Tabs: React.FC<TabsProps> = (props) => {
                         ${
                         isActive
                             ? "text-menu-menu-tab-item-active text-text-default underline underline-offset-[0.3rem] decoration-[0.1rem] !decoration-text-brand"
-                            : "text-menu-menu-tab-item text-text-default no-underline hover:underline hover:underline-offset-[0.3rem] hover:decoration-[0.1rem]"
+                            : "text-menu-menu-tab-item text-text-default no-underline hover:!underline hover:underline-offset-[0.3rem] hover:decoration-[0.1rem]"
                     }
                     `.trim()}
                 >
