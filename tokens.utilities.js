@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-02-05T14:17:43.662Z
+ * Last generated: 2026-02-17T09:10:40.597Z
  */
 
 export default function ({ addUtilities }) {
@@ -668,7 +668,7 @@ export default function ({ addUtilities }) {
     "lineHeight": "130%",
     "letterSpacing": "var(--letter-spacing-l)",
     "textDecoration": "none",
-    "fontVariant": "all-small-caps"
+    "textTransform": "uppercase"
   },
   ".text-meta-light": {
     "fontFamily": "var(--font-family-fira-sans)",

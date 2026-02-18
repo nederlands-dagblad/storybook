@@ -3,7 +3,7 @@
     "heading": {
       "xs": {
         "$type": "dimension",
-        "$value": "{typography.font-size.14}"
+        "$value": "{typography.font-size.12}"
       },
       "s": {
         "$type": "dimension",
