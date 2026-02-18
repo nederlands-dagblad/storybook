@@ -209,6 +209,20 @@ export const WithCustomClickHandler: Story = {
     },
 };
 
+export const WithButton: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/180/306?random=13',
+        articleType: 'De Nieuwe Koers',
+        heading: 'DNK Publications',
+        variant: 'dnk-publications',
+        publicationMonth: 'Januari 2025',
+        href: '/publications/january-2025',
+        showButton: true,
+        buttonLabel: 'Download PDF',
+        buttonUrl: '/publications/january-2025',
+    },
+};
+
 export const InteractiveGrid: Story = {
     render: () => (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
