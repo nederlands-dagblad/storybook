@@ -1,7 +1,7 @@
 import React from "react";
 import Badge from "@atoms/displayAtoms/Badge/Badge";
 import Icon from "@atoms/basicAtoms/Icon/Icon";
-import {Button} from "@atoms/actionAtoms/Button/Button";
+import {Button, ButtonProps} from "@atoms/actionAtoms/Button/Button";
 
 export interface ArticleCardProps {
     imageUrl?: string;
@@ -16,11 +16,7 @@ export interface ArticleCardProps {
     publicationMonth?: string; // For dnk-publications variant
     placeholderText?: string; // Text to display when no image (e.g., "Volgende editie: 1 februari")
     videoId?: string;
-
-    showButton?: boolean;
-    buttonLabel?: string;
-    buttonUrl?: string;
-    buttonIconLeft?: string;
+    buttonProps?: ButtonProps;
 }
 
 export const ArticleCard = ({
@@ -35,10 +31,7 @@ export const ArticleCard = ({
                                 videoDuration,
                                 publicationMonth,
                                 placeholderText,
-                                showButton = false,
-                                buttonLabel,
-                                buttonUrl,
-                                buttonIconLeft
+                                buttonProps,
                             }: ArticleCardProps): JSX.Element => {
     // Determine article type color based on variant
     const articleTypeColor = variant === 'de-nieuwe-koers'
@@ -72,16 +65,13 @@ export const ArticleCard = ({
         </h3>
     );
 
-    const DownloadButton = () => showButton ? (
+    const DownloadButton = () => buttonProps ? (
         <div className="pt-s">
             <Button
                 variant="pill"
-                iconLeft={buttonIconLeft}
-                href={buttonUrl}
                 className="w-fit"
-            >
-                {buttonLabel}
-            </Button>
+                {...buttonProps}
+            />
         </div>
     ) : null;
 

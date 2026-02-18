@@ -217,9 +217,12 @@ export const WithButton: Story = {
         variant: 'dnk-publications',
         publicationMonth: 'Januari 2025',
         href: '/publications/january-2025',
-        showButton: true,
-        buttonLabel: 'Download PDF',
-        buttonUrl: '/publications/january-2025',
+        buttonProps: {
+            label: 'Download PDF',
+            href: '/publications/january-2025',
+            iconLeft: 'download',
+            iconLeftVariant: 'outline'
+        },
     },
 };
 
