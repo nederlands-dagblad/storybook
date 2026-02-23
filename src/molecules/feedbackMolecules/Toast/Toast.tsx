@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 
 export interface ToastProps {
     message: string;
@@ -32,17 +33,17 @@ const Toast: React.FC<ToastProps> = ({ message, visible, onClose }) => {
 
     return (
         <div className="fixed bottom-4 left-4 z-[60] max-w-sm animate-fade-in">
-            <div className="flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border bg-white border-border-gray-subtle">
+            <div className="flex items-center gap-xs p-s shadow-lg border bg-background-default border-border-gray-subtle">
                 <p
-                    className="font-fira-sans text-body-regular flex-1 text-black"
+                    className="text-body-light text-text-default flex-1"
                     dangerouslySetInnerHTML={{ __html: message }}
                 />
                 <button
                     onClick={onClose}
-                    className="p-1 hover:bg-background-gray rounded transition-colors text-lg leading-none"
+                    className="p-1 hover:bg-background-gray-subtle rounded transition-colors"
                     aria-label="Sluiten"
                 >
-                    ×
+                    <Icon name={'x-mark'} size="s" color="default" variant="outline"/>
                 </button>
             </div>
         </div>
