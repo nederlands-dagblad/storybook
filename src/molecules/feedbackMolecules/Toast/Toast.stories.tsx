@@ -18,33 +18,32 @@ const meta: Meta<typeof Toast> = {
             description: 'Whether the toast is visible',
         },
     },
+    decorators: [
+        (Story) => (
+            <div className="min-h-[200px] relative">
+                <Story />
+            </div>
+        ),
+    ],
 };
 
 export default meta;
 type Story = StoryObj<typeof Toast>;
 
 export const Default: Story = {
-    render: () => (
-        <div className="min-h-[200px] relative">
-            <Toast
-                message="Link kopieerd."
-                visible={true}
-                onClose={() => console.log('Toast closed')}
-            />
-        </div>
-    ),
+    args: {
+        message: 'Link kopieerd.',
+        visible: true,
+        onClose: () => console.log('Toast closed'),
+    },
 };
 
 export const WithHtml: Story = {
-    render: () => (
-        <div className="min-h-[200px] relative">
-            <Toast
-                message='Je hebt nog <strong>3 artikelen</strong> over om cadeau te geven.'
-                visible={true}
-                onClose={() => console.log('Toast closed')}
-            />
-        </div>
-    ),
+    args: {
+        message: 'Je hebt nog <strong>3 artikelen</strong> over om cadeau te geven.',
+        visible: true,
+        onClose: () => console.log('Toast closed'),
+    },
 };
 
 const WithHookRenderer = () => {
