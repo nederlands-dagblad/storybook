@@ -68,6 +68,10 @@ export type { InputProps } from './molecules/formMolecules/Input/Input';
 export { Modal } from './molecules/feedbackMolecules/Modal/Modal';
 export type { ModalProps } from './molecules/feedbackMolecules/Modal/Modal';
 
+export { default as Toast } from './molecules/feedbackMolecules/Toast/Toast';
+export { useToast } from './molecules/feedbackMolecules/Toast/Toast';
+export type { ToastProps } from './molecules/feedbackMolecules/Toast/Toast';
+
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 
