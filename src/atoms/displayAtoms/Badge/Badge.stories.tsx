@@ -11,13 +11,17 @@ const meta = {
     argTypes: {
         variant: {
             control: 'select',
-            options: ['premium', 'dnk'],
+            options: ['premium', 'dnk', 'default'],
             description: 'Visual variant of the badge',
         },
         size: {
             control: 'select',
             options: ['small', 'large'],
             description: 'Size variant of the badge',
+        },
+        label: {
+            control: 'text',
+            description: 'Text label for the default variant',
         },
         className: {
             control: 'text',
@@ -45,6 +49,16 @@ export const PremiumSmall: Story = {
     args: {
         variant: 'premium',
         size: 'small',
+    },
+};
+
+/**
+ * Default badge with children content
+ */
+export const Default: Story = {
+    args: {
+        variant: 'default',
+        label: 'Default',
     },
 };
 

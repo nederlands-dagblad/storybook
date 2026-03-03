@@ -1,12 +1,14 @@
 import React from 'react';
 import Icon from "@atoms/basicAtoms/Icon/Icon";
 
-export type BadgeVariant = 'premium' | 'dnk';
+export type BadgeVariant = 'premium' | 'dnk' | 'default';
 
 export interface BadgeProps {
     className?: string;
     size?: 'small' | 'large';
     variant?: BadgeVariant;
+    label?: string;
+    children?: React.ReactNode;
 }
 
 const DnkSvg: React.FC<{ className?: string }> = ({ className }) => (
@@ -37,8 +39,20 @@ const DnkSvg: React.FC<{ className?: string }> = ({ className }) => (
 export const Badge: React.FC<BadgeProps> = ({
                                                 className = '',
                                                 size = 'large',
-                                                variant = 'premium'
+                                                variant = 'premium',
+                                                label,
+                                                children
                                             }) => {
+    if (variant === 'default') {
+        return (
+            <div
+                className={`inline-flex items-center bg-background-brand-subtle border-border-brand border-default text-meta-regular text-text-default p-xxs ${className}`}
+            >
+                {label ?? children}
+            </div>
+        );
+    }
+
     if (variant === 'dnk') {
         return (
             <div
