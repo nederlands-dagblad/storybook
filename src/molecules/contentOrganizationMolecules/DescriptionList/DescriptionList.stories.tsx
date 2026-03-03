@@ -5,7 +5,7 @@ import DescriptionListItem from './DescriptionListItem';
 import Icon from "../../../atoms/basicAtoms/Icon/Icon";
 
 const meta = {
-  title: 'Molecules/Portal Molecules/DescriptionList',
+  title: 'Molecules/Content Organization Molecules/DescriptionList',
   component: DescriptionList,
   parameters: {
     layout: 'padded',

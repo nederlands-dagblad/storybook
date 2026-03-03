@@ -3,7 +3,7 @@ import MenuItems from './menuItems';
 import MenuItem from './menuItem';
 
 const meta = {
-    title: 'Molecules/Portal Molecules/MenuItems',
+    title: 'Molecules/Navigation Molecules/MenuItems',
     component: MenuItems,
     parameters: {
         layout: 'padded',
