@@ -260,7 +260,27 @@ export const VideoSlider: Story = {
     },
 };
 
-// 4. DNK Publications with Selection
+// 4. Cartoons Image Slider
+const mockCartoons = [
+    { imageUrl: 'https://picsum.photos/212/212?random=40', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/1' },
+    { imageUrl: 'https://picsum.photos/212/212?random=41', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/2' },
+    { imageUrl: 'https://picsum.photos/212/212?random=42', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/3' },
+    { imageUrl: 'https://picsum.photos/212/212?random=43', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/4' },
+    { imageUrl: 'https://picsum.photos/212/212?random=44', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/5' },
+    { imageUrl: 'https://picsum.photos/212/212?random=45', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/6' },
+    { imageUrl: 'https://picsum.photos/212/212?random=46', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/7' },
+    { imageUrl: 'https://picsum.photos/212/212?random=47', articleType: 'Cartoon', heading: '', variant: 'image' as const, href: '/cartoons/8' },
+];
+
+export const Cartoons: Story = {
+    args: {
+        title: 'Cartoons',
+        articles: mockCartoons,
+        showButton: false,
+    },
+};
+
+// 5. DNK Publications with Selection
 export const DnkPublicationsWithSelection: Story = {
     args: {
         title: 'De Nieuwe Koers Publicaties',
