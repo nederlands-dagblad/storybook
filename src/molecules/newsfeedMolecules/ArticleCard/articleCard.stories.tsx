@@ -24,8 +24,8 @@ const meta: Meta<typeof ArticleCard> = {
         },
         variant: {
             control: 'select',
-            options: ['default', 'de-nieuwe-koers', 'video', 'dnk-publications'],
-            description: 'Default, De Nieuwe Koers, Video, or DNK Publications variant',
+            options: ['default', 'de-nieuwe-koers', 'video', 'dnk-publications', 'image'],
+            description: 'Default, De Nieuwe Koers, Video, DNK Publications, or Image variant',
         },
         isPremium: {
             control: 'boolean',
@@ -332,4 +332,14 @@ export const DnkPublicationsGrid: Story = {
             />
         </div>
     ),
+};
+
+export const Image: Story = {
+    args: {
+        imageUrl: 'https://picsum.photos/212/212?random=20',
+        articleType: 'Fotografie',
+        heading: '',
+        variant: 'image',
+        href: '/photos/1',
+    },
 };
