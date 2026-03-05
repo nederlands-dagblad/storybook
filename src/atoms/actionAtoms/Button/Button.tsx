@@ -106,8 +106,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
         iconOnly && '!p-xs',
         // Variant specific styles
         variantStyles[variant],
-        // Border color for pill (conditional based on active state)
-        variant === 'pill' && (isActive ? 'border-border-gray' : 'border-border-gray-subtle'),
+        // Border and background color for pill (conditional based on active state)
+        variant === 'pill' && (isActive ? 'border-border-gray bg-background-gray-subtle' : 'border-border-gray-subtle bg-background-default'),
         // Disabled state
         disabled && 'cursor-not-allowed',
         // Custom classes passed via props
