@@ -21,6 +21,9 @@ export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/
 export * from './textStyles/Typography/Typography';
 export type { TypographyProps } from './textStyles/Typography/Typography';
 
+export { Tag } from './atoms/actionAtoms/Tag/Tag';
+export type { TagProps } from './atoms/actionAtoms/Tag/Tag';
+
 // Components - Portal
 export { DescriptionList } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionList';
 export type { DescriptionListProps } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionList';
@@ -71,9 +74,15 @@ export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard
 export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 
+export { Dropdown } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
+export type { DropdownProps } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
+
 // Organisms
 export { ArtikelCadeauModal } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
 export type { ArtikelCadeauModalProps } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+
+export { SearchFilter } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
+export type { SearchFilterProps } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
