@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { RadioButton } from './RadioButton';
 
 const meta: Meta<typeof RadioButton> = {
-    title: 'Atoms/Action Atoms/RadioButton',
+    title: 'Molecules/Form Molecules/RadioButton',
     component: RadioButton,
     parameters: {
         layout: 'padded',

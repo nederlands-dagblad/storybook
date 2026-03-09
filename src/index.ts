@@ -2,8 +2,11 @@
 export * from '@atoms/actionAtoms/Button/Button';
 export type { ButtonProps } from './atoms/actionAtoms/Button/Button';
 
-export * from '@atoms/actionAtoms/RadioButton/RadioButton';
-export type { RadioButtonProps } from './atoms/actionAtoms/RadioButton/RadioButton';
+export * from '@molecules/formMolecules/RadioButton/RadioButton';
+export type { RadioButtonProps } from './molecules/formMolecules/RadioButton/RadioButton';
+
+export * from '@molecules/formMolecules/CheckBox/CheckBox';
+export type { CheckBoxProps } from './molecules/formMolecules/CheckBox/CheckBox';
 
 export * from '@atoms/basicAtoms/Icon/Icon';
 export type { IconProps } from './atoms/basicAtoms/Icon/Icon';

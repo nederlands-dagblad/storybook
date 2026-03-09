@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
+import RadioButton from "@molecules/formMolecules/RadioButton/RadioButton.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 import Modal from "@molecules/feedbackMolecules/Modal/Modal";
 
