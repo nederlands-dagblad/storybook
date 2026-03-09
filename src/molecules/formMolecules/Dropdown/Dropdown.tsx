@@ -109,7 +109,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 <span className="text-meta-bold text-text-default">{label}</span>
             )}
             <button
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => setIsOpen(!isOpen)}
                 className={`flex items-center justify-between gap-xs px-xs py-xs bg-background-default border-s text-body-light text-text-default transition-colors ${
                     isOpen ? 'border-border-brand' : 'border-border-gray-subtle hover:border-border-gray'
                 }`}
