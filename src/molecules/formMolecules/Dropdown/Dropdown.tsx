@@ -104,17 +104,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
     // select variant
     return (
-        <div ref={wrapperRef} className={`relative flex flex-col gap-xxs ${className}`}>
+        <div ref={wrapperRef} className={`relative w-full flex flex-col gap-xxs ${className}`}>
             {label && (
-                <span className="text-meta-bold text-text-default">{label}</span>
+                <label className="text-body-light">{label}</label>
             )}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between gap-xs px-xs py-xs bg-background-default border-s text-body-light text-text-default transition-colors ${
-                    isOpen ? 'border-border-brand' : 'border-border-gray-subtle hover:border-border-gray'
+                className={`w-full flex items-center justify-between gap-xs px-3 py-2 bg-background-default border text-body-light text-text-default focus:outline-none transition-colors ${
+                    isOpen ? 'border-border-brand' : 'border-border-gray'
                 }`}
             >
-                <span className={selectedOption ? 'text-text-default' : 'text-text-gray'}>
+                <span className={selectedOption ? 'text-body-regular text-text-default' : 'text-body-regular text-text-gray'}>
                     {selectedOption?.label ?? placeholder}
                 </span>
                 <Icon

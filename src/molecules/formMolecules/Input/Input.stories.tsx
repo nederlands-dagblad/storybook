@@ -3,24 +3,6 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { StoryObj } from "@storybook/react-vite";
 import Input, { InputProps } from './Input';
 
-/**
- * ## HTML
- *
- * ```html
- * <div class="space-y-1 font-fira-sans">
- *
- *   <label class="label" for="input-id">Label</label>
- *
- *   <input class="w-full px-3 py-2 border border-border-default text-black dark:bg-background-brand dark:text-[#f0f0f0] dark:border-border-default focus:dark:border-border-default focus:dark:ring-2 focus:dark:ring-white/10" id="input-id" type="text" placeholder="Enter text..." />
- *
- *   <span class="text-text-gray text-meta">This is a helpful description</span>
- *
- *   <span class="text-text-warning text-meta">Error message</span>
- *
- * </div>
- * ```
- *
- */
 const meta = {
   title: 'Molecules/Form Molecules/Input',
   component: Input,
