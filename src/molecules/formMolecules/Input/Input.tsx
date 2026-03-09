@@ -66,12 +66,12 @@ export const Input: React.FC<InputProps> = (props) => {
   const selectedDate = datePicker ? parseDate(value) : null;
 
   return (
-      <div className={`space-y-1 font-fira-sans${datePicker ? ' relative' : ''}`} ref={wrapperRef}>
-        {label && <label className="label">{label}</label>}
+      <div className={`text-body-regular text-text-default ${datePicker ? ' relative' : ''}`} ref={wrapperRef}>
+        {label && <label className="text-body-light">{label}</label>}
 
         <div className={datePicker ? 'relative flex items-center' : undefined}>
           <input
-              className={`w-full px-3 py-2 border border-border-default text-black bg-background-default dark:text-[#f0f0f0] dark:border-border-default focus:dark:border-border-default focus:dark:ring-2 focus:dark:ring-white/10${datePicker ? ' cursor-pointer pr-10' : ''}`}
+              className={`w-full px-3 py-2 border text-default bg-background-default focus:outline-none focus:border-border-brand ${errors?.length ? 'border-border-warning' : 'border-border-gray'} ${datePicker ? ' cursor-pointer pr-10' : ''}`}
               onChange={onChange}
               value={value}
               readOnly={datePicker}
@@ -82,7 +82,7 @@ export const Input: React.FC<InputProps> = (props) => {
           {datePicker && (
               <button
                   type="button"
-                  className="nd-cal-toggle absolute right-0 flex items-center justify-center w-10 h-full border-none bg-transparent cursor-pointer text-icons-brand hover:text-text-brand-hover"
+                  className=" absolute right-0 flex items-center justify-center w-10 h-full border-none bg-transparent cursor-pointer text-icons-brand hover:text-text-brand-hover"
                   onClick={() => setOpen(o => !o)}
                   aria-label="Open date picker"
               >
@@ -100,11 +100,14 @@ export const Input: React.FC<InputProps> = (props) => {
             />
         )}
 
-        {help && <span className="text-text-gray text-meta">{help}</span>}
-
-        {errors && errors.map((error, i) => (
-            <span key={i} className="text-text-warning text-meta">{error}</span>
-        ))}
+        {(help || errors?.length) ? (
+            <div className="flex flex-col">
+                {help && <span className="text-text-gray text-meta">{help}</span>}
+                {errors && errors.map((error, i) => (
+                    <span key={i} className="text-text-warning text-meta">{error}</span>
+                ))}
+            </div>
+        ) : null}
       </div>
   );
 };

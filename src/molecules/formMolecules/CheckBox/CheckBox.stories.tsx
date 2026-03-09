@@ -42,18 +42,24 @@ export default meta;
 type Story = StoryObj<typeof CheckBox>;
 
 export const Default: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(false);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'default',
         label: 'Accept terms and conditions',
-        checked: false,
     },
 };
 
 export const DefaultChecked: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(true);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'default',
         label: 'Accept terms and conditions',
-        checked: true,
     },
 };
 
@@ -99,40 +105,52 @@ export const DefaultGroup: Story = {
 };
 
 export const Card: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(false);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'card',
         label: 'Door iedereen te lezen',
         heading: 'Als cadeau',
-        checked: false,
     },
 };
 
 export const CardChecked: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(true);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'card',
         label: 'Door abonnees te lezen',
         heading: 'Standaard delen',
-        checked: true,
     },
 };
 
 export const CardWithBadge: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(false);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'card',
         label: 'Door iedereen te lezen',
         heading: 'Als cadeau',
         badgeText: '5',
-        checked: false,
     },
 };
 
 export const CardWithBadgeChecked: Story = {
+    render: (args) => {
+        const [checked, setChecked] = useState(true);
+        return <CheckBox {...args} checked={checked} onChange={() => setChecked((prev) => !prev)} />;
+    },
     args: {
         variant: 'card',
         label: 'Door iedereen te lezen',
         heading: 'Als cadeau',
         badgeText: '5',
-        checked: true,
     },
 };
 

@@ -67,6 +67,17 @@ export const WithErrors: Story = {
   }
 };
 
+export const WithHelpAndErrors: Story = {
+  args: {
+    label: 'Input with Help and Errors',
+    help: 'This is a helpful description',
+    errors: ['This field is required'],
+    value: '',
+    setValue: () => {},
+    placeholder: 'Enter text...'
+  }
+};
+
 export const Disabled: Story = {
   args: {
     label: 'Disabled Input',

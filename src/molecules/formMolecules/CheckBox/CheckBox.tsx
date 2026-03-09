@@ -19,12 +19,12 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
     ...restProps
 }) => {
     const checkBox = (
-        <div className="relative flex-shrink-0 inline-flex items-center justify-center w-5 h-5">
+        <div className="relative inline-flex items-center justify-center w-s h-s">
             <input
                 type="checkbox"
                 checked={checked}
                 disabled={disabled}
-                className={`peer appearance-none w-5 h-5 rounded-sm border-default border-border-gray checked:border-border-brand checked:bg-background-brand transition-colors ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                className={`peer appearance-none w-s h-s border-default border-border-gray checked:border-border-brand checked:bg-background-brand transition-colors ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                 {...restProps}
             />
             <span
@@ -38,10 +38,10 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
     if (variant === 'default') {
         return (
             <label
-                className={`inline-flex items-center gap-x-s ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${className ?? ''}`}
+                className={`inline-flex items-center gap-s ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${className ?? ''}`}
             >
                 {checkBox}
-                <span className="text-body-regular text-meta-regular">{label}</span>
+                <span className="text-body-regular text-text-default">{label}</span>
             </label>
         );
     }

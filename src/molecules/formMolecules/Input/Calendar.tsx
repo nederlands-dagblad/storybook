@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 
-const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-const MONTHS = ['January','February','March','April','May','June',
-  'July','August','September','October','November','December'];
+const DAYS = ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'];
+const MONTHS = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni',
+  'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
 
 export interface CalendarProps {
   selected: Date | null;
@@ -18,6 +18,10 @@ export const Calendar: React.FC<CalendarProps> = ({ selected, onSelect, minDate,
 
   const year = view.getFullYear();
   const month = view.getMonth();
+
+  const startYear = minDate ? minDate.getFullYear() : today.getFullYear() - 10;
+  const endYear = maxDate ? maxDate.getFullYear() : today.getFullYear() + 10;
+  const years = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -63,7 +67,34 @@ export const Calendar: React.FC<CalendarProps> = ({ selected, onSelect, minDate,
             <button type="button" onClick={prevMonth} className="flex items-center justify-center border-none bg-transparent cursor-pointer t w-8 h-8 transition-colors duration-150 hover:bg-background-gray-subtle">
               <Icon name={"caret-left"} size="m" color="brand" variant="outline"/>
             </button>
-            <span className="text-meta-bold text-text-default">{MONTHS[month]} {year}</span>
+            <div className="flex items-center gap-s">
+              <div className="relative inline-flex items-center gap-xxs cursor-pointer">
+                <span className="text-meta-bold text-text-default">{MONTHS[month]}</span>
+                <Icon name="caret-down" size="s" color="default" />
+                <select
+                  value={month}
+                  onChange={(e) => setView(new Date(year, parseInt(e.target.value), 1))}
+                  className="absolute inset-0 opacity-0 cursor-pointer w-full"
+                >
+                  {MONTHS.map((m, i) => (
+                    <option key={i} value={i}>{m}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="relative inline-flex items-center gap-xxs cursor-pointer">
+                <span className="text-meta-bold text-text-default">{year}</span>
+                <Icon name="caret-down" size="s" color="default" />
+                <select
+                  value={year}
+                  onChange={(e) => setView(new Date(parseInt(e.target.value), month, 1))}
+                  className="absolute inset-0 opacity-0 cursor-pointer w-full"
+                >
+                  {years.map((y) => (
+                    <option key={y} value={y}>{y}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
             <button type="button" onClick={nextMonth} className="flex items-center justify-center border-none bg-transparent cursor-pointer w-8 h-8 transition-colors duration-150 hover:bg-background-gray-subtle">
               <Icon name={"caret-right"} size="m" color="brand" variant="outline"/>
             </button>
