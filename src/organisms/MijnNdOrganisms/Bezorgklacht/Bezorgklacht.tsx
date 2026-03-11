@@ -15,13 +15,13 @@ export interface BezorgklachtKrantData {
     perPost: boolean;
 }
 
-export interface BezorgklachtNieuwkoersData {
-    melding: 'nieuwkoers';
-    nieuwkoersDatum: string;
-    nieuwkoersPerPost: boolean;
+export interface BezorgklachtDNKData {
+    melding: 'dnk';
+    dnkDatum: string;
+    dnkPerPost: boolean;
 }
 
-export type BezorgklachtFormData = BezorgklachtKrantData | BezorgklachtNieuwkoersData;
+export type BezorgklachtFormData = BezorgklachtKrantData | BezorgklachtDNKData;
 
 export interface BezorgklachtProps {
     onSubmit?: (data: BezorgklachtFormData) => void;
@@ -85,18 +85,18 @@ function getLastNEditionDates(n: number): { label: string; value: string }[] {
     }));
 }
 
-const nieuwkoersEditions = getLastNEditionDates(3);
+const dnkEditions = getLastNEditionDates(3);
 
 const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
-    const [melding, setMelding] = useState<'krant' | 'nieuwkoers'>('krant');
+    const [melding, setMelding] = useState<'krant' | 'dnk'>('krant');
     const [datum, setDatum] = useState('');
     const [klacht, setKlacht] = useState('');
     const [verlengen, setVerlengen] = useState(false);
     const [perPost, setPerPost] = useState(false);
-    const [nieuwkoersDatum, setNieuwkoersDatum] = useState('');
-    const [nieuwkoersPerPost, setNieuwkoersPerPost] = useState(false);
+    const [dnkDatum, setDnkDatum] = useState('');
+    const [dnkPerPost, setDnkPerPost] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [errors, setErrors] = useState<{ datum?: string; klacht?: string; nieuwkoersDatum?: string }>({});
+    const [errors, setErrors] = useState<{ datum?: string; klacht?: string; dnkDatum?: string }>({});
 
     const showPostCheckbox = isFirstSaturdayOfMonth(datum);
 
@@ -106,8 +106,8 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
             if (!datum) newErrors.datum = 'Vul een editiedatum in.';
             if (!klacht) newErrors.klacht = 'Selecteer een klacht.';
         }
-        if (melding === 'nieuwkoers') {
-            if (!nieuwkoersDatum) newErrors.nieuwkoersDatum = 'Selecteer een editie.';
+        if (melding === 'dnk') {
+            if (!dnkDatum) newErrors.dnkDatum = 'Selecteer een editie.';
         }
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -115,7 +115,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
         }
         const data: BezorgklachtFormData = melding === 'krant'
             ? { melding, datum, klacht, verlengen, perPost }
-            : { melding, nieuwkoersDatum, nieuwkoersPerPost };
+            : { melding, dnkDatum, dnkPerPost };
         onSubmit?.(data);
         setSubmitted(true);
     }
@@ -126,8 +126,8 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
         setKlacht('');
         setVerlengen(false);
         setPerPost(false);
-        setNieuwkoersDatum('');
-        setNieuwkoersPerPost(false);
+        setDnkDatum('');
+        setDnkPerPost(false);
         setErrors({});
         setSubmitted(false);
     }
@@ -135,7 +135,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
     if (submitted) {
         return (
             <div className="flex flex-col gap-m">
-                <Alert>{melding === 'nieuwkoers'
+                <Alert>{melding === 'dnk'
                     ? 'Je melding is verzonden. Je ontvangt hierover een e-mail ter bevestiging. <a href="https://www.nd.nl/reader?tab=dnk">Lees hier De Nieuwe Koers digitaal.</a>'
                     : 'Je melding is verzonden. Je ontvangt hierover een e-mail ter bevestiging. <a href="https://www.nd.nl/reader">Lees hier de krant digitaal.</a>'
                 }</Alert>
@@ -168,8 +168,8 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                         variant="card"
                         heading="De Nieuwe Koers"
                         label="De krant is wel goed bezorgd"
-                        checked={melding === 'nieuwkoers'}
-                        onChange={() => setMelding('nieuwkoers')}
+                        checked={melding === 'dnk'}
+                        onChange={() => setMelding('dnk')}
                     />
                 </div>
             </div>
@@ -211,20 +211,20 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                 </div>
             )}
 
-            {melding === 'nieuwkoers' && (
+            {melding === 'dnk' && (
                 <div className="flex flex-col gap-s">
                     <Dropdown
                         label="Gemiste editie"
-                        options={nieuwkoersEditions}
-                        value={nieuwkoersDatum}
-                        onChange={(v) => { setNieuwkoersDatum(v); setErrors((e) => ({ ...e, nieuwkoersDatum: undefined })); }}
-                        errors={errors.nieuwkoersDatum ? [errors.nieuwkoersDatum] : null}
+                        options={dnkEditions}
+                        value={dnkDatum}
+                        onChange={(v) => { setDnkDatum(v); setErrors((e) => ({ ...e, dnkDatum: undefined })); }}
+                        errors={errors.dnkDatum ? [errors.dnkDatum] : null}
                     />
                     <div className="flex flex-col gap-m">
                         <CheckBox
                             label="Ik wil deze editie per post ontvangen."
-                            checked={nieuwkoersPerPost}
-                            onChange={(e) => setNieuwkoersPerPost(e.target.checked)}
+                            checked={dnkPerPost}
+                            onChange={(e) => setDnkPerPost(e.target.checked)}
                         />
                         <Alert>{'Je kunt <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a> ook digitaal lezen.'}</Alert>
                     </div>
