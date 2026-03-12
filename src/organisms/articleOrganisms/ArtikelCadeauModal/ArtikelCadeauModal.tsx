@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 import Modal from "@molecules/feedbackMolecules/Modal/Modal";
+import Toast, { useToast } from "@molecules/feedbackMolecules/Toast/Toast";
 
 declare global {
     interface Window {
@@ -18,33 +19,6 @@ export interface ArtikelCadeauModalProps {
     onShareAsStandard?: (platform: string) => void;
 }
 
-interface ToastState {
-    message: string;
-    visible: boolean;
-}
-
-interface ToastProps {
-    message: string;
-    onClose: () => void;
-}
-
-const Toast: React.FC<ToastProps> = ({message, onClose}) => {
-    return (
-        <div className="fixed bottom-4 left-4 z-[60] max-w-sm animate-fade-in">
-            <div className="flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border bg-white border-border-gray-subtle">
-                <p className="font-fira-sans text-body-regular flex-1 text-black" dangerouslySetInnerHTML={{__html: message}}/>
-                <button
-                    onClick={onClose}
-                    className="p-1 hover:bg-background-gray rounded transition-colors text-lg leading-none"
-                    aria-label="Sluiten"
-                >
-                    ×
-                </button>
-            </div>
-        </div>
-    );
-};
-
 export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                                                                           isOpen: controlledIsOpen,
                                                                           onClose: controlledOnClose,
@@ -55,7 +29,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
     const [internalIsOpen, setInternalIsOpen] = useState(controlledIsOpen ?? false);
     const [selectedOption, setSelectedOption] = useState<'gift' | 'standard'>('gift');
     const [currentRemainingGifts, setCurrentRemainingGifts] = useState(Math.max(0, remainingGifts));
-    const [toast, setToast] = useState<ToastState>({message: '', visible: false});
+    const { toast, showToast, hideToast } = useToast();
 
     // Sync with controlled prop when provided
     useEffect(() => {
@@ -93,14 +67,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         };
         window.addEventListener('artikel-cadeau-toast', handleToast as EventListener);
         return () => window.removeEventListener('artikel-cadeau-toast', handleToast as EventListener);
-    }, []);
-
-    const showToast = (message: string) => {
-        setToast({message, visible: true});
-        setTimeout(() => {
-            setToast(prev => ({...prev, visible: false}));
-        }, 3000);
-    };
+    }, [showToast]);
 
     const handleClose = useCallback(() => {
         setInternalIsOpen(false);
@@ -109,9 +76,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
 
     if (!internalIsOpen) return (
         <>
-            {toast.visible && (
-                <Toast message={toast.message} onClose={() => setToast(prev => ({...prev, visible: false}))}/>
-            )}
+            <Toast message={toast.message} visible={toast.visible} onClose={hideToast} />
         </>
     );
 
@@ -218,9 +183,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
             }/>
 
             {/* Toast */}
-            {toast.visible && (
-                <Toast message={toast.message} onClose={() => setToast(prev => ({...prev, visible: false}))}/>
-            )}
+            <Toast message={toast.message} visible={toast.visible} onClose={hideToast} />
         </>
     );
 };
