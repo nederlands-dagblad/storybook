@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ArtikelCadeauModal from "./ArtikelCadeauModal";
 
 const meta: Meta<typeof ArtikelCadeauModal> = {
-    title: 'Organisms/Form Organisms/ArtikelCadeauModal',
+    title: 'Organisms/Article Organisms/ArtikelCadeauModal',
     component: ArtikelCadeauModal,
     parameters: {
         layout: 'fullscreen',

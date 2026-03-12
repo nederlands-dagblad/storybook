@@ -21,21 +21,18 @@ export type { SkeletonProps, SkeletonSize } from './atoms/displayAtoms/Skeleton/
 export * from './textStyles/Typography/Typography';
 export type { TypographyProps } from './textStyles/Typography/Typography';
 
+export { Tag } from './atoms/actionAtoms/Tag/Tag';
+export type { TagProps } from './atoms/actionAtoms/Tag/Tag';
+
 // Components - Portal
-export { DescriptionList } from './molecules/portalMolecules/DescriptionList/DescriptionList';
-export type { DescriptionListProps } from './molecules/portalMolecules/DescriptionList/DescriptionList';
+export { DescriptionList } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionList';
+export type { DescriptionListProps } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionList';
 
-export { DescriptionListItem } from './molecules/portalMolecules/DescriptionList/DescriptionListItem';
-export type { DescriptionListItemProps } from './molecules/portalMolecules/DescriptionList/DescriptionListItem';
+export { DescriptionListItem } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionListItem';
+export type { DescriptionListItemProps } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionListItem';
 
-export { DescriptionListItems } from './molecules/portalMolecules/DescriptionList/DescriptionListItems';
-export type { DescriptionListItemsProps } from './molecules/portalMolecules/DescriptionList/DescriptionListItems';
-
-export { PortalNavigation } from './molecules/navigationMolecules/PortalNavigation/PortalNavigation';
-export type { PortalNavigationProps, PortalNavigationItem } from './molecules/navigationMolecules/PortalNavigation/PortalNavigation';
-
-export { NavigationCards } from './molecules/portalMolecules/NavigationCards/NavigationCards';
-export type { NavigationCardsProps } from './molecules/portalMolecules/NavigationCards/NavigationCards';
+export { DescriptionListItems } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionListItems';
+export type { DescriptionListItemsProps } from './molecules/contentOrganizationMolecules/DescriptionList/DescriptionListItems';
 
 export {Tabs} from './molecules/navigationMolecules/Tabs/Tabs.tsx';
 export type { TabsProps } from './molecules/navigationMolecules/Tabs/Tabs';
@@ -81,9 +78,15 @@ export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard
 export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 
+export { Dropdown } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
+export type { DropdownProps } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
+
 // Organisms
-export { ArtikelCadeauModal } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
-export type { ArtikelCadeauModalProps } from './organisms/modalOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+export { ArtikelCadeauModal } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+export type { ArtikelCadeauModalProps } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
+
+export { SearchFilter } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
+export type { SearchFilterProps } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';

@@ -5,9 +5,9 @@ import {Button, ButtonProps} from "@atoms/actionAtoms/Button/Button";
 
 export interface ArticleCardProps {
     imageUrl?: string;
-    articleType: string;
-    heading: string;
-    variant?: 'default' | 'de-nieuwe-koers' | 'video' | 'dnk-publications';
+    articleType?: string;
+    heading?: string;
+    variant?: 'default' | 'de-nieuwe-koers' | 'video' | 'dnk-publications' | 'image';
     isPremium?: boolean;
     href?: string;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
@@ -48,9 +48,11 @@ export const ArticleCard = ({
     // Shared article type and badge component
     const ArticleTypeAndBadge = () => (
         <div className="flex items-center gap-xxs">
-            <div className={`text-meta-uppercase ${articleTypeColor}`}>
-                {articleType}
-            </div>
+            {articleType && (
+                <div className={`text-meta-uppercase ${articleTypeColor}`}>
+                    {articleType}
+                </div>
+            )}
             {/* Only show premium badge if isPremium is true AND variant is NOT de-nieuwe-koers */}
             {isPremium && variant !== 'de-nieuwe-koers' && (
                 <Badge variant="premium" size="small"/>
@@ -59,11 +61,11 @@ export const ArticleCard = ({
     );
 
     // Shared heading component
-    const Heading = ({inverse = false, lines = 5}: { inverse?: boolean; lines?: number }) => (
+    const Heading = ({inverse = false, lines = 5}: { inverse?: boolean; lines?: number }) => heading ? (
         <h3 className={`text-body-gulliver-semibold ${inverse ? 'text-text-inverse' : 'text-text-default'} line-clamp-${lines}`}>
             {heading}
         </h3>
-    );
+    ) : null;
 
     const DownloadButton = () => buttonProps ? (
         <div className="pt-s">
@@ -120,6 +122,35 @@ export const ArticleCard = ({
         ) : (
             <div className={videoBaseClasses}>
                 {videoContent}
+            </div>
+        );
+    }
+
+    // Image variant: square image only, no title or article type
+    if (variant === 'image') {
+        const imageContent = (
+            <div className="w-[13.25rem] h-[13.25rem] overflow-hidden">
+                {imageUrl ? (
+                    <img
+                        src={imageUrl}
+                        alt={articleType}
+                        className="w-full h-full object-cover"
+                    />
+                ) : (
+                    <div className="w-full h-full bg-background-gray"/>
+                )}
+            </div>
+        );
+
+        const imageBaseClasses = `inline-flex group ${className}`.trim();
+
+        return href ? (
+            <a href={href} onClick={onClick} draggable={false} className={imageBaseClasses}>
+                {imageContent}
+            </a>
+        ) : (
+            <div className={imageBaseClasses}>
+                {imageContent}
             </div>
         );
     }
