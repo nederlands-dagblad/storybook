@@ -87,7 +87,6 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         };
         window.addEventListener('artikel-cadeau-toast', handleToast as EventListener);
         return () => window.removeEventListener('artikel-cadeau-toast', handleToast as EventListener);
-        
     }, [showToast]);
 
     const handleClose = useCallback(() => {
