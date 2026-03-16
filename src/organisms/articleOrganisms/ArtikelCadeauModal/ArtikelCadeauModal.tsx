@@ -8,6 +8,7 @@ declare global {
     interface Window {
         handleShareAsGift?: (platform: string) => void;
         handleShareAsStandard?: (platform: string) => void;
+        openArtikelCadeau?: (mode: 'gift' | 'standard') => void;
     }
 }
 
@@ -15,6 +16,8 @@ export interface ArtikelCadeauModalProps {
     isOpen?: boolean;
     onClose?: () => void;
     remainingGifts?: number;
+    /** Pre-select a sharing mode when opening: 'gift' or 'standard' */
+    defaultMode?: 'gift' | 'standard';
     onShareAsGift?: (platform: string) => void;
     onShareAsStandard?: (platform: string) => void;
 }
@@ -23,11 +26,12 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                                                                           isOpen: controlledIsOpen,
                                                                           onClose: controlledOnClose,
                                                                           remainingGifts = 5,
+                                                                          defaultMode = 'gift',
                                                                           onShareAsGift,
                                                                           onShareAsStandard,
                                                                       }) => {
     const [internalIsOpen, setInternalIsOpen] = useState(controlledIsOpen ?? false);
-    const [selectedOption, setSelectedOption] = useState<'gift' | 'standard'>('gift');
+    const [selectedOption, setSelectedOption] = useState<'gift' | 'standard'>(defaultMode);
     const [currentRemainingGifts, setCurrentRemainingGifts] = useState(Math.max(0, remainingGifts));
     const { toast, showToast, hideToast } = useToast();
 
@@ -38,9 +42,25 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         }
     }, [controlledIsOpen]);
 
-    // Listen for DOM event to open modal (for Razor/cshtml usage)
+    // Expose a global function for Razor/cshtml to open the modal with a specific mode
     useEffect(() => {
-        const handleOpen = () => setInternalIsOpen(true);
+        window.openArtikelCadeau = (mode: 'gift' | 'standard') => {
+            setSelectedOption(mode);
+            requestAnimationFrame(() => {
+                setInternalIsOpen(true);
+            });
+        };
+        return () => {
+            window.openArtikelCadeau = undefined;
+        };
+    }, []);
+
+    // Keep legacy event listener as fallback (opens in 'gift' mode by default)
+    useEffect(() => {
+        const handleOpen = () => {
+            setSelectedOption('gift');
+            setInternalIsOpen(true);
+        };
         window.addEventListener('open-artikel-cadeau', handleOpen);
         return () => window.removeEventListener('open-artikel-cadeau', handleOpen);
     }, []);
@@ -96,12 +116,12 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         {iconName: 'bluesky', label: 'Bluesky', platform: 'bluesky'},
     ];
 
+    const isGiftDisabled = selectedOption === 'gift' && currentRemainingGifts <= 0;
+
     const handleShareClick = (platform: string) => {
+        if (isGiftDisabled) return;
+
         if (selectedOption === 'gift') {
-            if (currentRemainingGifts <= 0) {
-                showToast('Je hebt geen artikelen meer over om cadeau te geven deze maand.');
-                return;
-            }
             if (onShareAsGift) {
                 onShareAsGift(platform);
             } else if (window.handleShareAsGift) {
@@ -118,21 +138,30 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
 
     return (
         <>
+            {/* Gray badge override when no gifts remaining */}
+            <style>{`
+                .artikel-cadeau-badge-gray [class*="bg-background-brand"] {
+                    background-color: #9ca3af !important;
+                }
+            `}</style>
+
             <Modal isOpen={internalIsOpen} onClose={handleClose} heading={'Artikel delen'} children={
                 <>
-                    <div className="flex flex-col gap-m">
+                    <div className="flex flex-col gap-m bg-background-default text-text-default">
                         {/* Radio Options */}
                         <div className="grid grid-cols-2 gap-s">
-                            <RadioButton
-                                variant="card"
-                                label="Door iedereen te lezen"
-                                heading="Als cadeau"
-                                badgeText={currentRemainingGifts.toString()}
-                                name="shareType"
-                                value="gift"
-                                checked={selectedOption === 'gift'}
-                                onChange={() => setSelectedOption('gift')}
-                            />
+                            <div className={currentRemainingGifts <= 0 ? 'artikel-cadeau-badge-gray' : ''}>
+                                <RadioButton
+                                    variant="card"
+                                    label="Door iedereen te lezen"
+                                    heading="Als cadeau"
+                                    badgeText={currentRemainingGifts.toString()}
+                                    name="shareType"
+                                    value="gift"
+                                    checked={selectedOption === 'gift'}
+                                    onChange={() => setSelectedOption('gift')}
+                                />
+                            </div>
                             <RadioButton
                                 variant="card"
                                 label="Door abonnees te lezen"
@@ -147,16 +176,22 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                         {/* Info Text */}
                         <div className="text-body-light text-text-default">
                             {selectedOption === 'gift' ? (
-                                <>
+                                currentRemainingGifts <= 0 ? (
                                     <p>
-                                        Geef <span className="text-body-bold">7 dagen</span> gratis toegang tot dit
-                                        artikel.
+                                        Je hebt deze maand al je artikelen cadeau gegeven.
                                     </p>
-                                    <p>
-                                        Je kunt deze maand nog <span
-                                        className="text-body-bold">{currentRemainingGifts} artikelen</span> cadeau geven.
-                                    </p>
-                                </>
+                                ) : (
+                                    <>
+                                        <p>
+                                            Geef <span className="text-body-bold">7 dagen</span> gratis toegang tot dit
+                                            artikel.
+                                        </p>
+                                        <p>
+                                            Je kunt deze maand nog <span
+                                            className="text-body-bold">{currentRemainingGifts} artikelen</span> cadeau geven.
+                                        </p>
+                                    </>
+                                )
                             ) : (
                                 <p>
                                     Deel dit artikel met een ND-abonnee. Niet-abonnees krijgen een betaalmuur te
@@ -171,7 +206,12 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
                                 <button
                                     key={index}
                                     onClick={() => handleShareClick(option.platform)}
-                                    className="flex items-center gap-s p-xs border border-border-gray-subtle hover:border-border-brand bg-background-default transition-colors"
+                                    disabled={isGiftDisabled}
+                                    className={`flex items-center gap-s p-xs border transition-colors ${
+                                        isGiftDisabled
+                                            ? 'border-border-gray-subtle bg-background-default cursor-not-allowed opacity-50'
+                                            : 'border-border-gray-subtle hover:border-border-brand bg-background-default'
+                                    }`}
                                 >
                                     <Icon name={option.iconName} size="s" color="default" variant="outline"/>
                                     <span className="text-body-light text-text-default">{option.label}</span>
