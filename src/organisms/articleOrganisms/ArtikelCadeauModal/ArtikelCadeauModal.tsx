@@ -78,6 +78,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         };
         window.addEventListener('update-remaining-gifts', handleUpdate as EventListener);
         return () => window.removeEventListener('update-remaining-gifts', handleUpdate as EventListener);
+        
     }, []);
 
     // Listen for toast messages from cshtml
