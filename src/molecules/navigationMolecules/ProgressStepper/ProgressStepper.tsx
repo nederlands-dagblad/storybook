@@ -54,7 +54,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                                     : square}
                             </div>
                             {!isLast && (
-                                <div className="w-xxs md:w-l h-[1px] bg-border-gray flex-shrink-0" />
+                                <div className="flex-1 h-[1px] bg-border-gray" />
                             )}
                         </React.Fragment>
                     );
@@ -81,7 +81,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                                     ? <a href={step.href}>{label}</a>
                                     : label}
                             </div>
-                            {!isLast && <div className="w-xxs md:w-l flex-shrink-0" />}
+                            {!isLast && <div className="flex-1" />}
                         </React.Fragment>
                     );
                 })}

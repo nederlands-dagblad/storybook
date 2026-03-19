@@ -18,11 +18,12 @@ export interface SubscriptionCardProps {
     title: string;
     pricePerWeek: number;
     originalPricePerWeek?: number;
-
     features: SubscriptionFeature[];
     isFeatured?: boolean;
     ctaLabel?: string;
     ctaHref: string;
+    showTitle?: boolean;
+    borderColor?: 'default' | 'brand' | 'gray' | 'gray-subtle' | 'disabled' | 'warning' | 'none';
 }
 
 const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
@@ -33,6 +34,8 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     isFeatured = false,
     ctaLabel = 'Kies abonnement',
     ctaHref,
+    showTitle = true,
+    borderColor = 'gray-subtle',
 }) => {
     const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
 
@@ -44,9 +47,9 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
         : undefined;
 
     return (
-        <div className={`flex flex-col ${isFeatured ? 'shadow-m' : ''}`}>
-            {/* Featured badge */}
-            <div className="flex items-center justify-center">
+        <div className={`flex flex-col ${isFeatured ? 'lg:shadow-m' : ''}`}>
+            {/* Featured badge — hidden on mobile (shown in tab instead) */}
+            <div className="hidden lg:flex items-center justify-center">
                 {isFeatured && (
                     <span className="text-body-uppercase-bold-small text-text-brand bg-background-brand-subtle w-full text-center p-xxs">
                         Meest gekozen
@@ -55,15 +58,17 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             </div>
 
             <CardContainer
-                borderColor="gray-subtle"
+                borderColor={borderColor}
                 padding="m"
                 className={`flex flex-col gap-m ${isFeatured ? '!border-t-0' : ''}`}
             >
                 {/* Title + Pricing + discount + CTA */}
                 <div className="flex flex-col gap-s">
-                <h3 className="text-heading-page text-text-default text-center">
-                    {title}
-                </h3>
+                {showTitle && (
+                    <h3 className="font-gulliver font-bold text-body-xxl text-text-default text-center">
+                        {title}
+                    </h3>
+                )}
 
                 {/* Pricing + discount + CTA */}
                 <div className="flex flex-col items-center gap-l">
