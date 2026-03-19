@@ -40,14 +40,11 @@ export type { DescriptionListItemsProps } from './molecules/contentOrganizationM
 export {Tabs} from './molecules/navigationMolecules/Tabs/Tabs.tsx';
 export type { TabsProps } from './molecules/navigationMolecules/Tabs/Tabs';
 
-export { FAQ } from './molecules/contentOrganizationMolecules/FAQ/faq';
-export type { FAQProps } from './molecules/contentOrganizationMolecules/FAQ/faq';
-
 export { Accordion } from './molecules/contentOrganizationMolecules/Accordion/accordion';
 export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordion/accordion';
 
-export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
-export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/accordionItem';
+export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/accordion';
+export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/accordion';
 
 export { DataFrame } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
 export type { DataFrameProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
@@ -86,6 +83,9 @@ export type { ArtikelCadeauModalProps } from './organisms/articleOrganisms/Artik
 
 export { SearchFilter } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
 export type { SearchFilterProps } from './organisms/SearchOrganisms/SearchFilter/SearchFilter';
+
+export { Bezorgklacht } from './organisms/MijnNdOrganisms/Bezorgklacht/Bezorgklacht';
+export type { BezorgklachtProps } from './organisms/MijnNdOrganisms/Bezorgklacht/Bezorgklacht';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';

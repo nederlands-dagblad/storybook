@@ -9,7 +9,7 @@ export interface AccordionItemProps {
     onToggle?: () => void;
 }
 
-function AccordionItem({
+export  function AccordionItem({
     label,
     content,
     id,
