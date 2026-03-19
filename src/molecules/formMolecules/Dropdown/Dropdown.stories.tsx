@@ -21,7 +21,7 @@ const meta = {
     title: 'Molecules/Form Molecules/Dropdown',
     component: Dropdown,
     parameters: {
-        layout: 'centered',
+        layout: 'padded',
     },
     decorators: [
         (Story: React.ComponentType) => (
@@ -100,13 +100,11 @@ export const Select: Story = {
     render: (args) => {
         const [value, setValue] = useState<string | undefined>(undefined);
         return (
-            <div className="w-64">
-                <Dropdown
-                    {...args}
-                    value={value}
-                    onChange={setValue}
-                />
-            </div>
+            <Dropdown
+                {...args}
+                value={value}
+                onChange={setValue}
+            />
         );
     },
     args: {
@@ -124,13 +122,11 @@ export const SelectWithSelection: Story = {
     render: (args) => {
         const [value, setValue] = useState<string>('cultuur');
         return (
-            <div className="w-64">
-                <Dropdown
-                    {...args}
-                    value={value}
-                    onChange={setValue}
-                />
-            </div>
+            <Dropdown
+                {...args}
+                value={value}
+                onChange={setValue}
+            />
         );
     },
     args: {

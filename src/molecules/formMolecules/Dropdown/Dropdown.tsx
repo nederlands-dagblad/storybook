@@ -19,14 +19,16 @@ export interface DropdownProps {
     label?: string;
     placeholder?: string;
     className?: string;
+    errors?: string[] | null;
 }
 
 const DropdownPanel: React.FC<{
     options: DropdownOption[];
     value?: string;
     onSelect: (value: string) => void;
-}> = ({ options, value, onSelect }) => (
-    <ul className="absolute left-0 w-full bg-background-default border-s border-border-gray-subtle shadow-s z-10 mt-xxs" style={{ top: '100%' }}>
+    variant?: DropdownVariant;
+}> = ({ options, value, onSelect, variant = 'select' }) => (
+    <ul className="absolute left-0 w-full bg-background-default border-s border-border-gray-subtle shadow-s z-10 mt-xxs max-h-[225px] overflow-y-auto" style={{ top: '100%' }}>
         {options.map((option) => {
             const isSelected = option.value === value;
             return (
@@ -35,8 +37,8 @@ const DropdownPanel: React.FC<{
                         onClick={() => onSelect(option.value)}
                         className={`w-full text-left px-xs py-xs hover:bg-background-gray-subtle transition-colors ${
                             isSelected
-                                ? 'text-meta-regular text-text-default !underline !decoration-border-brand underline-offset-4'
-                                : 'text-meta-light text-text-default'
+                                ? `${variant === 'select' ? 'text-body-regular' : 'text-meta-regular'} text-text-default !underline !decoration-border-brand underline-offset-4`
+                                : `${variant === 'select' ? 'text-body-light' : 'text-meta-light'} text-text-default`
                         }`}
                     >
                         {option.label}
@@ -57,6 +59,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     label,
     placeholder = 'Selecteer...',
     className = '',
+    errors,
 }) => {
     const [internalIsOpen, setInternalIsOpen] = useState(false);
     const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
@@ -96,7 +99,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                     onToggle={(active) => setIsOpen(active)}
                 />
                 {isOpen && (
-                    <DropdownPanel options={options} value={value} onSelect={handleSelect} />
+                    <DropdownPanel options={options} value={value} onSelect={handleSelect} variant="pill" />
                 )}
             </div>
         );
@@ -104,17 +107,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
     // select variant
     return (
-        <div ref={wrapperRef} className={`relative flex flex-col gap-xxs ${className}`}>
+        <div ref={wrapperRef} className={`relative w-full flex flex-col gap-xxs ${className}`}>
             {label && (
-                <span className="text-meta-bold text-text-default">{label}</span>
+                <label className="text-body-light">{label}</label>
             )}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center justify-between gap-xs px-xs py-xs bg-background-default border-s text-body-light text-text-default transition-colors ${
-                    isOpen ? 'border-border-brand' : 'border-border-gray-subtle hover:border-border-gray'
+                className={`w-full flex items-center justify-between gap-xs px-3 py-2 bg-background-default border text-body-light text-text-default focus:outline-none transition-colors ${
+                    isOpen ? 'border-border-brand' : errors?.length ? 'border-border-warning' : 'border-border-gray'
                 }`}
             >
-                <span className={selectedOption ? 'text-text-default' : 'text-text-gray'}>
+                <span className={selectedOption ? 'text-body-regular text-text-default' : 'text-body-regular text-black/[0.54]'}>
                     {selectedOption?.label ?? placeholder}
                 </span>
                 <Icon
@@ -127,6 +130,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
             {isOpen && (
                 <DropdownPanel options={options} value={value} onSelect={handleSelect} />
             )}
+            {errors && errors.map((error, i) => (
+                <span key={i} className="text-text-warning text-meta">{error}</span>
+            ))}
         </div>
     );
 };

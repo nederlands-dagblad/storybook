@@ -52,7 +52,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
                 relative flex flex-col md:flex-row items-center gap-s p-s border-s text-center md:text-left
                 transition-all duration-200
                 ${checked
-                    ? 'border-border-brand'
+                    ? 'border-border-brand bg-background-brand-subtle'
                     : 'border-border-gray-subtle bg-background-default hover:border-border-brand'
                 }
                 ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
