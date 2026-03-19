@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import RadioButton from "@atoms/actionAtoms/RadioButton/RadioButton.tsx";
+import RadioButton from "@molecules/formMolecules/RadioButton/RadioButton.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 import Modal from "@molecules/feedbackMolecules/Modal/Modal";
 import Toast, { useToast } from "@molecules/feedbackMolecules/Toast/Toast";
@@ -78,6 +78,7 @@ export const ArtikelCadeauModal: React.FC<ArtikelCadeauModalProps> = ({
         };
         window.addEventListener('update-remaining-gifts', handleUpdate as EventListener);
         return () => window.removeEventListener('update-remaining-gifts', handleUpdate as EventListener);
+        
     }, []);
 
     // Listen for toast messages from cshtml
