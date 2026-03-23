@@ -29,15 +29,17 @@ export const IconText: React.FC<IconTextProps> = ({
                                                       className = '',
                                                   }) => {
         const textWeightClass = textWeightMap[textWeight];
-        
+
         return (
-            <div className={`flex gap-xs items-center ${className}`}>
-                <Icon
-                    name={icon}
-                    variant={iconVariant}
-                    size={iconSize}
-                    color={iconColor}
-                />
+            <div className={`flex gap-xs items-start ${className}`}>
+                <span className="flex-shrink-0 mt-[6px]">
+                    <Icon
+                        name={icon}
+                        variant={iconVariant}
+                        size={iconSize}
+                        color={iconColor}
+                    />
+                </span>
                 <span className={`${textWeightClass} text-text-default`}>{text}</span>
             </div>
         );

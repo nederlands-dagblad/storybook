@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CardContainer from '@atoms/displayAtoms/CardContainer/CardContainer';
 import { Button } from '@atoms/actionAtoms/Button/Button';
-import Icon from '@atoms/basicAtoms/Icon/Icon';
 import Badge from '@atoms/displayAtoms/Badge/Badge';
-import FeatureModal from '../FeatureModal/FeatureModal';
+import SubscriptionFeaturesList from '../SubscriptionFeaturesList/SubscriptionFeaturesList';
 
 export interface SubscriptionFeature {
     label: string;
@@ -37,8 +36,6 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     showTitle = true,
     borderColor = 'gray-subtle',
 }) => {
-    const [openModalIndex, setOpenModalIndex] = useState<number | null>(null);
-
     const formatPrice = (price: number) =>
         `€${price.toFixed(2).replace('.', ',')}`;
 
@@ -99,54 +96,8 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
                 </div>
 
                 {/* Feature list */}
-                <ul className="flex flex-col gap-xs">
-                    {features.map((feature, index) => (
-                        <li key={index} className="flex items-start justify-between gap-xs">
-                            <div className="flex items-start gap-xs">
-                                <span className="flex-shrink-0">
-                                    <Icon
-                                        name={feature.included ? 'check' : 'x-mark'}
-                                        variant="outline"
-                                        size="s"
-                                        color={feature.included ? 'brand' : 'gray'}
-                                    />
-                                </span>
-                                <button
-                                    type="button"
-                                    className={`text-meta-light text-left ${feature.included ? 'text-text-default' : 'text-text-disabled !line-through'} ${feature.modalBody ? 'cursor-pointer' : 'cursor-default'}`}
-                                    onClick={() => feature.modalBody && setOpenModalIndex(index)}
-                                >
-                                    {feature.label}
-                                </button>
-                            </div>
-                            {feature.modalBody && (
-                                <button
-                                    type="button"
-                                    className="flex-shrink-0 transition-colors"
-                                    onClick={() => setOpenModalIndex(index)}
-                                >
-                                    <Icon name="info" variant="outline" size="s" color="default" />
-                                </button>
-                            )}
-                        </li>
-                    ))}
-                </ul>
+                <SubscriptionFeaturesList features={features} />
             </CardContainer>
-
-            {features.map((feature, index) =>
-                feature.modalBody ? (
-                    <FeatureModal
-                        key={index}
-                        isOpen={openModalIndex === index}
-                        onClose={() => setOpenModalIndex(null)}
-                        heading={feature.label}
-                        body={feature.modalBody}
-                        mediaUrl={feature.modalMediaUrl}
-                        mediaType={feature.modalMediaType}
-                        metaText={feature.modalMetaText}
-                    />
-                ) : null
-            )}
         </div>
     );
 };

@@ -1,17 +1,24 @@
 import React, { InputHTMLAttributes } from 'react';
+import Badge from '../../../atoms/displayAtoms/Badge/Badge';
 
 export type RadioButtonProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & {
-    label: string;
+    label?: string;
     heading?: string;
     badgeText?: string;
+    logoUrl?: string;
+    priceLabel?: string;
     variant?: 'default' | 'card';
+    layout?: 'responsive' | 'horizontal';
 };
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
-    label,
+    label = '',
     heading,
     badgeText,
+    logoUrl,
+    priceLabel,
     variant = 'default',
+    layout = 'responsive',
     checked,
     disabled,
     className,
@@ -49,8 +56,8 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
     return (
         <label
             className={`
-                relative flex flex-col md:flex-row items-center gap-s p-s border-s text-center md:text-left
-                transition-all duration-200
+                relative flex items-center gap-s p-s border-s transition-all duration-200
+                ${layout === 'horizontal' ? 'flex-row text-left' : 'flex-col md:flex-row text-center md:text-left'}
                 ${checked
                     ? 'border-border-brand bg-background-brand-subtle'
                     : 'border-border-gray-subtle bg-background-default hover:border-border-brand'
@@ -78,6 +85,16 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
                 <div className="px-xs py-xxs bg-background-brand text-meta-regular text-text-inverse">
                     {badgeText}
                 </div>
+            )}
+
+            {/* Price */}
+            {priceLabel && (
+                <Badge variant="default" label={priceLabel} className="flex-shrink-0" />
+            )}
+
+            {/* Logo */}
+            {logoUrl && (
+                <img src={logoUrl} alt="" className="h-8 w-auto flex-shrink-0" />
             )}
         </label>
     );

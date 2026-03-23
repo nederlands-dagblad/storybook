@@ -16,7 +16,7 @@ interface AlertConfig {
     iconVariant: IconProps['variant'];
     iconColor: IconProps['color'];
     borderColor: 'gray' | 'warning' | 'none';
-    background: 'transparent' | 'gray';
+    background: 'default' | 'gray';
 }
 
 const alertConfigMap: Record<AlertVariant, AlertConfig> = {
@@ -25,7 +25,7 @@ const alertConfigMap: Record<AlertVariant, AlertConfig> = {
         iconVariant: "fill",
         iconColor: "brand",
         borderColor: "gray",
-        background: "transparent",
+        background: "default",
     },
     "info-dark": {
         icon: "square",
@@ -39,7 +39,7 @@ const alertConfigMap: Record<AlertVariant, AlertConfig> = {
         iconVariant: "fill",
         iconColor: "warning",
         borderColor: "warning",
-        background: "transparent",
+        background: "default",
     },
 };
 

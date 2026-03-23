@@ -6,6 +6,7 @@ export type StepState = 'completed' | 'active' | 'upcoming';
 export interface Step {
     label: string;
     href?: string;
+    onClick?: () => void;
     state?: StepState;
 }
 
@@ -28,7 +29,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                 {steps.map((step, index) => {
                     const state = step.state ?? getStepState(index);
                     const isLast = index === steps.length - 1;
-                    const isClickable = state === 'completed' && !!step.href;
+                    const isClickable = state === 'completed' && (!!step.href || !!step.onClick);
 
                     const square = (
                         <div
@@ -49,9 +50,11 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                     return (
                         <React.Fragment key={index}>
                             <div className="flex-1 flex justify-center">
-                                {isClickable
+                                {step.href
                                     ? <a href={step.href}>{square}</a>
-                                    : square}
+                                    : isClickable
+                                        ? <button type="button" onClick={step.onClick}>{square}</button>
+                                        : square}
                             </div>
                             {!isLast && (
                                 <div className="flex-1 h-[1px] bg-border-gray" />
@@ -66,7 +69,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                 {steps.map((step, index) => {
                     const state = step.state ?? getStepState(index);
                     const isLast = index === steps.length - 1;
-                    const isClickable = state === 'completed' && !!step.href;
+                    const isClickable = state === 'completed' && (!!step.href || !!step.onClick);
 
                     const label = (
                         <span className={`text-meta-light text-center leading-tight ${state === 'upcoming' ? 'text-text-disabled' : 'text-text-default'}`}>
@@ -77,9 +80,11 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({ steps, currentStep })
                     return (
                         <React.Fragment key={index}>
                             <div className="flex-1 min-w-0 flex justify-center">
-                                {isClickable
+                                {step.href
                                     ? <a href={step.href}>{label}</a>
-                                    : label}
+                                    : isClickable
+                                        ? <button type="button" onClick={step.onClick}>{label}</button>
+                                        : label}
                             </div>
                             {!isLast && <div className="flex-1" />}
                         </React.Fragment>

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SubscriptionCards from './SubscriptionCards';
 
 const meta: Meta<typeof SubscriptionCards> = {
-    title: 'Organisms/SubscriptionOrganisms/SubscriptionCards',
+    title: 'Organisms/Subscription Organisms/SubscriptionCards',
     component: SubscriptionCards,
     parameters: {
         layout: 'fullscreen',
