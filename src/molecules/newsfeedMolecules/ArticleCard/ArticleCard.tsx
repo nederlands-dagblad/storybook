@@ -1,7 +1,9 @@
 import React from "react";
 import Badge from "@atoms/displayAtoms/Badge/Badge";
-import Icon from "@atoms/basicAtoms/Icon/Icon";
-import {Button, ButtonProps} from "@atoms/actionAtoms/Button/Button";
+import {ButtonProps} from "@atoms/actionAtoms/Button/Button";
+import {VideoCard} from "@molecules/newsfeedMolecules/VideoCard/VideoCard";
+import {ImageCard} from "@molecules/newsfeedMolecules/ImageCard/ImageCard";
+import {PublicationCard} from "@molecules/newsfeedMolecules/PublicationCard/PublicationCard";
 
 export interface ArticleCardProps {
     imageUrl?: string;
@@ -33,19 +35,60 @@ export const ArticleCard = ({
                                 placeholderText,
                                 buttonProps,
                             }: ArticleCardProps): JSX.Element => {
-    // Determine article type color based on variant
+    // Delegate to VideoCard
+    if (variant === 'video') {
+        return (
+            <VideoCard
+                imageUrl={imageUrl}
+                heading={heading}
+                articleType={articleType}
+                isPremium={isPremium}
+                videoDuration={videoDuration}
+                href={href}
+                onClick={onClick}
+                className={className}
+            />
+        );
+    }
+
+    // Delegate to ImageCard
+    if (variant === 'image') {
+        return (
+            <ImageCard
+                imageUrl={imageUrl}
+                alt={articleType}
+                href={href}
+                onClick={onClick}
+                className={className}
+            />
+        );
+    }
+
+    // Delegate to PublicationCard
+    if (variant === 'dnk-publications') {
+        return (
+            <PublicationCard
+                imageUrl={imageUrl}
+                heading={heading}
+                publicationMonth={publicationMonth}
+                placeholderText={placeholderText}
+                buttonProps={buttonProps}
+                href={href}
+                onClick={onClick}
+                className={className}
+            />
+        );
+    }
+
+    // Default and de-nieuwe-koers variants (shared layout)
     const articleTypeColor = variant === 'de-nieuwe-koers'
         ? 'text-text-dnk'
-        : variant === 'video'
-            ? 'text-text-inverse'
-            : 'text-text-brand';
+        : 'text-text-brand';
 
-    // Determine hover border color for non-video variants
     const hoverBorderColor = variant === 'de-nieuwe-koers'
         ? 'hover:border-border-dnk'
         : 'hover:border-border-brand';
 
-    // Shared article type and badge component
     const ArticleTypeAndBadge = () => (
         <div className="flex items-center gap-xxs">
             {articleType && (
@@ -53,150 +96,18 @@ export const ArticleCard = ({
                     {articleType}
                 </div>
             )}
-            {/* Only show premium badge if isPremium is true AND variant is NOT de-nieuwe-koers */}
             {isPremium && variant !== 'de-nieuwe-koers' && (
                 <Badge variant="premium" size="small"/>
             )}
         </div>
     );
 
-    // Shared heading component
-    const Heading = ({inverse = false, lines = 5}: { inverse?: boolean; lines?: number }) => heading ? (
-        <h3 className={`text-body-gulliver-semibold ${inverse ? 'text-text-inverse' : 'text-text-default'} line-clamp-${lines}`}>
+    const Heading = () => heading ? (
+        <h3 className="text-body-gulliver-semibold text-text-default line-clamp-5">
             {heading}
         </h3>
     ) : null;
 
-    const DownloadButton = () => buttonProps ? (
-        <div className="pt-s">
-            <Button
-                variant="pill"
-                className="w-fit"
-                {...buttonProps}
-            />
-        </div>
-    ) : null;
-
-    // Video variant has different layout
-    if (variant === 'video') {
-        const videoContent = (
-            <div className="w-full h-[19.125rem] overflow-hidden relative">
-                {imageUrl ? (
-                    <img
-                        src={imageUrl}
-                        alt={heading}
-                        className="w-full h-[19.125rem] object-cover"
-                    />
-                ) : (
-                    <div className="w-full h-[19.125rem] bg-background-gray"/>
-                )}
-
-                {/* Dark gradient overlay for better text readability */}
-                <div
-                    className="absolute inset-0 bg-gradient-to-t from-neutral-black via-neutral-black-30 to-transparent"/>
-
-                {/* Play icon and duration centered */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="group-hover:scale-110 transition-transform duration-300">
-                        <Icon name="play-circle" variant="fill" size="xl" color="inverse"/>
-                    </div>
-                    {videoDuration && (
-                        <span className="text-meta-bold text-text-inverse">{videoDuration}</span>
-                    )}
-                </div>
-
-                {/* Content overlay at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-s flex flex-col gap-xs">
-                    <ArticleTypeAndBadge/>
-                    <Heading inverse lines={3}/>
-                </div>
-            </div>
-        );
-
-        const videoBaseClasses = `inline-flex flex-col w-[13.25rem] group ${className}`.trim();
-
-        return href ? (
-            <a href={href} onClick={onClick} draggable={false} className={videoBaseClasses}>
-                {videoContent}
-            </a>
-        ) : (
-            <div className={videoBaseClasses}>
-                {videoContent}
-            </div>
-        );
-    }
-
-    // Image variant: square image only, no title or article type
-    if (variant === 'image') {
-        const imageContent = (
-            <div className="w-[13.25rem] h-[13.25rem] overflow-hidden">
-                {imageUrl ? (
-                    <img
-                        src={imageUrl}
-                        alt={articleType}
-                        className="w-full h-full object-cover"
-                    />
-                ) : (
-                    <div className="w-full h-full bg-background-gray"/>
-                )}
-            </div>
-        );
-
-        const imageBaseClasses = `inline-flex group ${className}`.trim();
-
-        return href ? (
-            <a href={href} onClick={onClick} draggable={false} className={imageBaseClasses}>
-                {imageContent}
-            </a>
-        ) : (
-            <div className={imageBaseClasses}>
-                {imageContent}
-            </div>
-        );
-    }
-
-    // DNK Publications variant has full-height image with publication month below
-    if (variant === 'dnk-publications') {
-        const dnkPublicationsContent = (
-            <>
-                <div className="w-[13.25rem] border border-default border-border-gray-subtle hover:border-border-dnk active:border-dnk-brand transition-colors overflow-hidden">
-                    {imageUrl ? (
-                        <img
-                            src={imageUrl}
-                            alt={heading}
-                            className="w-full h-[19.125rem] object-cover"
-                        />
-                    ) : (
-                        <div className="w-full h-[19.125rem] bg-background-gray flex items-center justify-center">
-                            {placeholderText && (
-                                <span className="text-body-light text-text-default text-center px-s">{placeholderText}</span>
-                            )}
-                        </div>
-                    )}
-                </div>
-                {publicationMonth && (
-                    <div className="w-full text-center pt-xs">
-                        <span className="text-meta-regular text-text-default">{publicationMonth}</span>
-                    </div>
-                )}
-                <DownloadButton/>
-            </>
-        );
-
-        const dnkPublicationsBaseClasses = `inline-flex flex-col items-center ${className}`.trim();
-
-        return href ? (
-            <a href={href} onClick={onClick} draggable={false} className={dnkPublicationsBaseClasses}>
-                {dnkPublicationsContent}
-            </a>
-        ) : (
-            <div className={dnkPublicationsBaseClasses}>
-                {dnkPublicationsContent}
-            </div>
-        );
-    }
-
-    // Default and de-nieuwe-koers variants
     const cardContent = (
         <>
             <div className="w-full h-[7.5rem] overflow-hidden relative">
