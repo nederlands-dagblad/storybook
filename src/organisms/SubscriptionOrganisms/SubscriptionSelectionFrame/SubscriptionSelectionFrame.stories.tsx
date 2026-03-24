@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SubscriptionCards from './SubscriptionCards';
+import SubscriptionSelectionFrame from './SubscriptionSelectionFrame';
 
-const meta: Meta<typeof SubscriptionCards> = {
-    title: 'Organisms/Subscription Organisms/SubscriptionCards',
-    component: SubscriptionCards,
+const meta: Meta<typeof SubscriptionSelectionFrame> = {
+    title: 'Organisms/Subscription Organisms/SubscriptionSelectionFrame',
+    component: SubscriptionSelectionFrame,
     parameters: {
         layout: 'fullscreen',
     },
 };
 
 export default meta;
-type Story = StoryObj<typeof SubscriptionCards>;
+type Story = StoryObj<typeof SubscriptionSelectionFrame>;
 
 export const Default: Story = {
     args: {

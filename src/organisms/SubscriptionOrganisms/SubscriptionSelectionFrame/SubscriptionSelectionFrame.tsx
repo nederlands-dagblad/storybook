@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PageHeading from '../../../atoms/displayAtoms/PageHeading/PageHeading';
 import ProgressStepper, { Step } from '../../../molecules/navigationMolecules/ProgressStepper/ProgressStepper';
-import SubscriptionCard, { SubscriptionCardProps } from '../../../molecules/subscriptionMolecules/SubscriptionCard/subscriptionCard';
+import SubscriptionCard, { SubscriptionCardProps } from '../../../molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard';
 import Icon from '../../../atoms/basicAtoms/Icon/Icon';
 import IconText from '../../../atoms/basicAtoms/IconText/IconText';
 import Logo from '../../../atoms/basicAtoms/Logo/Logo';
@@ -12,7 +12,7 @@ export interface SubscriptionBenefit {
     onInfoClick?: () => void;
 }
 
-export interface SubscriptionCardsProps {
+export interface SubscriptionSelectionFrameProps {
     heading?: string;
     benefits?: SubscriptionBenefit[];
     steps?: Step[];
@@ -23,7 +23,7 @@ export interface SubscriptionCardsProps {
     footerLinkHref?: string;
 }
 
-const SubscriptionCards: React.FC<SubscriptionCardsProps> = ({
+const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
     heading = 'Word lid van het Nederlands Dagblad',
     benefits = [],
     steps = [],
@@ -157,4 +157,4 @@ const SubscriptionCards: React.FC<SubscriptionCardsProps> = ({
     );
 };
 
-export default SubscriptionCards;
+export default SubscriptionSelectionFrame;
