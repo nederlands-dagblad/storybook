@@ -71,7 +71,7 @@ export const Input: React.FC<InputProps> = (props) => {
 
         <div className={datePicker ? 'relative flex items-center' : undefined}>
           <input
-              className={`w-full px-3 py-2 border text-default bg-background-default focus:outline-none focus:border-border-brand ${errors?.length ? 'border-border-warning' : 'border-border-gray'} ${datePicker ? ' cursor-pointer pr-10' : ''}`}
+              className={`w-full px-3 py-2 border text-default bg-background-default focus:outline-none focus:border-border-brand disabled:bg-background-gray disabled:text-text-disabled disabled:cursor-not-allowed ${errors?.length ? 'border-border-warning' : 'border-border-gray'} ${datePicker ? ' cursor-pointer pr-10' : ''}`}
               onChange={onChange}
               value={value}
               readOnly={datePicker}

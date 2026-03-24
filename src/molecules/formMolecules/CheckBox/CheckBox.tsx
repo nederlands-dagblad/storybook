@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 import Icon from '@atoms/basicAtoms/Icon/Icon';
 
 export type CheckBoxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & {
-    label: string;
+    label: React.ReactNode;
     heading?: string;
     badgeText?: string;
     variant?: 'default' | 'card';
@@ -38,10 +38,10 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
     if (variant === 'default') {
         return (
             <label
-                className={`inline-flex items-center gap-s ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${className ?? ''}`}
+                className={`inline-flex items-start gap-s ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'} ${className ?? ''}`}
             >
-                {checkBox}
-                <span className="text-body-regular text-text-default">{label}</span>
+                <span className="flex-shrink-0 mt-[6px]">{checkBox}</span>
+                <span className="text-body-light text-text-default">{label}</span>
             </label>
         );
     }

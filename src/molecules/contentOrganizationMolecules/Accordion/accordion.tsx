@@ -3,6 +3,7 @@ import { Icon } from "@atoms/basicAtoms/Icon/Icon";
 
 export interface AccordionItemProps {
     label: string;
+    subLabel?: React.ReactNode;
     content: React.ReactNode;
     id?: string;
     isOpen?: boolean;
@@ -11,6 +12,7 @@ export interface AccordionItemProps {
 
 export  function AccordionItem({
     label,
+    subLabel,
     content,
     id,
     isOpen: controlledIsOpen,
@@ -53,11 +55,13 @@ export  function AccordionItem({
                 aria-controls={`accordion-answer-${id}`}
                 type="button"
             >
-                <span className={`
-                    flex-1 block text-text-default
-                    ${variant === 'large' ? 'text-heading-m' : 'text-body-bold'}
-                `}>
-                    {label}
+                <span className="flex-1 flex flex-col">
+                    <span className={`block text-text-default ${variant === 'large' ? 'text-heading-2' : 'text-body-bold'}`}>
+                        {label}
+                    </span>
+                    {subLabel && (
+                        <span className="text-meta-light text-text-default italic">{subLabel}</span>
+                    )}
                 </span>
                 <span className={`flex items-center justify-center flex-shrink-0 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`}>
                     <Icon name="caret-down" />
@@ -119,7 +123,7 @@ export function Accordion({
     return (
         <div className={`flex flex-col w-full ${className}`}>
             {title && (
-                <h2 className="text-heading-m text-text-default mb-m">
+                <h2 className="text-heading-2 text-text-default mb-m">
                     {title}
                 </h2>
             )}
