@@ -55,7 +55,7 @@ export  function AccordionItem({
             >
                 <span className={`
                     flex-1 block text-text-default
-                    ${variant === 'large' ? 'text-heading-2' : 'text-body-bold'}
+                    ${variant === 'large' ? 'text-heading-m' : 'text-body-bold'}
                 `}>
                     {label}
                 </span>
@@ -119,7 +119,7 @@ export function Accordion({
     return (
         <div className={`flex flex-col w-full ${className}`}>
             {title && (
-                <h2 className="text-heading-2 text-text-default mb-m">
+                <h2 className="text-heading-m text-text-default mb-m">
                     {title}
                 </h2>
             )}

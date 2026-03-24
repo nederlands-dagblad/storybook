@@ -1,17 +1,34 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {
-    HeadingArticle, HeadingPage, Heading2, Heading3, HeadingArticleFeed,
-    BodyStandard, BodyStandardRegular, BodyStandardBold,
-    BodyArticle, BodyArticleIntro, BodyArticleQuote,
-    MetaStandard, MetaAuthor,
-    DropCap, ArticleCity, ArticleType, MetaRegular
-} from './Typography';
-import {MetaBold} from "./ResponsiveTypography.tsx";
 
 const meta: Meta = {
-    title: 'Text Styles',
+    title: 'Tokens/Typography',
     parameters: {
         layout: 'centered',
+        docs: {
+            description: {
+                component: `
+Text styles are predefined combinations of typography properties from our design tokens:
+
+- **Font family** — Gulliver, Fira Sans, Abril Fatface, or Montserrat
+- **Font weight** — Light (300), Regular (400), Semibold (600), or Bold (700)
+- **Font size** — Automatically scales depending on screen size (mobile, tablet, desktop)
+- **Letter spacing** — Fine-tuned per style for optimal readability
+
+Apply a text style by adding the class to any element, e.g. \`<h1 class="text-heading-xl">\`.
+
+For example, \`text-heading-xl\` resolves to:
+
+| Property | Token | Value |
+|---|---|---|
+| font-family | \`--font-family-gulliver\` | Gulliver Web, Georgia, serif |
+| font-weight | \`--font-weight-bold\` | 700 |
+| font-size | \`--font-size-heading-xl\` | 26px (mobile) → 36px (tablet) → 40px (desktop) |
+| letter-spacing | \`--letter-spacing-0\` | 0px |
+
+Text color is not included in text styles and should be applied separately. See [Colors](?path=/docs/tokens-colors--docs) for available text color tokens.
+                `,
+            },
+        },
     },
     tags: ['autodocs'],
 };
@@ -19,7 +36,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const StyleExample: React.FC<{ Tag: string, name: string, content: string }> = ({Tag = 'h1', name, content}) => (
+const StyleExample: React.FC<{ tag: string, name: string, content: string }> = ({tag: Tag = 'h1', name, content}) => (
     <div className="space-y-6">
         <div className="space-y-4">
             <Tag className={[name, "mb-2"].join(' ')}>
@@ -30,233 +47,113 @@ const StyleExample: React.FC<{ Tag: string, name: string, content: string }> = (
     </div>
 );
 
-export const ArticleStyles: Story = {
-    parameters: {
-        docs: {
-            source: {
-                code: null, // Hides code block in Docs tab
-            },
-        },
-    },
-    render: () => (
-        <div className="max-w-2xl space-y-8">
-            <StyleExample
-                tag="h1"
-                name="text-article-heading"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h1"
-                name="text-article-heading-light"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h1"
-                name="text-article-heading-alternate"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-heading-2"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-heading-2-light"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-heading-2-alternate"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-body"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-intro"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-type"
-                content="Interview"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-city"
-                content="Rutten"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-quote"
-                content="Oh Chantal"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-question"
-                content="Wat is uw enige troost in leven en sterven?"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-drop-cap"
-                content="P"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-article-drop-cap-alternate"
-                content="H"
-            />
-        </div>
-    ),
-}
+const FontFamilyExample: React.FC<{ name: string, fontFamily: string, description: string, sample?: string }> = ({ name, fontFamily, description, sample }) => (
+    <div style={{ marginBottom: '2rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+        <p style={{ fontFamily, fontSize: '24px', fontWeight: 700, marginBottom: '0.5rem' }}>{name}</p>
+        <p style={{ fontFamily, fontSize: '16px', fontWeight: 300, marginBottom: '0.5rem' }}>Light — {description}</p>
+        <p style={{ fontFamily, fontSize: '16px', fontWeight: 400, marginBottom: '0.5rem' }}>Regular — {description}</p>
+        <p style={{ fontFamily, fontSize: '16px', fontWeight: 700 }}>Bold — {description}</p>
+        {sample && (
+            <div style={{ marginTop: '0.5rem' }}>
+                {sample.split('').map((char, i) => (
+                    <span key={i} style={{ fontFamily, fontSize: '90px', fontWeight: 300, marginRight: '0.5rem' }}>{char}</span>
+                ))}
+            </div>
+        )}
+    </div>
+);
 
 export const Headings: Story = {
-    parameters: {
-        docs: {
-            source: {
-                code: null, // Hides code block in Docs tab
-            },
-        },
-    },
+    parameters: { docs: { source: { code: null } } },
     render: () => (
         <div className="space-y-8">
-            <StyleExample
-                tag="h1"
-                name="text-heading-page"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-heading-subheading"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-heading-2"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-heading-3"
-                content="The quick brown fox jumps over the lazy dog"
-            />
-            <StyleExample
-                tag="h2"
-                name="text-heading-uppercase"
-                content="The quick brown fox jumps over the lazy dog"
-            />
+            <StyleExample tag="h1" name="text-heading-xxl" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h1" name="text-heading-xl" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h2" name="text-heading-l" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h2" name="text-heading-m" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h2" name="text-heading-s" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h2" name="text-heading-light" content="The quick brown fox jumps over the lazy dog" />
+            <StyleExample tag="h2" name="text-heading-uppercase" content="The quick brown fox jumps over the lazy dog" />
         </div>
     ),
 };
 
 export const BodyText: Story = {
-    parameters: {
-        docs: {
-            source: {
-                code: null, // Hides code block in Docs tab
-            },
-        },
-    },
+    parameters: { docs: { source: { code: null } } },
     render: () => (
         <div className="space-y-8">
-            <StyleExample
-                tag="p"
-                name="text-body-light"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="p"
-                name="text-body-regular"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="p"
-                name="text-body-bold"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="p"
-                name="text-body-uppercase"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="p"
-                name="text-body-uppercase-bold"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="p"
-                name="text-body-uppercase-bold-small"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
-            <StyleExample
-                tag="h3"
-                name="text-body-gulliver-semibold"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut."
-            />
+            <StyleExample tag="p" name="text-body-light" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-regular" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-bold" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-uppercase" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-uppercase-bold" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-uppercase-bold-small" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
+            <StyleExample tag="p" name="text-body-gulliver-semibold" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin scelerisque purus ut orci tincidunt lobortis. Fusce semper purus elit, ullamcorper imperdiet est semper ut." />
         </div>
     ),
 };
 
 export const MetaText: Story = {
-    parameters: {
-        docs: {
-            source: {
-                code: null, // Hides code block in Docs tab
-            },
-        },
-    },
+    parameters: { docs: { source: { code: null } } },
     render: () => (
         <div className="space-y-8">
-            <StyleExample
-                tag="p"
-                name="text-meta"
-                content="This is a meta text"
+            <StyleExample tag="p" name="text-meta-regular" content="This is a meta text" />
+            <StyleExample tag="p" name="text-meta-light" content="This is a meta light text" />
+            <StyleExample tag="p" name="text-meta-bold" content="This is a meta bold text" />
+        </div>
+    ),
+};
+
+export const FontFamilies: Story = {
+    parameters: { docs: { source: { code: null } } },
+    render: () => (
+        <div style={{ maxWidth: '600px' }}>
+            <FontFamilyExample
+                name="Gulliver"
+                fontFamily="'Gulliver Web', Georgia, serif"
+                description="Used for headings and quotes"
             />
-            <StyleExample
-                tag="p"
-                name="text-meta-light"
-                content="This is a meta light text"
+            <FontFamilyExample
+                name="Fira Sans"
+                fontFamily="'Fira Sans', sans-serif"
+                description="Used for body text and UI elements"
             />
-            <StyleExample
-                tag="p"
-                name="text-meta-bold"
-                content="This is a meta bold text"
+            <FontFamilyExample
+                name="Abril Fatface"
+                fontFamily="'Abril Fatface', cursive"
+                description="Used for drop caps in articles"
+                sample="ABC"
+            />
+            <FontFamilyExample
+                name="Montserrat"
+                fontFamily="'Montserrat', sans-serif"
+                description="Used for alternative headings (Opinie)"
+                sample="ABC"
             />
         </div>
     ),
 };
 
-export const ArticleExample: Story = {
+export const FontWeights: Story = {
+    parameters: { docs: { source: { code: null } } },
     render: () => (
-        <div className="max-w-2xl">
-            <ArticleType>Interview</ArticleType>
-            <ArticleCity>Amsterdam</ArticleCity>
-            <HeadingArticle>The quick brown fox jumps over the lazy dog</HeadingArticle>
-            <BodyArticleIntro>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus
-                hendrerit arcu sed erat molestie vehicula.</BodyArticleIntro>
-            <MetaAuthor>By John Doe</MetaAuthor>
-            <div className="mt-6">
-                <div className="relative">
-                    <DropCap>L</DropCap>
-                    <BodyArticle className="pl-16">orem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
-                        mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut
-                        eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non
-                        venenatis nisl tempor.</BodyArticle>
+        <div style={{ maxWidth: '600px' }}>
+            {[
+                { weight: 300, label: 'Light' },
+                { weight: 400, label: 'Regular' },
+                { weight: 600, label: 'Semibold' },
+                { weight: 700, label: 'Bold' },
+            ].map(({ weight, label }) => (
+                <div key={weight} style={{ marginBottom: '1.5rem', padding: '1rem', border: '1px solid #eee', borderRadius: '8px' }}>
+                    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: weight, fontSize: '24px', marginBottom: '0.25rem' }}>
+                        {label} ({weight})
+                    </p>
+                    <p style={{ fontFamily: "'Fira Sans', sans-serif", fontWeight: weight, fontSize: '16px' }}>
+                        The quick brown fox jumps over the lazy dog
+                    </p>
+                    <code style={{ fontSize: '12px', backgroundColor: '#f3f4f6', padding: '2px 6px', borderRadius: '4px' }}>font-weight: {weight}</code>
                 </div>
-                <BodyArticle className="mt-4">Suspendisse potenti. Sed auctor neque eu tellus rhoncus ut eleifend nibh
-                    porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.
-                    Suspendisse dictum feugiat nisl ut dapibus.</BodyArticle>
-                <BodyArticleQuote className="my-6">The greatest glory in living lies not in never falling, but in rising
-                    every time we fall.</BodyArticleQuote>
-                <BodyArticle>Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis
-                    orci, sed rhoncus sapien nunc eget odio.</BodyArticle>
-            </div>
+            ))}
         </div>
     ),
 };

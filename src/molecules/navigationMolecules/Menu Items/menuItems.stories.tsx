@@ -143,7 +143,7 @@ export const SingleMenuItemDemo = {
     render: () => (
         <div className="flex flex-col gap-m">
             <div>
-                <h3 className="text-heading-3 mb-s">Menu Item States:</h3>
+                <h3 className="text-heading-s mb-s">Menu Item States:</h3>
                 <div className="flex flex-col gap-s">
                     <MenuItem text="Default State" state="default" href="/default" />
                     <MenuItem text="Hover State (always shown)" state="hover" href="/hover" />

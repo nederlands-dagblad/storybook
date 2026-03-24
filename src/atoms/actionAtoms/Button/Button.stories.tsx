@@ -35,6 +35,11 @@ const meta = {
       options: ['primary', 'secondary', 'ghost', 'dark', 'pill'],
       description: 'Visual style variant of the button',
     },
+    size: {
+      control: 'select',
+      options: ['default', 'large'],
+      description: 'Size of the button. Large uses text-body-bold and wider horizontal padding.',
+    },
     iconLeft: {
       control: 'select',
       options: [null, ...iconList.getIconNames()],
@@ -212,6 +217,20 @@ export const LinkWithTracking: Story = {
             // In real app: trackEvent('external_link_clicked');
           }}
       />
+  ),
+};
+
+/**
+ * Large size variants — uses text-body-bold and wider horizontal padding (px-s)
+ */
+export const LargeButtons: Story = {
+  render: () => (
+      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        <Button variant="primary" size="large" label="Primary" />
+        <Button variant="secondary" size="large" iconLeft="user" label="Secondary" />
+        <Button variant="ghost" size="large" label="Ghost" />
+        <Button variant="dark" size="large" label="Dark" />
+      </div>
   ),
 };
 

@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-02-17T09:10:40.595Z
+// Last generated: 2026-03-24T12:31:00.847Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -77,6 +77,24 @@ export const spacing = {
   "xxl": "var(--spacing-xxl)"
 };
 export const typographyStyles = {
+  "heading-xxl": "var(--heading-xxl)",
+  "heading-xl": "var(--heading-xl)",
+  "heading-l": "var(--heading-l)",
+  "heading-m": "var(--heading-m)",
+  "heading-s": "var(--heading-s)",
+  "heading-light": "var(--heading-light)",
+  "heading-uppercase": "var(--heading-uppercase)",
+  "body-light": "var(--body-light)",
+  "body-regular": "var(--body-regular)",
+  "body-bold": "var(--body-bold)",
+  "body-uppercase": "var(--body-uppercase)",
+  "body-uppercase-bold": "var(--body-uppercase-bold)",
+  "body-uppercase-bold-small": "var(--body-uppercase-bold-small)",
+  "body-gulliver-semibold": "var(--body-gulliver-semibold)",
+  "meta-light": "var(--meta-light)",
+  "meta-regular": "var(--meta-regular)",
+  "meta-bold": "var(--meta-bold)",
+  "meta-uppercase": "var(--meta-uppercase)",
   "article-heading": "var(--article-heading)",
   "article-heading-light": "var(--article-heading-light)",
   "article-heading-alternate": "var(--article-heading-alternate)",
@@ -91,22 +109,6 @@ export const typographyStyles = {
   "article-question": "var(--article-question)",
   "article-drop-cap": "var(--article-drop-cap)",
   "article-drop-cap-alternate": "var(--article-drop-cap-alternate)",
-  "body-light": "var(--body-light)",
-  "body-regular": "var(--body-regular)",
-  "body-bold": "var(--body-bold)",
-  "body-uppercase": "var(--body-uppercase)",
-  "body-uppercase-bold": "var(--body-uppercase-bold)",
-  "body-uppercase-bold-small": "var(--body-uppercase-bold-small)",
-  "body-gulliver-semibold": "var(--body-gulliver-semibold)",
-  "heading-2": "var(--heading-2)",
-  "heading-3": "var(--heading-3)",
-  "heading-page": "var(--heading-page)",
-  "heading-subheading": "var(--heading-subheading)",
-  "heading-uppercase": "var(--heading-uppercase)",
-  "meta-light": "var(--meta-light)",
-  "meta-regular": "var(--meta-regular)",
-  "meta-bold": "var(--meta-bold)",
-  "meta-uppercase": "var(--meta-uppercase)",
   "menu-menu-primary": "var(--menu-menu-primary)",
   "menu-menu-secondary": "var(--menu-menu-secondary)",
   "menu-menu-submenu": "var(--menu-menu-submenu)",
@@ -138,6 +140,7 @@ export const primitiveFontSizes = {
   "36": "var(--font-size-36)",
   "40": "var(--font-size-40)",
   "48": "var(--font-size-48)",
+  "60": "var(--font-size-60)",
   "88": "var(--font-size-88)",
   "96": "var(--font-size-96)"
 };

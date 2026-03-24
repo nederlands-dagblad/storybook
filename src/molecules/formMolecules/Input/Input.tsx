@@ -102,9 +102,9 @@ export const Input: React.FC<InputProps> = (props) => {
 
         {(help || errors?.length) ? (
             <div className="flex flex-col">
-                {help && <span className="text-text-gray text-meta">{help}</span>}
+                {help && <span className="text-text-gray text-meta-regular">{help}</span>}
                 {errors && errors.map((error, i) => (
-                    <span key={i} className="text-text-warning text-meta">{error}</span>
+                    <span key={i} className="text-text-warning text-meta-regular">{error}</span>
                 ))}
             </div>
         ) : null}

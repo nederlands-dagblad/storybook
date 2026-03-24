@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-02-17T09:10:40.596Z
+ * Last generated: 2026-03-24T12:31:00.849Z
  */
 
 :root {
@@ -29,6 +29,7 @@
   --font-size-36: 36px;
   --font-size-40: 40px;
   --font-size-48: 48px;
+  --font-size-60: 60px;
   --font-size-88: 88px;
   --font-size-96: 96px;
   --letter-spacing-0: 0px;
@@ -113,8 +114,9 @@
   --font-size-heading-xs: 12px;
   --font-size-heading-s: 18px;
   --font-size-heading-m: 20px;
-  --font-size-heading-l: 40px;
-  --font-size-heading-xl: 48px;
+  --font-size-heading-l: 36px;
+  --font-size-heading-xl: 40px;
+  --font-size-heading-xxl: 60px;
   --font-size-body-xs: 12px;
   --font-size-body-s: 16px;
   --font-size-body-m: 18px;
@@ -173,8 +175,9 @@
     --font-size-heading-xs: 12px;
     --font-size-heading-s: 16px;
     --font-size-heading-m: 18px;
-    --font-size-heading-l: 26px;
-    --font-size-heading-xl: 28px;
+    --font-size-heading-l: 20px;
+    --font-size-heading-xl: 26px;
+    --font-size-heading-xxl: 32px;
     --font-size-body-xs: 12px;
     --font-size-body-s: 14px;
     --font-size-body-m: 16px;
@@ -192,8 +195,9 @@
     --font-size-heading-xs: 12px;
     --font-size-heading-s: 18px;
     --font-size-heading-m: 20px;
-    --font-size-heading-l: 36px;
-    --font-size-heading-xl: 40px;
+    --font-size-heading-l: 24px;
+    --font-size-heading-xl: 36px;
+    --font-size-heading-xxl: 40px;
     --font-size-body-xs: 12px;
     --font-size-body-s: 16px;
     --font-size-body-m: 18px;

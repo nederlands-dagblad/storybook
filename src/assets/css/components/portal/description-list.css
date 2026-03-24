@@ -8,7 +8,7 @@
   }
 
   .description-list-title {
-    @apply text-heading-2;
+    @apply text-heading-m;
   }
 
   .description-list-actions {

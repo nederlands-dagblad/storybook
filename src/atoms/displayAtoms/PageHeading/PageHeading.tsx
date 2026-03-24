@@ -13,7 +13,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
                                                         }) => {
     return (
         <div>
-            <h1 className="text-heading-page text-text-default">{title}</h1>
+            <h1 className="text-heading-xl text-text-default">{title}</h1>
             {showBody && bodyText && (
                 <div
                     className="text-body-light text-text-default mt-s"

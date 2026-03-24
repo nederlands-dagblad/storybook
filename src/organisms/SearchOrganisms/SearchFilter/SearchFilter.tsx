@@ -61,8 +61,8 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({
 
     return (
         <div className="flex flex-col gap-m">
-            <h1 className="text-heading-page text-text-default">
-                Zoekresultaten voor: <span className="text-heading-subheading">{searchTerm}</span>
+            <h1 className="text-heading-xl text-text-default">
+                Zoekresultaten voor: <span className="text-heading-light">{searchTerm}</span>
             </h1>
 
             <div className="flex gap-xs">
@@ -96,7 +96,7 @@ export const SearchFilter: React.FC<SearchFilterProps> = ({
 
                             return (
                                 <div key={category.name} className="flex flex-col gap-xs">
-                                    <span className="text-heading-2 text-text-default">{category.name}</span>
+                                    <span className="text-heading-m text-text-default">{category.name}</span>
 
                                     {visibleOptions.map((option) => {
                                         const isSelected = selectedFilters.includes(option.label);
