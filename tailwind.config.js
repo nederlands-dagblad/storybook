@@ -22,6 +22,8 @@ export default {
 
     //Safelist utilities that get purged in Storybook production builds
     safelist: [
+        'shadow-s', 'shadow-m', 'shadow-l',
+        'line-through', '!line-through',
         '!underline',
         '!decoration-border-brand',
         'line-clamp-5',
