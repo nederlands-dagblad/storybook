@@ -49,7 +49,7 @@ const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> = ({
 
     return (
         <aside className={inline ? `flex flex-col gap-m ${className ?? ''}` : `${showOnMobile ? 'flex flex-col' : 'hidden lg:flex lg:flex-col'} lg:sticky lg:top-l bg-background-default shadow-m p-m lg:p-l gap-m ${className ?? ''}`}>
-            <h3 className="text-heading-2 text-text-default">{heading}</h3>
+            <h3 className="text-heading-m text-text-default">{heading}</h3>
 
             {/* Subscription accordion */}
             <div className="flex flex-col gap-s">

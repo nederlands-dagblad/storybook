@@ -24,7 +24,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, heading
             <div className="relative w-full md:w-[600px] md:mx-4 bg-background-default p-m max-h-[60vh] md:h-auto md:max-h-[90vh] overflow-y-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                    {heading && <h2 className="text-heading-2 text-text-default">{heading}</h2>}
+                    {heading && <h2 className="text-heading-m text-text-default">{heading}</h2>}
                     <div className="ml-auto">
                     <button
                         onClick={onClose}

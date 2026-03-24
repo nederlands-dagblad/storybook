@@ -94,7 +94,7 @@ const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> = ({
 
     return (
         <div className="bg-background-default shadow-m p-m lg:p-l flex flex-col gap-l">
-            <h2 className="text-heading-2 text-text-default">Persoonlijke gegevens</h2>
+            <h2 className="text-heading-m text-text-default">Persoonlijke gegevens</h2>
 
             {alertText && (
                 <Alert variant="info">{alertText}</Alert>
@@ -115,7 +115,7 @@ const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> = ({
 
             {/* Address */}
             <div className="flex flex-col gap-m">
-                <h2 className="text-heading-2 text-text-default">{addressHeading}</h2>
+                <h2 className="text-heading-m text-text-default">{addressHeading}</h2>
                 <Input label={postcodeLabel} value={postcode} setValue={setPostcode} errors={submitted ? errors.postcode : null} />
                 <Input label={houseNumberLabel} value={houseNumber} setValue={setHouseNumber} errors={submitted ? errors.houseNumber : null} />
                 <Input label={additionLabel} value={addition} setValue={setAddition} />
