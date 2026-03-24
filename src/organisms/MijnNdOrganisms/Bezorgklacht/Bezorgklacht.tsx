@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accordion from '@molecules/contentOrganizationMolecules/Accordion/accordion';
 import RadioButton from '@molecules/formMolecules/RadioButton/RadioButton';
 import CheckBox from '@molecules/formMolecules/CheckBox/CheckBox';
@@ -71,10 +71,15 @@ function getLastNEditionDates(n: number): { label: string; value: string }[] {
         }
     }
 
-    return results.map((date) => ({
-        label: date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
-        value: date.toISOString(),
-    }));
+    return results.map((date) => {
+        const yyyy = date.getFullYear();
+        const mm = String(date.getMonth() + 1).padStart(2, '0');
+        const dd = String(date.getDate()).padStart(2, '0');
+        return {
+            label: date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
+            value: `${yyyy}-${mm}-${dd}T00:00:00.000Z`,
+        };
+    });
 }
 
 const dnkEditions = getLastNEditionDates(3);
@@ -86,7 +91,23 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
     const [verlengen, setVerlengen] = useState(false);
     const [perPost, setPerPost] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [apiError, setApiError] = useState('');
     const [errors, setErrors] = useState<{ datum?: string; klacht?: string }>({});
+
+    useEffect(() => {
+        function handleResult(e: CustomEvent<{ success: boolean; message?: string }>) {
+            setSubmitting(false);
+            if (e.detail.success) {
+                setSubmitted(true);
+                setApiError('');
+            } else {
+                setApiError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
+            }
+        }
+        window.addEventListener('bezorgklacht-result', handleResult as EventListener);
+        return () => window.removeEventListener('bezorgklacht-result', handleResult as EventListener);
+    }, []);
 
     const showPostCheckbox = isFirstSaturdayOfMonth(datum);
 
@@ -103,12 +124,13 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
             setErrors(newErrors);
             return;
         }
+        setSubmitting(true);
+        setApiError('');
         const data: BezorgklachtFormData = melding === 'krant'
             ? { melding, datum, klacht, verlengen, perPost }
             : { melding, datum, perPost };
         window.dispatchEvent(new CustomEvent('bezorgklacht-submit', { detail: data }));
         onSubmit?.(data);
-        setSubmitted(true);
     }
 
     function handleNieuweMelding() {
@@ -118,6 +140,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
         setVerlengen(false);
         setPerPost(false);
         setErrors({});
+        setApiError('');
         setSubmitted(false);
     }
 
@@ -220,8 +243,10 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                 </div>
             )}
 
+            {apiError && <Alert variant="warning">{apiError}</Alert>}
+
             <div>
-                <Button variant="primary" label="Verzenden" onClick={handleVerzenden}/>
+                <Button variant="primary" label="Verzenden" onClick={handleVerzenden} disabled={submitting}/>
             </div>
         </div>
     );
