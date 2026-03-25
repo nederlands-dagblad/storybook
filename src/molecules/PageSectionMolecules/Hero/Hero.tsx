@@ -20,26 +20,48 @@ const Hero: React.FC<HeroProps> = ({
 }) => {
     return (
         <div className="w-full">
-            {/* Image */}
+            {/* Mobile layout */}
+            <div className="md:hidden">
+                <div
+                    className="relative w-full aspect-[3/4] bg-cover bg-center"
+                    style={{ backgroundImage: `url(${backgroundImage})` }}
+                >
+                    <div
+                        className="absolute inset-x-0 h-2/5 pointer-events-none"
+                        style={{ bottom: '-1px', background: 'linear-gradient(to bottom, color-mix(in srgb, var(--color-background-default) 0%, transparent) 0%, color-mix(in srgb, var(--color-background-default) 10%, transparent) 15%, color-mix(in srgb, var(--color-background-default) 50%, transparent) 50%, color-mix(in srgb, var(--color-background-default) 80%, transparent) 75%, var(--color-background-default) 100%)' }}
+                    />
+                </div>
+                <div className="flex flex-col items-center text-center gap-s px-m pb-l -mt-16 relative z-10">
+                    <h1 className="text-heading-xxl text-text-default">{heading}</h1>
+                    {intro && <p className="text-body-regular text-text-default">{intro}</p>}
+                    {ctaLabel && (
+                        <div className="mt-m">
+                            <Button
+                                variant="primary"
+                                size="large"
+                                iconLeft={null}
+                                iconRight="caret-right"
+                                label={ctaLabel}
+                                href={ctaHref}
+                                onClick={onCtaClick}
+                            />
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Desktop layout */}
             <div
-                className="relative w-full h-screen md:flex md:items-end bg-cover bg-center"
+                className="hidden md:flex relative w-full h-screen items-end bg-cover bg-center"
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             >
-                {/* Mobile: fade to background-default */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background-default md:hidden" />
-
-                {/* Tablet/Desktop: dark overlay + content */}
-                <div className="hidden md:block absolute inset-0 bg-background-dark opacity-40" />
-
-                <div className="hidden md:flex relative z-10 w-full justify-center p-l">
+                <div className="absolute inset-0 bg-background-dark opacity-40" />
+                <div className="relative z-10 w-full flex justify-center px-l pb-[5vw]">
                     <div className="w-full max-w-5xl flex items-end justify-between gap-l">
                         <div className="max-w-md lg:max-w-2xl">
                             <h1 className="text-heading-xxl text-text-inverse mb-m">{heading}</h1>
-                            {intro && (
-                                <p className="text-body-regular text-text-inverse">{intro}</p>
-                            )}
+                            {intro && <p className="text-body-regular text-text-inverse">{intro}</p>}
                         </div>
-
                         {ctaLabel && (
                             <div className="shrink-0">
                                 <Button
@@ -55,27 +77,6 @@ const Hero: React.FC<HeroProps> = ({
                         )}
                     </div>
                 </div>
-            </div>
-
-            {/* Mobile: content below image */}
-            <div className="md:hidden bg-background-default flex flex-col items-center text-center gap-s p-l">
-                <h1 className="text-heading-xxl text-text-default">{heading}</h1>
-                {intro && (
-                    <p className="text-body-regular text-text-default">{intro}</p>
-                )}
-                {ctaLabel && (
-                    <div className="mt-m">
-                        <Button
-                            variant="primary"
-                            size="large"
-                            iconLeft={null}
-                            iconRight="caret-right"
-                            label={ctaLabel}
-                            href={ctaHref}
-                            onClick={onCtaClick}
-                        />
-                    </div>
-                )}
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-03-24T12:31:00.849Z
+ * Last generated: 2026-03-25T09:37:59.411Z
  */
 
 :root {
@@ -108,6 +108,7 @@
   --spacing-xl: 64px;
   --spacing-xxl: 128px;
   --border-width-s: 1px;
+  --border-width-m: 2px;
   --border-radius-xl: 80px;
   --border-width-default: 1px;
   --border-radius-pill: 80px;

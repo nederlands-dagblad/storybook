@@ -4,6 +4,10 @@
       "s": {
         "$type": "dimension",
         "$value": "1px"
+      },
+      "m": {
+        "$type": "dimension",
+        "$value": "2px"
       }
     },
     "border-radius": {

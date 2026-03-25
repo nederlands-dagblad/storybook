@@ -243,7 +243,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     if (loading) {
         return (
             <div className={`w-full flex flex-col gap-s ${className}`}>
-                {title && <SectionHeading>{title}</SectionHeading>}
+                {title && <SectionHeading variant="lined">{title}</SectionHeading>}
                 <p className="text-body-regular text-text-subtle">Video's laden...</p>
             </div>
         );
@@ -252,7 +252,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     if (error) {
         return (
             <div className={`w-full flex flex-col gap-s ${className}`}>
-                {title && <SectionHeading>{title}</SectionHeading>}
+                {title && <SectionHeading variant="lined">{title}</SectionHeading>}
                 <p className="text-body-regular text-text-warning">Fout bij laden: {error}</p>
             </div>
         );
@@ -265,7 +265,7 @@ export const ArticleSlider: React.FC<ArticleSliderProps> = ({
     return (
         <>
             <div className={`w-full flex flex-col gap-s ${className}`}>
-                {title && <SectionHeading>{title}</SectionHeading>}
+                {title && <SectionHeading variant="lined">{title}</SectionHeading>}
 
                 <div className="relative">
                     {showLeftFade && (

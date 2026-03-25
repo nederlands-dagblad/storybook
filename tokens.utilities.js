@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-03-24T12:31:00.849Z
+ * Last generated: 2026-03-25T09:37:59.411Z
  */
 
 export default function ({ addUtilities }) {
@@ -416,6 +416,21 @@ export default function ({ addUtilities }) {
   },
   ".border-l-s": {
     "borderLeftWidth": "var(--border-width-s)"
+  },
+  ".border-m": {
+    "borderWidth": "var(--border-width-m)"
+  },
+  ".border-t-m": {
+    "borderTopWidth": "var(--border-width-m)"
+  },
+  ".border-r-m": {
+    "borderRightWidth": "var(--border-width-m)"
+  },
+  ".border-b-m": {
+    "borderBottomWidth": "var(--border-width-m)"
+  },
+  ".border-l-m": {
+    "borderLeftWidth": "var(--border-width-m)"
   },
   ".rounded-xl": {
     "borderRadius": "var(--border-radius-xl)"

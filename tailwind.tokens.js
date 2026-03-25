@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-03-24T12:31:00.847Z
+// Last generated: 2026-03-25T09:37:59.409Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -157,7 +157,8 @@ export const primitiveLetterSpacings = {
   "l": "var(--letter-spacing-l)"
 };
 export const primitiveBorderWidth = {
-  "s": "var(--border-width-s)"
+  "s": "var(--border-width-s)",
+  "m": "var(--border-width-m)"
 };
 export const primitiveBorderRadius = {
   "xl": "var(--border-radius-xl)"

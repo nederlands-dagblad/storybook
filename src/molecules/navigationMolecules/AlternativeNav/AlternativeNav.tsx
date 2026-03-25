@@ -1,24 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@atoms/actionAtoms/Button/Button.tsx';
-import Icon from '@atoms/basicAtoms/Icon/Icon.tsx';
 import Logo from "@atoms/basicAtoms/Logo/Logo.tsx";
 
 export interface AlternativeNavProps {
-    contactLabel?: string;
-    contactHref?: string;
-    ctaLabel?: string;
-    ctaHref?: string;
-    onCtaClick?: () => void;
     /** Force scrolled appearance without needing to scroll — useful for Storybook */
     forceScrolled?: boolean;
 }
 
 export const AlternativeNav: React.FC<AlternativeNavProps> = ({
-    contactLabel = 'Contact',
-    contactHref,
-    ctaLabel = 'Abonnementen',
-    ctaHref,
-    onCtaClick,
     forceScrolled = false,
 }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -30,29 +19,37 @@ export const AlternativeNav: React.FC<AlternativeNavProps> = ({
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-m py-s transition-colors duration-300 ${isScrolled || forceScrolled ? 'bg-background-default' : 'bg-transparent'}`}>
-            <Logo
-                variant="default"
-                size="small"
-                className={isScrolled || forceScrolled ? 'text-text-default' : 'text-white'}
-            />
+        <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-m py-xs transition-all duration-300 ${isScrolled || forceScrolled ? 'bg-background-default shadow-s' : 'bg-transparent'}`}>
+            <div className="w-full max-w-7xl flex items-center justify-between">
+                <a href="https://www.nd.nl" className="flex items-center">
+                    <Logo
+                        variant="default"
+                        size="small"
+                        className={`md:hidden ${isScrolled || forceScrolled ? 'text-text-default' : 'text-white'}`}
+                    />
+                    <Logo
+                        variant="default"
+                        size="full"
+                        className={`hidden md:block w-60 ${isScrolled || forceScrolled ? 'text-text-default' : 'text-white'}`}
+                    />
+                </a>
 
-            <div className="flex items-center gap-xs">
-                <Button
-                    variant="ghost"
-                    iconLeft={null}
-                    label={contactLabel}
-                    href={contactHref}
-                    className={!isScrolled && !forceScrolled ? '!text-text-inverse hover:!text-text-inverse' : ''}
-                />
-                <Button
-                    variant="secondary"
-                    iconLeft={null}
-                    label={ctaLabel}
-                    href={ctaHref}
-                    onClick={onCtaClick}
-                    className={!isScrolled && !forceScrolled ? '!text-text-inverse !border-white !bg-transparent hover:!bg-white/10' : ''}
-                />
+                <div className="flex items-center gap-xs">
+                    <Button
+                        variant="ghost"
+                        iconLeft={null}
+                        label="Contact"
+                        href="https://www.nd.nl/service/contact"
+                        className={!isScrolled && !forceScrolled ? '!text-text-inverse hover:!text-text-inverse' : ''}
+                    />
+                    <Button
+                        variant="secondary"
+                        iconLeft={null}
+                        label="Abonnementen"
+                        href="https://www.nd.nl/abonnement"
+                        className={!isScrolled && !forceScrolled ? '!text-text-inverse !border-white !bg-transparent hover:!bg-white/10' : ''}
+                    />
+                </div>
             </div>
         </nav>
     );
