@@ -136,7 +136,7 @@ const ZakelijkAbonnementPage: React.FC<ZakelijkAbonnementPageProps> = ({
 }) => {
     return (
         <div className="w-full">
-            <AlternativeNav />
+            <AlternativeNav transparent />
 
             <Hero
                 backgroundImage={heroImage}
