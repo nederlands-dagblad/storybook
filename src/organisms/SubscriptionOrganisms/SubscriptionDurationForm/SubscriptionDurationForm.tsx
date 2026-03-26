@@ -3,7 +3,7 @@ import RadioButton from '../../../molecules/formMolecules/RadioButton/RadioButto
 import Alert from '../../../molecules/feedbackMolecules/Alert/Alert';
 import Input from '../../../molecules/formMolecules/Input/Input';
 import Button from '../../../atoms/actionAtoms/Button/Button';
-import { SubscriptionFeature } from '../../../molecules/subscriptionMolecules/SubscriptionCard/subscriptionCard';
+import { SubscriptionFeature } from '@molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard';
 import SubscriptionFeaturesAccordion from '../SubscriptionFeaturesAccordion/SubscriptionFeaturesAccordion';
 
 export interface DeliveryDay {
