@@ -9,7 +9,7 @@ import SubscriptionDurationForm, {
 import SubscriptionPersonalForm, { PersonalFormData } from '../SubscriptionPersonalForm/SubscriptionPersonalForm';
 import SubscriptionPaymentForm, { PaymentMethod } from '../SubscriptionPaymentForm/SubscriptionPaymentForm';
 import SubscriptionSummaryPanel from '../SubscriptionSummaryPanel/SubscriptionSummaryPanel';
-import { SubscriptionFeature } from '../../../molecules/subscriptionMolecules/SubscriptionCard/subscriptionCard';
+import { SubscriptionFeature } from '@molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard.tsx';
 
 export type { SubscriptionDuration, OrderSummaryRow, DeliveryDay, PersonalFormData, PaymentMethod };
 

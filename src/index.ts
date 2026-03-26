@@ -69,11 +69,26 @@ export { default as Toast } from './molecules/feedbackMolecules/Toast/Toast';
 export { useToast } from './molecules/feedbackMolecules/Toast/Toast';
 export type { ToastProps } from './molecules/feedbackMolecules/Toast/Toast';
 
+export { BaseSlider } from './molecules/newsfeedMolecules/BaseSlider/BaseSlider';
+export type { BaseSliderProps } from './molecules/newsfeedMolecules/BaseSlider/BaseSlider';
+
 export { ArticleSlider } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 export type { ArticleSliderProps } from './molecules/newsfeedMolecules/ArticleSlider/ArticleSlider';
 
 export { ArticleCard } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
 export type { ArticleCardProps } from './molecules/newsfeedMolecules/ArticleCard/ArticleCard';
+
+export { VideoCard } from './molecules/newsfeedMolecules/VideoCard/VideoCard';
+export type { VideoCardProps } from './molecules/newsfeedMolecules/VideoCard/VideoCard';
+
+export { ImageCard } from './molecules/newsfeedMolecules/ImageCard/ImageCard';
+export type { ImageCardProps } from './molecules/newsfeedMolecules/ImageCard/ImageCard';
+
+export { PublicationCard } from './molecules/newsfeedMolecules/PublicationCard/PublicationCard';
+export type { PublicationCardProps } from './molecules/newsfeedMolecules/PublicationCard/PublicationCard';
+
+export { VideoSlider } from './molecules/newsfeedMolecules/VideoSlider/VideoSlider';
+export type { VideoSliderProps } from './molecules/newsfeedMolecules/VideoSlider/VideoSlider';
 
 export { VideoModal } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
 export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/VideoModal';
