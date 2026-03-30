@@ -1,7 +1,7 @@
 import React from 'react';
-import { AccordionItem } from '../../../molecules/contentOrganizationMolecules/Accordion/accordion';
+import { AccordionItem } from '@molecules/contentOrganizationMolecules/Accordion/accordion.tsx';
 import Button from '../../../atoms/actionAtoms/Button/Button';
-import { SubscriptionFeature } from '../../../molecules/subscriptionMolecules/SubscriptionCard/subscriptionCard';
+import { SubscriptionFeature } from '@molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard.tsx';
 import SubscriptionFeaturesList from '../../../molecules/subscriptionMolecules/SubscriptionFeaturesList/SubscriptionFeaturesList';
 
 export interface SubscriptionFeaturesAccordionProps {

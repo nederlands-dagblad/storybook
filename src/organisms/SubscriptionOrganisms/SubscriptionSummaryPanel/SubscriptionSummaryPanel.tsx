@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../../atoms/actionAtoms/Button/Button';
-import { SubscriptionFeature } from '../../../molecules/subscriptionMolecules/SubscriptionCard/subscriptionCard';
+import { SubscriptionFeature } from '@molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard.tsx';
 import { OrderSummaryRow } from '../SubscriptionDurationForm/SubscriptionDurationForm';
 import { PersonalFormData } from '../SubscriptionPersonalForm/SubscriptionPersonalForm';
 import SubscriptionFeaturesAccordion from '../SubscriptionFeaturesAccordion/SubscriptionFeaturesAccordion';

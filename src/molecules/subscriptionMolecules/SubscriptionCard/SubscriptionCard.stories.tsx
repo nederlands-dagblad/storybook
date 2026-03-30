@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import SubscriptionCard from './subscriptionCard';
+import SubscriptionCard from './SubscriptionCard';
 
 const meta = {
     title: 'Molecules/Subscription Molecules/SubscriptionCard',

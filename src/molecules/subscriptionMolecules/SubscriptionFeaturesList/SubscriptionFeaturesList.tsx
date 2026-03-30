@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Icon from '../../../atoms/basicAtoms/Icon/Icon';
 import FeatureModal from '../FeatureModal/FeatureModal';
-import { SubscriptionFeature } from '../SubscriptionCard/subscriptionCard';
+import { SubscriptionFeature } from '../SubscriptionCard/SubscriptionCard';
 
 export interface SubscriptionFeaturesListProps {
     features: SubscriptionFeature[];

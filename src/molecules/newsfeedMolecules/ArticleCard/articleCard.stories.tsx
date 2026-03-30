@@ -3,7 +3,7 @@ import { ArticleCard } from './ArticleCard';
 import { useState } from 'react';
 
 const meta: Meta<typeof ArticleCard> = {
-    title: 'Molecules/Newsfeed Molecules/ArticleCard',
+    title: 'Molecules/Newsfeed Molecules/ArticleCard (Backwards Compatible)',
     component: ArticleCard,
     parameters: {
         layout: 'centered',
