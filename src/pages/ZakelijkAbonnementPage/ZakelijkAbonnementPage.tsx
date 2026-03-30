@@ -21,7 +21,6 @@ export interface ComparisonRow {
     included: boolean[];
 }
 
-
 export interface ZakelijkAbonnementPageProps {
     // Hero
     heroImage?: string;
