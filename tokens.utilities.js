@@ -1,7 +1,7 @@
 /**
  * Tailwind CSS Utilities Plugin
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-02-17T09:10:40.597Z
+ * Last generated: 2026-03-25T09:37:59.411Z
  */
 
 export default function ({ addUtilities }) {
@@ -417,6 +417,21 @@ export default function ({ addUtilities }) {
   ".border-l-s": {
     "borderLeftWidth": "var(--border-width-s)"
   },
+  ".border-m": {
+    "borderWidth": "var(--border-width-m)"
+  },
+  ".border-t-m": {
+    "borderTopWidth": "var(--border-width-m)"
+  },
+  ".border-r-m": {
+    "borderRightWidth": "var(--border-width-m)"
+  },
+  ".border-b-m": {
+    "borderBottomWidth": "var(--border-width-m)"
+  },
+  ".border-l-m": {
+    "borderLeftWidth": "var(--border-width-m)"
+  },
   ".rounded-xl": {
     "borderRadius": "var(--border-radius-xl)"
   },
@@ -456,7 +471,15 @@ export default function ({ addUtilities }) {
   }
 },
     ...{
-  ".text-article-heading": {
+  ".text-heading-xxl": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-heading-xxl)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-heading-xl": {
     "fontFamily": "var(--font-family-gulliver)",
     "fontSize": "var(--font-size-heading-xl)",
     "fontWeight": "var(--font-weight-bold)",
@@ -464,7 +487,31 @@ export default function ({ addUtilities }) {
     "letterSpacing": "var(--letter-spacing-0)",
     "textDecoration": "none"
   },
-  ".text-article-heading-light": {
+  ".text-heading-l": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-heading-l)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-heading-m": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-heading-m)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-heading-s": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-heading-s)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-heading-light": {
     "fontFamily": "var(--font-family-gulliver)",
     "fontSize": "var(--font-size-heading-xl)",
     "fontWeight": "var(--font-weight-regular)",
@@ -472,9 +519,126 @@ export default function ({ addUtilities }) {
     "letterSpacing": "var(--letter-spacing-0)",
     "textDecoration": "none"
   },
+  ".text-heading-uppercase": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-heading-xs)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-l)",
+    "textDecoration": "none",
+    "textTransform": "uppercase"
+  },
+  ".text-body-light": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-m)",
+    "fontWeight": "var(--font-weight-light)",
+    "lineHeight": "160%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-body-regular": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-m)",
+    "fontWeight": "var(--font-weight-regular)",
+    "lineHeight": "160%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-body-bold": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-m)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "160%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-body-uppercase": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-xl)",
+    "fontWeight": "var(--font-weight-regular)",
+    "lineHeight": "normal",
+    "letterSpacing": "var(--letter-spacing-s)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-body-uppercase-bold": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-xl)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "normal",
+    "letterSpacing": "var(--letter-spacing-s)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-body-uppercase-bold-small": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-l)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "normal",
+    "letterSpacing": "var(--letter-spacing-s)",
+    "textDecoration": "none",
+    "fontVariant": "all-small-caps"
+  },
+  ".text-body-gulliver-semibold": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-body-s)",
+    "fontWeight": "var(--font-weight-semibold)",
+    "lineHeight": "130%",
+    "letterSpacing": "0%",
+    "textDecoration": "none"
+  },
+  ".text-meta-light": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-meta)",
+    "fontWeight": "var(--font-weight-light)",
+    "lineHeight": "140%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-meta-regular": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-meta)",
+    "fontWeight": "var(--font-weight-regular)",
+    "lineHeight": "140%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-meta-bold": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-meta)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "140%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-meta-uppercase": {
+    "fontFamily": "var(--font-family-fira-sans)",
+    "fontSize": "var(--font-size-body-xs)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "140%",
+    "letterSpacing": "1px",
+    "textDecoration": "none",
+    "textTransform": "uppercase"
+  },
+  ".text-article-heading": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-heading-xxl)",
+    "fontWeight": "var(--font-weight-bold)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
+  ".text-article-heading-light": {
+    "fontFamily": "var(--font-family-gulliver)",
+    "fontSize": "var(--font-size-heading-xxl)",
+    "fontWeight": "var(--font-weight-regular)",
+    "lineHeight": "130%",
+    "letterSpacing": "var(--letter-spacing-0)",
+    "textDecoration": "none"
+  },
   ".text-article-heading-alternate": {
     "fontFamily": "var(--font-family-montserrat)",
-    "fontSize": "var(--font-size-heading-xl)",
+    "fontSize": "var(--font-size-heading-xxl)",
     "fontWeight": "var(--font-weight-light)",
     "lineHeight": "130%",
     "letterSpacing": "var(--letter-spacing-0)",
@@ -569,139 +733,6 @@ export default function ({ addUtilities }) {
     "lineHeight": "160%",
     "letterSpacing": "var(--letter-spacing-0)",
     "textDecoration": "none"
-  },
-  ".text-body-light": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-m)",
-    "fontWeight": "var(--font-weight-light)",
-    "lineHeight": "160%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-body-regular": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-m)",
-    "fontWeight": "var(--font-weight-regular)",
-    "lineHeight": "160%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-body-bold": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-m)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "160%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-body-uppercase": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-xl)",
-    "fontWeight": "var(--font-weight-regular)",
-    "lineHeight": "normal",
-    "letterSpacing": "var(--letter-spacing-s)",
-    "textDecoration": "none",
-    "fontVariant": "all-small-caps"
-  },
-  ".text-body-uppercase-bold": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-xl)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "normal",
-    "letterSpacing": "var(--letter-spacing-s)",
-    "textDecoration": "none",
-    "fontVariant": "all-small-caps"
-  },
-  ".text-body-uppercase-bold-small": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-l)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "normal",
-    "letterSpacing": "var(--letter-spacing-s)",
-    "textDecoration": "none",
-    "fontVariant": "all-small-caps"
-  },
-  ".text-body-gulliver-semibold": {
-    "fontFamily": "var(--font-family-gulliver)",
-    "fontSize": "var(--font-size-body-s)",
-    "fontWeight": "var(--font-weight-semibold)",
-    "lineHeight": "130%",
-    "letterSpacing": "0%",
-    "textDecoration": "none"
-  },
-  ".text-heading-2": {
-    "fontFamily": "var(--font-family-gulliver)",
-    "fontSize": "var(--font-size-heading-m)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "130%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-heading-3": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-heading-s)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "130%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-heading-page": {
-    "fontFamily": "var(--font-family-gulliver)",
-    "fontSize": "var(--font-size-heading-l)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "130%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-heading-subheading": {
-    "fontFamily": "var(--font-family-gulliver)",
-    "fontSize": "var(--font-size-heading-l)",
-    "fontWeight": "var(--font-weight-regular)",
-    "lineHeight": "130%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-heading-uppercase": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-heading-xs)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "130%",
-    "letterSpacing": "var(--letter-spacing-l)",
-    "textDecoration": "none",
-    "textTransform": "uppercase"
-  },
-  ".text-meta-light": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-meta)",
-    "fontWeight": "var(--font-weight-light)",
-    "lineHeight": "140%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-meta-regular": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-meta)",
-    "fontWeight": "var(--font-weight-regular)",
-    "lineHeight": "140%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-meta-bold": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-meta)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "140%",
-    "letterSpacing": "var(--letter-spacing-0)",
-    "textDecoration": "none"
-  },
-  ".text-meta-uppercase": {
-    "fontFamily": "var(--font-family-fira-sans)",
-    "fontSize": "var(--font-size-body-xs)",
-    "fontWeight": "var(--font-weight-bold)",
-    "lineHeight": "140%",
-    "letterSpacing": "1px",
-    "textDecoration": "none",
-    "textTransform": "uppercase"
   },
   ".text-menu-menu-primary": {
     "fontFamily": "var(--font-family-fira-sans)",

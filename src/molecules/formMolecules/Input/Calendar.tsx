@@ -111,7 +111,7 @@ export const Calendar: React.FC<CalendarProps> = ({ selected, onSelect, minDate,
                         disabled={isDisabled(day)}
                         className={[
                           'flex items-center justify-center border-none cursor-pointer',
-                          'text-meta w-9 h-9 transition-colors duration-150',
+                          'text-meta-regular w-9 h-9 transition-colors duration-150',
                           'disabled:text-text-gray disabled:cursor-not-allowed disabled:bg-transparent',
                           isSelected(day)
                               ? 'bg-background-brand text-text-inverse hover:bg-background-gray hover:text-text-default'

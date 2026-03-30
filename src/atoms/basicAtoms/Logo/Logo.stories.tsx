@@ -6,7 +6,13 @@ const meta: Meta<typeof Logo> = {
     component: Logo,
     parameters: {
         layout: 'centered',
+        docs: {
+            description: {
+                component: 'The Nederlands Dagblad brand logo. Supports a small monogram and a full wordmark, each available with or without a decorative square.',
+            },
+        },
     },
+    tags: ['autodocs'],
 };
 
 export default meta;

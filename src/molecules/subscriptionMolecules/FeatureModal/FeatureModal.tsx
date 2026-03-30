@@ -40,7 +40,7 @@ const FeatureModal: React.FC<FeatureModalProps> = ({
 
                 <div className="flex flex-col gap-m">
                     <div className="flex flex-col gap-xs">
-                        {mediaUrl && <h2 className="text-heading-2 text-text-default">{heading}</h2>}
+                        {mediaUrl && <h2 className="text-heading-m text-text-default">{heading}</h2>}
                         <p className="text-body-light text-text-default">{body}</p>
                     </div>
 

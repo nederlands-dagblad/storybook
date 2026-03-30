@@ -126,7 +126,7 @@ const SubscriptionDurationForm: React.FC<SubscriptionDurationFormProps> = ({
 
             {/* Mobile-only: subscription section */}
             <div className="lg:hidden flex flex-col gap-s">
-                <h2 className="text-heading-2 text-text-default">{sectionHeading}</h2>
+                <h2 className="text-heading-m text-text-default">{sectionHeading}</h2>
                 <SubscriptionFeaturesAccordion
                     label={subscriptionTitle}
                     subLabel={mobileSubLabel}
@@ -139,7 +139,7 @@ const SubscriptionDurationForm: React.FC<SubscriptionDurationFormProps> = ({
             {/* Delivery day section (paper subscriptions) */}
             {deliveryDays.length > 0 && (
                 <div className="flex flex-col gap-s">
-                    <h2 className="text-heading-2 text-text-default">{deliveryDayHeading}</h2>
+                    <h2 className="text-heading-m text-text-default">{deliveryDayHeading}</h2>
                     <div className="flex flex-col gap-xs">
                         {deliveryDays.map((day) => (
                             <RadioButton
@@ -162,7 +162,7 @@ const SubscriptionDurationForm: React.FC<SubscriptionDurationFormProps> = ({
             {/* Duration section */}
             {durations.length > 0 && (
                 <div className="flex flex-col gap-s">
-                    <h2 className="text-heading-2 text-text-default">{durationHeading}</h2>
+                    <h2 className="text-heading-m text-text-default">{durationHeading}</h2>
                     <div className="flex flex-col gap-xs">
                         {durations.map((duration) => (
                             <RadioButton

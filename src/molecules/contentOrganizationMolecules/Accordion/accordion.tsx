@@ -56,7 +56,7 @@ export  function AccordionItem({
                 type="button"
             >
                 <span className="flex-1 flex flex-col">
-                    <span className={`block text-text-default ${variant === 'large' ? 'text-heading-2' : 'text-body-bold'}`}>
+                    <span className={`block text-text-default ${variant === 'large' ? 'text-heading-m' : 'text-body-bold'}`}>
                         {label}
                     </span>
                     {subLabel && (
@@ -91,6 +91,7 @@ export  function AccordionItem({
 export interface AccordionProps {
     items: AccordionItemProps[];
     title?: string;
+    titleClassName?: string;
     allowMultiple?: boolean;
     variant?: 'default' | 'large';
     className?: string;
@@ -99,6 +100,7 @@ export interface AccordionProps {
 export function Accordion({
     items,
     title,
+    titleClassName,
     allowMultiple = false,
     variant = 'default',
     className = ''
@@ -123,7 +125,7 @@ export function Accordion({
     return (
         <div className={`flex flex-col w-full ${className}`}>
             {title && (
-                <h2 className="text-heading-2 text-text-default mb-m">
+                <h2 className={`text-text-default mb-m ${titleClassName ?? 'text-heading-m'}`}>
                     {title}
                 </h2>
             )}

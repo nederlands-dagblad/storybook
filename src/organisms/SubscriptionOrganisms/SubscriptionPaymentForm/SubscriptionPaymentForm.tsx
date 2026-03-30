@@ -54,7 +54,7 @@ const SubscriptionPaymentForm: React.FC<SubscriptionPaymentFormProps> = ({
                     </>
                 )}
 
-                <h2 className="text-heading-2 text-text-default">{paymentHeading}</h2>
+                <h2 className="text-heading-m text-text-default">{paymentHeading}</h2>
 
                 {paymentMethods.length > 0 && (
                     <div className="flex flex-col gap-s">

@@ -131,7 +131,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 <DropdownPanel options={options} value={value} onSelect={handleSelect} />
             )}
             {errors && errors.map((error, i) => (
-                <span key={i} className="text-text-warning text-meta">{error}</span>
+                <span key={i} className="text-text-warning text-meta-regular">{error}</span>
             ))}
         </div>
     );

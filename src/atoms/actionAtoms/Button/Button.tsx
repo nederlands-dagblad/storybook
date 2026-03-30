@@ -4,6 +4,7 @@ import Icon, {IconColor} from "@atoms/basicAtoms/Icon/Icon.tsx";
 // Base props die beide varianten delen
 type BaseButtonProps = {
     variant?: 'primary' | 'secondary' | 'ghost' | 'dark' | 'pill';
+    size?: 'default' | 'large';
     iconLeft?: string | null;
     iconRight?: string | null;
     iconLeftVariant?: 'outline' | 'fill';
@@ -36,7 +37,8 @@ function cn(...classes: (string | boolean | undefined | null)[]) {
 export const Button: React.FC<ButtonProps> = (props) => {
     const {
         variant = 'primary',
-        iconLeft = null,
+        size = 'default',
+        iconLeft = undefined,
         iconRight = null,
         iconLeftVariant = 'outline',
         iconRightVariant = 'outline',
@@ -50,7 +52,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     } = props;
 
     // Set default icons based on variant
-    const defaultIconLeft = iconLeft ?? (variant === 'primary' ? 'square' : null);
+    const defaultIconLeft = iconLeft !== undefined ? iconLeft : (variant === 'primary' ? 'square' : null);
 
     const content = label ?? children;
 
@@ -60,17 +62,21 @@ export const Button: React.FC<ButtonProps> = (props) => {
     // Use controlled state if provided, otherwise use internal state
     const isActive = controlledIsActive !== undefined ? controlledIsActive : internalIsActive;
 
+    const textStyle = size === 'large' ? 'text-body-bold' : 'text-meta-bold';
+    const textStyleRegular = size === 'large' ? 'text-body-bold' : 'text-meta-regular';
+    const px = size === 'large' ? 'px-s' : 'px-xs';
+
     // Map of variant styles
     const variantStyles = {
-        primary: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-brand text-text-inverse hover:bg-background-brand-hover disabled:bg-background-disabled group',
+        primary: `${px} py-xs gap-x-xxs ${textStyle} bg-background-brand text-text-inverse hover:bg-background-brand-hover disabled:bg-background-disabled group`,
 
-        secondary: 'px-xs py-xs gap-x-xs text-meta-regular bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-subtle disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default',
+        secondary: `${px} py-xs gap-x-xs ${textStyleRegular} bg-background-default text-text-brand border-s border-border-brand hover:bg-background-brand-subtle disabled:text-text-disabled disabled:border-border-disabled disabled:hover:bg-background-default`,
 
-        ghost: 'px-xs py-xs gap-x-xs text-meta-bold text-text-brand hover:text-text-brand-hover disabled:text-text-disabled',
+        ghost: `${px} py-xs gap-x-xs ${textStyle} text-text-brand hover:text-text-brand-hover disabled:text-text-disabled`,
 
-        dark: 'px-xs py-xs gap-x-xxs text-meta-bold bg-background-dark text-text-inverse hover:bg-background-dark-hover disabled:bg-background-disabled',
+        dark: `${px} py-xs gap-x-xxs ${textStyle} bg-background-dark text-text-inverse hover:bg-background-dark-hover disabled:bg-background-disabled`,
 
-        pill: 'px-s py-xs gap-x-xs text-meta-regular bg-background-default text-text-gray border-s rounded-pill hover:bg-background-gray-subtle disabled:hover:bg-background-default',
+        pill: `px-s py-xs gap-x-xs ${textStyleRegular} bg-background-default text-text-gray border-s rounded-pill hover:bg-background-gray-subtle disabled:hover:bg-background-default`,
     };
 
     // Determine icon color based on variant
@@ -113,7 +119,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
         // Custom classes passed via props
         className
     );
-
+    
     const buttonContent = (
         <>
             {defaultIconLeft && (

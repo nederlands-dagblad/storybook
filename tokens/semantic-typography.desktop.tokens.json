@@ -15,11 +15,15 @@
       },
       "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.40}"
+        "$value": "{typography.font-size.36}"
       },
       "xl": {
         "$type": "dimension",
-        "$value": "{typography.font-size.48}"
+        "$value": "{typography.font-size.40}"
+      },
+      "xxl": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.60}"
       }
     },
     "body": {
