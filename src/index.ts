@@ -115,6 +115,38 @@ export { useFormHandler } from './hooks/useFormHandler';
 export { useModalManager } from './hooks/useModalManager';
 export { useSharedState } from './hooks/useSharedState';
 
+// Page Section Molecules
+export { default as Hero } from './molecules/PageSectionMolecules/Hero/Hero';
+export type { HeroProps } from './molecules/PageSectionMolecules/Hero/Hero';
+
+export { default as PageSection } from './molecules/PageSectionMolecules/PageSection/PageSection';
+export type { PageSectionProps } from './molecules/PageSectionMolecules/PageSection/PageSection';
+
+export { default as Table } from './molecules/contentOrganizationMolecules/Table/Table';
+export type { TableProps } from './molecules/contentOrganizationMolecules/Table/Table';
+
+// Navigation Molecules
+export { AlternativeNav } from './molecules/navigationMolecules/AlternativeNav/AlternativeNav';
+export type { AlternativeNavProps } from './molecules/navigationMolecules/AlternativeNav/AlternativeNav';
+
+// Display Atoms
+export { CardContainer } from './atoms/displayAtoms/CardContainer/CardContainer';
+export type { CardContainerProps } from './atoms/displayAtoms/CardContainer/CardContainer';
+
+export { SectionHeading } from './atoms/displayAtoms/SectionHeading/SectionHeading';
+export type { SectionHeadingProps } from './atoms/displayAtoms/SectionHeading/SectionHeading';
+
+// Basic Atoms
+export { IconText } from './atoms/basicAtoms/IconText/IconText';
+export type { IconTextProps } from './atoms/basicAtoms/IconText/IconText';
+
+// Pages
+export { default as ZakelijkAbonnementPage } from './pages/ZakelijkAbonnementPage/ZakelijkAbonnementPage';
+export type { ZakelijkAbonnementPageProps } from './pages/ZakelijkAbonnementPage/ZakelijkAbonnementPage';
+
+export { default as ZakelijkAbonnementForm } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
+export type { ZakelijkAbonnementFormProps, ZakelijkAbonnementFormData } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
+
 // Helpers
 export { setData } from './helpers/data';
 export * from './helpers/dateFormatter';

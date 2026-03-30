@@ -84,30 +84,32 @@ const ZakelijkAbonnementForm: React.FC<ZakelijkAbonnementFormProps> = ({
                 <p className="text-body-light text-text-default">{introText}</p>
             )}
 
-            <Input label={bedrijfsnaamLabel} value={bedrijfsnaam} setValue={setBedrijfsnaam} errors={submitted ? errors.bedrijfsnaam : null} />
-            <Input label={contactpersoonLabel} value={contactpersoon} setValue={setContactpersoon} errors={submitted ? errors.contactpersoon : null} />
-            <Input label={emailLabel} value={email} setValue={setEmail} type="email" errors={submitted ? errors.email : null} />
-            <Input label={telefoonLabel} value={telefoon} setValue={setTelefoon} type="tel" errors={submitted ? errors.telefoon : null} />
+            <div className={"max-w-xl"}>
+                <Input label={bedrijfsnaamLabel} value={bedrijfsnaam} setValue={setBedrijfsnaam} errors={submitted ? errors.bedrijfsnaam : null} />
+                <Input label={contactpersoonLabel} value={contactpersoon} setValue={setContactpersoon} errors={submitted ? errors.contactpersoon : null} />
+                <Input label={emailLabel} value={email} setValue={setEmail} type="email" errors={submitted ? errors.email : null} />
+                <Input label={telefoonLabel} value={telefoon} setValue={setTelefoon} type="tel" errors={submitted ? errors.telefoon : null} />
 
-            <div className="flex flex-col gap-xs">
-                <span className="text-body-light text-text-default">{abonnementvoorkeurLabel}</span>
-                <RadioButton
-                    label="Basis"
-                    name="abonnementvoorkeur"
-                    checked={abonnementvoorkeur === 'basis'}
-                    onChange={() => setAbonnementvoorkeur('basis')}
-                />
-                <RadioButton
-                    label="Plus"
-                    name="abonnementvoorkeur"
-                    checked={abonnementvoorkeur === 'plus'}
-                    onChange={() => setAbonnementvoorkeur('plus')}
-                />
+                <div className="flex flex-col gap-xs">
+                    <span className="text-body-light text-text-default">{abonnementvoorkeurLabel}</span>
+                    <RadioButton
+                        label="Basis"
+                        name="abonnementvoorkeur"
+                        checked={abonnementvoorkeur === 'basis'}
+                        onChange={() => setAbonnementvoorkeur('basis')}
+                    />
+                    <RadioButton
+                        label="Plus"
+                        name="abonnementvoorkeur"
+                        checked={abonnementvoorkeur === 'plus'}
+                        onChange={() => setAbonnementvoorkeur('plus')}
+                    />
+                </div>
+
+                <Input label={aantalLicentiesLabel} value={aantalLicenties} setValue={setAantalLicenties} type="number" help="minimaal 3 licenties" errors={submitted ? errors.aantalLicenties : null} />
+
+                <Textarea label={opmerkingenLabel} value={opmerkingen} setValue={setOpmerkingen} />
             </div>
-
-            <Input label={aantalLicentiesLabel} value={aantalLicenties} setValue={setAantalLicenties} type="number" help="minimaal 3 licenties" errors={submitted ? errors.aantalLicenties : null} />
-
-            <Textarea label={opmerkingenLabel} value={opmerkingen} setValue={setOpmerkingen} />
 
             <Button
                 variant="primary"
