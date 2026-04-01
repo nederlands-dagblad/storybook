@@ -77,9 +77,9 @@ export  function AccordionItem({
             >
                 <div className={`${overflowVisible ? 'overflow-visible' : 'overflow-hidden'} min-h-0`}>
                     {variant === 'large' && isOpen && (
-                        <hr className="border-t border-border-gray-subtle mx-m" />
+                        <hr className="border-t border-border-gray-subtle mx-s" />
                     )}
-                    <div className={variant === 'large' ? 'p-m' : 'p-s'}>
+                    <div className={variant === 'large' ? 'p-s' : 'p-s'}>
                         {content}
                     </div>
                 </div>
