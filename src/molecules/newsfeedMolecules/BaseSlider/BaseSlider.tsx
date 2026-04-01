@@ -4,6 +4,7 @@ import {Button} from "@atoms/actionAtoms/Button/Button";
 
 export interface BaseSliderProps {
     title?: string;
+    titleVariant?: 'default' | 'lined';
     showButton?: boolean;
     buttonLabel?: string;
     buttonUrl?: string;
@@ -16,6 +17,7 @@ export interface BaseSliderProps {
 
 export const BaseSlider: React.FC<BaseSliderProps> = ({
     title,
+    titleVariant = 'lined',
     showButton = false,
     buttonLabel = "",
     buttonUrl,
@@ -112,7 +114,7 @@ export const BaseSlider: React.FC<BaseSliderProps> = ({
 
     return (
         <div className={`w-full flex flex-col gap-s ${className}`}>
-            {title && <SectionHeading>{title}</SectionHeading>}
+            {title && <SectionHeading variant={titleVariant}>{title}</SectionHeading>}
 
             <div className="relative">
                 {showLeftFade && (
