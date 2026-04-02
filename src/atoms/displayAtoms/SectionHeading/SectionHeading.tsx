@@ -24,7 +24,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     }
 
     return (
-        <div className={`flex flex-col gap-s mb-m lg:mb-l ${className}`}>
+        <div className={`flex flex-col gap-s ${className}`}>
             <h2 className="text-heading-l text-text-default">{children}</h2>
             {intro && <p className="text-body-light text-text-default">{intro}</p>}
         </div>

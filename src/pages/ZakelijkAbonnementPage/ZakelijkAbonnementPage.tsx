@@ -147,51 +147,57 @@ const ZakelijkAbonnementPage: React.FC<ZakelijkAbonnementPageProps> = ({
 
             {/* "Waarom een zakelijk abonnement?" section */}
             <PageSection>
-                <SectionHeading intro={whyIntro}>{whyHeading}</SectionHeading>
-                <div className="flex flex-col lg:flex-row gap-s lg:gap-m">
-                    {whyCards.map((card, i) => (
-                        <CardContainer key={i} borderColor="gray-subtle" className="flex flex-col gap-xs">
-                            <h3 className="text-heading-s text-text-default">{card.title}</h3>
-                            {card.features.map((feature, j) => (
-                                <IconText key={j} icon="check" text={feature} />
-                            ))}
-                        </CardContainer>
-                    ))}
+                <div className="flex flex-col gap-m">
+                    <SectionHeading intro={whyIntro}>{whyHeading}</SectionHeading>
+                    <div className="flex flex-col lg:flex-row gap-s lg:gap-m">
+                        {whyCards.map((card, i) => (
+                            <CardContainer key={i} borderColor="gray-subtle" className="flex flex-col gap-xs">
+                                <h3 className="text-heading-s text-text-default">{card.title}</h3>
+                                {card.features.map((feature, j) => (
+                                    <IconText key={j} icon="check" text={feature} />
+                                ))}
+                            </CardContainer>
+                        ))}
+                    </div>
                 </div>
             </PageSection>
 
             {/* Subscription comparison table */}
             <PageSection>
-                <SectionHeading>{comparisonHeading}</SectionHeading>
-                <Table
-                    headers={['', ...comparisonPlans]}
-                    rows={comparisonRows.map(row => [
-                        row.label,
-                        ...row.included.map(included =>
-                            <Icon name={included ? 'check' : 'x-mark'} variant="fill" size="m" color={included ? 'brand' : 'default'} />
-                        ),
-                    ])}
-                />
-                <Button
-                    variant="primary"
-                    label={ctaLabel}
-                    iconRight="caret-right"
-                    href={ctaHref}
-                    className="w-fit mt-m"
-                />
+                <div className="flex flex-col gap-m">
+                    <SectionHeading>{comparisonHeading}</SectionHeading>
+                    <Table
+                        headers={['', ...comparisonPlans]}
+                        rows={comparisonRows.map(row => [
+                            row.label,
+                            ...row.included.map(included =>
+                                <Icon name={included ? 'check' : 'x-mark'} variant="fill" size="m" color={included ? 'brand' : 'default'} />
+                            ),
+                        ])}
+                    />
+                    <Button
+                        variant="primary"
+                        label={ctaLabel}
+                        iconRight="caret-right"
+                        href={ctaHref}
+                        className="w-fit"
+                    />
+                </div>
             </PageSection>
 
             {/* "Eenvoudig beheer in één overzicht" feature section */}
             <PageSection background="brand-subtle">
-                <SectionHeading intro={featureIntro}>{featureHeading}</SectionHeading>
-                <div className="flex flex-col lg:flex-row items-center gap-xl">
-                    <div className="flex flex-col gap-l w-full lg:w-1/2">
-                        <img src={featureImage} alt={featureImageAlt} className="w-full" />
-                    </div>
-                    <div className="flex flex-col gap-s">
-                        {featureItems.map((item, i) => (
-                            <IconText key={i} icon="check" text={item} />
-                        ))}
+                <div className="flex flex-col gap-m">
+                    <SectionHeading intro={featureIntro}>{featureHeading}</SectionHeading>
+                    <div className="flex flex-col lg:flex-row items-center gap-xl">
+                        <div className="flex flex-col gap-l w-full lg:w-1/2">
+                            <img src={featureImage} alt={featureImageAlt} className="w-full" />
+                        </div>
+                        <div className="flex flex-col gap-s">
+                            {featureItems.map((item, i) => (
+                                <IconText key={i} icon="check" text={item} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </PageSection>

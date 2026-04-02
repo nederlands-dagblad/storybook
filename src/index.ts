@@ -84,6 +84,9 @@ export type { VideoCardProps } from './molecules/newsfeedMolecules/VideoCard/Vid
 export { ImageCard } from './molecules/newsfeedMolecules/ImageCard/ImageCard';
 export type { ImageCardProps } from './molecules/newsfeedMolecules/ImageCard/ImageCard';
 
+export { ImageSlider } from './molecules/newsfeedMolecules/ImageSlider/ImageSlider';
+export type { ImageSliderProps } from './molecules/newsfeedMolecules/ImageSlider/ImageSlider';
+
 export { PublicationCard } from './molecules/newsfeedMolecules/PublicationCard/PublicationCard';
 export type { PublicationCardProps } from './molecules/newsfeedMolecules/PublicationCard/PublicationCard';
 
