@@ -31,8 +31,14 @@ export const Calendar: React.FC<CalendarProps> = ({ selected, onSelect, minDate,
 
   const isDisabled = (day: number) => {
     const d = new Date(year, month, day);
-    if (minDate && d < new Date(minDate.setHours(0,0,0,0))) return true;
-    if (maxDate && d > new Date(maxDate.setHours(23,59,59,999))) return true;
+    if (minDate) {
+      const min = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
+      if (d < min) return true;
+    }
+    if (maxDate) {
+      const max = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate(), 23, 59, 59, 999);
+      if (d > max) return true;
+    }
     return false;
   };
 

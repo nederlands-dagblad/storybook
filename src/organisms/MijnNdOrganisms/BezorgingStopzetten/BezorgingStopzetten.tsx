@@ -5,7 +5,6 @@ import Button from '@atoms/actionAtoms/Button/Button';
 import Alert from '@molecules/feedbackMolecules/Alert/Alert';
 import CardContainer from '@atoms/displayAtoms/CardContainer/CardContainer';
 import IconText from '@atoms/basicAtoms/IconText/IconText';
-import { Modal } from '@molecules/feedbackMolecules/Modal/Modal';
 
 export interface BezorgingStopzettenFormData {
     ingangsDatum: string;
@@ -14,9 +13,7 @@ export interface BezorgingStopzettenFormData {
 
 export interface BezorgingStopzettenProps {
     onSubmit?: (data: BezorgingStopzettenFormData) => void;
-    onDelete?: (data: BezorgingStopzettenFormData) => void;
     initialData?: BezorgingStopzettenFormData;
-    initialPreviousSubmissions?: BezorgingStopzettenFormData[];
 }
 
 const voorwaarden = [
@@ -24,6 +21,14 @@ const voorwaarden = [
     'Digitale krant blijft altijd beschikbaar',
     'De betaling van het abonnementstarief loopt ongewijzigd door',
 ];
+
+function parseDate(value: string): Date | null {
+    const parts = value.split('/');
+    if (parts.length !== 3) return null;
+    const [dd, mm, yyyy] = parts.map(Number);
+    const d = new Date(yyyy, mm - 1, dd);
+    return isNaN(d.getTime()) ? null : d;
+}
 
 function addDays(date: Date, days: number): Date {
     const result = new Date(date);
@@ -38,17 +43,10 @@ const OverzichtRow: React.FC<{ label: string; value: string }> = ({ label, value
     </div>
 );
 
-const BezorgingStopzettenKaart: React.FC<{ data: BezorgingStopzettenFormData; onBewerken: () => void; onVerwijderen: () => void }> = ({ data, onBewerken, onVerwijderen }) => (
+const BezorgingStopzettenKaart: React.FC<{ data: BezorgingStopzettenFormData }> = ({ data }) => (
     <CardContainer padding="s">
         <div className="flex flex-col gap-s">
-            <div className="flex items-center justify-between gap-s">
-                <span className="text-heading-s text-text-default">Tijdelijke stopzetting</span>
-                <div className="flex items-center gap-xs">
-                    <Button variant="pill" label="Bewerken" iconLeft="pencil" iconOnly onClick={onBewerken} className="sm:hidden" />
-                    <Button variant="pill" label="Bewerken" iconLeft="pencil" onClick={onBewerken} className="hidden sm:inline-flex" />
-                    <Button variant="pill" label="Verwijderen" iconLeft="trash" iconOnly onClick={onVerwijderen} />
-                </div>
-            </div>
+            <span className="text-heading-s text-text-default">Tijdelijke stopzetting</span>
             <OverzichtRow label="Ingangsdatum" value={data.ingangsDatum} />
             <OverzichtRow label="Einddatum" value={data.eindDatum} />
         </div>
@@ -58,10 +56,9 @@ const BezorgingStopzettenKaart: React.FC<{ data: BezorgingStopzettenFormData; on
 interface FormProps {
     onSubmit?: BezorgingStopzettenProps['onSubmit'];
     onSuccess: (data: BezorgingStopzettenFormData) => void;
-    prefillData?: BezorgingStopzettenFormData | null;
 }
 
-const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess, prefillData }) => {
+const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess }) => {
     const [ingangsDatum, setIngangsDatum] = useState('');
     const [eindDatum, setEindDatum] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -83,15 +80,22 @@ const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess, pre
         return () => window.removeEventListener('bezorging-stopzetten-result', handleResult as EventListener);
     }, [pendingData, onSuccess]);
 
-    const minEindDatum = ingangsDatum ? addDays(new Date(ingangsDatum), 5) : addDays(new Date(), 5);
+    const startDate = ingangsDatum ? (parseDate(ingangsDatum) ?? new Date()) : new Date();
+    const minEindDatum = addDays(startDate, 5);
+    const maxEindDatum = new Date(startDate.getFullYear(), startDate.getMonth() + 1, startDate.getDate());
 
     function handleVerzenden() {
         const newErrors: typeof errors = {};
         if (!ingangsDatum) newErrors.ingangsDatum = 'Vul een ingangsdatum in.';
         if (!eindDatum) {
             newErrors.eindDatum = 'Vul een einddatum in.';
-        } else if (ingangsDatum && new Date(eindDatum) < minEindDatum) {
-            newErrors.eindDatum = 'De einddatum moet minimaal 5 dagen na de ingangsdatum liggen.';
+        } else if (ingangsDatum) {
+            const parsed = parseDate(eindDatum) ?? new Date();
+            if (parsed < minEindDatum) {
+                newErrors.eindDatum = 'De einddatum moet minimaal 5 dagen na de ingangsdatum liggen.';
+            } else if (parsed > maxEindDatum) {
+                newErrors.eindDatum = 'De einddatum mag maximaal een maand na de ingangsdatum liggen.';
+            }
         }
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -139,6 +143,7 @@ const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess, pre
                     setValue={(v) => { setEindDatum(v); setErrors((e) => ({ ...e, eindDatum: undefined })); }}
                     datePicker
                     minDate={minEindDatum}
+                    maxDate={maxEindDatum}
                     errors={errors.eindDatum ? [errors.eindDatum] : null}
                 />
             </div>
@@ -152,78 +157,14 @@ const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess, pre
     );
 };
 
-export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubmit, onDelete, initialData, initialPreviousSubmissions }) => {
+export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubmit, initialData }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [showForm, setShowForm] = useState(!initialData);
-    const [isEditing, setIsEditing] = useState(false);
     const [currentData, setCurrentData] = useState<BezorgingStopzettenFormData | null>(initialData ?? null);
-    const [previousSubmissions, setPreviousSubmissions] = useState<BezorgingStopzettenFormData[]>(initialPreviousSubmissions ?? []);
     const [justSubmitted, setJustSubmitted] = useState(false);
-    const [formKey, setFormKey] = useState(0);
-    const [prefillData, setPrefillData] = useState<BezorgingStopzettenFormData | null>(null);
-    const [deleteTarget, setDeleteTarget] = useState<{ data: BezorgingStopzettenFormData; slot: 'current' | number } | null>(null);
-    const [deleteSubmitting, setDeleteSubmitting] = useState(false);
-    const [deleteError, setDeleteError] = useState('');
-
-    useEffect(() => {
-        function handleDeleteResult(e: CustomEvent<{ success: boolean; message?: string }>) {
-            setDeleteSubmitting(false);
-            if (e.detail.success && deleteTarget) {
-                const { slot } = deleteTarget;
-                if (slot === 'current') {
-                    if (previousSubmissions.length > 0) {
-                        const [first, ...rest] = previousSubmissions;
-                        setCurrentData(first);
-                        setPreviousSubmissions(rest);
-                    } else {
-                        setCurrentData(null);
-                        setShowForm(true);
-                    }
-                    setJustSubmitted(false);
-                } else if (typeof slot === 'number') {
-                    setPreviousSubmissions((prev) => prev.filter((_, i) => i !== slot));
-                }
-                setDeleteTarget(null);
-            } else {
-                setDeleteError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
-            }
-        }
-        window.addEventListener('bezorging-stopzetten-delete-result', handleDeleteResult as EventListener);
-        return () => window.removeEventListener('bezorging-stopzetten-delete-result', handleDeleteResult as EventListener);
-    }, [deleteTarget, previousSubmissions]);
-
-    function handleNieuweMelding() {
-        setPrefillData(null);
-        setIsEditing(false);
-        setFormKey((k) => k + 1);
-        setShowForm(true);
-        setJustSubmitted(false);
-    }
-
-    function handleBewerken(data: BezorgingStopzettenFormData) {
-        setPrefillData(data);
-        setIsEditing(true);
-        setFormKey((k) => k + 1);
-        setShowForm(true);
-        setJustSubmitted(false);
-    }
-
-    function handleVerwijderenBevestigd() {
-        if (!deleteTarget) return;
-        setDeleteSubmitting(true);
-        setDeleteError('');
-        window.dispatchEvent(new CustomEvent('bezorging-stopzetten-delete', { detail: deleteTarget.data }));
-        onDelete?.(deleteTarget.data);
-    }
 
     function handleSuccess(data: BezorgingStopzettenFormData) {
-        if (!isEditing && currentData) {
-            setPreviousSubmissions((prev) => [currentData, ...prev]);
-        }
         setCurrentData(data);
-        setShowForm(false);
         setJustSubmitted(true);
-        setIsEditing(false);
         setIsOpen(true);
     }
 
@@ -231,50 +172,26 @@ export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubm
         <Alert>{'Dank je wel voor het doorgeven van je wijziging. Wij verwerken deze in ons systeem en sturen je vervolgens een bevestiging per e-mail. Heb je nog vragen of opmerkingen? Dan kun je <a href="https://nd.nl/service/contact" class="underline">hier contact met ons opnemen</a>.'}</Alert>
     ) : null;
 
-    const accordionContent = showForm ? (
-        <BezorgingStopzettenForm
-            key={formKey}
-            onSubmit={onSubmit}
-            onSuccess={handleSuccess}
-            prefillData={prefillData}
-        />
-    ) : currentData ? (
+    const accordionContent = currentData ? (
         <div className="flex flex-col gap-m lg:gap-l">
             {successAlert}
-            {previousSubmissions.map((sub, i) => (
-                <BezorgingStopzettenKaart key={i} data={sub} onBewerken={() => handleBewerken(sub)} onVerwijderen={() => { setDeleteTarget({ data: sub, slot: i }); setDeleteError(''); }} />
-            ))}
-            <BezorgingStopzettenKaart data={currentData} onBewerken={() => handleBewerken(currentData)} onVerwijderen={() => { setDeleteTarget({ data: currentData, slot: 'current' }); setDeleteError(''); }} />
-            <div>
-                <Button variant="secondary" label="Nieuwe melding" iconLeft="plus" onClick={handleNieuweMelding} />
-            </div>
+            <BezorgingStopzettenKaart data={currentData} />
         </div>
-    ) : null;
+    ) : (
+        <BezorgingStopzettenForm
+            onSubmit={onSubmit}
+            onSuccess={handleSuccess}
+        />
+    );
 
     return (
-        <div className="flex flex-col gap-m">
-            <AccordionItem
-                variant="large"
-                label="Bezorging tijdelijk stopzetten"
-                isOpen={isOpen}
-                onToggle={() => setIsOpen(!isOpen)}
-                content={accordionContent}
-            />
-            <Modal
-                isOpen={deleteTarget !== null}
-                onClose={() => { if (!deleteSubmitting) setDeleteTarget(null); }}
-                heading="Melding verwijderen"
-            >
-                <div className="flex flex-col gap-l">
-                    <p className="text-body-light text-text-default">Weet je zeker dat je deze melding wilt verwijderen?</p>
-                    {deleteError && <Alert variant="warning">{deleteError}</Alert>}
-                    <div className="flex gap-s">
-                        <Button variant="primary" label="Verwijderen" onClick={handleVerwijderenBevestigd} disabled={deleteSubmitting} />
-                        <Button variant="ghost" label="Annuleren" onClick={() => setDeleteTarget(null)} disabled={deleteSubmitting} />
-                    </div>
-                </div>
-            </Modal>
-        </div>
+        <AccordionItem
+            variant="large"
+            label="Bezorging tijdelijk stopzetten"
+            isOpen={isOpen}
+            onToggle={() => setIsOpen(!isOpen)}
+            content={accordionContent}
+        />
     );
 };
 
