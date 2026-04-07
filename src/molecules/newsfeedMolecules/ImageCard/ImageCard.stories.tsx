@@ -48,6 +48,27 @@ export const NoImage: Story = {
     },
 };
 
+export const Card: Story = {
+    args: {
+        variant: 'card',
+        imageUrl: 'https://picsum.photos/212/212?random=20',
+        alt: 'Fotografie',
+        description: 'Een mooie beschrijving van deze afbeelding',
+        metaText: '12 maart 2024',
+        href: '/photos/1',
+    },
+};
+
+export const CardNoMeta: Story = {
+    args: {
+        variant: 'card',
+        imageUrl: 'https://picsum.photos/212/212?random=21',
+        alt: 'Fotografie',
+        description: 'Alleen een beschrijving, geen meta tekst',
+        href: '/photos/2',
+    },
+};
+
 export const Grid: Story = {
     render: () => (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
