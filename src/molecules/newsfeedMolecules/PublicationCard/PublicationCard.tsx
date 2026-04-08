@@ -21,7 +21,7 @@ export const PublicationCard = ({
                                     href,
                                     onClick,
                                     className = "",
-                                }: PublicationCardProps): JSX.Element => {
+                                }: PublicationCardProps): React.ReactElement => {
     const DownloadButton = () => buttonProps ? (
         <div className="pt-s">
             <Button
