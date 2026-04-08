@@ -25,7 +25,7 @@ export interface ZakelijkAbonnementFormProps {
     aantalLicentiesLabel?: string;
     opmerkingenLabel?: string;
     submitLabel?: string;
-    onSubmit?: (data: ZakelijkAbonnementFormData) => void;
+    onSubmit?: (data: ZakelijkAbonnementFormData) => void | Promise<void>;
 }
 
 const isValidEmail = (value: string) =>
@@ -72,10 +72,26 @@ const ZakelijkAbonnementForm: React.FC<ZakelijkAbonnementFormProps> = ({
 
     const isValid = Object.values(errors).every(e => e === null);
 
-    const handleSubmit = () => {
+    const resetForm = () => {
+        setBedrijfsnaam('');
+        setContactpersoon('');
+        setEmail('');
+        setTelefoon('');
+        setAbonnementvoorkeur('');
+        setAantalLicenties('');
+        setOpmerkingen('');
+        setSubmitted(false);
+    };
+
+    const handleSubmit = async () => {
         setSubmitted(true);
         if (!isValid) return;
-        onSubmit?.({ bedrijfsnaam, contactpersoon, email, telefoon, abonnementvoorkeur, aantalLicenties, opmerkingen });
+        try {
+            await onSubmit?.({ bedrijfsnaam, contactpersoon, email, telefoon, abonnementvoorkeur, aantalLicenties, opmerkingen });
+            resetForm();
+        } catch {
+            // keep form state on failure so user can retry
+        }
     };
 
     return (
