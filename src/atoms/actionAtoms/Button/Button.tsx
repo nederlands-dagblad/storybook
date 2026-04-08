@@ -17,13 +17,13 @@ type BaseButtonProps = {
 
 // Button als <button> element (zonder href)
 type ButtonAsButton = BaseButtonProps &
-    ButtonHTMLAttributes<HTMLButtonElement> & {
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onToggle'> & {
     href?: never;
 };
 
 // Button als <a> element (met href)
 type ButtonAsLink = BaseButtonProps &
-    AnchorHTMLAttributes<HTMLAnchorElement> & {
+    Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'onToggle'> & {
     href: string;
 };
 

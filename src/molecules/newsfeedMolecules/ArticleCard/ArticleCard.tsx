@@ -34,7 +34,7 @@ export const ArticleCard = ({
                                 publicationMonth,
                                 placeholderText,
                                 buttonProps,
-                            }: ArticleCardProps): JSX.Element => {
+                            }: ArticleCardProps): React.ReactElement => {
     // Delegate to VideoCard
     if (variant === 'video') {
         return (

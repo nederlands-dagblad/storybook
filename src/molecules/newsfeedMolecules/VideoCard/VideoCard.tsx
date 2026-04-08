@@ -23,7 +23,7 @@ export const VideoCard = ({
                               href,
                               onClick,
                               className = "",
-                          }: VideoCardProps): JSX.Element => {
+                          }: VideoCardProps): React.ReactElement => {
     const videoContent = (
         <div className="w-full h-[19.125rem] overflow-hidden relative">
             {imageUrl ? (
