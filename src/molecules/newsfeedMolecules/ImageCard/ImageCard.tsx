@@ -20,7 +20,7 @@ export const ImageCard = ({
     href,
     onClick,
     className = "",
-}: ImageCardProps): JSX.Element => {
+}: ImageCardProps): React.ReactElement => {
     if (variant === 'card') {
         const cardInner = (
             <>
