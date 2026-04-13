@@ -1,7 +1,7 @@
 import React from 'react';
 import AlternativeNav from '@molecules/navigationMolecules/AlternativeNav/AlternativeNav';
 import Hero from '@molecules/PageSectionMolecules/Hero/Hero';
-import Accordion from '@molecules/contentOrganizationMolecules/Accordion/accordion';
+import Accordion from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
 import PageSection from '@molecules/PageSectionMolecules/PageSection/PageSection';
 import CardContainer from "@atoms/displayAtoms/CardContainer/CardContainer.tsx";
 import IconText from "@atoms/basicAtoms/IconText/IconText.tsx";
@@ -9,7 +9,7 @@ import Table from "@molecules/contentOrganizationMolecules/Table/Table.tsx";
 import Icon from "@atoms/basicAtoms/Icon/Icon.tsx";
 import { Button } from "@atoms/actionAtoms/Button/Button.tsx";
 import SectionHeading from "@atoms/displayAtoms/SectionHeading/SectionHeading.tsx";
-import { AccordionItemProps } from "@molecules/contentOrganizationMolecules/Accordion/accordion.tsx";
+import { AccordionItemProps } from "@molecules/contentOrganizationMolecules/Accordion/Accordion.tsx";
 
 export interface FeatureCard {
     title: string;

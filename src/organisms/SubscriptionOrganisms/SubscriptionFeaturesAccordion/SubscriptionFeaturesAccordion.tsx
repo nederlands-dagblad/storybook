@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccordionItem } from '@molecules/contentOrganizationMolecules/Accordion/accordion.tsx';
+import { AccordionItem } from '@molecules/contentOrganizationMolecules/Accordion/Accordion.tsx';
 import Button from '../../../atoms/actionAtoms/Button/Button';
 import { SubscriptionFeature } from '@molecules/subscriptionMolecules/SubscriptionCard/SubscriptionCard.tsx';
 import SubscriptionFeaturesList from '../../../molecules/subscriptionMolecules/SubscriptionFeaturesList/SubscriptionFeaturesList';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AccordionItem } from '@molecules/contentOrganizationMolecules/Accordion/accordion';
+import { AccordionItem } from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
 import Input from '@molecules/formMolecules/Input/Input';
 import Button from '@atoms/actionAtoms/Button/Button';
 import Alert from '@molecules/feedbackMolecules/Alert/Alert';

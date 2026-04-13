@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Accordion from '@molecules/contentOrganizationMolecules/Accordion/accordion';
+import Accordion from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
 import RadioButton from '@molecules/formMolecules/RadioButton/RadioButton';
 import CheckBox from '@molecules/formMolecules/CheckBox/CheckBox';
 import Input from '@molecules/formMolecules/Input/Input';

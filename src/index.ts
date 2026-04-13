@@ -40,11 +40,11 @@ export type { DescriptionListItemsProps } from './molecules/contentOrganizationM
 export {Tabs} from './molecules/navigationMolecules/Tabs/Tabs.tsx';
 export type { TabsProps } from './molecules/navigationMolecules/Tabs/Tabs';
 
-export { Accordion } from './molecules/contentOrganizationMolecules/Accordion/accordion';
-export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordion/accordion';
+export { Accordion } from './molecules/contentOrganizationMolecules/Accordion/Accordion';
+export type { AccordionProps } from './molecules/contentOrganizationMolecules/Accordion/Accordion';
 
-export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/accordion';
-export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/accordion';
+export { AccordionItem } from './molecules/contentOrganizationMolecules/Accordion/Accordion';
+export type { AccordionItemProps } from './molecules/contentOrganizationMolecules/Accordion/Accordion';
 
 export { DataFrame } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
 export type { DataFrameProps } from './molecules/contentOrganizationMolecules/DataFrame/dataFrame.tsx';
