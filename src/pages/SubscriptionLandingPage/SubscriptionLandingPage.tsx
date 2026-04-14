@@ -1,8 +1,8 @@
 import React from 'react';
 import PageSection from '@molecules/PageSectionMolecules/PageSection/PageSection';
 import SectionHeading from '@atoms/displayAtoms/SectionHeading/SectionHeading';
-import Accordion from '@molecules/contentOrganizationMolecules/Accordion/accordion';
-import { AccordionItemProps } from '@molecules/contentOrganizationMolecules/Accordion/accordion';
+import Accordion from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
+import { AccordionItemProps } from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
 import SubscriptionSelectionFrame, { SubscriptionSelectionFrameProps } from '../../organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
 import { ImageSlider } from '@molecules/newsfeedMolecules/ImageSlider/ImageSlider';
 import { ImageCardProps } from '@molecules/newsfeedMolecules/ImageCard/ImageCard';

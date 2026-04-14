@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Accordion, AccordionItemProps } from './accordion';
+import { Accordion, AccordionItemProps } from './Accordion';
 
 const meta: Meta<typeof Accordion & AccordionItemProps> = {
     title: 'Molecules/Content Organization Molecules/Accordion',

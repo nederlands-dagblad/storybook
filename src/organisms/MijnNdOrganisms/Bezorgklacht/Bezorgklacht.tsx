@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Accordion from '@molecules/contentOrganizationMolecules/Accordion/accordion';
+import Accordion from '@molecules/contentOrganizationMolecules/Accordion/Accordion';
 import RadioButton from '@molecules/formMolecules/RadioButton/RadioButton';
 import CheckBox from '@molecules/formMolecules/CheckBox/CheckBox';
 import Input from '@molecules/formMolecules/Input/Input';
@@ -23,11 +23,7 @@ const klachtOptions = [
     { label: 'Geen krant ontvangen', value: 'geen-krant' },
     { label: 'Krant te laat bezorgd', value: 'te-laat' },
     { label: 'Verkeerde krant bezorgd', value: 'verkeerde-krant' },
-    { label: 'Krant nat bezorgd', value: 'nat' },
     { label: 'Beschadigde krant', value: 'beschadigd' },
-    { label: 'Krant steekt uit brievenbus', value: 'brievenbus' },
-    { label: 'Krant voortaan in brievenbus voordeur bezorgen', value: 'brievenbus-voordeur' },
-    { label: 'Bezorger maakt lawaai', value: 'lawaai' },
 ];
 
 const EXCLUDED_MONTHS = [0, 7]; // January, August
