@@ -109,6 +109,12 @@ export type { SearchFilterProps } from './organisms/SearchOrganisms/SearchFilter
 export { Bezorgklacht } from './organisms/MijnNdOrganisms/Bezorgklacht/Bezorgklacht';
 export type { BezorgklachtProps } from './organisms/MijnNdOrganisms/Bezorgklacht/Bezorgklacht';
 
+export { BezorgingStopzetten } from './organisms/MijnNdOrganisms/BezorgingStopzetten/BezorgingStopzetten.tsx';
+export type { BezorgingStopzettenProps } from './organisms/MijnNdOrganisms/BezorgingStopzetten/BezorgingStopzetten.tsx';
+
+export { AfwijkendBezorgAdres } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
+export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';

@@ -5,8 +5,10 @@ import Button from '@atoms/actionAtoms/Button/Button';
 import Alert from '@molecules/feedbackMolecules/Alert/Alert';
 import CardContainer from '@atoms/displayAtoms/CardContainer/CardContainer';
 import IconText from '@atoms/basicAtoms/IconText/IconText';
+import { Modal } from '@molecules/feedbackMolecules/Modal/Modal';
 
 export interface AfwijkendBezorgAdresFormData {
+    toekMutNo?: string;
     naamVerblijf: string;
     kamernummer: string;
     postcode: string;
@@ -20,9 +22,13 @@ export interface AfwijkendBezorgAdresFormData {
 
 export interface AfwijkendBezorgAdresProps {
     onSubmit?: (data: AfwijkendBezorgAdresFormData) => void;
+    onDelete?: (data: AfwijkendBezorgAdresFormData) => void;
     onLookupAdres?: (postcode: string, huisnummer: string) => Promise<{ straat: string; plaats: string }>;
     initialData?: AfwijkendBezorgAdresFormData;
+    initialPreviousSubmissions?: AfwijkendBezorgAdresFormData[];
 }
+
+type DeleteSlot = 'current' | number;
 
 const voorwaarden = [
     'Minimaal 5 aaneengesloten bezorgdagen',
@@ -53,14 +59,24 @@ const OverzichtRow: React.FC<{ label: string; value: string }> = ({ label, value
     </div>
 );
 
-const AfwijkendBezorgAdresKaart: React.FC<{ data: AfwijkendBezorgAdresFormData }> = ({ data }) => {
+interface KaartProps {
+    data: AfwijkendBezorgAdresFormData;
+    onVerwijderen?: () => void;
+}
+
+const AfwijkendBezorgAdresKaart: React.FC<KaartProps> = ({ data, onVerwijderen }) => {
     const verblijf = [data.naamVerblijf, data.kamernummer].filter(Boolean).join(' ');
     const adres = [data.straat, data.huisnummer, data.toevoeging].filter(Boolean).join(' ');
 
     return (
         <CardContainer padding="s">
             <div className="flex flex-col gap-s">
-                <span className="text-heading-s text-text-default">Tijdelijk bezorgadres</span>
+                <div className="flex flex-row items-center justify-between gap-s">
+                    <span className="text-heading-s text-text-default">Tijdelijk bezorgadres</span>
+                    {onVerwijderen && (
+                        <Button variant="pill" label="Verwijderen" onClick={onVerwijderen} />
+                    )}
+                </div>
                 {verblijf && <OverzichtRow label="Verblijf" value={verblijf} />}
                 {adres && <OverzichtRow label="Adres" value={adres} />}
                 <OverzichtRow label="Postcode" value={data.postcode} />
@@ -211,15 +227,61 @@ const AfwijkendBezorgAdresForm: React.FC<FormProps> = ({ onSubmit, onLookupAdres
     );
 };
 
-export const AfwijkendBezorgAdres: React.FC<AfwijkendBezorgAdresProps> = ({ onSubmit, onLookupAdres, initialData }) => {
+export const AfwijkendBezorgAdres: React.FC<AfwijkendBezorgAdresProps> = ({
+    onSubmit,
+    onDelete,
+    onLookupAdres,
+    initialData,
+    initialPreviousSubmissions,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentData, setCurrentData] = useState<AfwijkendBezorgAdresFormData | null>(initialData ?? null);
+    const [previousSubmissions, setPreviousSubmissions] = useState<AfwijkendBezorgAdresFormData[]>(initialPreviousSubmissions ?? []);
     const [justSubmitted, setJustSubmitted] = useState(false);
+    const [deleteTarget, setDeleteTarget] = useState<{ data: AfwijkendBezorgAdresFormData; slot: DeleteSlot } | null>(null);
+    const [deleteSubmitting, setDeleteSubmitting] = useState(false);
+    const [deleteError, setDeleteError] = useState('');
 
     function handleSuccess(data: AfwijkendBezorgAdresFormData) {
+        setPreviousSubmissions((prev) => (currentData ? [currentData, ...prev] : prev));
         setCurrentData(data);
         setJustSubmitted(true);
         setIsOpen(true);
+    }
+
+    useEffect(() => {
+        function handleDeleteResult(e: CustomEvent<{ success: boolean; message?: string }>) {
+            setDeleteSubmitting(false);
+            if (!deleteTarget) return;
+            if (e.detail.success) {
+                setCurrentData(null);
+                setJustSubmitted(false);
+                setDeleteTarget(null);
+                setDeleteError('');
+            } else {
+                setDeleteError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
+            }
+        }
+        window.addEventListener('afwijkend-bezorgadres-delete-result', handleDeleteResult as EventListener);
+        return () => window.removeEventListener('afwijkend-bezorgadres-delete-result', handleDeleteResult as EventListener);
+    }, [deleteTarget, previousSubmissions]);
+
+    function openDeleteModal(data: AfwijkendBezorgAdresFormData, slot: DeleteSlot) {
+        setDeleteTarget({ data, slot });
+        setDeleteError('');
+    }
+
+    function confirmDelete() {
+        if (!deleteTarget) return;
+        setDeleteSubmitting(true);
+        setDeleteError('');
+        window.dispatchEvent(new CustomEvent('afwijkend-bezorgadres-delete', { detail: deleteTarget.data }));
+        onDelete?.(deleteTarget.data);
+    }
+
+    function cancelDelete() {
+        setDeleteTarget(null);
+        setDeleteError('');
     }
 
     const successAlert = justSubmitted ? (
@@ -229,7 +291,10 @@ export const AfwijkendBezorgAdres: React.FC<AfwijkendBezorgAdresProps> = ({ onSu
     const accordionContent = currentData ? (
         <div className="flex flex-col gap-m lg:gap-l">
             {successAlert}
-            <AfwijkendBezorgAdresKaart data={currentData} />
+            <AfwijkendBezorgAdresKaart
+                data={currentData}
+                onVerwijderen={currentData.toekMutNo ? () => openDeleteModal(currentData, 'current') : undefined}
+            />
         </div>
     ) : (
         <AfwijkendBezorgAdresForm
@@ -240,13 +305,31 @@ export const AfwijkendBezorgAdres: React.FC<AfwijkendBezorgAdresProps> = ({ onSu
     );
 
     return (
-        <AccordionItem
-            variant="large"
-            label="Bezorgen op een ander (vakantie) adres"
-            isOpen={isOpen}
-            onToggle={() => setIsOpen(!isOpen)}
-            content={accordionContent}
-        />
+        <>
+            <AccordionItem
+                variant="large"
+                label="Bezorgen op een ander (vakantie) adres"
+                isOpen={isOpen}
+                onToggle={() => setIsOpen(!isOpen)}
+                content={accordionContent}
+            />
+            <Modal
+                isOpen={deleteTarget !== null}
+                onClose={cancelDelete}
+                heading="Melding verwijderen"
+            >
+                <div className="flex flex-col gap-m">
+                    <p className="text-body-light text-text-default">
+                        Weet je zeker dat je deze melding wilt verwijderen?
+                    </p>
+                    {deleteError && <Alert variant="warning">{deleteError}</Alert>}
+                    <div className="flex flex-row gap-s">
+                        <Button variant="primary" label="Verwijderen" onClick={confirmDelete} disabled={deleteSubmitting} />
+                        <Button variant="secondary" label="Annuleren" onClick={cancelDelete} disabled={deleteSubmitting} />
+                    </div>
+                </div>
+            </Modal>
+        </>
     );
 };
 

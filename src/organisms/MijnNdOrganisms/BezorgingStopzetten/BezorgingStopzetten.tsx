@@ -5,16 +5,22 @@ import Button from '@atoms/actionAtoms/Button/Button';
 import Alert from '@molecules/feedbackMolecules/Alert/Alert';
 import CardContainer from '@atoms/displayAtoms/CardContainer/CardContainer';
 import IconText from '@atoms/basicAtoms/IconText/IconText';
+import { Modal } from '@molecules/feedbackMolecules/Modal/Modal';
 
 export interface BezorgingStopzettenFormData {
+    toekMutNo?: string;
     ingangsDatum: string;
     eindDatum: string;
 }
 
 export interface BezorgingStopzettenProps {
     onSubmit?: (data: BezorgingStopzettenFormData) => void;
+    onDelete?: (data: BezorgingStopzettenFormData) => void;
     initialData?: BezorgingStopzettenFormData;
+    initialPreviousSubmissions?: BezorgingStopzettenFormData[];
 }
+
+type DeleteSlot = 'current' | number;
 
 const voorwaarden = [
     'Minimaal 5 aaneengesloten dagen',
@@ -43,10 +49,20 @@ const OverzichtRow: React.FC<{ label: string; value: string }> = ({ label, value
     </div>
 );
 
-const BezorgingStopzettenKaart: React.FC<{ data: BezorgingStopzettenFormData }> = ({ data }) => (
+interface KaartProps {
+    data: BezorgingStopzettenFormData;
+    onVerwijderen?: () => void;
+}
+
+const BezorgingStopzettenKaart: React.FC<KaartProps> = ({ data, onVerwijderen }) => (
     <CardContainer padding="s">
         <div className="flex flex-col gap-s">
-            <span className="text-heading-s text-text-default">Tijdelijke stopzetting</span>
+            <div className="flex flex-row items-center justify-between gap-s">
+                <span className="text-heading-s text-text-default">Tijdelijke stopzetting</span>
+                {onVerwijderen && (
+                    <Button variant="pill" label="Verwijderen" onClick={onVerwijderen} />
+                )}
+            </div>
             <OverzichtRow label="Ingangsdatum" value={data.ingangsDatum} />
             <OverzichtRow label="Einddatum" value={data.eindDatum} />
         </div>
@@ -157,15 +173,60 @@ const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess }) =
     );
 };
 
-export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubmit, initialData }) => {
+export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({
+    onSubmit,
+    onDelete,
+    initialData,
+    initialPreviousSubmissions,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentData, setCurrentData] = useState<BezorgingStopzettenFormData | null>(initialData ?? null);
+    const [previousSubmissions, setPreviousSubmissions] = useState<BezorgingStopzettenFormData[]>(initialPreviousSubmissions ?? []);
     const [justSubmitted, setJustSubmitted] = useState(false);
+    const [deleteTarget, setDeleteTarget] = useState<{ data: BezorgingStopzettenFormData; slot: DeleteSlot } | null>(null);
+    const [deleteSubmitting, setDeleteSubmitting] = useState(false);
+    const [deleteError, setDeleteError] = useState('');
 
     function handleSuccess(data: BezorgingStopzettenFormData) {
+        setPreviousSubmissions((prev) => (currentData ? [currentData, ...prev] : prev));
         setCurrentData(data);
         setJustSubmitted(true);
         setIsOpen(true);
+    }
+
+    useEffect(() => {
+        function handleDeleteResult(e: CustomEvent<{ success: boolean; message?: string }>) {
+            setDeleteSubmitting(false);
+            if (!deleteTarget) return;
+            if (e.detail.success) {
+                setCurrentData(null);
+                setJustSubmitted(false);
+                setDeleteTarget(null);
+                setDeleteError('');
+            } else {
+                setDeleteError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
+            }
+        }
+        window.addEventListener('bezorging-stopzetten-delete-result', handleDeleteResult as EventListener);
+        return () => window.removeEventListener('bezorging-stopzetten-delete-result', handleDeleteResult as EventListener);
+    }, [deleteTarget, previousSubmissions]);
+
+    function openDeleteModal(data: BezorgingStopzettenFormData, slot: DeleteSlot) {
+        setDeleteTarget({ data, slot });
+        setDeleteError('');
+    }
+
+    function confirmDelete() {
+        if (!deleteTarget) return;
+        setDeleteSubmitting(true);
+        setDeleteError('');
+        window.dispatchEvent(new CustomEvent('bezorging-stopzetten-delete', { detail: deleteTarget.data }));
+        onDelete?.(deleteTarget.data);
+    }
+
+    function cancelDelete() {
+        setDeleteTarget(null);
+        setDeleteError('');
     }
 
     const successAlert = justSubmitted ? (
@@ -175,7 +236,10 @@ export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubm
     const accordionContent = currentData ? (
         <div className="flex flex-col gap-m lg:gap-l">
             {successAlert}
-            <BezorgingStopzettenKaart data={currentData} />
+            <BezorgingStopzettenKaart
+                data={currentData}
+                onVerwijderen={currentData.toekMutNo ? () => openDeleteModal(currentData, 'current') : undefined}
+            />
         </div>
     ) : (
         <BezorgingStopzettenForm
@@ -185,13 +249,31 @@ export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({ onSubm
     );
 
     return (
-        <AccordionItem
-            variant="large"
-            label="Bezorging tijdelijk stopzetten"
-            isOpen={isOpen}
-            onToggle={() => setIsOpen(!isOpen)}
-            content={accordionContent}
-        />
+        <>
+            <AccordionItem
+                variant="large"
+                label="Bezorging tijdelijk stopzetten"
+                isOpen={isOpen}
+                onToggle={() => setIsOpen(!isOpen)}
+                content={accordionContent}
+            />
+            <Modal
+                isOpen={deleteTarget !== null}
+                onClose={cancelDelete}
+                heading="Melding verwijderen"
+            >
+                <div className="flex flex-col gap-m">
+                    <p className="text-body-light text-text-default">
+                        Weet je zeker dat je deze melding wilt verwijderen?
+                    </p>
+                    {deleteError && <Alert variant="warning">{deleteError}</Alert>}
+                    <div className="flex flex-row gap-s">
+                        <Button variant="primary" label="Verwijderen" onClick={confirmDelete} disabled={deleteSubmitting} />
+                        <Button variant="secondary" label="Annuleren" onClick={cancelDelete} disabled={deleteSubmitting} />
+                    </div>
+                </div>
+            </Modal>
+        </>
     );
 };
 
