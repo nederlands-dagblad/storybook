@@ -32,11 +32,11 @@ export default {
         'line-clamp-2',
         'line-clamp-1',
         // Safelist responsive display utilities
-        'sm:flex', 'sm:block', 'sm:hidden', 'sm:grid', 'sm:inline-flex',
-        'md:flex', 'md:block', 'md:hidden', 'md:grid', 'md:inline-flex',
-        'lg:flex', 'lg:block', 'lg:hidden', 'lg:grid', 'lg:inline-flex',
-        'xl:flex', 'xl:block', 'xl:hidden', 'xl:grid', 'xl:inline-flex',
-        '2xl:flex', '2xl:block', '2xl:hidden', '2xl:grid', '2xl:inline-flex',
+        'sm:flex', 'sm:block', 'sm:hidden', 'sm:grid', 'sm:inline-flex', 'sm:flex-col', 'sm:flex-row',
+        'md:flex', 'md:block', 'md:hidden', 'md:grid', 'md:inline-flex', 'md:flex-col', 'md:flex-row',
+        'lg:flex', 'lg:block', 'lg:hidden', 'lg:grid', 'lg:inline-flex', 'lg:flex-col', 'lg:flex-row',
+        'xl:flex', 'xl:block', 'xl:hidden', 'xl:grid', 'xl:inline-flex', 'xl:flex-col', 'xl:flex-row',
+        '2xl:flex', '2xl:block', '2xl:hidden', '2xl:grid', '2xl:inline-flex', '2xl:flex-col', '2xl:flex-row',
     ],
     
     darkMode: 'media',
