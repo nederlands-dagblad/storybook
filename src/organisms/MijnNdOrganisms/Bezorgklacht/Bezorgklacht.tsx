@@ -143,10 +143,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
     if (submitted) {
         return (
             <div className="flex flex-col gap-m">
-                <Alert>{melding === 'dnk'
-                    ? 'Je melding is verzonden. Je ontvangt hierover een e-mail ter bevestiging. <a href="https://www.nd.nl/reader?tab=dnk">Lees hier De Nieuwe Koers digitaal.</a>'
-                    : 'Je melding is verzonden. Je ontvangt hierover een e-mail ter bevestiging. <a href="https://www.nd.nl/reader">Lees hier de krant digitaal.</a>'
-                }</Alert>
+                <Alert>Hartelijk dank voor je melding. Wij nemen je klacht serieus en hebben deze direct doorgegeven aan onze bezorgdienst. Onze excuses voor het ongemak.</Alert>
                 <div>
                     <Button variant="secondary" label="Nieuwe melding" iconLeft="plus" onClick={handleNieuweMelding} />
                 </div>
@@ -156,9 +153,14 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
 
     return (
         <div className="flex flex-col gap-l">
-            <p className="text-body-light text-text-default">
+            <p className="text-body-light text-text-default [&_a]:underline">
                 Is je krant of De Nieuwe Koers niet (goed) bezorgd? Dat is vervelend en niet de bedoeling. Onze excuses
-                daarvoor. Geef via onderstaand formulier een bezorgmelding door. Wij sturen je bezorgmelding direct door
+                daarvoor. Lees hier {melding === 'dnk'
+                    ? <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a>
+                    : perPost
+                        ? <>de <a href="https://www.nd.nl/reader">krant</a> en <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a></>
+                        : <>de <a href="https://www.nd.nl/reader">krant</a></>
+                } digitaal of geef via onderstaand formulier een bezorgmelding door. Wij sturen je bezorgmelding direct door
                 naar onze bezorgdienst om de bezorging te verbeteren.
             </p>
 
@@ -170,7 +172,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                         heading="De krant"
                         label="Eventueel in combinatie met De Nieuwe Koers"
                         checked={melding === 'krant'}
-                        onChange={() => setMelding('krant')}
+                        onChange={() => { setMelding('krant'); setDatum(''); }}
                     />
                     <RadioButton
                         variant="card"
@@ -200,21 +202,21 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                         errors={errors.klacht ? [errors.klacht] : null}
                     />
                     {(klacht === 'geen-krant' || klacht === 'verkeerde-krant') && (
-                        <CheckBox
-                            label="Ik wil mijn abonnement met een dag verlengen"
-                            checked={verlengen}
-                            onChange={(e) => setVerlengen(e.target.checked)}
-                        />
-                    )}
-                    {showPostCheckbox && (
-                        <div className="flex flex-col gap-m">
+                        <>
                             <CheckBox
-                                label="Ik wil de krant en De Nieuwe Koers per post ontvangen"
-                                checked={perPost}
-                                onChange={(e) => setPerPost(e.target.checked)}
+                                label="Ik wil mijn abonnement met een dag verlengen"
+                                checked={verlengen}
+                                onChange={(e) => setVerlengen(e.target.checked)}
                             />
-                            <Alert>{'Je kunt de <a href="https://www.nd.nl/reader">krant</a> en <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a> ook digitaal lezen.'}</Alert>
-                        </div>
+                            <div className="flex flex-col gap-m">
+                                <CheckBox
+                                    label={showPostCheckbox ? 'Ik wil de krant en De Nieuwe Koers per post ontvangen' : 'Ik wil de krant per post ontvangen'}
+                                    checked={perPost}
+                                    onChange={(e) => setPerPost(e.target.checked)}
+                                />
+                                {perPost && <Alert>{'Let op: levering kan enkele dagen duren. De <a href="https://www.nd.nl/reader">digitale krant</a> is direct beschikbaar indien dit onderdeel is van je abonnement.'}</Alert>}
+                            </div>
+                        </>
                     )}
                 </div>
             )}
@@ -234,7 +236,7 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                             checked={perPost}
                             onChange={(e) => setPerPost(e.target.checked)}
                         />
-                        <Alert>{'Je kunt <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a> ook digitaal lezen.'}</Alert>
+                        {perPost && <Alert>{'Let op: levering kan enkele dagen duren. <a href="https://www.nd.nl/reader?tab=dnk">De Nieuwe Koers</a> is ook digitaal beschikbaar indien dit onderdeel is van je abonnement.'}</Alert>}
                     </div>
                 </div>
             )}

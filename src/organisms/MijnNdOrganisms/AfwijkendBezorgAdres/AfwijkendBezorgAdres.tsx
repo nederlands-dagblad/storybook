@@ -74,7 +74,7 @@ const AfwijkendBezorgAdresKaart: React.FC<KaartProps> = ({ data, onVerwijderen }
                 <div className="flex flex-row items-center justify-between gap-s">
                     <span className="text-heading-s text-text-default">Tijdelijk bezorgadres</span>
                     {onVerwijderen && (
-                        <Button variant="pill" label="Verwijderen" onClick={onVerwijderen} />
+                        <Button variant="pill" label="Verwijderen" iconLeft="trash" onClick={onVerwijderen} />
                     )}
                 </div>
                 {verblijf && <OverzichtRow label="Verblijf" value={verblijf} />}
@@ -110,10 +110,10 @@ const AfwijkendBezorgAdresForm: React.FC<FormProps> = ({ onSubmit, onLookupAdres
     const [pendingData, setPendingData] = useState<AfwijkendBezorgAdresFormData | null>(null);
 
     useEffect(() => {
-        function handleResult(e: CustomEvent<{ success: boolean; message?: string }>) {
+        function handleResult(e: CustomEvent<{ success: boolean; message?: string; toekMutNo?: string }>) {
             setSubmitting(false);
             if (e.detail.success && pendingData) {
-                onSuccess(pendingData);
+                onSuccess({ ...pendingData, toekMutNo: e.detail.toekMutNo });
                 setPendingData(null);
             } else {
                 setApiError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
@@ -179,13 +179,15 @@ const AfwijkendBezorgAdresForm: React.FC<FormProps> = ({ onSubmit, onLookupAdres
                     <Input label="Naam verblijf" value={naamVerblijf} setValue={setNaamVerblijf} />
                     <Input label="Kamernummer" value={kamernummer} setValue={setKamernummer} />
                 </div>
-                <Input
-                    label="Postcode *"
-                    value={postcode}
-                    setValue={(v) => { setPostcode(v); setErrors((e) => ({ ...e, postcode: undefined })); }}
-                    errors={errors.postcode ? [errors.postcode] : null}
-                />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-s">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-s">
+                    <div className="col-span-2">
+                        <Input
+                            label="Postcode *"
+                            value={postcode}
+                            setValue={(v) => { setPostcode(v); setErrors((e) => ({ ...e, postcode: undefined })); }}
+                            errors={errors.postcode ? [errors.postcode] : null}
+                        />
+                    </div>
                     <Input
                         label="Huisnummer *"
                         value={huisnummer}
@@ -198,7 +200,7 @@ const AfwijkendBezorgAdresForm: React.FC<FormProps> = ({ onSubmit, onLookupAdres
                     <Input label="Straat" value={straat} setValue={() => {}} disabled />
                     <Input label="Plaats" value={plaats} setValue={() => {}} disabled />
                 </div>
-                <div className="flex flex-col gap-s">
+                <div className="flex flex-col gap-s pt-7">
                     <Input
                         label="Ingangsdatum *"
                         value={ingangsDatum}
