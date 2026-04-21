@@ -115,6 +115,9 @@ export type { BezorgingStopzettenProps } from './organisms/MijnNdOrganisms/Bezor
 export { AfwijkendBezorgAdres } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 
+export { PodcastSeriesOverview } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
+export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';
