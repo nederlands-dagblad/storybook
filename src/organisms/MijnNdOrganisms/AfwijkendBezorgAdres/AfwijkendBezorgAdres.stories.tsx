@@ -63,6 +63,7 @@ export const WithInitialData: Story = {
         onDelete: simulateDelete(true),
         onLookupAdres: simulateLookup,
         initialData: {
+            toekMutNo: '12345',
             naamVerblijf: 'Hotel de Palmboom',
             kamernummer: '12',
             postcode: '3818 LA',
