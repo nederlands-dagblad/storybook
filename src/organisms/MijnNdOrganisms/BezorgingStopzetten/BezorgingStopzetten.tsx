@@ -60,7 +60,7 @@ const BezorgingStopzettenKaart: React.FC<KaartProps> = ({ data, onVerwijderen })
             <div className="flex flex-row items-center justify-between gap-s">
                 <span className="text-heading-s text-text-default">Tijdelijke stopzetting</span>
                 {onVerwijderen && (
-                    <Button variant="pill" label="Verwijderen" onClick={onVerwijderen} />
+                    <Button variant="pill" label="Verwijderen" iconLeft="trash" onClick={onVerwijderen} />
                 )}
             </div>
             <OverzichtRow label="Ingangsdatum" value={data.ingangsDatum} />
@@ -83,10 +83,10 @@ const BezorgingStopzettenForm: React.FC<FormProps> = ({ onSubmit, onSuccess }) =
     const [pendingData, setPendingData] = useState<BezorgingStopzettenFormData | null>(null);
 
     useEffect(() => {
-        function handleResult(e: CustomEvent<{ success: boolean; message?: string }>) {
+        function handleResult(e: CustomEvent<{ success: boolean; message?: string; toekMutNo?: string }>) {
             setSubmitting(false);
             if (e.detail.success && pendingData) {
-                onSuccess(pendingData);
+                onSuccess({ ...pendingData, toekMutNo: e.detail.toekMutNo });
                 setPendingData(null);
             } else {
                 setApiError(e.detail.message || 'Er is iets misgegaan. Probeer het later opnieuw.');
@@ -230,7 +230,7 @@ export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({
     }
 
     const successAlert = justSubmitted ? (
-        <Alert>{'Dank je wel voor het doorgeven van je wijziging. Wij verwerken deze in ons systeem en sturen je vervolgens een bevestiging per e-mail. Heb je nog vragen of opmerkingen? Dan kun je <a href="https://nd.nl/service/contact" class="underline">hier contact met ons opnemen</a>.'}</Alert>
+        <Alert>{'Dank je wel voor het doorgeven van je wijziging. Wij verwerken deze in ons systeem. Heb je nog vragen of opmerkingen? Dan kun je <a href="https://nd.nl/service/contact" class="underline">hier contact met ons opnemen</a>.'}</Alert>
     ) : null;
 
     const accordionContent = currentData ? (
