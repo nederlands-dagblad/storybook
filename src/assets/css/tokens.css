@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * Generated from design tokens - DO NOT EDIT DIRECTLY
- * Last generated: 2026-03-25T09:37:59.411Z
+ * Last generated: 2026-04-22T09:37:49.261Z
  */
 
 :root {
@@ -43,6 +43,7 @@
   --color-border-gray: #bdbdbd;
   --color-border-gray-subtle: #eceae9;
   --color-border-dnk: #be123c;
+  --color-border-yellow: #fce381;
   --color-blue-200: #f1fbfd;
   --color-blue-400: #02b4f2;
   --color-blue-500: #0096cb;
@@ -61,6 +62,9 @@
   --color-neutral-black-80: #000000cc;
   --color-neutral-white: #ffffff;
   --color-neutral-white-30: #ffffff4d;
+  --color-yellow-200: #fffcf2;
+  --color-yellow-500: #fce381;
+  --color-yellow-800: #322e1e;
   --color-pink-200: #fef3f2;
   --color-pink-400: #f2e1df;
   --color-pink-700: #e63950;
@@ -88,6 +92,7 @@
   --color-background-pink: #f2e1df;
   --color-background-opinie: #6a4847;
   --color-background-dnk: #fef3f2;
+  --color-background-yellow: #fffcf2;
   --color-icons-default: #000000;
   --color-icons-brand: #0096cb;
   --color-icons-inverse: #ffffff;
@@ -152,6 +157,7 @@
     --color-background-pink: #f2e1df;
     --color-background-opinie: #a27675;
     --color-background-dnk: #222222;
+    --color-background-yellow: #322e1e;
     --color-border-default: #ffffff;
     --color-border-brand: #0096cb;
     --color-border-warning: #e63950;
@@ -159,6 +165,7 @@
     --color-border-gray: #999999;
     --color-border-gray-subtle: #727272;
     --color-border-dnk: #e63950;
+    --color-border-yellow: #fce381;
     --color-icons-default: #ffffff;
     --color-icons-brand: #0096cb;
     --color-icons-inverse: #ffffff;
