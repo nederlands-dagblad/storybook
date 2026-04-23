@@ -69,6 +69,9 @@ export { default as Toast } from './molecules/feedbackMolecules/Toast/Toast';
 export { useToast } from './molecules/feedbackMolecules/Toast/Toast';
 export type { ToastProps } from './molecules/feedbackMolecules/Toast/Toast';
 
+export { CampaignContainer } from './molecules/feedbackMolecules/CampaignContainer/CampaignContainer';
+export type { CampaignContainerProps } from './molecules/feedbackMolecules/CampaignContainer/CampaignContainer';
+
 export { BaseSlider } from './molecules/newsfeedMolecules/BaseSlider/BaseSlider';
 export type { BaseSliderProps } from './molecules/newsfeedMolecules/BaseSlider/BaseSlider';
 

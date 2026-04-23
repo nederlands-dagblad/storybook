@@ -94,6 +94,20 @@
         "$value": "#ffffff4d"
       }
     },
+    "yellow": {
+      "200": {
+        "$type": "color",
+        "$value": "#fffcf2"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#fce381"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#322e1e"
+      }
+    },
     "pink": {
       "200": {
         "$type": "color",

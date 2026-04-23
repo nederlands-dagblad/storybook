@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-03-25T09:37:59.409Z
+// Last generated: 2026-04-22T09:37:49.259Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",
@@ -20,6 +20,9 @@ export const primitiveColors = {
   "neutral-black-80": "var(--color-neutral-black-80)",
   "neutral-white": "var(--color-neutral-white)",
   "neutral-white-30": "var(--color-neutral-white-30)",
+  "yellow-200": "var(--color-yellow-200)",
+  "yellow-500": "var(--color-yellow-500)",
+  "yellow-800": "var(--color-yellow-800)",
   "pink-200": "var(--color-pink-200)",
   "pink-400": "var(--color-pink-400)",
   "pink-700": "var(--color-pink-700)",
@@ -35,6 +38,7 @@ export const semanticColors = {
   "border-gray": "var(--color-border-gray)",
   "border-gray-subtle": "var(--color-border-gray-subtle)",
   "border-dnk": "var(--color-border-dnk)",
+  "border-yellow": "var(--color-border-yellow)",
   "text-default": "var(--color-text-default)",
   "text-brand": "var(--color-text-brand)",
   "text-brand-hover": "var(--color-text-brand-hover)",
@@ -56,6 +60,7 @@ export const semanticColors = {
   "background-pink": "var(--color-background-pink)",
   "background-opinie": "var(--color-background-opinie)",
   "background-dnk": "var(--color-background-dnk)",
+  "background-yellow": "var(--color-background-yellow)",
   "icons-default": "var(--color-icons-default)",
   "icons-brand": "var(--color-icons-brand)",
   "icons-inverse": "var(--color-icons-inverse)",

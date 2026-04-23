@@ -85,6 +85,10 @@
     "dnk": {
       "$type": "color",
       "$value": "{color.pink.200}"
+    },
+    "yellow": {
+      "$type": "color",
+      "$value": "{color.yellow.200}"
     }
   },
   "border": {
@@ -115,6 +119,10 @@
     "dnk": {
       "$type": "color",
       "$value": "{color.pink.800}"
+    },
+    "yellow": {
+      "$type": "color",
+      "$value": "{color.yellow.500}"
     }
   },
   "icons": {
