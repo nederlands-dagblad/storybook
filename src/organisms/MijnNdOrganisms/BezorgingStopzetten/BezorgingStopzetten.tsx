@@ -230,7 +230,7 @@ export const BezorgingStopzetten: React.FC<BezorgingStopzettenProps> = ({
     }
 
     const successAlert = justSubmitted ? (
-        <Alert>{'Dank je wel voor het doorgeven van je wijziging. Wij verwerken deze in ons systeem. Heb je nog vragen of opmerkingen? Dan kun je <a href="https://nd.nl/service/contact" class="underline">hier contact met ons opnemen</a>.'}</Alert>
+        <Alert>{'Dank je wel voor het doorgeven van je wijziging. Wij verwerken deze in ons systeem en sturen je vervolgens een bevestiging per e-mail. Heb je nog vragen of opmerkingen? Dan kun je <a href="https://nd.nl/service/contact" class="underline">hier contact met ons opnemen</a>.'}</Alert>
     ) : null;
 
     const accordionContent = currentData ? (
