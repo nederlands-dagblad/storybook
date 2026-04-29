@@ -118,6 +118,9 @@ export type { BezorgingStopzettenProps } from './organisms/MijnNdOrganisms/Bezor
 export { AfwijkendBezorgAdres } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 
+export { AboOpzeggen } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen';
+export type { AboOpzeggenProps } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen';
+
 export { PodcastSeriesOverview } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 
