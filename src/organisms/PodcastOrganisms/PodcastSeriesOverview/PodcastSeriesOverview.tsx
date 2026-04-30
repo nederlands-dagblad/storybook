@@ -15,23 +15,25 @@ export interface PodcastSeriesOverviewProps {
 
 export const PodcastSeriesCard: React.FC<PodcastSeries> = ({ imageUrl, alt, title, description, metaText, href }) => {
     const inner = (
-        <div className="flex flex-col h-full">
-            <div className="w-full overflow-hidden">
+        <div className="flex flex-row sm:flex-col sm:pt-s sm:px-s h-full">
+            <div className="shrink-0 w-1/3 aspect-square self-start sm:w-full sm:self-auto overflow-hidden">
                 {imageUrl ? (
-                    <img src={imageUrl} alt={alt} className="w-full h-auto object-cover" />
+                    <img src={imageUrl} alt={alt} className="w-full h-full object-cover" />
                 ) : (
-                    <div className="w-full aspect-square bg-background-gray" />
+                    <div className="w-full h-full bg-background-gray" />
                 )}
             </div>
-            <div className="flex flex-col p-s flex-1 min-w-0">
-                <span className="text-heading-m text-text-default">{title}</span>
-                {description && (
-                    <span className="text-meta-light text-text-default line-clamp-3 mt-xxs">{description}</span>
-                )}
+            <div className="flex flex-col p-xxs pl-s sm:pl-0 sm:py-s flex-1 min-w-0 justify-center sm:justify-between">
+                <div className="flex flex-col gap-xxs">
+                    <span className="text-heading-m text-text-default">{title}</span>
+                    {description && (
+                        <span className="text-meta-light text-text-default line-clamp-3">{description}</span>
+                    )}
+                </div>
                 {metaText && (
-                    <span className="text-meta-light text-text-gray mt-s">
+                    <a href={href} className="text-meta-light text-text-gray mt-xxs sm:mt-0 sm:pt-s">
                         {metaText} &gt;
-                    </span>
+                    </a>
                 )}
             </div>
         </div>
@@ -39,7 +41,7 @@ export const PodcastSeriesCard: React.FC<PodcastSeries> = ({ imageUrl, alt, titl
 
     if (href) {
         return (
-            <a href={href} className="flex flex-col border border-width-default border-border-gray-subtle hover:border-border-brand">
+            <a href={href} className="flex flex-col group border border-width-default border-border-gray-subtle hover:border-border-brand">
                 {inner}
             </a>
         );
