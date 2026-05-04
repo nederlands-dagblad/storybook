@@ -206,13 +206,21 @@ const BezorgklachtForm: React.FC<BezorgklachtProps> = ({ onSubmit }) => {
                             <CheckBox
                                 label="Ik wil mijn abonnement met een dag verlengen"
                                 checked={verlengen}
-                                onChange={(e) => setVerlengen(e.target.checked)}
+                                onChange={(e) => {
+                                    const checked = e.target.checked;
+                                    setVerlengen(checked);
+                                    if (checked) setPerPost(false);
+                                }}
                             />
                             <div className="flex flex-col gap-m">
                                 <CheckBox
                                     label={showPostCheckbox ? 'Ik wil de krant en De Nieuwe Koers per post ontvangen' : 'Ik wil de krant per post ontvangen'}
                                     checked={perPost}
-                                    onChange={(e) => setPerPost(e.target.checked)}
+                                    onChange={(e) => {
+                                        const checked = e.target.checked;
+                                        setPerPost(checked);
+                                        if (checked) setVerlengen(false);
+                                    }}
                                 />
                                 {perPost && <Alert>{'Let op: levering kan enkele dagen duren. De <a href="https://www.nd.nl/reader">digitale krant</a> is direct beschikbaar indien dit onderdeel is van je abonnement.'}</Alert>}
                             </div>
