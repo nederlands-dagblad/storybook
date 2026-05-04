@@ -20,7 +20,7 @@ export const CampaignContainer: React.FC<CampaignContainerProps> = ({
         <div className={`w-full bg-background-yellow border-l-[3px] border-border-yellow p-s md:p-m flex flex-col gap-s ${className}`.trim()}>
             <div className="flex flex-col gap-xxs">
                 <h2 className="text-heading-m">{title}</h2>
-                <p className="text-body-light">{text}</p>
+                <div className="text-body-light" dangerouslySetInnerHTML={{ __html: text }} />
             </div>
             <Button variant="pill" iconRight="caret-right" label={buttonLabel} href={href} className="w-fit" />
         </div>
