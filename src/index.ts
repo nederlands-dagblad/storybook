@@ -121,6 +121,9 @@ export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/Afwi
 export { PodcastSeriesOverview } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 
+export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
+export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';
