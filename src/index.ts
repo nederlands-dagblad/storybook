@@ -12,6 +12,9 @@ export * from '@atoms/basicAtoms/Icon/Icon';
 export type { IconProps } from './atoms/basicAtoms/Icon/Icon';
 export { keys as iconKeys } from './atoms/basicAtoms/Icon/list';
 
+export { Logo } from '@atoms/basicAtoms/Logo/Logo.tsx';
+export type { LogoProps } from './atoms/basicAtoms/Logo/Logo.tsx';
+
 export * from '@atoms/displayAtoms/Badge/Badge';
 export type { BadgeProps } from './atoms/displayAtoms/Badge/Badge';
 

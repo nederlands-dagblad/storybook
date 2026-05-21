@@ -69,7 +69,7 @@ const NederlandsDagbladSvg = () => (
     </svg>
 );
 
-const Logo: React.FC<LogoProps> = ({
+export const Logo: React.FC<LogoProps> = ({
     size = 'small',
     variant = 'default',
     className = '',
