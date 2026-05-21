@@ -1,5 +1,5 @@
 // Generated from design tokens - DO NOT EDIT DIRECTLY
-// Last generated: 2026-04-22T09:37:49.259Z
+// Last generated: 2026-05-21T11:08:10.345Z
 
 export const primitiveColors = {
   "blue-200": "var(--color-blue-200)",

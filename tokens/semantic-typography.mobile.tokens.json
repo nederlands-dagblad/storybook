@@ -15,7 +15,7 @@
       },
       "l": {
         "$type": "dimension",
-        "$value": "{typography.font-size.20}"
+        "$value": "{typography.font-size.22}"
       },
       "xl": {
         "$type": "dimension",
