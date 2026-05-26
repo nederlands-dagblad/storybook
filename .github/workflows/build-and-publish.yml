@@ -63,4 +63,4 @@ jobs:
         if: steps.check-npm-version.outputs.exists == 'false'
         run: yarn publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_AUG }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
