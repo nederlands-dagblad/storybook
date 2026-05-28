@@ -102,7 +102,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({
                     <iframe
                         src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
                         title="YouTube Short"
-                        className="absolute inset-0 w-full h-full"
+                        className="absolute inset-0 w-full !h-full"
                         allow="autoplay; encrypted-media; fullscreen"
                         allowFullScreen
                     />
