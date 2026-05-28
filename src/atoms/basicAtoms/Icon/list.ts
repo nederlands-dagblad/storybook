@@ -79,6 +79,7 @@ import YoutubeFill from "../../../atoms/basicAtoms/Icon/icons/fill/youtube.svg";
 import NdFill from "../../../atoms/basicAtoms/Icon/icons/fill/nd.svg";
 import TiktokFill from "../../../atoms/basicAtoms/Icon/icons/fill/tiktok.svg";
 import FacebookFill from "../../../atoms/basicAtoms/Icon/icons/fill/facebook.svg";
+import TabletFill from "../../../atoms/basicAtoms/Icon/icons/fill/tablet.svg";
 
 // Import outline icons
 import HandsPrayingOutline from "../../../atoms/basicAtoms/Icon/icons/outline/hands-praying.svg";
@@ -161,6 +162,7 @@ import YoutubeOutline from "../../../atoms/basicAtoms/Icon/icons/outline/youtube
 import NdOutline from "../../../atoms/basicAtoms/Icon/icons/outline/nd.svg";
 import TiktokOutline from "../../../atoms/basicAtoms/Icon/icons/outline/tiktok.svg";
 import FacebookOutline from "../../../atoms/basicAtoms/Icon/icons/outline/facebook.svg";
+import TabletOutline from "../../../atoms/basicAtoms/Icon/icons/outline/tablet.svg";
 
 
 export const icons = {
@@ -323,7 +325,9 @@ export const icons = {
     'tiktok-outline': TiktokOutline,
     'tiktok-fill': TiktokFill,
     'facebook-outline': FacebookOutline,
-    'facebook-fill': FacebookFill
+    'facebook-fill': FacebookFill,
+    'tablet-outline': TabletOutline,
+    'tablet-fill': TabletFill,
 };
 
 // Get unique icon names (without variant suffix)
