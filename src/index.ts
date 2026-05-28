@@ -124,6 +124,9 @@ export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/Afwi
 export { PodcastSeriesOverview } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 
+export { PodcastSlider } from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
+export type { PodcastSliderProps} from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
+
 export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 

@@ -18,11 +18,11 @@ const PodcastEpisodeCard: React.FC<PodcastEpisodeCardProps> = ({ episode }) => {
     const { title, seriesTitle, duration, publishedAt, href } = episode;
 
     const inner = (
-        <div className="flex flex-col gap-xxs w-[15.5rem] h-full border border-width-s border-border-gray hover:border-border-brand transition-[border-color] duration-200 ease-in-out bg-background-default p-s">
+        <div className="flex flex-col gap-xxs w-[16rem] h-full border border-width-s border-border-gray-subtle hover:border-border-brand transition-[border-color] duration-200 ease-in-out bg-background-default p-s">
                 {seriesTitle && (
                     <span className="text-meta-uppercase text-text-brand">{seriesTitle}</span>
                 )}
-                <span className="text-heading-s text-text-default line-clamp-4">{title}</span>
+                <h3 className="text-body-gulliver-semibold text-text-default line-clamp-5">{title}</h3>
                 <div className="flex flex-col gap-xxs mt-auto pt-xs">
                     {publishedAt && (
                         <span className="text-meta-light text-text-default">{publishedAt}</span>

@@ -25,7 +25,7 @@ export const PodcastSeriesCard: React.FC<PodcastSeries> = ({ imageUrl, alt, titl
             </div>
             <div className="flex flex-col p-xxs pl-s sm:pl-0 sm:py-s flex-1 min-w-0 justify-center sm:justify-between">
                 <div className="flex flex-col gap-xxs">
-                    <span className="text-heading-m text-text-default">{title}</span>
+                    <h2 className="text-heading-m text-text-default">{title}</h2>
                     {description && (
                         <span className="text-meta-light text-text-default line-clamp-3">{description}</span>
                     )}
