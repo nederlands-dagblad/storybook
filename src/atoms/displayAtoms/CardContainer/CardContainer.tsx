@@ -2,7 +2,7 @@ import React from "react";
 
 type Padding = 'none' | 'xs' | 's' | 'm' | 'l' | 'xl';
 type BorderColor = 'default' | 'brand' | 'gray' | 'gray-subtle' | 'disabled' | 'warning';
-type BackgroundVariant = 'default' | 'gray';
+type BackgroundVariant = 'default' | 'gray' | 'brand-subtle';
 
 export interface CardContainerProps {
     children: React.ReactNode;
@@ -32,7 +32,8 @@ const borderColorMap: Record<BorderColor, string> = {
 
 const backgroundMap: Record<BackgroundVariant, string> = {
     default: 'bg-background-default',
-    'gray': 'bg-background-gray',
+    gray: 'bg-background-gray',
+    'brand-subtle': 'bg-background-brand-subtle',
 };
 
 export const CardContainer: React.FC<CardContainerProps> = ({
@@ -45,8 +46,7 @@ export const CardContainer: React.FC<CardContainerProps> = ({
     const paddingClass = paddingMap[padding];
     const backgroundClass = backgroundMap[background];
 
-    // If background is gray, no border
-    const hasBorder = background === 'default' && borderColor !== 'none';
+    const hasBorder = background !== 'gray' && borderColor !== 'none';
     const borderClass = hasBorder ? `border border-width-s ${borderColorMap[borderColor as BorderColor]}` : '';
 
     return (
