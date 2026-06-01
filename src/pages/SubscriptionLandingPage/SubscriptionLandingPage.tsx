@@ -33,7 +33,7 @@ export interface SubscriptionLandingPageProps {
     helpCtaHref?: string;
 }
 
-const defaultSelectionFrame: SubscriptionSelectionFrameProps = {
+export const defaultSelectionFrame: SubscriptionSelectionFrameProps = {
     heading: 'Word lid van het Nederlands Dagblad',
     benefits: [
         { label: 'Steun christelijke kwaliteitsjournalistiek' },
@@ -135,7 +135,7 @@ const defaultFaqItems: AccordionItemProps[] = [
     },
 ];
 
-const SubscriptionLandingPage: React.FC<SubscriptionLandingPageProps> = ({
+export const SubscriptionLandingPage: React.FC<SubscriptionLandingPageProps> = ({
     selectionFrame = defaultSelectionFrame,
     sliderTitle = 'Voordelen van een ND abonnement',
     sliderImages = defaultSliderImages,

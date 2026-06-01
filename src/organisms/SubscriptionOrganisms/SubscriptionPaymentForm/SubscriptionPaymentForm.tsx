@@ -22,9 +22,18 @@ export interface SubscriptionPaymentFormProps {
     submitLabel?: string;
     onSubmit?: (paymentMethod: string, iban?: string) => void;
     footerText?: React.ReactNode;
+
+    // Terms links (alternative to termsLabel for server-side rendering)
+    termsText?: string;
+    privacyUrl?: string;
+    privacyLabel?: string;
+    actievoorwaardenUrl?: string;
+    actievoorwaardenLabel?: string;
+    algemeneVoorwaardenUrl?: string;
+    algemeneVoorwaardenLabel?: string;
 }
 
-const SubscriptionPaymentForm: React.FC<SubscriptionPaymentFormProps> = ({
+export const SubscriptionPaymentForm: React.FC<SubscriptionPaymentFormProps> = ({
     summaryContent,
     paymentHeading = 'Betaalmethode',
     paymentMethods = [],
@@ -34,6 +43,13 @@ const SubscriptionPaymentForm: React.FC<SubscriptionPaymentFormProps> = ({
     submitLabel = 'Bevestigen',
     onSubmit,
     footerText,
+    termsText,
+    privacyUrl,
+    privacyLabel,
+    actievoorwaardenUrl,
+    actievoorwaardenLabel,
+    algemeneVoorwaardenUrl,
+    algemeneVoorwaardenLabel,
 }) => {
     const [selectedMethod, setSelectedMethod] = useState(initialPaymentMethod ?? paymentMethods[0]?.value ?? '');
     const [iban, setIban] = useState('');
@@ -84,9 +100,17 @@ const SubscriptionPaymentForm: React.FC<SubscriptionPaymentFormProps> = ({
                     />
                 )}
 
-                {termsLabel && (
+                {(termsLabel || termsText) && (
                     <CheckBox
-                        label={termsLabel}
+                        label={termsLabel ?? (
+                            <>
+                                {termsText}{' '}
+                                {privacyUrl && <a href={privacyUrl} target="_blank" className="!underline">{privacyLabel ?? 'privacyverklaring'}</a>},{' '}
+                                {actievoorwaardenUrl && <a href={actievoorwaardenUrl} target="_blank" className="!underline">{actievoorwaardenLabel ?? 'de actievoorwaarden'}</a>}{' '}
+                                en{' '}
+                                {algemeneVoorwaardenUrl && <a href={algemeneVoorwaardenUrl} target="_blank" className="!underline">{algemeneVoorwaardenLabel ?? 'algemene voorwaarden'}</a>}.
+                            </>
+                        )}
                         checked={termsAccepted}
                         onChange={(e) => setTermsAccepted((e.target as HTMLInputElement).checked)}
                     />

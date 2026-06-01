@@ -24,7 +24,7 @@ export interface SubscriptionSummaryPanelProps {
     changePersonalLabel?: string;
 }
 
-const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> = ({
+export const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> = ({
     heading = 'Overzicht bestelling',
     className,
     showOnMobile = false,
@@ -40,7 +40,7 @@ const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> = ({
     onChangePersonal,
     changePersonalLabel = 'Wijzig gegevens',
 }) => {
-    const fullName = [personalData?.firstName, personalData?.middleName, personalData?.lastName]
+    const fullName = [personalData?.initials, personalData?.lastName]
         .filter(Boolean).join(' ');
     const streetLine = [personalData?.street, personalData?.houseNumber, personalData?.addition]
         .filter(Boolean).join(' ');

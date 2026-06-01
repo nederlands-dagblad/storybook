@@ -21,9 +21,10 @@ export interface SubscriptionSelectionFrameProps {
     footerText?: string;
     footerLinkLabel?: string;
     footerLinkHref?: string;
+    
 }
 
-const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
+export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
     heading = 'Word lid van het Nederlands Dagblad',
     benefits = [],
     steps = [],
