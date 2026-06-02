@@ -39,6 +39,9 @@ export interface SubscriptionPersonalFormProps {
     // Submit
     submitLabel?: string;
     onSubmit?: (data: PersonalFormData) => void;
+
+    // Initial data for editing
+    initialData?: PersonalFormData;
 }
 
 const isValidEmail = (value: string) =>
@@ -66,18 +69,19 @@ export const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> =
           streetLabel = 'Straat',
           cityLabel = 'Woonplaats',
           submitLabel = 'Naar betaaloverzicht',
-          onSubmit,
+          onSubmit, 
+          initialData,
       }) => {
-    const [initialsRaw, setInitialsRaw] = useState('');
-    const [middleName, setMiddleName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [postcode, setPostcode] = useState('');
-    const [houseNumber, setHouseNumber] = useState('');
-    const [addition, setAddition] = useState('');
-    const [street, setStreet] = useState('');
-    const [city, setCity] = useState('');
+    const [initialsRaw, setInitialsRaw] = useState(initialData?.initials ?? '');
+    const [middleName, setMiddleName] = useState(initialData?.middleName ?? '');
+    const [lastName, setLastName] = useState(initialData?.lastName ?? '');
+    const [email, setEmail] = useState(initialData?.email ?? '');
+    const [phone, setPhone] = useState(initialData?.phone ?? '');
+    const [postcode, setPostcode] = useState(initialData?.postcode ?? '');
+    const [houseNumber, setHouseNumber] = useState(initialData?.houseNumber ?? '');
+    const [addition, setAddition] = useState(initialData?.addition ?? '');
+    const [street, setStreet] = useState(initialData?.street ?? '');
+    const [city, setCity] = useState(initialData?.city ?? '');
     const [submitted, setSubmitted] = useState(false);
     const [addressLoading, setAddressLoading] = useState(false);
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);

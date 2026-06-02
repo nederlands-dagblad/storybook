@@ -58,7 +58,8 @@ export interface SubscriptionFormProps {
 
     // Personal step
     personalAlertText?: React.ReactNode;
-
+    personalAlertEmail?: string;
+    
     // Payment step
     paymentHeading?: string;
     paymentMethods?: PaymentMethod[];
@@ -109,6 +110,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       startDate,
                                                                       startDateLabel,
                                                                       personalAlertText,
+                                                                      personalAlertEmail,
                                                                       paymentHeading,
                                                                       paymentMethods = [],
                                                                       initialPaymentMethod,
@@ -256,8 +258,10 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                     {step === 'personal' && (
                         <SubscriptionPersonalForm
                             alertText={personalAlertText}
+                            alertEmail={personalAlertEmail}
                             submitLabel="Naar betaaloverzicht"
                             onSubmit={handlePersonalSubmit}
+                            initialData={personalData ?? undefined}
                         />
                     )}
 
