@@ -132,9 +132,9 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
                 </div>
 
                 {/* Desktop: all cards side by side */}
-                <div className="hidden lg:flex -mx-l w-max flex-row items-end justify-center gap-l">
+                <div className="hidden lg:flex -mx-l w-max flex-row items-stretch justify-center gap-l">
                     {cards.map((card, index) => (
-                        <div key={index} className={`w-full lg:max-w-xs ${index !== 1 ? 'lg:pt-l' : ''}`}>
+                        <div key={index} className={`flex flex-col w-full lg:max-w-xs ${index !== 1 ? 'lg:pt-l' : ''}`}>
                             <SubscriptionCard {...card} />
                         </div>
                     ))}

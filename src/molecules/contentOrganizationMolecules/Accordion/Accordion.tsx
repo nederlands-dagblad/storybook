@@ -79,7 +79,7 @@ export  function AccordionItem({
                     {variant === 'large' && isOpen && (
                         <hr className="border-t border-border-gray-subtle mx-s" />
                     )}
-                    <div className={variant === 'large' ? 'p-s' : 'p-s'}>
+                    <div className={`text-body-light text-text-default ${variant === 'large' ? 'p-s' : 'p-s'}`}>
                         {content}
                     </div>
                 </div>

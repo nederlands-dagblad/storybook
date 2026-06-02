@@ -115,7 +115,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       paymentMethods = [],
                                                                       initialPaymentMethod,
                                                                       termsLabel,
-                                                                      paymentFooterText,
+                                                                      paymentFooterText = 'U ontvangt een bevestiging per e-mail. U hebt een bedenktijd van 14 dagen.',
                                                                       summaryHeading,
                                                                       summaryFooterText,
                                                                       onComplete,

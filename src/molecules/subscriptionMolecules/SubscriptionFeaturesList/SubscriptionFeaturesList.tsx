@@ -14,7 +14,7 @@ const SubscriptionFeaturesList: React.FC<SubscriptionFeaturesListProps> = ({ fea
 
     return (
         <>
-            <ul className="flex flex-col gap-xs">
+            <ul className="flex flex-col flex-1 gap-xs justify-center">
                 {features.map((feature, index) => (
                     <li key={index} className="flex items-start justify-between gap-xs">
                         <div className="flex items-start gap-xs">
