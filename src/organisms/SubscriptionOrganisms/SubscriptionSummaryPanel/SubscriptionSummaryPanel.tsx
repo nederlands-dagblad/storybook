@@ -40,7 +40,7 @@ export const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> =
     onChangePersonal,
     changePersonalLabel = 'Wijzig gegevens',
 }) => {
-    const fullName = [personalData?.initials, personalData?.lastName]
+    const fullName = [personalData?.initials, personalData?.middleName, personalData?.lastName]
         .filter(Boolean).join(' ');
     const streetLine = [personalData?.street, personalData?.houseNumber, personalData?.addition]
         .filter(Boolean).join(' ');

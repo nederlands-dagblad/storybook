@@ -5,6 +5,7 @@ import Button from '../../../atoms/actionAtoms/Button/Button';
 
 export interface PersonalFormData {
     initials: string;
+    middleName: string;
     lastName: string;
     email: string;
     phone: string;
@@ -22,6 +23,7 @@ export interface SubscriptionPersonalFormProps {
 
     // Personal details
     initialsLabel?: string;
+    middleNameLabel?: string;
     lastNameLabel?: string;
     emailLabel?: string;
     phoneLabel?: string;
@@ -50,22 +52,24 @@ const formatInitials = (value: string): string => {
 };
 
 export const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> = ({
-                                                                                      alertText,
-                                                                                      alertEmail,
-                                                                                      initialsLabel = 'Voorletters*',
-                                                                                      lastNameLabel = 'Achternaam*',
-                                                                                      emailLabel = 'E-mailadres*',
-                                                                                      phoneLabel = 'Telefoonnummer*',
-                                                                                      addressHeading = 'Adresgegevens',
-                                                                                      postcodeLabel = 'Postcode*',
-                                                                                      houseNumberLabel = 'Huisnummer*',
-                                                                                      additionLabel = 'Toevoeging',
-                                                                                      streetLabel = 'Straat',
-                                                                                      cityLabel = 'Woonplaats',
-                                                                                      submitLabel = 'Naar betaaloverzicht',
-                                                                                      onSubmit,
-                                                                                  }) => {
+          alertText,
+          alertEmail,
+          initialsLabel = 'Voorletters*',
+          middleNameLabel = 'Tussenvoegsel',
+          lastNameLabel = 'Achternaam*',
+          emailLabel = 'E-mailadres*',
+          phoneLabel = 'Telefoonnummer*',
+          addressHeading = 'Adresgegevens',
+          postcodeLabel = 'Postcode*',
+          houseNumberLabel = 'Huisnummer*',
+          additionLabel = 'Toevoeging',
+          streetLabel = 'Straat',
+          cityLabel = 'Woonplaats',
+          submitLabel = 'Naar betaaloverzicht',
+          onSubmit,
+      }) => {
     const [initialsRaw, setInitialsRaw] = useState('');
+    const [middleName, setMiddleName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -162,7 +166,7 @@ export const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> =
     const handleSubmit = () => {
         setSubmitted(true);
         if (!isValid) return;
-        onSubmit?.({ initials, lastName, email, phone, postcode, houseNumber, addition, street, city });
+        onSubmit?.({ initials, middleName, lastName, email, phone, postcode, houseNumber, addition, street, city });
     };
 
     return (
@@ -183,6 +187,7 @@ export const SubscriptionPersonalForm: React.FC<SubscriptionPersonalFormProps> =
                     setValue={handleInitialsChange}
                     errors={submitted ? errors.initials : null}
                 />
+                <Input label={middleNameLabel} value={middleName} setValue={setMiddleName} />
                 <Input label={lastNameLabel} value={lastName} setValue={setLastName} errors={submitted ? errors.lastName : null} />
                 <Input label={emailLabel} value={email} setValue={setEmail} type="email" errors={submitted ? errors.email : null} />
                 <Input label={phoneLabel} value={phone} setValue={setPhone} type="tel" errors={submitted ? errors.phone : null} />

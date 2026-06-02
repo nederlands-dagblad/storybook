@@ -130,18 +130,6 @@ export type { PodcastSliderProps} from './organisms/PodcastOrganisms/PodcastSlid
 export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 
-export { SubscriptionPersonalForm } from './organisms/SubscriptionOrganisms/SubscriptionPersonalForm/SubscriptionPersonalForm';
-export type { SubscriptionPersonalFormProps } from './organisms/SubscriptionOrganisms/SubscriptionPersonalForm/SubscriptionPersonalForm';
-
-export { SubscriptionDurationForm } from './organisms/SubscriptionOrganisms/SubscriptionDurationForm/SubscriptionDurationForm';
-export type { SubscriptionDurationFormProps } from './organisms/SubscriptionOrganisms/SubscriptionDurationForm/SubscriptionDurationForm';
-
-export { SubscriptionFeaturesAccordion } from './organisms/SubscriptionOrganisms/SubscriptionFeaturesAccordion/SubscriptionFeaturesAccordion';
-export type { SubscriptionFeaturesAccordionProps } from './organisms/SubscriptionOrganisms/SubscriptionFeaturesAccordion/SubscriptionFeaturesAccordion';
-
-export { SubscriptionSummaryPanel } from './organisms/SubscriptionOrganisms/SubscriptionSummaryPanel/SubscriptionSummaryPanel';
-export type { SubscriptionSummaryPanelProps } from './organisms/SubscriptionOrganisms/SubscriptionSummaryPanel/SubscriptionSummaryPanel';
-
 export { SubscriptionForm } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
 export type { SubscriptionFormProps } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
 
@@ -191,9 +179,6 @@ export type { SubscriptionSelectionFrameProps } from './organisms/SubscriptionOr
 
 export { SubscriptionLandingPage } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
 export type { SubscriptionLandingPageProps } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
-
-export { SubscriptionPaymentForm } from './organisms/SubscriptionOrganisms/SubscriptionPaymentForm/SubscriptionPaymentForm';
-export type { SubscriptionPaymentFormProps } from './organisms/SubscriptionOrganisms/SubscriptionPaymentForm/SubscriptionPaymentForm';
 
 // Helpers
 export { setData } from './helpers/data';
