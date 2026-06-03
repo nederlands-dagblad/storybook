@@ -43,7 +43,8 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
     const formatPrice = (price: number) => `€${price.toFixed(2).replace('.', ',')}`;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-background-default">
+        <div className="relative flex flex-col bg-background-default">
+
             <div className="absolute inset-x-0 top-0 h-[75%] bg-background-gray z-0" />
             {/* Vertical bracket lines — hidden on mobile */}
             <div className="hidden lg:block absolute left-[7.5%] top-xl h-[69.2%] w-[1px] bg-border-gray z-10" />
@@ -132,9 +133,9 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
                 </div>
 
                 {/* Desktop: all cards side by side */}
-                <div className="hidden lg:flex -mx-l w-max flex-row items-stretch justify-center gap-l">
+                <div className="hidden lg:flex -mx-l flex-row items-stretch justify-center gap-l">
                     {cards.map((card, index) => (
-                        <div key={index} className={`flex flex-col w-full lg:max-w-xs ${index !== 1 ? 'lg:pt-l' : ''}`}>
+                        <div key={index} className={`flex flex-col w-80 ${index !== 1 ? 'lg:pt-l' : ''}`}>
                             <SubscriptionCard {...card} />
                         </div>
                     ))}
@@ -143,7 +144,7 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
 
             {/* Footer */}
             {(footerText || footerLinkLabel) && (
-                <div className="relative z-10 flex flex-col items-center gap-xs text-center mt-xl pb-xl">
+                <div className="relative z-10 flex flex-col items-center gap-xs text-center px-m mt-m lg:mt-xl pb-m lg:pb-xl">
                     {footerText && (
                         <p className="text-meta-light text-text-default">{footerText}</p>
                     )}
