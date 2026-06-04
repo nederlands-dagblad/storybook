@@ -177,6 +177,7 @@ export type { ZakelijkAbonnementFormProps, ZakelijkAbonnementFormData } from './
 export { SubscriptionSelectionFrame } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
 export type { SubscriptionSelectionFrameProps } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
 
+
 export { SubscriptionLandingPage } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
 export type { SubscriptionLandingPageProps } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
 
