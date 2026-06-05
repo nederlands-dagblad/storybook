@@ -127,6 +127,8 @@ export const DeviceLimitModal: React.FC<DeviceLimitModalProps> = ({
     const handleClose = useCallback(() => {
         setInternalIsOpen(false);
         controlledOnClose?.();
+        // Redirect to login page to show the form again
+        window.location.href = '/login';
     }, [controlledOnClose]);
 
     // ── Task 3: POST /api/device/invalidate ──
