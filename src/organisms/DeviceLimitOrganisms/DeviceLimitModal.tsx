@@ -51,14 +51,14 @@ const formFactorIconName = (formFactor: string): "mobile" | "tablet" | "desktop"
 };
 
 export const DeviceLimitModal: React.FC<DeviceLimitModalProps> = ({
-                                                                      isOpen: controlledIsOpen,
-                                                                      onClose: controlledOnClose,
-                                                                      currentDeviceName = "Dit apparaat",
-                                                                      currentDeviceFormFactor = "Desktop",
-                                                                      signInTicket: initialTicket = "",
-                                                                      activeDevices: initialDevices = [],
-                                                                      onSignInSuccess,
-                                                                  }) => {
+      isOpen: controlledIsOpen,
+      onClose: controlledOnClose,
+      currentDeviceName = "Dit apparaat",
+      currentDeviceFormFactor = "Desktop",
+      signInTicket: initialTicket = "",
+      activeDevices: initialDevices = [],
+      onSignInSuccess,
+  }) => {
     const [internalIsOpen, setInternalIsOpen] = useState(
         controlledIsOpen ?? false
     );
