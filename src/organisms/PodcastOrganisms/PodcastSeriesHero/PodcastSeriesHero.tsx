@@ -19,7 +19,7 @@ export const PodcastSeriesHero: React.FC<PodcastSeriesHeroProps> = ({
     trailerLabel = 'Luister de trailer',
 }) => {
     return (
-        <div className="flex flex-col sm:flex-row gap-l">
+        <div className="flex flex-col sm:flex-row gap-xs md:gap-l">
             <div className="w-full p-m sm:p-0 sm:shrink-0 sm:w-1/3 aspect-square self-center sm:self-start overflow-hidden">
                 {imageUrl ? (
                     <img src={imageUrl} alt={alt} className="w-full h-full object-cover" />
@@ -28,7 +28,7 @@ export const PodcastSeriesHero: React.FC<PodcastSeriesHeroProps> = ({
                 )}
             </div>
 
-            <div className="flex flex-col gap-xl justify-center sm:flex-1 sm:min-w-0">
+            <div className="flex flex-col gap-l xl:gap-xl justify-center sm:flex-1 sm:min-w-0">
                 <div className="flex flex-col gap-s">
                     <h1 className="text-heading-xl text-text-default">{title}</h1>
                     {description && (

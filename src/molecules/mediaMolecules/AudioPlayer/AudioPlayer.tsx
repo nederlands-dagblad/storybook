@@ -156,7 +156,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, label, className 
                         value={currentTime}
                         onChange={handleSeek}
                         aria-label="Tijdbalk"
-                        className="ap-range flex-1"
+                        className="ap-range flex-1 min-w-0"
                         style={{ background: trackBackground(playedPct) }}
                     />
                     <span className="shrink-0 text-meta-light text-text-gray tabular-nums">
