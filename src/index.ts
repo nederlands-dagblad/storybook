@@ -124,6 +124,9 @@ export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/Afwi
 export { AbonnementOpzeggen } from './organisms/MijnNdOrganisms/AbonnementOpzeggen/AbonnementOpzeggen';
 export type { AbonnementOpzeggenProps } from './organisms/MijnNdOrganisms/AbonnementOpzeggen/AbonnementOpzeggen';
 
+export { AboOpzeggen } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen.tsx';
+export type { AboOpzeggenProps } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen.tsx';
+
 export { PodcastSeriesOverview } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/PodcastOrganisms/PodcastSeriesOverview/PodcastSeriesOverview';
 

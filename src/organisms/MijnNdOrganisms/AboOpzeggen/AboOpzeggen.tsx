@@ -4,17 +4,22 @@ import Dropdown from '@molecules/formMolecules/Dropdown/Dropdown';
 import Button from '@atoms/actionAtoms/Button/Button';
 import Alert from '@molecules/feedbackMolecules/Alert/Alert';
 
+export interface AboOpzeggenData {
+    value: string;
+    stopcode: number;
+}
+
 export interface AboOpzeggenProps {
-    onSubmit?: (reason: string) => void;
+    onSubmit?: (data: AboOpzeggenData) => void;
 }
 
 const redenOptions = [
-    { label: 'Financieel', value: 'financieel' },
-    { label: 'Tijdgebrek', value: 'tijdgebrek' },
-    { label: 'Inhoudelijke reden', value: 'inhoudelijke-reden' },
-    { label: 'Overlijden', value: 'overlijden' },
-    { label: 'Persoonlijke omstandigheden', value: 'persoonlijke-omstandigheden' },
-    { label: 'Overig', value: 'overig' },
+    { label: 'Financieel', value: 'financieel', stopcode: 20 }, 
+    { label: 'Tijdgebrek', value: 'tijdgebrek', stopcode: 7 },
+    { label: 'Inhoudelijke reden', value: 'inhoudelijke-reden', stopcode: 37 },
+    { label: 'Wilde een artikel lezen', value: 'wilde-lezen', stopcode: 14 },
+    { label: 'Persoonlijke omstandigheden', value: 'persoonlijke-omstandigheden', stopcode: 71 },
+    { label: 'Overig', value: 'overig', stopcode: 70 },
 ];
 
 const AboOpzeggenForm: React.FC<AboOpzeggenProps> = ({ onSubmit }) => {
@@ -47,27 +52,24 @@ const AboOpzeggenForm: React.FC<AboOpzeggenProps> = ({ onSubmit }) => {
             setErrors(newErrors);
             return;
         }
+
+        const selectedOption = redenOptions.find(option => option.value === reden);
+        if (!selectedOption) return;
+
+        const data: AboOpzeggenData = {
+            value: selectedOption.value,
+            stopcode: selectedOption.stopcode,
+        };
+
         setSubmitting(true);
         setApiError('');
-        window.dispatchEvent(new CustomEvent('abo-opzeggen-submit', { detail: reden }));
-        onSubmit?.(reden);
-    }
-
-    function handleNieuweAanvraag() {
-        setReden('');
-        setErrors({});
-        setApiError('');
-        setSubmitted(false);
+        window.dispatchEvent(new CustomEvent('abo-opzeggen-submit', { detail: data }));
+        onSubmit?.(data);
     }
 
     if (submitted) {
         return (
-            <div className="flex flex-col gap-m">
-                <Alert>Bedankt voor uw reactie. Wij hebben uw opzegverzoek ontvangen en zullen deze in behandeling nemen.</Alert>
-                <div>
-                    <Button variant="secondary" label="Nieuwe aanvraag" iconLeft="plus" onClick={handleNieuweAanvraag} />
-                </div>
-            </div>
+            <Alert>Bedankt voor uw reactie. Wij hebben uw opzegverzoek ontvangen en zullen deze in behandeling nemen.</Alert>
         );
     }
 
