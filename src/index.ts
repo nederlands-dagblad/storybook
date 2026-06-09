@@ -121,9 +121,6 @@ export type { BezorgingStopzettenProps } from './organisms/MijnNdOrganisms/Bezor
 export { AfwijkendBezorgAdres } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 export type { AfwijkendBezorgAdresProps } from './organisms/MijnNdOrganisms/AfwijkendBezorgAdres/AfwijkendBezorgAdres.tsx';
 
-export { AbonnementOpzeggen } from './organisms/MijnNdOrganisms/AbonnementOpzeggen/AbonnementOpzeggen';
-export type { AbonnementOpzeggenProps } from './organisms/MijnNdOrganisms/AbonnementOpzeggen/AbonnementOpzeggen';
-
 export { AboOpzeggen } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen.tsx';
 export type { AboOpzeggenProps } from './organisms/MijnNdOrganisms/AboOpzeggen/AboOpzeggen.tsx';
 
