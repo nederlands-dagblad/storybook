@@ -17,7 +17,6 @@ export const Default: Story = {
     args: {
         sectionTitle: 'Laatste aflevering',
         videoId: 'dQw4w9WgXcQ',
-        videoTitle: 'Hoe vind je rust in een druk gezinsleven?',
         articleTitle: 'Hoe vind je rust in een druk gezinsleven?',
         intro: 'In deze aflevering spreken Christine en Gerjanne over het vinden van rust te midden van de drukte van het gezinsleven, en wat geloof daarin kan betekenen.',
         articleUrl: '#',

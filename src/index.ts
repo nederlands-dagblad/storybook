@@ -105,6 +105,9 @@ export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/V
 export { Dropdown } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
 export type { DropdownProps } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
 
+export { AudioPlayer } from './molecules/mediaMolecules/AudioPlayer/AudioPlayer';
+export type { AudioPlayerProps } from './molecules/mediaMolecules/AudioPlayer/AudioPlayer';
+
 // Organisms
 export { ArtikelCadeauModal } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
 export type { ArtikelCadeauModalProps } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
@@ -126,6 +129,15 @@ export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/Podc
 
 export { PodcastSlider } from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
 export type { PodcastSliderProps} from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
+
+export { PodcastSeriesHero } from './organisms/PodcastOrganisms/PodcastSeriesHero/PodcastSeriesHero';
+export type { PodcastSeriesHeroProps } from './organisms/PodcastOrganisms/PodcastSeriesHero/PodcastSeriesHero';
+
+export { PodcastSeriesLastEpisode } from './organisms/PodcastOrganisms/PodcastSeriesLastEpisode/PodcastSeriesLastEpisode';
+export type { PodcastSeriesLastEpisodeProps } from './organisms/PodcastOrganisms/PodcastSeriesLastEpisode/PodcastSeriesLastEpisode';
+
+export { PodcastSeriesHosts } from './organisms/PodcastOrganisms/PodcastSeriesHosts/PodcastSeriesHosts';
+export type { PodcastSeriesHostsProps, PodcastSeriesHost } from './organisms/PodcastOrganisms/PodcastSeriesHosts/PodcastSeriesHosts';
 
 export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';

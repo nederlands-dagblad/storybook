@@ -2,8 +2,8 @@ import React from 'react';
 import { SectionHeading } from '@atoms/displayAtoms/SectionHeading/SectionHeading';
 
 export interface PodcastSeriesHost {
-    imageUrl?: string;
-    alt?: string;
+    // All fields are HTML strings, rendered via dangerouslySetInnerHTML.
+    image?: string;
     name: string;
     description?: string;
 }
@@ -25,20 +25,25 @@ export const PodcastSeriesHosts: React.FC<PodcastSeriesHostsProps> = ({
                 {hosts.map((host, index) => (
                     <div key={index} className="flex flex-col gap-s">
                         <div className="w-full aspect-square overflow-hidden bg-background-gray">
-                            {host.imageUrl ? (
-                                <img
-                                    src={host.imageUrl}
-                                    alt={host.alt}
-                                    className="w-full h-full object-cover"
+                            {host.image ? (
+                                <div
+                                    className="w-full h-full"
+                                    dangerouslySetInnerHTML={{ __html: host.image }}
                                 />
                             ) : (
                                 <div className="w-full h-full bg-background-gray" />
                             )}
                         </div>
                         <div className="flex flex-col gap-xxs lg:gap-xs">
-                            <h3 className="text-heading-m text-text-default">{host.name}</h3>
+                            <h3
+                                className="text-heading-m text-text-default"
+                                dangerouslySetInnerHTML={{ __html: host.name }}
+                            />
                             {host.description && (
-                                <p className="text-body-light text-text-default">{host.description}</p>
+                                <p
+                                    className="text-body-light text-text-default"
+                                    dangerouslySetInnerHTML={{ __html: host.description }}
+                                />
                             )}
                         </div>
                     </div>

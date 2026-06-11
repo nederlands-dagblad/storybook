@@ -5,7 +5,6 @@ import { Button } from '@atoms/actionAtoms/Button/Button';
 export interface PodcastSeriesLastEpisodeProps {
     sectionTitle?: string;
     videoId?: string;
-    videoTitle?: string;
     articleTitle: string;
     intro?: string;
     articleUrl: string;
@@ -15,7 +14,6 @@ export interface PodcastSeriesLastEpisodeProps {
 export const PodcastSeriesLastEpisode: React.FC<PodcastSeriesLastEpisodeProps> = ({
     sectionTitle = 'Laatste aflevering',
     videoId,
-    videoTitle = 'YouTube video',
     articleTitle,
     intro,
     articleUrl,
@@ -38,22 +36,20 @@ export const PodcastSeriesLastEpisode: React.FC<PodcastSeriesLastEpisodeProps> =
                     />
                 </div>
 
-                <div
-                    className="w-full sm:w-1/2 sm:shrink-0 self-start overflow-hidden bg-background-gray"
-                    style={{ aspectRatio: '16 / 9' }}
-                >
-                    {videoId ? (
+                {videoId && (
+                    <div
+                        className="w-full sm:w-1/2 sm:shrink-0 self-start overflow-hidden bg-background-gray"
+                        style={{ aspectRatio: '16 / 9' }}
+                    >
                         <iframe
                             src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
-                            title={videoTitle}
+                            title={articleTitle}
                             className="w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                         />
-                    ) : (
-                        <div className="w-full h-full bg-background-gray" />
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );
