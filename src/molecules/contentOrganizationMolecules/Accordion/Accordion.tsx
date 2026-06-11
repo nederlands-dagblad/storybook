@@ -8,6 +8,7 @@ export interface AccordionItemProps {
     id?: string;
     isOpen?: boolean;
     onToggle?: () => void;
+    className?: string;
 }
 
 export  function AccordionItem({
@@ -17,7 +18,8 @@ export  function AccordionItem({
     id,
     isOpen: controlledIsOpen,
     onToggle,
-    variant = 'default'
+    variant = 'default',
+    className = '',
 }: AccordionItemProps & { variant?: 'default' | 'large' }) {
     const [internalIsOpen, setInternalIsOpen] = useState(false);
     const [overflowVisible, setOverflowVisible] = useState(false);
@@ -47,6 +49,7 @@ export  function AccordionItem({
                 ? `border-border-brand ${variant === 'large' ? 'bg-background-default' : 'bg-background-brand-subtle'}`
                 : 'border-border-gray bg-background-default hover:border-border-brand has-[button:focus-visible]:border-border-brand'
             }
+            ${className}
         `}>
             <button
                 className={`group w-full border-0 bg-transparent cursor-pointer flex justify-between items-center text-left outline-none ${variant === 'large' ? 'p-s md:p-m' : 'px-s py-xs'}`}
@@ -129,7 +132,7 @@ export function Accordion({
                     {title}
                 </h2>
             )}
-            <div className="flex flex-col">
+            <div className={"flex flex-col" }>
                 {items.map((item, index) => (
                     <div
                         key={item.id || `accordion-${index}`}
