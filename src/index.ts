@@ -171,6 +171,9 @@ export type { IconTextProps } from './atoms/basicAtoms/IconText/IconText';
 export { default as ZakelijkAbonnementPage } from './pages/ZakelijkAbonnementPage/ZakelijkAbonnementPage';
 export type { ZakelijkAbonnementPageProps } from './pages/ZakelijkAbonnementPage/ZakelijkAbonnementPage';
 
+export { default as EmployeePage } from './pages/EmployeePage/EmployeePage';
+export type { EmployeePageProps, Employee } from './pages/EmployeePage/EmployeePage';
+
 export { default as ZakelijkAbonnementForm } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
 export type { ZakelijkAbonnementFormProps, ZakelijkAbonnementFormData } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
 
