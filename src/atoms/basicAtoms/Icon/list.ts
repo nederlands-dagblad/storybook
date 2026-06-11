@@ -80,6 +80,10 @@ import NdFill from "../../../atoms/basicAtoms/Icon/icons/fill/nd.svg";
 import TiktokFill from "../../../atoms/basicAtoms/Icon/icons/fill/tiktok.svg";
 import FacebookFill from "../../../atoms/basicAtoms/Icon/icons/fill/facebook.svg";
 import TabletFill from "../../../atoms/basicAtoms/Icon/icons/fill/tablet.svg";
+import SpeakerHighFill from "../../../atoms/basicAtoms/Icon/icons/fill/speaker-high.svg";
+import SpeakerLowFill from "../../../atoms/basicAtoms/Icon/icons/fill/speaker-low.svg";
+import SpeakerXFill from "../../../atoms/basicAtoms/Icon/icons/fill/speaker-x.svg";
+import PauseCircleFill from "../../../atoms/basicAtoms/Icon/icons/fill/pause-circle.svg";
 
 // Import outline icons
 import HandsPrayingOutline from "../../../atoms/basicAtoms/Icon/icons/outline/hands-praying.svg";
@@ -163,6 +167,10 @@ import NdOutline from "../../../atoms/basicAtoms/Icon/icons/outline/nd.svg";
 import TiktokOutline from "../../../atoms/basicAtoms/Icon/icons/outline/tiktok.svg";
 import FacebookOutline from "../../../atoms/basicAtoms/Icon/icons/outline/facebook.svg";
 import TabletOutline from "../../../atoms/basicAtoms/Icon/icons/outline/tablet.svg";
+import SpeakerHighOutline from "../../../atoms/basicAtoms/Icon/icons/outline/speaker-high.svg";
+import SpeakerLowOutline from "../../../atoms/basicAtoms/Icon/icons/outline/speaker-low.svg";
+import SpeakerXOutline from "../../../atoms/basicAtoms/Icon/icons/outline/speaker-x.svg";
+import PauseCircleOutline from "../../../atoms/basicAtoms/Icon/icons/outline/pause-circle.svg";
 
 
 export const icons = {
@@ -328,6 +336,14 @@ export const icons = {
     'facebook-fill': FacebookFill,
     'tablet-outline': TabletOutline,
     'tablet-fill': TabletFill,
+    'speaker-high-outline': SpeakerHighOutline,
+    'speaker-high-fill': SpeakerHighFill,
+    'speaker-low-outline': SpeakerLowOutline,
+    'speaker-low-fill': SpeakerLowFill,
+    'speaker-x-outline': SpeakerXOutline,
+    'speaker-x-fill': SpeakerXFill,
+    'pause-circle-outline': PauseCircleOutline,
+    'pause-circle-fill': PauseCircleFill,
 };
 
 // Get unique icon names (without variant suffix)
