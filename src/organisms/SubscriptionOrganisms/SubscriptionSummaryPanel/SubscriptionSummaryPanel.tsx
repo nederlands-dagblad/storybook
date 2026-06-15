@@ -22,24 +22,28 @@ export interface SubscriptionSummaryPanelProps {
     personalData?: PersonalFormData;
     onChangePersonal?: () => void;
     changePersonalLabel?: string;
+    deliveryDayLabel?: string;
+    deliveryDayRowLabel?: string;
 }
 
 export const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> = ({
-    heading = 'Overzicht bestelling',
-    className,
-    showOnMobile = false,
-    inline = false,
-    subscriptionTitle,
-    subscriptionSubtitle,
-    features = [],
-    onChangeSubscription,
-    changeSubscriptionLabel = 'Kies een ander abonnement',
-    rows = [],
-    footerText,
-    personalData,
-    onChangePersonal,
-    changePersonalLabel = 'Wijzig gegevens',
-}) => {
+      heading = 'Overzicht bestelling',
+      className,
+      showOnMobile = false,
+      inline = false,
+      subscriptionTitle,
+      subscriptionSubtitle,
+      features = [],
+      onChangeSubscription,
+      changeSubscriptionLabel = 'Kies een ander abonnement',
+      rows = [],
+      footerText,
+      personalData,
+      onChangePersonal,
+      changePersonalLabel = 'Wijzig gegevens',
+      deliveryDayLabel,
+      deliveryDayRowLabel = 'Papieren krant',
+  }) => {
     const fullName = [personalData?.initials, personalData?.middleName, personalData?.lastName]
         .filter(Boolean).join(' ');
     const streetLine = [personalData?.street, personalData?.houseNumber, personalData?.addition]
@@ -63,8 +67,16 @@ export const SubscriptionSummaryPanel: React.FC<SubscriptionSummaryPanelProps> =
             </div>
 
             {/* Summary rows */}
-            {rows.length > 0 && (
+            {(deliveryDayLabel || rows.length > 0) && (
                 <div className="flex flex-col gap-s">
+                    {deliveryDayLabel && (
+                        <div className="flex items-start justify-between gap-s">
+                            <span className="text-meta-light text-text-default">{deliveryDayRowLabel}</span>
+                            <span className="text-meta-regular text-text-default text-right">
+                                {deliveryDayLabel}
+                            </span>
+                        </div>
+                    )}
                     {rows.map((row, index) => (
                         <div
                             key={index}

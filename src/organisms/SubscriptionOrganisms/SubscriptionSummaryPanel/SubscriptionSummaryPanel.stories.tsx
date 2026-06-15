@@ -40,6 +40,19 @@ export const Default: Story = {
     },
 };
 
+export const WithDeliveryDay: Story = {
+    args: {
+        ...Default.args,
+        subscriptionTitle: 'Digitaal + Papier',
+        deliveryDayLabel: 'Zaterdag',
+        rows: [
+            { label: 'Actieperiode', value: '36 maanden' },
+            { label: 'Ingangsdatum', value: 'Vandaag' },
+            { label: 'Totaal', value: '€ 5,95/week', isDivider: true },
+        ],
+    },
+};
+
 export const WithPersonalData: Story = {
     args: {
         ...Default.args,

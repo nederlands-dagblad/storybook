@@ -198,6 +198,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         rows: summaryRows,
         footerText: summaryFooterText,
         onChangePersonal: () => setStep('personal'),
+        deliveryDayLabel: activeDeliveryDay?.label,
     };
 
     return (
