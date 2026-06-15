@@ -11,6 +11,7 @@ export interface DeliveryDay {
     value: string;
     description?: string;
     price?: string;
+    
 }
 
 export interface SubscriptionDuration {
@@ -18,6 +19,9 @@ export interface SubscriptionDuration {
     value: string;
     /** Shown in the summary panel as actieperiode, e.g. '24 maanden' */
     period?: string;
+    price?: number;
+    originalPrice?: number;
+    group?: string;
 }
 
 export interface OrderSummaryRow {
@@ -68,7 +72,7 @@ export interface SubscriptionDurationFormProps {
 const formatPrice = (price: number) =>
     `€${price.toFixed(2).replace('.', ',')}`;
 
-const SubscriptionDurationForm: React.FC<SubscriptionDurationFormProps> = ({
+export const SubscriptionDurationForm: React.FC<SubscriptionDurationFormProps> = ({
     sectionHeading = 'Actieabonnement',
     subscriptionTitle,
     subscriptionPricePerWeek,

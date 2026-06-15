@@ -9,6 +9,9 @@ import Logo from '../../../atoms/basicAtoms/Logo/Logo';
 export interface SubscriptionBenefit {
     label: string;
     hasInfo?: boolean;
+    infoText?: string;
+    infoLinkLabel?: string;
+    infoLinkHref?: string;
     onInfoClick?: () => void;
 }
 
@@ -21,9 +24,10 @@ export interface SubscriptionSelectionFrameProps {
     footerText?: string;
     footerLinkLabel?: string;
     footerLinkHref?: string;
+    
 }
 
-const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
+export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
     heading = 'Word lid van het Nederlands Dagblad',
     benefits = [],
     steps = [],
@@ -35,11 +39,12 @@ const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
 }) => {
     const defaultActive = cards.findIndex(c => c.isFeatured) ?? 0;
     const [activeIndex, setActiveIndex] = useState(defaultActive >= 0 ? defaultActive : 0);
-
+    const [infoBenefit, setInfoBenefit] = useState<SubscriptionBenefit | null>(null);
     const formatPrice = (price: number) => `€${price.toFixed(2).replace('.', ',')}`;
 
     return (
-        <div className="relative flex flex-col min-h-screen bg-background-default">
+        <div className="relative flex flex-col bg-background-default">
+
             <div className="absolute inset-x-0 top-0 h-[75%] bg-background-gray z-0" />
             {/* Vertical bracket lines — hidden on mobile */}
             <div className="hidden lg:block absolute left-[7.5%] top-xl h-[69.2%] w-[1px] bg-border-gray z-10" />
@@ -75,7 +80,7 @@ const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
                                     {benefit.hasInfo && (
                                         <button
                                             type="button"
-                                            onClick={benefit.onInfoClick}
+                                            onClick={() => benefit.onInfoClick ? benefit.onInfoClick() : setInfoBenefit(benefit)}
                                             className="flex-shrink-0"
                                         >
                                             <Icon name="info" variant="outline" size="s" color="default" />
@@ -128,9 +133,9 @@ const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
                 </div>
 
                 {/* Desktop: all cards side by side */}
-                <div className="hidden lg:flex -mx-l w-max flex-row items-end justify-center gap-l">
+                <div className="hidden lg:flex -mx-l flex-row items-stretch justify-center gap-l">
                     {cards.map((card, index) => (
-                        <div key={index} className={`w-full lg:max-w-xs ${index !== 1 ? 'lg:pt-l' : ''}`}>
+                        <div key={index} className={`flex flex-col w-80 ${index !== 1 ? 'lg:pt-l' : ''}`}>
                             <SubscriptionCard {...card} />
                         </div>
                     ))}
@@ -139,7 +144,7 @@ const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
 
             {/* Footer */}
             {(footerText || footerLinkLabel) && (
-                <div className="relative z-10 flex flex-col items-center gap-xs text-center mt-xl pb-xl">
+                <div className="relative z-10 flex flex-col items-center gap-xs text-center px-m mt-m lg:mt-xl pb-m lg:pb-xl">
                     {footerText && (
                         <p className="text-meta-light text-text-default">{footerText}</p>
                     )}
@@ -151,6 +156,30 @@ const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProps> = ({
                             {footerLinkLabel}
                         </a>
                     )}
+                </div>
+            )}
+
+            {/* Info modal */}
+            {infoBenefit && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setInfoBenefit(null)}>
+                    <div className="bg-background-default rounded-lg p-l max-w-md mx-m shadow-xl" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-start mb-s">
+                            <h3 className="text-heading-s text-text-default">{infoBenefit.label}</h3>
+                            <button onClick={() => setInfoBenefit(null)} className="flex-shrink-0">
+                                <Icon name="x" variant="outline" size="s" color="default" />
+                            </button>
+                        </div>
+                        {infoBenefit.infoText && (
+                            <p className="text-body-light text-text-default">
+                                {infoBenefit.infoText}{' '}
+                                {infoBenefit.infoLinkHref && (
+                                    <a href={infoBenefit.infoLinkHref} className="!underline" target="_blank" rel="noopener noreferrer">
+                                        {infoBenefit.infoLinkLabel ?? 'Klik hier'}
+                                    </a>
+                                )}
+                            </p>
+                        )}
+                    </div>
                 </div>
             )}
         </div>

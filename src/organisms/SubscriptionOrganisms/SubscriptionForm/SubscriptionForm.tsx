@@ -42,6 +42,7 @@ export interface SubscriptionFormProps {
     subscriptionOriginalPricePerWeek?: number;
     features?: SubscriptionFeature[];
     onChangeSubscription?: () => void;
+    changeSubscriptionHref?: string;
     changeSubscriptionLabel?: string;
 
     // Duration step
@@ -57,7 +58,8 @@ export interface SubscriptionFormProps {
 
     // Personal step
     personalAlertText?: React.ReactNode;
-
+    personalAlertEmail?: string;
+    
     // Payment step
     paymentHeading?: string;
     paymentMethods?: PaymentMethod[];
@@ -68,6 +70,12 @@ export interface SubscriptionFormProps {
     // Summary panel
     summaryHeading?: string;
     summaryFooterText?: string;
+
+    // Payment step
+    termsText?: string;
+    privacyUrl?: string;
+    actievoorwaardenUrl?: string;
+    algemeneVoorwaardenUrl?: string;
 
     // Submit
     onComplete?: (data: { duration: string; startDate: string; deliveryDay?: string; personalData: PersonalFormData; paymentMethod: string }) => void;
@@ -80,41 +88,65 @@ const defaultSteps: Step[] = [
     { label: 'Bestelling afronden' },
 ];
 
-const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
-    phoneNumber,
-    steps = defaultSteps,
-    sectionHeading,
-    subscriptionTitle,
-    subscriptionSubtitle,
-    subscriptionPricePerWeek,
-    subscriptionOriginalPricePerWeek,
-    features,
-    onChangeSubscription,
-    changeSubscriptionLabel,
-    deliveryDayHeading,
-    deliveryDays = [],
-    initialDeliveryDay,
-    durationHeading,
-    durations = [],
-    initialDuration,
-    alertText,
-    startDate,
-    startDateLabel,
-    personalAlertText,
-    paymentHeading,
-    paymentMethods = [],
-    initialPaymentMethod,
-    termsLabel,
-    paymentFooterText,
-    summaryHeading,
-    summaryFooterText,
-    onComplete,
-}) => {
+export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
+                                                                      phoneNumber,
+                                                                      steps = defaultSteps,
+                                                                      sectionHeading,
+                                                                      subscriptionTitle,
+                                                                      subscriptionSubtitle,
+                                                                      subscriptionPricePerWeek,
+                                                                      subscriptionOriginalPricePerWeek,
+                                                                      features,
+                                                                      onChangeSubscription,
+                                                                      changeSubscriptionHref,
+                                                                      changeSubscriptionLabel,
+                                                                      deliveryDayHeading,
+                                                                      deliveryDays = [],
+                                                                      initialDeliveryDay,
+                                                                      durationHeading,
+                                                                      durations = [],
+                                                                      initialDuration,
+                                                                      alertText,
+                                                                      startDate,
+                                                                      startDateLabel,
+                                                                      personalAlertText,
+                                                                      personalAlertEmail,
+                                                                      paymentHeading,
+                                                                      paymentMethods = [],
+                                                                      initialPaymentMethod,
+                                                                      termsLabel,
+                                                                      paymentFooterText = 'U ontvangt een bevestiging per e-mail. U hebt een bedenktijd van 14 dagen.',
+                                                                      summaryHeading,
+                                                                      summaryFooterText,
+                                                                      onComplete,
+                                                                      termsText,
+                                                                      privacyUrl,
+                                                                      actievoorwaardenUrl,
+                                                                      algemeneVoorwaardenUrl,
+                                                                  }) => {
+    const handleChangeSubscription = onChangeSubscription
+        ?? (changeSubscriptionHref
+            ? () => { window.location.href = changeSubscriptionHref; }
+            : () => { window.history.back(); });
     const [step, setStep] = useState<SubscriptionStep>('duration');
     const [selectedDeliveryDay, setSelectedDeliveryDay] = useState(initialDeliveryDay ?? deliveryDays[0]?.value);
     const [selectedDuration, setSelectedDuration] = useState(initialDuration ?? durations[0]?.value);
     const [selectedStartDate, setSelectedStartDate] = useState(startDate ?? '');
     const [personalData, setPersonalData] = useState<PersonalFormData | null>(null);
+
+    // Filter durations by selected delivery day (for paper subscriptions)
+    const filteredDurations = deliveryDays.length > 0 && selectedDeliveryDay
+        ? durations.filter(d => d.group === selectedDeliveryDay || d.group === '')
+        : durations;
+
+    // Auto-select first duration when delivery day changes
+    const handleDeliveryDayChange = (value: string) => {
+        setSelectedDeliveryDay(value);
+        const newFiltered = durations.filter(d => d.group === value || d.group === '');
+        if (newFiltered.length > 0 && !newFiltered.find(d => d.value === selectedDuration)) {
+            setSelectedDuration(newFiltered[0].value);
+        }
+    };
 
     const currentStep = step === 'duration' ? 2 : step === 'personal' ? 3 : 4;
 
@@ -129,10 +161,14 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     });
 
     const activeDeliveryDay = deliveryDays.find(d => d.value === selectedDeliveryDay);
-    const totalPrice = activeDeliveryDay?.price
-        ?? `€${subscriptionPricePerWeek.toFixed(2).replace('.', ',')} per week`;
+    const activeDurationObj = filteredDurations.find(d => d.value === selectedDuration);
 
-    const activeDurationObj = durations.find(d => d.value === selectedDuration);
+    // Use selected duration's price if available, otherwise fall back to main subscription price
+    const activePrice = activeDurationObj?.price ?? subscriptionPricePerWeek;
+    const activeOriginalPrice = activeDurationObj?.originalPrice ?? subscriptionOriginalPricePerWeek;
+
+    const totalPrice = activeDeliveryDay?.price
+        ?? `€${activePrice.toFixed(2).replace('.', ',')} per week`;
 
     const summaryRows: OrderSummaryRow[] = [
         { label: 'Actieperiode', value: activeDurationObj?.period ?? '' },
@@ -140,8 +176,8 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         {
             label: 'Totaal',
             value: totalPrice,
-            originalValue: subscriptionOriginalPricePerWeek
-                ? `€${subscriptionOriginalPricePerWeek.toFixed(2).replace('.', ',')} per week`
+            originalValue: activeOriginalPrice
+                ? `€${activeOriginalPrice.toFixed(2).replace('.', ',')} per week`
                 : undefined,
             isDivider: true,
         },
@@ -157,11 +193,12 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         subscriptionTitle,
         subscriptionSubtitle,
         features,
-        onChangeSubscription,
+        onChangeSubscription: handleChangeSubscription,
         changeSubscriptionLabel,
         rows: summaryRows,
         footerText: summaryFooterText,
         onChangePersonal: () => setStep('personal'),
+        deliveryDayLabel: activeDeliveryDay?.label,
     };
 
     return (
@@ -200,14 +237,14 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                             subscriptionPricePerWeek={subscriptionPricePerWeek}
                             subscriptionOriginalPricePerWeek={subscriptionOriginalPricePerWeek}
                             features={features}
-                            onChangeSubscription={onChangeSubscription}
+                            onChangeSubscription={handleChangeSubscription}
                             changeSubscriptionLabel={changeSubscriptionLabel}
                             deliveryDayHeading={deliveryDayHeading}
                             deliveryDays={deliveryDays}
                             selectedDeliveryDay={selectedDeliveryDay}
-                            onDeliveryDayChange={setSelectedDeliveryDay}
+                            onDeliveryDayChange={handleDeliveryDayChange}
                             durationHeading={durationHeading}
-                            durations={durations}
+                            durations={filteredDurations}
                             selectedDuration={selectedDuration}
                             onDurationChange={setSelectedDuration}
                             alertText={alertText}
@@ -222,8 +259,10 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                     {step === 'personal' && (
                         <SubscriptionPersonalForm
                             alertText={personalAlertText}
+                            alertEmail={personalAlertEmail}
                             submitLabel="Naar betaaloverzicht"
                             onSubmit={handlePersonalSubmit}
+                            initialData={personalData ?? undefined}
                         />
                     )}
 
@@ -251,6 +290,10 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                 personalData: personalData!,
                                 paymentMethod,
                             })}
+                            termsText={termsText}
+                            privacyUrl={privacyUrl}
+                            actievoorwaardenUrl={actievoorwaardenUrl}
+                            algemeneVoorwaardenUrl={algemeneVoorwaardenUrl}
                         />
                     )}
                 </div>

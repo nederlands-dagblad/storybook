@@ -145,6 +145,9 @@ export type { PodcastSeriesHostsProps, PodcastSeriesHost } from './organisms/Pod
 export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 
+export { SubscriptionForm } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
+export type { SubscriptionFormProps } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
+
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
 export { useFetchList } from './hooks/useFetchList';
@@ -185,6 +188,13 @@ export type { ZakelijkAbonnementPageProps } from './pages/ZakelijkAbonnementPage
 
 export { default as ZakelijkAbonnementForm } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
 export type { ZakelijkAbonnementFormProps, ZakelijkAbonnementFormData } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
+
+export { SubscriptionSelectionFrame } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
+export type { SubscriptionSelectionFrameProps } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
+
+
+export { SubscriptionLandingPage } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
+export type { SubscriptionLandingPageProps } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
 
 // Helpers
 export { setData } from './helpers/data';
