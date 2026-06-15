@@ -29,6 +29,21 @@ const formatDateLabel = (dateStr: string): string => {
     return dateStr;
 };
 
+/**
+ * Reads the anti-forgery token from the DOM at submission time.
+ * Checks for a <meta name="csrf-token"> tag first (preferred),
+ * then falls back to a standard ASP.NET hidden input.
+ */
+function getAntiForgeryToken(): string {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    if (meta) return meta.getAttribute('content') ?? '';
+
+    const input = document.querySelector<HTMLInputElement>(
+        'input[name="__RequestVerificationToken"]'
+    );
+    return input?.value ?? '';
+}
+
 export interface SubscriptionFormSubmitData {
     duration: string;
     startDate: string;
@@ -89,7 +104,6 @@ export interface SubscriptionFormProps {
     // Form submission props (from Razor)
     subscriptionTypeId?: string;
     signingKey?: string;
-    antiForgeryToken?: string;
     formAction?: string;
 
     // Submit
@@ -111,9 +125,14 @@ function submitSubscriptionForm(
     data: SubscriptionFormSubmitData,
     subscriptionTypeId: string,
     signingKey: string,
-    antiForgeryToken: string,
     formAction: string,
 ) {
+    const antiForgeryToken = getAntiForgeryToken();
+    if (!antiForgeryToken) {
+        console.error('Anti-forgery token not found in DOM');
+        return;
+    }
+
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = formAction;
@@ -207,7 +226,6 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       algemeneVoorwaardenUrl,
                                                                       subscriptionTypeId,
                                                                       signingKey,
-                                                                      antiForgeryToken,
                                                                       formAction = '/signup/subscription/register',
                                                                   }) => {
     const handleChangeSubscription = onChangeSubscription
@@ -288,12 +306,11 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         onComplete?.(submitData);
 
         // Submit the form to the server if submission props are available
-        if (subscriptionTypeId && signingKey && antiForgeryToken) {
+        if (subscriptionTypeId && signingKey) {
             submitSubscriptionForm(
                 submitData,
                 subscriptionTypeId,
                 signingKey,
-                antiForgeryToken,
                 formAction,
             );
         }
