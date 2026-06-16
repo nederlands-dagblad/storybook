@@ -13,6 +13,7 @@ const meta: Meta<typeof EmployeePage> = {
         intro: { control: 'text', description: 'Intro text below the heading' },
         employees: { control: 'object', description: 'List of employees with name, role, department and optional image' },
         largeDepartments: { control: 'object', description: 'Departments shown with larger cards (4 per row instead of 5 on desktop)' },
+        bioButtonLabel: { control: 'text', description: 'Label for the bio button shown when an employee has an authorPageUrl' },
     },
 };
 

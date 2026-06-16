@@ -14,6 +14,7 @@ export interface Employee {
     department: string;
     image?: string;
     authorPageUrl?: string;
+    editUrl?: string;
 }
 
 export interface EmployeePageProps {
@@ -21,6 +22,7 @@ export interface EmployeePageProps {
     intro?: string;
     employees?: Employee[];
     largeDepartments?: string[];
+    buttonLabel?: string;
 }
 
 const EmployeePage: React.FC<EmployeePageProps> = ({
@@ -28,6 +30,7 @@ const EmployeePage: React.FC<EmployeePageProps> = ({
     intro = 'Onderstaande medewerkers van het Nederlands Dagblad verzorgen voor u de krant, website, app, abonnementen, advertenties en de sociale media-accounts.',
     employees = [],
     largeDepartments = ['Directie', 'Hoofdredactie'],
+    buttonLabel = 'Lees bio',
 }) => {
     const [selectedDepartment, setSelectedDepartment] = useState(ALL_TEAMS_VALUE);
 
@@ -92,7 +95,16 @@ const EmployeePage: React.FC<EmployeePageProps> = ({
                                 <h3 className="text-heading-m text-text-default">{department}</h3>
                                 <div className={`grid ${gridClass} gap-s`}>
                                     {members.map((employee, i) => (
-                                        <CardContainer key={i} padding="none" borderColor="gray-subtle">
+                                        <CardContainer key={i} padding="none" borderColor="gray-subtle" className="relative flex flex-col h-full">
+                                            {employee.editUrl && (
+                                                <Button
+                                                    variant="primary"
+                                                    label="Bewerken"
+                                                    href={employee.editUrl}
+                                                    target="_blank"
+                                                    className="absolute top-xs left-xs z-50"
+                                                />
+                                            )}
                                             {employee.image && (
                                                 <img
                                                     src={employee.image}
@@ -100,16 +112,16 @@ const EmployeePage: React.FC<EmployeePageProps> = ({
                                                     className="w-full aspect-[3/4] object-cover"
                                                 />
                                             )}
-                                            <div className="flex flex-col items-center text-center gap-xxs p-s" lang="nl">
+                                            <div className="flex flex-1 flex-col items-center text-center gap-xxs p-xs md:p-s" lang="nl">
                                                 <span className="text-meta-uppercase text-text-brand break-words hyphens-auto">{employee.role}</span>
                                                 <span className="text-body-bold text-text-default break-words hyphens-auto">{employee.name}</span>
                                                 {employee.authorPageUrl && (
                                                     <Button
                                                         variant="pill"
-                                                        label="Lees bio"
+                                                        label={buttonLabel}
                                                         iconRight="caret-right"
                                                         href={employee.authorPageUrl}
-                                                        className="mt-xs w-fit"
+                                                        className="mt-auto w-fit"
                                                     />
                                                 )}
                                             </div>
