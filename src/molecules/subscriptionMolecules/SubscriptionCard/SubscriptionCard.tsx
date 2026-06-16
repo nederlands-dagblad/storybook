@@ -44,11 +44,11 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
         : undefined;
 
     return (
-        <div className={`flex flex-col ${isFeatured ? 'lg:shadow-m' : ''}`}>
+        <div className={`flex flex-col flex-1 ${isFeatured ? 'lg:shadow-m' : ''}`}>
             {/* Featured badge — hidden on mobile (shown in tab instead) */}
             <div className="hidden lg:flex items-center justify-center">
                 {isFeatured && (
-                    <span className="text-body-uppercase-bold-small text-text-brand bg-background-brand-subtle w-full text-center p-xxs">
+                    <span className="text-body-uppercase-bold-small text-text-brand bg-background-brand-subtle w-full text-center p-xs">
                         Meest gekozen
                     </span>
                 )}
@@ -57,7 +57,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             <CardContainer
                 borderColor={borderColor}
                 padding="m"
-                className={`flex flex-col gap-m ${isFeatured ? '!border-t-0' : ''}`}
+                className={`flex flex-col gap-m flex-1 ${isFeatured ? '!border-t-0' : ''}`}
             >
                 {/* Title + Pricing + discount + CTA */}
                 <div className="flex flex-col gap-s">

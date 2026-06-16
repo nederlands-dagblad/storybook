@@ -12,7 +12,7 @@ export interface SubscriptionFeaturesAccordionProps {
     changeSubscriptionLabel?: string;
 }
 
-const SubscriptionFeaturesAccordion: React.FC<SubscriptionFeaturesAccordionProps> = ({
+export const SubscriptionFeaturesAccordion: React.FC<SubscriptionFeaturesAccordionProps> = ({
     label,
     subLabel,
     features = [],

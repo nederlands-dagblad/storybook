@@ -29,6 +29,30 @@ const formatDateLabel = (dateStr: string): string => {
     return dateStr;
 };
 
+/**
+ * Reads the anti-forgery token from the DOM at submission time.
+ * Checks for a <meta name="csrf-token"> tag first (preferred),
+ * then falls back to a standard ASP.NET hidden input.
+ */
+function getAntiForgeryToken(): string {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    if (meta) return meta.getAttribute('content') ?? '';
+
+    const input = document.querySelector<HTMLInputElement>(
+        'input[name="__RequestVerificationToken"]'
+    );
+    return input?.value ?? '';
+}
+
+export interface SubscriptionFormSubmitData {
+    duration: string;
+    startDate: string;
+    deliveryDay?: string;
+    personalData: PersonalFormData;
+    paymentMethod: string;
+    iban?: string;
+}
+
 export interface SubscriptionFormProps {
     // Header
     phoneNumber?: string;
@@ -42,6 +66,7 @@ export interface SubscriptionFormProps {
     subscriptionOriginalPricePerWeek?: number;
     features?: SubscriptionFeature[];
     onChangeSubscription?: () => void;
+    changeSubscriptionHref?: string;
     changeSubscriptionLabel?: string;
 
     // Duration step
@@ -57,6 +82,7 @@ export interface SubscriptionFormProps {
 
     // Personal step
     personalAlertText?: React.ReactNode;
+    personalAlertEmail?: string;
 
     // Payment step
     paymentHeading?: string;
@@ -69,8 +95,19 @@ export interface SubscriptionFormProps {
     summaryHeading?: string;
     summaryFooterText?: string;
 
+    // Payment step - terms links
+    termsText?: string;
+    privacyUrl?: string;
+    actievoorwaardenUrl?: string;
+    algemeneVoorwaardenUrl?: string;
+
+    // Form submission props (from Razor)
+    subscriptionTypeId?: string;
+    signingKey?: string;
+    formAction?: string;
+
     // Submit
-    onComplete?: (data: { duration: string; startDate: string; deliveryDay?: string; personalData: PersonalFormData; paymentMethod: string }) => void;
+    onComplete?: (data: SubscriptionFormSubmitData) => void;
 }
 
 const defaultSteps: Step[] = [
@@ -80,41 +117,140 @@ const defaultSteps: Step[] = [
     { label: 'Bestelling afronden' },
 ];
 
-const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
-    phoneNumber,
-    steps = defaultSteps,
-    sectionHeading,
-    subscriptionTitle,
-    subscriptionSubtitle,
-    subscriptionPricePerWeek,
-    subscriptionOriginalPricePerWeek,
-    features,
-    onChangeSubscription,
-    changeSubscriptionLabel,
-    deliveryDayHeading,
-    deliveryDays = [],
-    initialDeliveryDay,
-    durationHeading,
-    durations = [],
-    initialDuration,
-    alertText,
-    startDate,
-    startDateLabel,
-    personalAlertText,
-    paymentHeading,
-    paymentMethods = [],
-    initialPaymentMethod,
-    termsLabel,
-    paymentFooterText,
-    summaryHeading,
-    summaryFooterText,
-    onComplete,
-}) => {
+/**
+ * Submits the subscription form as a standard POST to /signup/subscription/register.
+ * Creates a hidden form with all required fields and submits it.
+ */
+function submitSubscriptionForm(
+    data: SubscriptionFormSubmitData,
+    subscriptionTypeId: string,
+    signingKey: string,
+    formAction: string,
+) {
+    const antiForgeryToken = getAntiForgeryToken();
+    if (!antiForgeryToken) {
+        console.error('Anti-forgery token not found in DOM');
+        return;
+    }
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = formAction;
+    form.style.display = 'none';
+
+    const addField = (name: string, value: string) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    };
+
+    // CSRF token
+    addField('__RequestVerificationToken', antiForgeryToken);
+
+    // Personal details
+    addField('Custom.gender', '3'); // Default: Man / Vrouw
+    addField('firstname', data.personalData.initials ?? '');
+    addField('lastnameprefix', data.personalData.middleName ?? '');
+    addField('lastname', data.personalData.lastName ?? '');
+    addField('PostalCode', data.personalData.postcode ?? '');
+    addField('HouseNumber', data.personalData.houseNumber ?? '');
+    addField('HouseNumberSuffix', data.personalData.addition ?? '');
+    addField('EmailAddress', data.personalData.email ?? '');
+    addField('Phonenumber', data.personalData.phone ?? '');
+
+    // Start date (split dd/MM/yyyy into separate fields)
+    const dateParts = data.startDate.split('/');
+    if (dateParts.length === 3) {
+        addField('startDateDay', dateParts[0]);
+        addField('startDateMonth', dateParts[1]);
+        addField('startDateYear', dateParts[2]);
+    }
+
+    // Payment
+    if (data.iban) {
+        addField('Iban', data.iban);
+    }
+    addField('terms', 'true');
+
+    // Sub-offer selection (the selected duration is the SubscriptionTypeId of the sub-offer)
+    addField('suboffer_subscription_type_id', data.duration);
+
+    // Hidden fields from Pubble
+    addField('SubscriptionTypeId', subscriptionTypeId);
+    addField('SigningKey', signingKey);
+
+    // Honeypot fields (must be empty)
+    addField('website', '');
+    addField('description', '');
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
+export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
+                                                                      phoneNumber,
+                                                                      steps = defaultSteps,
+                                                                      sectionHeading,
+                                                                      subscriptionTitle,
+                                                                      subscriptionSubtitle,
+                                                                      subscriptionPricePerWeek,
+                                                                      subscriptionOriginalPricePerWeek,
+                                                                      features,
+                                                                      onChangeSubscription,
+                                                                      changeSubscriptionHref,
+                                                                      changeSubscriptionLabel,
+                                                                      deliveryDayHeading,
+                                                                      deliveryDays = [],
+                                                                      initialDeliveryDay,
+                                                                      durationHeading,
+                                                                      durations = [],
+                                                                      initialDuration,
+                                                                      alertText,
+                                                                      startDate,
+                                                                      startDateLabel,
+                                                                      personalAlertText,
+                                                                      personalAlertEmail,
+                                                                      paymentHeading,
+                                                                      paymentMethods = [],
+                                                                      initialPaymentMethod,
+                                                                      termsLabel,
+                                                                      paymentFooterText = 'U ontvangt een bevestiging per e-mail. U hebt een bedenktijd van 14 dagen.',
+                                                                      summaryHeading,
+                                                                      summaryFooterText,
+                                                                      onComplete,
+                                                                      termsText,
+                                                                      privacyUrl,
+                                                                      actievoorwaardenUrl,
+                                                                      algemeneVoorwaardenUrl,
+                                                                      subscriptionTypeId,
+                                                                      signingKey,
+                                                                      formAction = '/signup/subscription/register',
+                                                                  }) => {
+    const handleChangeSubscription = onChangeSubscription
+        ?? (changeSubscriptionHref
+            ? () => { window.location.href = changeSubscriptionHref; }
+            : () => { window.history.back(); });
     const [step, setStep] = useState<SubscriptionStep>('duration');
     const [selectedDeliveryDay, setSelectedDeliveryDay] = useState(initialDeliveryDay ?? deliveryDays[0]?.value);
     const [selectedDuration, setSelectedDuration] = useState(initialDuration ?? durations[0]?.value);
     const [selectedStartDate, setSelectedStartDate] = useState(startDate ?? '');
     const [personalData, setPersonalData] = useState<PersonalFormData | null>(null);
+
+    // Filter durations by selected delivery day (for paper subscriptions)
+    const filteredDurations = deliveryDays.length > 0 && selectedDeliveryDay
+        ? durations.filter(d => d.group === selectedDeliveryDay || d.group === '')
+        : durations;
+
+    // Auto-select first duration when delivery day changes
+    const handleDeliveryDayChange = (value: string) => {
+        setSelectedDeliveryDay(value);
+        const newFiltered = durations.filter(d => d.group === value || d.group === '');
+        if (newFiltered.length > 0 && !newFiltered.find(d => d.value === selectedDuration)) {
+            setSelectedDuration(newFiltered[0].value);
+        }
+    };
 
     const currentStep = step === 'duration' ? 2 : step === 'personal' ? 3 : 4;
 
@@ -129,10 +265,14 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     });
 
     const activeDeliveryDay = deliveryDays.find(d => d.value === selectedDeliveryDay);
-    const totalPrice = activeDeliveryDay?.price
-        ?? `€${subscriptionPricePerWeek.toFixed(2).replace('.', ',')} per week`;
+    const activeDurationObj = filteredDurations.find(d => d.value === selectedDuration);
 
-    const activeDurationObj = durations.find(d => d.value === selectedDuration);
+    // Use selected duration's price if available, otherwise fall back to main subscription price
+    const activePrice = activeDurationObj?.price ?? subscriptionPricePerWeek;
+    const activeOriginalPrice = activeDurationObj?.originalPrice ?? subscriptionOriginalPricePerWeek;
+
+    const totalPrice = activeDeliveryDay?.price
+        ?? `€${activePrice.toFixed(2).replace('.', ',')} per week`;
 
     const summaryRows: OrderSummaryRow[] = [
         { label: 'Actieperiode', value: activeDurationObj?.period ?? '' },
@@ -140,8 +280,8 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         {
             label: 'Totaal',
             value: totalPrice,
-            originalValue: subscriptionOriginalPricePerWeek
-                ? `€${subscriptionOriginalPricePerWeek.toFixed(2).replace('.', ',')} per week`
+            originalValue: activeOriginalPrice
+                ? `€${activeOriginalPrice.toFixed(2).replace('.', ',')} per week`
                 : undefined,
             isDivider: true,
         },
@@ -152,16 +292,41 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         setStep('payment');
     };
 
+    const handlePaymentSubmit = (paymentMethod: string, iban?: string) => {
+        const submitData: SubscriptionFormSubmitData = {
+            duration: selectedDuration,
+            startDate: selectedStartDate,
+            deliveryDay: selectedDeliveryDay,
+            personalData: personalData!,
+            paymentMethod,
+            iban,
+        };
+
+        // Call onComplete callback if provided
+        onComplete?.(submitData);
+
+        // Submit the form to the server if submission props are available
+        if (subscriptionTypeId && signingKey) {
+            submitSubscriptionForm(
+                submitData,
+                subscriptionTypeId,
+                signingKey,
+                formAction,
+            );
+        }
+    };
+
     const summaryPanelProps = {
         heading: summaryHeading,
         subscriptionTitle,
         subscriptionSubtitle,
         features,
-        onChangeSubscription,
+        onChangeSubscription: handleChangeSubscription,
         changeSubscriptionLabel,
         rows: summaryRows,
         footerText: summaryFooterText,
         onChangePersonal: () => setStep('personal'),
+        deliveryDayLabel: activeDeliveryDay?.label,
     };
 
     return (
@@ -200,14 +365,14 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                             subscriptionPricePerWeek={subscriptionPricePerWeek}
                             subscriptionOriginalPricePerWeek={subscriptionOriginalPricePerWeek}
                             features={features}
-                            onChangeSubscription={onChangeSubscription}
+                            onChangeSubscription={handleChangeSubscription}
                             changeSubscriptionLabel={changeSubscriptionLabel}
                             deliveryDayHeading={deliveryDayHeading}
                             deliveryDays={deliveryDays}
                             selectedDeliveryDay={selectedDeliveryDay}
-                            onDeliveryDayChange={setSelectedDeliveryDay}
+                            onDeliveryDayChange={handleDeliveryDayChange}
                             durationHeading={durationHeading}
-                            durations={durations}
+                            durations={filteredDurations}
                             selectedDuration={selectedDuration}
                             onDurationChange={setSelectedDuration}
                             alertText={alertText}
@@ -222,8 +387,10 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                     {step === 'personal' && (
                         <SubscriptionPersonalForm
                             alertText={personalAlertText}
+                            alertEmail={personalAlertEmail}
                             submitLabel="Naar betaaloverzicht"
                             onSubmit={handlePersonalSubmit}
+                            initialData={personalData ?? undefined}
                         />
                     )}
 
@@ -244,13 +411,11 @@ const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                             termsLabel={termsLabel}
                             submitLabel="Bevestigen"
                             footerText={paymentFooterText}
-                            onSubmit={(paymentMethod) => onComplete?.({
-                                duration: selectedDuration,
-                                startDate: selectedStartDate,
-                                deliveryDay: selectedDeliveryDay,
-                                personalData: personalData!,
-                                paymentMethod,
-                            })}
+                            onSubmit={handlePaymentSubmit}
+                            termsText={termsText}
+                            privacyUrl={privacyUrl}
+                            actievoorwaardenUrl={actievoorwaardenUrl}
+                            algemeneVoorwaardenUrl={algemeneVoorwaardenUrl}
                         />
                     )}
                 </div>

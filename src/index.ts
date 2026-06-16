@@ -105,6 +105,9 @@ export type { VideoModalProps } from './molecules/newsfeedMolecules/VideoModal/V
 export { Dropdown } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
 export type { DropdownProps } from './molecules/formMolecules/Dropdown/Dropdown.tsx';
 
+export { AudioPlayer } from './molecules/mediaMolecules/AudioPlayer/AudioPlayer';
+export type { AudioPlayerProps } from './molecules/mediaMolecules/AudioPlayer/AudioPlayer';
+
 // Organisms
 export { ArtikelCadeauModal } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
 export type { ArtikelCadeauModalProps } from './organisms/articleOrganisms/ArtikelCadeauModal/ArtikelCadeauModal';
@@ -130,8 +133,20 @@ export type { PodcastSeriesOverviewProps, PodcastSeries } from './organisms/Podc
 export { PodcastSlider } from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
 export type { PodcastSliderProps} from './organisms/PodcastOrganisms/PodcastSlider/PodcastSlider';
 
+export { PodcastSeriesHero } from './organisms/PodcastOrganisms/PodcastSeriesHero/PodcastSeriesHero';
+export type { PodcastSeriesHeroProps } from './organisms/PodcastOrganisms/PodcastSeriesHero/PodcastSeriesHero';
+
+export { PodcastSeriesLastEpisode } from './organisms/PodcastOrganisms/PodcastSeriesLastEpisode/PodcastSeriesLastEpisode';
+export type { PodcastSeriesLastEpisodeProps } from './organisms/PodcastOrganisms/PodcastSeriesLastEpisode/PodcastSeriesLastEpisode';
+
+export { PodcastSeriesHosts } from './organisms/PodcastOrganisms/PodcastSeriesHosts/PodcastSeriesHosts';
+export type { PodcastSeriesHostsProps, PodcastSeriesHost } from './organisms/PodcastOrganisms/PodcastSeriesHosts/PodcastSeriesHosts';
+
 export { DeviceLimitModal } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
 export type { DeviceLimitModalProps } from './organisms/DeviceLimitOrganisms/DeviceLimitModal';
+
+export { SubscriptionForm } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
+export type { SubscriptionFormProps } from './organisms/SubscriptionOrganisms/SubscriptionForm/SubscriptionForm';
 
 // Hooks
 export { useFetchData } from './hooks/useFetchData';
@@ -176,6 +191,13 @@ export type { EmployeePageProps, Employee } from './pages/EmployeePage/EmployeeP
 
 export { default as ZakelijkAbonnementForm } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
 export type { ZakelijkAbonnementFormProps, ZakelijkAbonnementFormData } from './organisms/ContactFormOrganisms/ZakelijkAbonnementForm/ZakelijkAbonnementForm';
+
+export { SubscriptionSelectionFrame } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
+export type { SubscriptionSelectionFrameProps } from './organisms/SubscriptionOrganisms/SubscriptionSelectionFrame/SubscriptionSelectionFrame';
+
+
+export { SubscriptionLandingPage } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
+export type { SubscriptionLandingPageProps } from './pages/SubscriptionLandingPage/SubscriptionLandingPage';
 
 // Helpers
 export { setData } from './helpers/data';
