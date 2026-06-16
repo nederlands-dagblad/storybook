@@ -29,6 +29,30 @@ const formatDateLabel = (dateStr: string): string => {
     return dateStr;
 };
 
+/**
+ * Reads the anti-forgery token from the DOM at submission time.
+ * Checks for a <meta name="csrf-token"> tag first (preferred),
+ * then falls back to a standard ASP.NET hidden input.
+ */
+function getAntiForgeryToken(): string {
+    const meta = document.querySelector('meta[name="csrf-token"]');
+    if (meta) return meta.getAttribute('content') ?? '';
+
+    const input = document.querySelector<HTMLInputElement>(
+        'input[name="__RequestVerificationToken"]'
+    );
+    return input?.value ?? '';
+}
+
+export interface SubscriptionFormSubmitData {
+    duration: string;
+    startDate: string;
+    deliveryDay?: string;
+    personalData: PersonalFormData;
+    paymentMethod: string;
+    iban?: string;
+}
+
 export interface SubscriptionFormProps {
     // Header
     phoneNumber?: string;
@@ -59,7 +83,7 @@ export interface SubscriptionFormProps {
     // Personal step
     personalAlertText?: React.ReactNode;
     personalAlertEmail?: string;
-    
+
     // Payment step
     paymentHeading?: string;
     paymentMethods?: PaymentMethod[];
@@ -71,14 +95,19 @@ export interface SubscriptionFormProps {
     summaryHeading?: string;
     summaryFooterText?: string;
 
-    // Payment step
+    // Payment step - terms links
     termsText?: string;
     privacyUrl?: string;
     actievoorwaardenUrl?: string;
     algemeneVoorwaardenUrl?: string;
 
+    // Form submission props (from Razor)
+    subscriptionTypeId?: string;
+    signingKey?: string;
+    formAction?: string;
+
     // Submit
-    onComplete?: (data: { duration: string; startDate: string; deliveryDay?: string; personalData: PersonalFormData; paymentMethod: string }) => void;
+    onComplete?: (data: SubscriptionFormSubmitData) => void;
 }
 
 const defaultSteps: Step[] = [
@@ -87,6 +116,78 @@ const defaultSteps: Step[] = [
     { label: 'Gegevens' },
     { label: 'Bestelling afronden' },
 ];
+
+/**
+ * Submits the subscription form as a standard POST to /signup/subscription/register.
+ * Creates a hidden form with all required fields and submits it.
+ */
+function submitSubscriptionForm(
+    data: SubscriptionFormSubmitData,
+    subscriptionTypeId: string,
+    signingKey: string,
+    formAction: string,
+) {
+    const antiForgeryToken = getAntiForgeryToken();
+    if (!antiForgeryToken) {
+        console.error('Anti-forgery token not found in DOM');
+        return;
+    }
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = formAction;
+    form.style.display = 'none';
+
+    const addField = (name: string, value: string) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    };
+
+    // CSRF token
+    addField('__RequestVerificationToken', antiForgeryToken);
+
+    // Personal details
+    addField('Custom.gender', '3'); // Default: Man / Vrouw
+    addField('firstname', data.personalData.initials ?? '');
+    addField('lastnameprefix', data.personalData.middleName ?? '');
+    addField('lastname', data.personalData.lastName ?? '');
+    addField('PostalCode', data.personalData.postcode ?? '');
+    addField('HouseNumber', data.personalData.houseNumber ?? '');
+    addField('HouseNumberSuffix', data.personalData.addition ?? '');
+    addField('EmailAddress', data.personalData.email ?? '');
+    addField('Phonenumber', data.personalData.phone ?? '');
+
+    // Start date (split dd/MM/yyyy into separate fields)
+    const dateParts = data.startDate.split('/');
+    if (dateParts.length === 3) {
+        addField('startDateDay', dateParts[0]);
+        addField('startDateMonth', dateParts[1]);
+        addField('startDateYear', dateParts[2]);
+    }
+
+    // Payment
+    if (data.iban) {
+        addField('Iban', data.iban);
+    }
+    addField('terms', 'true');
+
+    // Sub-offer selection (the selected duration is the SubscriptionTypeId of the sub-offer)
+    addField('suboffer_subscription_type_id', data.duration);
+
+    // Hidden fields from Pubble
+    addField('SubscriptionTypeId', subscriptionTypeId);
+    addField('SigningKey', signingKey);
+
+    // Honeypot fields (must be empty)
+    addField('website', '');
+    addField('description', '');
+
+    document.body.appendChild(form);
+    form.submit();
+}
 
 export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       phoneNumber,
@@ -123,6 +224,9 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       privacyUrl,
                                                                       actievoorwaardenUrl,
                                                                       algemeneVoorwaardenUrl,
+                                                                      subscriptionTypeId,
+                                                                      signingKey,
+                                                                      formAction = '/signup/subscription/register',
                                                                   }) => {
     const handleChangeSubscription = onChangeSubscription
         ?? (changeSubscriptionHref
@@ -186,6 +290,30 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     const handlePersonalSubmit = (data: PersonalFormData) => {
         setPersonalData(data);
         setStep('payment');
+    };
+
+    const handlePaymentSubmit = (paymentMethod: string, iban?: string) => {
+        const submitData: SubscriptionFormSubmitData = {
+            duration: selectedDuration,
+            startDate: selectedStartDate,
+            deliveryDay: selectedDeliveryDay,
+            personalData: personalData!,
+            paymentMethod,
+            iban,
+        };
+
+        // Call onComplete callback if provided
+        onComplete?.(submitData);
+
+        // Submit the form to the server if submission props are available
+        if (subscriptionTypeId && signingKey) {
+            submitSubscriptionForm(
+                submitData,
+                subscriptionTypeId,
+                signingKey,
+                formAction,
+            );
+        }
     };
 
     const summaryPanelProps = {
@@ -283,13 +411,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                             termsLabel={termsLabel}
                             submitLabel="Bevestigen"
                             footerText={paymentFooterText}
-                            onSubmit={(paymentMethod) => onComplete?.({
-                                duration: selectedDuration,
-                                startDate: selectedStartDate,
-                                deliveryDay: selectedDeliveryDay,
-                                personalData: personalData!,
-                                paymentMethod,
-                            })}
+                            onSubmit={handlePaymentSubmit}
                             termsText={termsText}
                             privacyUrl={privacyUrl}
                             actievoorwaardenUrl={actievoorwaardenUrl}
