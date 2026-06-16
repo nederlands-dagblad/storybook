@@ -58,7 +58,7 @@ const EmployeePage: React.FC<EmployeePageProps> = ({
             <PageSection>
                 <div className="flex flex-col gap-l lg:gap-xl">
                     <div className="text-center">
-                        <PageHeading title={heading} showBody={true} bodyText={intro} />
+                        <PageHeading title={heading} showBody={true} bodyText={intro} bodyClassName="max-w-xl mx-auto" />
                     </div>
 
                     {/* Mobile: select dropdown */}
