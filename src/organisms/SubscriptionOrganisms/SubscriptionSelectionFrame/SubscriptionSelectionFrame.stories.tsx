@@ -17,7 +17,13 @@ export const Default: Story = {
         heading: 'Word lid van het Nederlands Dagblad',
         benefits: [
             { label: 'Steun christelijke kwaliteitsjournalistiek' },
-            { label: 'Korting voor nieuwe abonnees', hasInfo: true },
+            {
+                label: 'Korting voor nieuwe abonnees',
+                hasInfo: true,
+                infoText: 'De introductietarieven op deze site zijn alleen geldig voor nieuwe abonnees die de afgelopen 12 maanden geen abonnement hebben gehad.',
+                infoLinkLabel: 'Klik hier',
+                infoLinkHref: 'https://www.nd.nl/service/alle-abonnementen',
+            },
             { label: '14 dagen bedenktijd' },
         ],
         steps: [
