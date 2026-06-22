@@ -5,13 +5,16 @@ import SubscriptionCard, { SubscriptionCardProps } from '../../../molecules/subs
 import Icon from '../../../atoms/basicAtoms/Icon/Icon';
 import IconText from '../../../atoms/basicAtoms/IconText/IconText';
 import Logo from '../../../atoms/basicAtoms/Logo/Logo';
+import Modal from '../../../molecules/feedbackMolecules/Modal/Modal';
 
 export interface SubscriptionBenefit {
     label: string;
     hasInfo?: boolean;
+    modalHeading?: string;
     infoText?: string;
     infoLinkLabel?: string;
     infoLinkHref?: string;
+    infoTextSuffix?: string;
     onInfoClick?: () => void;
 }
 
@@ -160,28 +163,23 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
             )}
 
             {/* Info modal */}
-            {infoBenefit && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setInfoBenefit(null)}>
-                    <div className="bg-background-default rounded-lg p-l max-w-md mx-m shadow-xl" onClick={e => e.stopPropagation()}>
-                        <div className="flex justify-between items-start mb-s">
-                            <h3 className="text-heading-s text-text-default">{infoBenefit.label}</h3>
-                            <button onClick={() => setInfoBenefit(null)} className="flex-shrink-0">
-                                <Icon name="x" variant="outline" size="s" color="default" />
-                            </button>
-                        </div>
-                        {infoBenefit.infoText && (
-                            <p className="text-body-light text-text-default">
-                                {infoBenefit.infoText}{' '}
-                                {infoBenefit.infoLinkHref && (
-                                    <a href={infoBenefit.infoLinkHref} className="!underline" target="_blank" rel="noopener noreferrer">
-                                        {infoBenefit.infoLinkLabel ?? 'Klik hier'}
-                                    </a>
-                                )}
-                            </p>
+            <Modal
+                isOpen={!!infoBenefit}
+                onClose={() => setInfoBenefit(null)}
+                heading={infoBenefit?.modalHeading ?? infoBenefit?.label}
+            >
+                {infoBenefit?.infoText && (
+                    <p className="text-body-light text-text-default">
+                        {infoBenefit.infoText}{' '}
+                        {infoBenefit.infoLinkHref && (
+                            <a href={infoBenefit.infoLinkHref} className="!underline" target="_blank" rel="noopener noreferrer">
+                                {infoBenefit.infoLinkLabel ?? 'Klik hier'}
+                            </a>
                         )}
-                    </div>
-                </div>
-            )}
+                        {infoBenefit.infoTextSuffix && ` ${infoBenefit.infoTextSuffix}`}
+                    </p>
+                )}
+            </Modal>
         </div>
     );
 };
