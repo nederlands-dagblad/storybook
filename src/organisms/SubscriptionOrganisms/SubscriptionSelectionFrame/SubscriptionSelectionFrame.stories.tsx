@@ -21,7 +21,7 @@ export const Default: Story = {
                 label: 'Korting voor nieuwe abonnees',
                 hasInfo: true,
                 infoText: 'De introductietarieven op deze site zijn alleen geldig voor nieuwe abonnees die de afgelopen 12 maanden geen abonnement hebben gehad.',
-                infoLinkLabel: 'Klik hier',
+                infoLinkLabel: 'Klik hier voor het aanvragen van een regulier abonnement.',
                 infoLinkHref: 'https://www.nd.nl/service/alle-abonnementen',
             },
             { label: '14 dagen bedenktijd' },

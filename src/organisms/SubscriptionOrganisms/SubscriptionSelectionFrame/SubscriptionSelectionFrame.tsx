@@ -10,9 +10,11 @@ import Modal from '../../../molecules/feedbackMolecules/Modal/Modal';
 export interface SubscriptionBenefit {
     label: string;
     hasInfo?: boolean;
+    modalHeading?: string;
     infoText?: string;
     infoLinkLabel?: string;
     infoLinkHref?: string;
+    infoTextSuffix?: string;
     onInfoClick?: () => void;
 }
 
@@ -164,7 +166,7 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
             <Modal
                 isOpen={!!infoBenefit}
                 onClose={() => setInfoBenefit(null)}
-                heading={infoBenefit?.label}
+                heading={infoBenefit?.modalHeading ?? infoBenefit?.label}
             >
                 {infoBenefit?.infoText && (
                     <p className="text-body-light text-text-default">
@@ -174,6 +176,7 @@ export const SubscriptionSelectionFrame: React.FC<SubscriptionSelectionFrameProp
                                 {infoBenefit.infoLinkLabel ?? 'Klik hier'}
                             </a>
                         )}
+                        {infoBenefit.infoTextSuffix && ` ${infoBenefit.infoTextSuffix}`}
                     </p>
                 )}
             </Modal>
