@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../../../atoms/basicAtoms/Logo/Logo';
 import ProgressStepper, { Step } from '../../../molecules/navigationMolecules/ProgressStepper/ProgressStepper';
 import SubscriptionDurationForm, {
@@ -63,6 +63,7 @@ export interface SubscriptionFormProps {
     subscriptionTitle: string;
     subscriptionSubtitle?: string;
     subscriptionPricePerWeek: number;
+    pricePeriod?: string;
     subscriptionOriginalPricePerWeek?: number;
     features?: SubscriptionFeature[];
     onChangeSubscription?: () => void;
@@ -196,6 +197,7 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                                                                       subscriptionTitle,
                                                                       subscriptionSubtitle,
                                                                       subscriptionPricePerWeek,
+                                                                      pricePeriod = 'per week',
                                                                       subscriptionOriginalPricePerWeek,
                                                                       features,
                                                                       onChangeSubscription,
@@ -238,15 +240,131 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     const [selectedStartDate, setSelectedStartDate] = useState(startDate ?? '');
     const [personalData, setPersonalData] = useState<PersonalFormData | null>(null);
 
+    // --- Client-side API fetch state (fallback for offers without server-side sub-offers) ---
+    const [fetchedDurations, setFetchedDurations] = useState<SubscriptionDuration[]>([]);
+    const [fetchedTitle, setFetchedTitle] = useState<string>('');
+    const [fetchedFeatures, setFetchedFeatures] = useState<SubscriptionFeature[]>([]);
+    const [fetchedPricePeriod, setFetchedPricePeriod] = useState<string>('');
+    const [fetchedPrice, setFetchedPrice] = useState<number>(0);
+    const [fetchedOriginalPrice, setFetchedOriginalPrice] = useState<number | undefined>();
+    const [fetchedSigningKey, setFetchedSigningKey] = useState<string>('');
+
+    // Fetch offer data from Pubble API when no durations are provided server-side
+    useEffect(() => {
+        if (durations.length > 0 || !subscriptionTypeId || !signingKey) return;
+
+        const token = getAntiForgeryToken();
+        if (!token) return;
+
+        fetch('/api/v2/subscription-forms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                signingKey,
+                subscriptionTypeId,
+                __RequestVerificationToken: token,
+            }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                const offer = data.SubscriptionOffer;
+                if (!offer) return;
+
+                // Set title
+                setFetchedTitle(offer.Name ?? '');
+
+                // Set price period
+                setFetchedPricePeriod(offer.Display?.OfferPricePeriod ?? 'per week');
+
+                // Parse price
+                const priceStr = (offer.Display?.OfferPrice ?? '')
+                    .replace('€', '').replace(' ', '').replace(',', '.');
+                setFetchedPrice(parseFloat(priceStr) || 0);
+
+                // Parse original price
+                const baseStr = (offer.Display?.BasePrice ?? '')
+                    .replace('€', '').replace(' ', '').replace(',', '.')
+                    .replace('Normaal', '').replace('normaal', '').trim();
+                const baseParsed = parseFloat(baseStr) || 0;
+                if (baseParsed > 0 && baseParsed !== (parseFloat(priceStr) || 0)) {
+                    setFetchedOriginalPrice(baseParsed);
+                }
+
+                // Set features from benefits + disadvantages
+                const feats: SubscriptionFeature[] = [
+                    ...(offer.Display?.Benefits ?? []).map((b: string) => ({ label: b, included: true })),
+                    ...(offer.Display?.Disadvantages ?? []).map((d: string) => ({ label: d, included: false })),
+                ];
+                setFetchedFeatures(feats);
+
+                // Set signing key from API response
+                if (data.SigningKey) {
+                    setFetchedSigningKey(data.SigningKey);
+                }
+
+                // Map sub-offers (Variation type only) to durations
+                const subOffers = (offer.SubOffers ?? [])
+                    .filter((s: any) => s.SubOfferType === 'Variation');
+
+                const mapped: SubscriptionDuration[] = subOffers.map((sub: any) => {
+                    const subPriceStr = (sub.Display?.OfferPrice ?? '')
+                        .replace('€', '').replace(' ', '').replace(',', '.');
+                    const subBaseStr = (sub.Display?.BasePrice ?? '')
+                        .replace('€', '').replace(' ', '').replace(',', '.')
+                        .replace('Normaal', '').replace('normaal', '').trim();
+                    const subPrice = parseFloat(subPriceStr) || 0;
+                    const subOriginal = parseFloat(subBaseStr) || 0;
+
+                    const title = sub.Display?.OfferTitle ?? '';
+                    let period = title;
+                    const yearMatch = title.match(/(\d+)\s*jaar/);
+                    const monthMatch = title.match(/(\d+)\s*maand/);
+                    if (yearMatch) period = `${parseInt(yearMatch[1]) * 12} maanden`;
+                    else if (monthMatch) period = `${parseInt(monthMatch[1])} maanden`;
+
+                    let label = title;
+                    if (sub.Display?.IsPopular && !label.includes('meest gekozen')) {
+                        label += ' (meest gekozen)';
+                    }
+
+                    return {
+                        label,
+                        value: sub.SubscriptionTypeId.toString(),
+                        period,
+                        price: subPrice,
+                        originalPrice: subOriginal > 0 && subOriginal !== subPrice ? subOriginal : undefined,
+                        group: '',
+                        sortOrder: sub.Display?.SortOrder ?? 0,
+                    };
+                });
+
+                setFetchedDurations(mapped);
+                if (mapped.length > 0) {
+                    const popular = mapped.find(d => d.label.includes('meest gekozen'));
+                    setSelectedDuration(popular?.value ?? mapped[0].value);
+                }
+            })
+            .catch(err => console.error('Failed to fetch subscription offer:', err));
+    }, [subscriptionTypeId, signingKey, durations.length]);
+
+    // --- Effective values: use server-side props first, fall back to fetched data ---
+    const effectiveDurations = durations.length > 0 ? durations : fetchedDurations;
+    const effectiveTitle = subscriptionTitle || fetchedTitle;
+    const effectiveFeatures = (features && features.length > 0) ? features : fetchedFeatures;
+    const effectivePrice = subscriptionPricePerWeek || fetchedPrice;
+    const effectiveOriginalPrice = subscriptionOriginalPricePerWeek ?? fetchedOriginalPrice;
+    const effectivePricePeriod = durations.length > 0 ? pricePeriod : (fetchedPricePeriod || pricePeriod);
+    const effectiveSigningKey = fetchedSigningKey || signingKey;
+
     // Filter durations by selected delivery day (for paper subscriptions)
     const filteredDurations = deliveryDays.length > 0 && selectedDeliveryDay
-        ? durations.filter(d => d.group === selectedDeliveryDay || d.group === '')
-        : durations;
+        ? effectiveDurations.filter(d => d.group === selectedDeliveryDay || d.group === '')
+        : effectiveDurations;
 
     // Auto-select first duration when delivery day changes
     const handleDeliveryDayChange = (value: string) => {
         setSelectedDeliveryDay(value);
-        const newFiltered = durations.filter(d => d.group === value || d.group === '');
+        const newFiltered = effectiveDurations.filter(d => d.group === value || d.group === '');
         if (newFiltered.length > 0 && !newFiltered.find(d => d.value === selectedDuration)) {
             setSelectedDuration(newFiltered[0].value);
         }
@@ -267,21 +385,21 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
     const activeDeliveryDay = deliveryDays.find(d => d.value === selectedDeliveryDay);
     const activeDurationObj = filteredDurations.find(d => d.value === selectedDuration);
 
-    // Use selected duration's price if available, otherwise fall back to main subscription price
-    const activePrice = activeDurationObj?.price ?? subscriptionPricePerWeek;
-    const activeOriginalPrice = activeDurationObj?.originalPrice ?? subscriptionOriginalPricePerWeek;
+    // Use selected duration's price if available, otherwise fall back to effective subscription price
+    const activePrice = activeDurationObj?.price ?? effectivePrice;
+    const activeOriginalPrice = activeDurationObj?.originalPrice ?? effectiveOriginalPrice;
 
     const totalPrice = activeDeliveryDay?.price
-        ?? `€${activePrice.toFixed(2).replace('.', ',')} per week`;
+        ?? `€${activePrice.toFixed(2).replace('.', ',')} ${effectivePricePeriod}`;
 
     const summaryRows: OrderSummaryRow[] = [
-        { label: 'Actieperiode', value: activeDurationObj?.period ?? '' },
+        ...(activeDurationObj?.period ? [{ label: 'Actieperiode', value: activeDurationObj.period }] : []),
         { label: 'Ingangsdatum', value: formatDateLabel(selectedStartDate) },
         {
             label: 'Totaal',
             value: totalPrice,
             originalValue: activeOriginalPrice
-                ? `€${activeOriginalPrice.toFixed(2).replace('.', ',')} per week`
+                ? `€${activeOriginalPrice.toFixed(2).replace('.', ',')} ${effectivePricePeriod}`
                 : undefined,
             isDivider: true,
         },
@@ -306,11 +424,11 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
         onComplete?.(submitData);
 
         // Submit the form to the server if submission props are available
-        if (subscriptionTypeId && signingKey) {
+        if (subscriptionTypeId && effectiveSigningKey) {
             submitSubscriptionForm(
                 submitData,
                 subscriptionTypeId,
-                signingKey,
+                effectiveSigningKey,
                 formAction,
             );
         }
@@ -318,9 +436,9 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
 
     const summaryPanelProps = {
         heading: summaryHeading,
-        subscriptionTitle,
+        subscriptionTitle: effectiveTitle,
         subscriptionSubtitle,
-        features,
+        features: effectiveFeatures,
         onChangeSubscription: handleChangeSubscription,
         changeSubscriptionLabel,
         rows: summaryRows,
@@ -360,11 +478,11 @@ export const SubscriptionForm: React.FC<SubscriptionFormProps> = ({
                     {step === 'duration' && (
                         <SubscriptionDurationForm
                             sectionHeading={sectionHeading}
-                            subscriptionTitle={subscriptionTitle}
+                            subscriptionTitle={effectiveTitle}
                             subscriptionSubtitle={subscriptionSubtitle}
-                            subscriptionPricePerWeek={subscriptionPricePerWeek}
-                            subscriptionOriginalPricePerWeek={subscriptionOriginalPricePerWeek}
-                            features={features}
+                            subscriptionPricePerWeek={effectivePrice}
+                            subscriptionOriginalPricePerWeek={effectiveOriginalPrice}
+                            features={effectiveFeatures}
                             onChangeSubscription={handleChangeSubscription}
                             changeSubscriptionLabel={changeSubscriptionLabel}
                             deliveryDayHeading={deliveryDayHeading}
