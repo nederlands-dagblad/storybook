@@ -17,6 +17,7 @@ export interface SubscriptionCardProps {
     title: string;
     pricePerWeek: number;
     originalPricePerWeek?: number;
+    pricePeriod?: string;
     features: SubscriptionFeature[];
     isFeatured?: boolean;
     ctaLabel?: string;
@@ -29,6 +30,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     title,
     pricePerWeek,
     originalPricePerWeek,
+    pricePeriod = 'per week',
     features,
     isFeatured = false,
     ctaLabel = 'Kies abonnement',
@@ -77,7 +79,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
                                 </span>
                             )}
                             <span className="text-meta-bold text-text-default">
-                                {formatPrice(pricePerWeek)} per week
+                                {formatPrice(pricePerWeek)} {pricePeriod}
                             </span>
                         </div>
 
