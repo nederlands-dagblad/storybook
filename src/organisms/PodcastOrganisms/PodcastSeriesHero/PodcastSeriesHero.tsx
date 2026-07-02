@@ -1,6 +1,5 @@
 import React from 'react';
 import { AudioPlayer } from '@molecules/mediaMolecules/AudioPlayer/AudioPlayer';
-import snarkdown from "snarkdown";
 
 export interface PodcastSeriesHeroProps {
     imageUrl?: string;
