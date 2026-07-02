@@ -131,7 +131,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, label, className 
                 onEnded={() => setIsPlaying(false)}
             />
 
-            <div className="flex items-center gap-xs sm:gap-s w-full">
+            <div className="flex items-center gap-xs sm:gap-s w-full p-xxs bg-background-default border-default border-border-gray-subtle">
                 <button
                     type="button"
                     onClick={togglePlay}
@@ -159,7 +159,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, label, className 
                         className="ap-range flex-1 min-w-0"
                         style={{ background: trackBackground(playedPct) }}
                     />
-                    <span className="shrink-0 text-meta-light text-text-gray tabular-nums">
+                    <span className="shrink-0 text-meta-regular text-text-gray tabular-nums">
                         {formatTime(currentTime)} / {formatTime(duration)}
                     </span>
                 </div>
